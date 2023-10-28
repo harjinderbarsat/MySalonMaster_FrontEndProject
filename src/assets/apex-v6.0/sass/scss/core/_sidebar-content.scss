@@ -376,7 +376,7 @@
     &[data-background-color="purple-love"] {
         @include set-gradient-background-color(#cc2b5e, #753a88);
     }
-    &[data-background-color="hawk-theme"] {
+    &[data-background-color="my-salon-master"] {
         @include set-gradient-background-color(rgb(148, 5, 53),rgb(238, 62, 120));
     }
     // Menu anchor colors

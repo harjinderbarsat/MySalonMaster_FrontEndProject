@@ -16,16 +16,16 @@
                             <div class="card-body p-2" style="border: solid;">
                                 <ul class="list-group category-container" style="border-radius: 0%">
                                     <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
-                                        [ngClass]="{'hawk-theme':selectedPaymentType=='cash'}"
+                                        [ngClass]="{'my-salon-master':selectedPaymentType=='cash'}"
                                         (click)="paymentType('cash')"> Pay In
                                         Person
                                     </li>
                                     <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
-                                        [ngClass]="{'hawk-theme':selectedPaymentType=='card'}"
+                                        [ngClass]="{'my-salon-master':selectedPaymentType=='card'}"
                                         (click)="paymentType('card')"> Pay By Card </li>
                                     <!-- <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
                                         [hidden]="ifTheVoucherProcessDone"
-                                        [ngClass]="{'hawk-theme':selectedPaymentType=='voucher'}"
+                                        [ngClass]="{'my-salon-master':selectedPaymentType=='voucher'}"
                                         (click)="paymentType('voucher')"> Apply Voucher
                                     </li> -->
                                 </ul>

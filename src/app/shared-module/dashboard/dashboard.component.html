@@ -1,7 +1,7 @@
 <!--Statistics cards Starts-->
 <div class="row">
     <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="!isBranchPannel">
-        <div class="card  hawk-theme" (click)="viewSale()">
+        <div class="card my-salon-master" (click)="viewSale()">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
                     <div class="media">
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div [ngClass]="{'col-xl-3 col-lg-6 col-md-6 col-12': !isBranchPannel, 'col-lg-6 col-md-6 col-12': isBranchPannel }">
-        <div class="card hawk-theme" (click)="viewAppointments()">
+        <div class="card my-salon-master" (click)="viewAppointments()">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
                     <div class="media">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="!isBranchPannel">
-        <div class="card hawk-theme" (click)="viewProductSale()">
+        <div class="card my-salon-master" (click)="viewProductSale()">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
                     <div class="media">
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div [ngClass]="{'col-xl-3 col-lg-6 col-md-6 col-12': !isBranchPannel, 'col-lg-6 col-md-6 col-12': isBranchPannel}">
-        <div class="card  hawk-theme">
+        <div class="card  my-salon-master">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
                     <div class="media">
@@ -104,7 +104,7 @@
 
 <div class="row" matchHeight="card">
     <!-- <div class="col-xl-4 col-lg-12 col-12">
-        <div class="card hawk-theme">
+        <div class="card my-salon-master">
             <div class="card-content">
                 <div class="card-body p-2">
                     <h4 class="card-title white"> Total Sale</h4>

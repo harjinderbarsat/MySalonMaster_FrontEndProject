@@ -16,7 +16,7 @@
                                         <div class="main-div">
                                             <div class="contailer-div" *ngFor="let service of selectServicesList">
                                                 <div class="internal-div text-center" (click)="selectService(service)"
-                                                    [ngClass]="{'hawk-btn-color': !service.isSelected, 'hawk-theme':service.isSelected}">
+                                                    [ngClass]="{'hawk-btn-color': !service.isSelected, 'my-salon-master':service.isSelected}">
                                                     <img *ngIf="service.imageUrl && service.imageUrl!='https://api.hawksystems.app/public'"
                                                         class="product-grid-image" src="{{service.imageUrl}}"
                                                         alt="Card image cap">
