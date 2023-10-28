@@ -8,7 +8,7 @@ import { CommonService } from './services/common.service';
 })
 export class AppComponent {
 
-  title = 'Hawk System';
+  title = 'My Salon Master';
   constructor(private cService: CommonService) {
   }
 
