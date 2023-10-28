@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "name": "Hair Care Products",
+        "visibility": true
+    },
+    {
+        "id": 2,
+        "name": "Hair Oil",
+        "visibility": true
+    },
+    {
+        "id": 3,
+        "name": "Skin Creams",
+        "visibility": true
+    },
+    {
+        "id": 4,
+        "name": "Skin Care Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 5,
+        "name": "Face Cream",
+        "visibility": true
+    },
+    {
+        "id": 6,
+        "name": "Beauty Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 7,
+        "name": "Hair Care Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 8,
+        "name": "Body Care Products",
+        "visibility": true
+    },
+    {
+        "id": 9,
+        "name": "Cosmetic Raw Material",
+        "visibility": true
+    },
+    {
+        "id": 10,
+        "name": "Lip Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 11,
+        "name": "Herbal Body Care Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 12,
+        "name": "Body Cream",
+        "visibility": true
+    },
+    {
+        "id": 13,
+        "name": "Body Lotions",
+        "visibility": true
+    },
+    {
+        "id": 14,
+        "name": "Nail Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 15,
+        "name": "Nail Set",
+        "visibility": true
+    },
+    {
+        "id": 16,
+        "name": "Eye Cosmetic",
+        "visibility": true
+    },
+    {
+        "id": 17,
+        "name": "Cosmetic Chemical",
+        "visibility": true
+    },
+    {
+        "id": 18,
+        "name": "Henna Powder",
+        "visibility": true
+    },
+    {
+        "id": 19,
+        "name": "Nail Polish",
+        "visibility": true
+    },
+    {
+        "id": 20,
+        "name": "Rubber Band",
+        "visibility": true
+    },
+    {
+        "id": 21,
+        "name": "Facial Kit",
+        "visibility": true
+    },
+    {
+        "id": 22,
+        "name": "Body Powder",
+        "visibility": true
+    },
+    {
+        "id": 23,
+        "name": "Natural Cosmetics",
+        "visibility": true
+    },
+    {
+        "id": 24,
+        "name": "Facial Mask",
+        "visibility": true
+    },
+    {
+        "id": 25,
+        "name": "Hair Removal Wax",
+        "visibility": true
+    },
+    {
+        "id": 26,
+        "name": "Body Scrubs",
+        "visibility": true
+    },
+    {
+        "id": 27,
+        "name": "Cosmetic Accessories",
+        "visibility": true
+    },
+    {
+        "id": 28,
+        "name": "Body Masks",
+        "visibility": true
+    },
+    {
+        "id": 29,
+        "name": "Hair Cream",
+        "visibility": true
+    },
+    {
+        "id": 30,
+        "name": "Bleaching Cream",
+        "visibility": true
+    },
+    {
+        "id": 31,
+        "name": "Synthetic Hair",
+        "visibility": true
+    },
+    {
+        "id": 32,
+        "name": "Hair Conditioner",
+        "visibility": true
+    },
+    {
+        "id": 33,
+        "name": "Skin Toner",
+        "visibility": true
+    },
+    {
+        "id": 34,
+        "name": "Hair Shampoo",
+        "visibility": true
+    },
+    {
+        "id": 35,
+        "name": "Hair Accessories",
+        "visibility": true
+    },
+    {
+        "id": 36,
+        "name": "Others",
+        "visibility": true
+    }
+]

@@ -1,0 +1,164 @@
+<div class="row">
+    <div class="col-6 text-left">
+        <h3>Branch Profile</h3>
+    </div>
+    <div class="col-6 text-right" *ngIf="!inProgress">
+        <!-- <button class="hawk-btn-md" *ngIf="!isEditMode" (click)="editProfile()"><i class="fa fa-edit"></i> &nbsp; Edit Profile</button> -->
+        <button *ngIf="isEditMode" class="hawk-btn-md mr-1" (click)="getMyProfileDetail()"><i class="fa fa-close"></i>
+            &nbsp; Cancel</button>
+        <button *ngIf="isEditMode" class=" hawk-btn-md" (click)="saveBranch()"><i class="fa fa-check"></i> &nbsp;
+            Update Profile</button>
+    </div>
+</div>
+
+<div class="row" *ngIf="!inProgress">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Branch Logo</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body p-2">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img class="d-flex bg-primary" src="../../../assets/img/avatars/avatar-09.png"
+                                style="height:200px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body p-4" [formGroup]="branchForm">
+                    <div class="row">
+                        <div class="col-6"> <b> Branch Code <span class="pull-right">:</span></b> </div>
+                        <div class="col-6">{{branchModel.code}}</div>
+
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Password <span class="pull-right">:</span></b></div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.passcode}}</div>
+                        <div class="col-6" *ngIf="isEditMode">
+                            <div class="row">
+                                <div class="col-6"><input formControlName='passcode' type="text" class="form-control"
+                                        [(ngModel)]="branchModel.passcode" placeholder="Enter Password">
+                                    <div *ngIf="formAlias.number_of_employee.errors" class="err-validation">
+                                        <div *ngIf="formAlias.contact.errors.required">Please enter Password
+                                        </div>
+                                        <div *ngIf="formAlias.contact.errors.minlength">Password must be minimum 6
+                                            chars.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Address <span class="pull-right">:</span></b></div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.address}}</div>
+                        <div class="col-6" *ngIf="isEditMode">
+                            <div class="row">
+                                <div class="col-6"><input formControlName='address' type="text" class="form-control"
+                                        [(ngModel)]="branchModel.address" placeholder="Enter address">
+                                    <div *ngIf="formAlias.address.errors" class="err-validation">
+                                        <div>
+                                            Please enter alphabets(a-z,A-Z) only.
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Phone <span class="pull-right">:</span></b></div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.contact}}</div>
+                        <div class="col-6" *ngIf="isEditMode">
+                            <div class="row">
+                                <div class="col-6"><input formControlName='contact' type="text" class="form-control"
+                                        [(ngModel)]="branchModel.contact" placeholder="Enter phone">
+                                    <div *ngIf="formAlias.contact.errors" class="err-validation">
+                                        <div *ngIf="formAlias.contact.errors.minlength">Phone must be at least 10
+                                            characters
+                                        </div>
+                                        <div *ngIf="formAlias.contact.errors.maxlength">Phone must be 10
+                                            characters
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Email <span class="pull-right">:</span></b></div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.email}}</div>
+                        <div class="col-6" *ngIf="isEditMode">
+                            <div class="row">
+                                <div class="col-6"><input formControlName='email' type="text" class="form-control"
+                                        [(ngModel)]="branchModel.email" placeholder="Enter email">
+                                    <div *ngIf="formAlias.email.errors" class="err-validation">
+                                        Please enter valid email.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Total Employee <span class="pull-right">:</span></b></div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.number_of_employee}}</div>
+                        <div class="col-6" *ngIf="isEditMode">
+                            <div class="row">
+                                <div class="col-6"><input formControlName='number_of_employee' type="text"
+                                        class="form-control" [(ngModel)]="branchModel.number_of_employee"
+                                        placeholder="Enter Total Employee">
+                                    <div *ngIf="formAlias.number_of_employee.errors" class="err-validation">
+                                        Please enter numbers only.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Slot For Appointment at a time<span class="pull-right">:</span></b></div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.slot_for_appointment}}</div>
+                        <div class="col-6" *ngIf="isEditMode">
+                            <div class="row">
+                                <div class="col-6"><input formControlName='slot_for_appointment' type="number"
+                                        class="form-control" [(ngModel)]="branchModel.slot_for_appointment"
+                                        placeholder="Enter Total Slot For Appointment">
+                                    <div *ngIf="formAlias.slot_for_appointment.errors" class="err-validation">
+                                        Please enter 1 to 10 numbers only.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6"><b> Status <span class="pull-right">:</span></b></div>
+                        <div class="col-6">Live</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-body text-center pt-5 pb-5" *ngIf="inProgress">
+    <div class="row">
+        <div class="col-md-12 text-center align-middle">
+             <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+            
+        </div>
+    </div>
+</div>

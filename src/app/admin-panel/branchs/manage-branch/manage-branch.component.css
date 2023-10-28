@@ -1,0 +1,23 @@
+.selected-Company{
+    height: 60px;
+    width: 100%;
+    background-color: darkcyan;
+    margin-bottom: 10px;
+    padding: 9px;
+    color: white;
+overflow: hidden;
+}
+
+.unselected-Company{
+    height: 60px;
+    width: 100%;
+    background-color: burlywood;
+    margin-bottom: 10px;
+    padding: 9px;
+    color: black;
+    overflow: hidden;
+}
+
+button:focus {
+    outline: none !important;
+}

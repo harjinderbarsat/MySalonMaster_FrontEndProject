@@ -1,0 +1,357 @@
+<!--Statistics cards Starts-->
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="!isBranchPannel">
+        <div class="card  hawk-theme" (click)="viewSale()">
+            <div class="card-content">
+                <div class="card-body p-2" style="height: 200px;">
+                    <div class="media">
+                        <div class="media-body white text-center">
+                            <h5>Today's Sale </h5>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <h1 class="count-font">{{dashBoardData.todaySale}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="{'col-xl-3 col-lg-6 col-md-6 col-12': !isBranchPannel, 'col-lg-6 col-md-6 col-12': isBranchPannel }">
+        <div class="card hawk-theme" (click)="viewAppointments()">
+            <div class="card-content">
+                <div class="card-body p-2" style="height: 200px;">
+                    <div class="media">
+                        <div class="media-body white text-center">
+                            <h5>Today's Appointments </h5>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <h1 class="count-font">{{dashBoardData.todayUpcomingAppointments}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="!isBranchPannel">
+        <div class="card hawk-theme" (click)="viewProductSale()">
+            <div class="card-content">
+                <div class="card-body p-2" style="height: 200px;">
+                    <div class="media">
+                        <div class="media-body white text-center">
+                            <h5>Today's Product Sale </h5>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <h1 class="count-font">{{dashBoardData.todayProductsSale}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="{'col-xl-3 col-lg-6 col-md-6 col-12': !isBranchPannel, 'col-lg-6 col-md-6 col-12': isBranchPannel}">
+        <div class="card  hawk-theme">
+            <div class="card-content">
+                <div class="card-body p-2" style="height: 200px;">
+                    <div class="media">
+                        <div class="media-body white text-center">
+                            <h5>Total Customers </h5>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <h1 class="count-font">{{dashBoardData.totalCustomers}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Statistics cards Ends-->
+
+<!--Line with Area Chart 1 Starts-->
+<!-- <div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">MONTHLY VIEW</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="chart-info mb-3 ml-3">
+                        <span class="gradient-blackberry d-inline-block rounded-circle mr-1"
+                            style="width:15px; height:15px;"></span> Sale
+                        <span class="gradient-mint d-inline-block rounded-circle mr-1 ml-2"
+                            style="width:15px; height:15px;"></span> Customer's Visit
+                    </div>
+                    <div id="line-area" class="height-350 lineArea">
+                        <x-chartist [data]="lineArea.data" [type]="lineArea.type" [options]="lineArea.options"
+                            [responsiveOptions]="lineArea.responsiveOptions" [events]="lineArea.events">
+                        </x-chartist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!--Line with Area Chart 1 Ends-->
+
+<div class="row" matchHeight="card">
+    <!-- <div class="col-xl-4 col-lg-12 col-12">
+        <div class="card hawk-theme">
+            <div class="card-content">
+                <div class="card-body p-2">
+                    <h4 class="card-title white"> Total Sale</h4>
+                    <div class="p-2 text-center">
+                        <a class="white font-medium-1">Quarterly</a>
+                        <a class="hawk-btn-md bg-white mx-3 px-3">Monthly</a>
+                        <a class="white font-medium-1">Weekly</a>
+                    </div>
+                    <div class="my-3 text-center white">
+                        <a class="font-large-2 d-block mb-1">$ 78.89 <span class="ft-arrow-up font-large-2"></span></a>
+                        <span class="font-medium-1">Week2 +15.44</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header pl-2 pr-2 pt-2 pb-0">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Upcoming's Appointments </h4>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="hawk-btn-sm pull-right" (click)="viewAppointments()">View All <i
+                                class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-2">
+                <table class="table" *ngIf="!inProgressAppointment">
+                    <thead>
+                        <tr>
+                            <th>Serial No </th>
+                            <!-- <th>Appointment ID </th> -->
+                            <th>Client Name </th>
+                            <th>Date & Time </th>
+                            <th>Assigned To </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center"
+                            *ngIf="(!appointmentsList ||(appointmentsList && appointmentsList.length<=0))">
+                            <td colspan="4">No Data Found.</td>
+                        </tr>
+                        <tr
+                            *ngFor="let appointment of appointmentsList | paginate: { itemsPerPage: 5, currentPage: p ,totalItems: (appointmentsList==null ? 0 : appointmentsList.length), id: 'pagination1' };let i=index">
+                            <td>{{i+1}}</td>
+                            <!-- <td>{{appointment.id}}</td> -->
+                            <td>{{appointment.customer_name}}</td>
+                            <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}</td>
+                            <td>{{appointment.assign_to_name?appointment.assign_to_name:'Not Assigned'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr class="mb-1 mt-0">
+                <div class="row" *ngIf="!inProgressAppointment">
+                    <div class="col-12">
+                        <pagination-controls id="pagination1" (pageChange)="p = $event" maxSize="10"
+                            directionLinks="true" autoHide="true" responsive="true" previousLabel="Previous"
+                            nextLabel="Next">
+                        </pagination-controls>
+                    </div>
+                </div>
+                <div class="row" *ngIf="inProgressAppointment">
+                    <div class="col-md-12 text-center align-middle p-5">
+                        <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="row" matchHeight="card">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header pl-2 pr-2 pt-2 pb-0">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Today's PRODUCTS SALE </h4>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="hawk-btn-sm pull-right"
+                            (click)="viewProductSale()">View <i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-2">
+                <table class="table" *ngIf="!inProgressProductSale">
+                    <thead>
+                        <tr>
+                            <th>Product ID </th>
+                            <th>Product Name </th>
+                            <th>Price </th>
+                            <th>Quantity </th>
+                            <th>Total </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let productSale of productSaleList| paginate: { itemsPerPage: 5, currentPage: pageNumberForProductSaleList ,totalItems: (productSaleList==null ? 0 : productSaleList.length), id: 'pagination2' }">
+                            <td>{{productSale.id}}</td>
+                            <td>{{productSale.productName}}</td>
+                            <td>{{productSale.price}}</td>
+                            <td>{{productSale.qty}}</td>
+                            <td>{{productSale.total_amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr class="mb-1 mt-0">
+                <div class="row" *ngIf="!inProgressProductSale">
+                    <div class="col-12">
+                        <pagination-controls id="pagination2" (pageChange)="pageNumberForProductSaleList = $event"
+                            maxSize="10" directionLinks="true" autoHide="true" responsive="true"
+                            previousLabel="Previous" nextLabel="Next">
+                        </pagination-controls>
+                    </div>
+                </div>
+                <div class="row" *ngIf="inProgressProductSale">
+                    <div class="col-md-12 text-center align-middle p-5">
+                         <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="row" matchHeight="card">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header pl-2 pr-2 pt-2 pb-0">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Customers </h4>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="hawk-btn-sm pull-right" (click)="viewClients()">View All <i
+                                class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-2">
+                <table class="table" id="table-xsls" *ngIf="!loadingClient">
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Name </th>
+                            <th>Mobile </th>
+                            <th>Email </th>
+                            <th>Appointments </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center" *ngIf="(!clients ||(clients && clients.length<=0))">
+                            <td colspan="5">No Data Found.</td>
+                        </tr>
+                        <tr
+                            *ngFor="let client of clients| paginate: { itemsPerPage: 5, currentPage: pageNumberForClientList ,totalItems: (clients==null ? 0 : clients.length), id: 'pagination4'};let i=index ">
+                            <td>{{i+1}}</td>
+                            <td>{{client.firstname}} {{client.lastname}}</td>
+                            <td>{{client.mobile}}</td>
+                            <td>{{client.email}}</td>
+                            <td>{{client.no_of_appointments}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr class="mb-1 mt-0">
+                <div class="row" *ngIf="!loadingClient">
+                    <div class="col-12">
+                        <pagination-controls id="pagination4" (pageChange)="pageNumberForClientList = $event"
+                            maxSize="10" directionLinks="true" autoHide="true" responsive="true"
+                            previousLabel="Previous" nextLabel="Next">
+                        </pagination-controls>
+                    </div>
+                </div>
+                <div class="row" *ngIf="loadingClient">
+                    <div class="col-md-12 text-center align-middle p-5">
+                        <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" matchHeight="card">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header pl-2 pr-2 pt-2 pb-0">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="card-title">Employee list </h4>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="hawk-btn-sm pull-right" (click)="viewEmployee()">View All <i
+                                class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-2">
+                <table class="table" *ngIf="!inProgressEmployee">
+                    <thead>
+                        <tr>
+                            <!-- <th>Employee ID </th> -->
+                            <th>Name </th>
+                            <!-- <th>Mobile </th> -->
+                            <th>Designation</th>
+                            <!-- <th>Status </th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center" *ngIf="(!employeesList ||(employeesList && employeesList.length<=0))">
+                            <td colspan="5">No Data Found.</td>
+                        </tr>
+                        <tr
+                            *ngFor="let employee of employeesList| paginate: { itemsPerPage: 5, currentPage: pageNumberForEmployeeList ,totalItems: (employeesList==null ? 0 : employeesList.length), id: 'pagination3' }">
+                            <!-- <td>{{employee.employeeUniqueId}}</td> -->
+                            <td>{{employee.firstname}} {{employee.lastname}}</td>
+                            <!-- <td>{{employee.mobile}}</td> -->
+                            <td>{{employee.designation}}</td>
+                            <!-- <td>{{employee.status}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <hr class="mb-1 mt-0">
+                <div class="row" *ngIf="!inProgressEmployee">
+                    <div class="col-12">
+                        <pagination-controls id="pagination3" (pageChange)="pageNumberForEmployeeList = $event"
+                            maxSize="10" directionLinks="true" autoHide="true" responsive="true"
+                            previousLabel="Previous" nextLabel="Next">
+                        </pagination-controls>
+                    </div>
+                </div>
+                <div class="row" *ngIf="inProgressEmployee">
+                    <div class="col-md-12 text-center align-middle p-5">
+                        <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

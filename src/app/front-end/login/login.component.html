@@ -1,0 +1,69 @@
+<!--Login Page Starts-->
+<section id="login">
+    <div class="container-fluid">
+        <div class="row full-height-vh m-0">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body login-img">
+                            <div class="row m-0">
+                                <div class="col-lg-6 d-lg-block d-none text-center align-middle"
+                                    style="background: white;">
+                                    <img src="assets/apex-v6.0/img/custom/main-logo.png" alt="" class="img-fluid" />
+                                </div>
+                                <div class="col-lg-6 col-md-12 bg-white p-5 text-center align-middle"
+                                    *ngIf="inProgress">
+                                    <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 bg-white px-4 pt-3" *ngIf="!inProgress">
+                                    <form [formGroup]="loginForm">
+                                        <h4 class="card-title mb-2 mt-4"><b>HAWk</b>Systems</h4>
+                                        <p class="card-text mb-3">
+                                            Welcome back!, Log in to your account.
+                                        </p>
+
+                                        <!-- <select class="form-control" [(ngModel)]="user_type"
+                                            formControlName='loginType'>
+                                            <option value="">Select Panel</option>
+                                            <option value="branchPanel">Branch Panel</option>
+                                            <option value="employeeAccount">Employee Account</option>
+                                            <option value="ownerPanel">Owner Panel</option>
+                                        </select> -->
+
+                                        <input type="text" class="form-control mt-3"
+                                            placeholder="Username"
+                                            formControlName='username' [(ngModel)]="loginData.username" />
+                                        <small class="text-danger"
+                                            *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">Email
+                                            is required</small>
+                                        <small class="text-danger"
+                                            *ngIf="loginForm.controls['username'].errors && !(loginForm.controls['username'].hasError('required')) && loginForm.controls['username'].touched">Email
+                                            must be valid</small>
+
+                                        <input type="password" class="form-control mt-3"
+                                            placeholder="Password"
+                                            formControlName='password' [(ngModel)]="loginData.password" />
+                                        <small class="text-danger"
+                                            *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">Password
+                                            is required</small>
+                                        <div class="fg-actions d-flex justify-content-between mb-3 mt-3">
+                                            <div class="login-btn">
+                                            </div>
+                                            <div class="recover-pass">
+                                                <button class="hawk-btn-md" (click)="login()"> <a
+                                                        class="text-decoration-none text-white">Login
+                                                    </a></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->

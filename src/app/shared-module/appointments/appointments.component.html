@@ -1,0 +1,308 @@
+<div class="row">
+    <div class="col-4 text-left">
+        <h3>{{appointmentTypeDisplayName}} Appointments</h3>
+    </div>
+    <div class="col-8 text-right" *ngIf="!inProgress">
+        <button class="hawk-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
+            printSectionId="print-section" ngxPrint>
+            <i class="fa fa-print"></i> Print</button>
+        <button class="hawk-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
+            XLSX</button>
+        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
+                class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+
+        <button class="hawk-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
+            &nbsp;
+            <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
+            <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
+        </button>
+        <button class="hawk-btn-md mr-1"  *ngIf="!isPrintView"  (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
+
+        <button class="hawk-btn-md mr-1" (click)="hideShowPrintView()">
+            <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
+            <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
+        </button>
+    </div>
+</div>
+<div class="row" *ngIf="showFilter">
+    <div class="col-3">
+        <div class="form-group">
+            <label>From Date</label>
+            <input placeholder="Enter appointment Date" autocomplete="off" ngbDatepicker #remove="ngbDatepicker"
+                (click)="remove.toggle()" class="form-control" [(ngModel)]="appointmentDateTime">
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Time</label>
+            <select class="form-control" [(ngModel)]="appointmentFilter.hours">
+                <option value="">Select Time</option>
+
+                <option value="9.00 am">9.00 am</option>
+                <option value="9.15 am">9.15 am</option>
+                <option value="9.30 am">9.30 am</option>
+                <option value="9.45 am">9.45 am</option>
+
+                <option value="10.00 am">10.00 am</option>
+                <option value="10.15 am">10.15 am</option>
+                <option value="10.30 am">10.30 am</option>
+                <option value="10.45 am">10.45 am</option>
+
+                <option value="11.00 am">11.00 am</option>
+                <option value="11.15 am">11.15 am</option>
+                <option value="11.30 am">11.30 am</option>
+                <option value="11.45 am">11.45 am</option>
+
+                <option value="12.00 am">12.00 am</option>
+                <option value="12.15 pm">12.15 pm</option>
+                <option value="12.30 pm">12.30 pm</option>
+                <option value="12.45 pm">12.45 pm</option>
+
+                <option value="1.00 pm">01.00 pm</option>
+                <option value="1.15 pm">01.15 pm</option>
+                <option value="1.30 pm">01.30 pm</option>
+                <option value="1.45 pm">01.45 pm</option>
+
+                <option value="2.00 pm">02.00 pm</option>
+                <option value="2.15 pm">02.15 pm</option>
+                <option value="2.30 pm">02.30 pm</option>
+                <option value="2.45 pm">02.45 pm</option>
+
+                <option value="3.00 pm">03.00 pm</option>
+                <option value="3.15 pm">03.15 pm</option>
+                <option value="3.30 pm">03.30 pm</option>
+                <option value="3.45 pm">03.45 pm</option>
+
+                <option value="4.00 pm">04.00 pm</option>
+                <option value="4.15 pm">04.15 pm</option>
+                <option value="4.30 pm">04.30 pm</option>
+                <option value="4.45 pm">04.45 pm</option>
+
+                <option value="5.00 pm">05.00 pm</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Start Date</label>
+            <input placeholder="Enter start Date" autocomplete="off" ngbDatepicker #start="ngbDatepicker"
+                (click)="start.toggle()" class="form-control" [(ngModel)]="startDate">
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>End Date</label>
+            <input placeholder="Enter end Date" autocomplete="off" ngbDatepicker #end="ngbDatepicker"
+                (click)="end.toggle()" class="form-control" [(ngModel)]="endDate">
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="showFilter">
+    <!-- <div class="col-3">
+        <div class="form-group">
+            <label>Payment Status</label>
+            <select class="form-control" [(ngModel)]="appointmentFilter.payment">
+                <option value=""> Select Payment Status </option>
+                <option value="1"> Pending</option>
+                <option value="2"> Done</option>
+            </select>
+        </div>
+    </div> -->
+
+    <div class="col-3">
+        <div class="form-group">
+            <label>Assigned To</label>
+            <select class="form-control" [(ngModel)]="appointmentFilter.assignToId">
+                <option value="0"> Select employees </option>
+                <option value="{{employees.id}}" *ngFor="let employees of employeesList">
+                    {{employees.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Customer</label>
+            <select class="form-control" [(ngModel)]="appointmentFilter.customerId">
+                <option value=0> Select Customer </option>
+                <option value="{{client.id}}" *ngFor="let client of clients">{{client.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="col-3">
+        <button class=" hawk-btn-md mt-4 pull-right" (click)="resetFilter()"> Reset filter</button>
+        <button class="hawk-btn-md mt-4 pull-right mr-1" (click)="getAppointmentsList()">Get
+            Data</button>
+    </div>
+</div>
+
+<section id="simple-table" *ngIf="!inProgress">
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <div class="card" id="print-section">
+                <div class="card-body p-2">
+                    <table class="table" id="table-xsls">
+                        <thead>
+                            <tr>
+                                <th *ngIf="!isPrintView">
+                                    <div class="remember-me">
+                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input"
+                                                (change)="selectAll($event)" [value]="selectedAll" id="selectAll1"
+                                                name="selectAll1" />
+                                            <label class="custom-control-label" for="selectAll1"> </label>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th *ngIf="!isPrintView">Serial No </th>
+                                <th>Customer </th>
+                                <th>Date </th>
+                                <th>Time </th>
+                                <th>Status </th>
+                                <th *ngIf="appointmentType == 'completed'||appointmentType == 'in-progress'">Assigned To
+                                </th>
+                                <th *ngIf="!isPrintView">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center"
+                                *ngIf="(!appointmentsList ||(appointmentsList && appointmentsList.length<=0))">
+                                <td colspan="6">No Data Found.</td>
+                            </tr>
+                            <tr *ngFor="let appointment of appointmentsList;let i=index">
+                                <td *ngIf="!isPrintView">
+                                    <label>
+                                        <input type="checkbox" [checked]="appointment.isSelected"
+                                            [value]="appointment.isSelected" (change)="change(appointment,$event)" />
+                                    </label>
+                                </td>
+                                <!-- <td>{{appointment.id}}</td> -->
+                                <td *ngIf="!isPrintView">{{i+1}}</td>
+                                <td>{{appointment.customer_name}}</td>
+                                <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}
+                                </td>
+                                <td>
+                                    {{appointment.hours}}</td>
+                                <td>
+                                    {{appointment.isOnlineAppointment=='Yes'?'Online':'Offline'}}</td>
+                                <td *ngIf="appointmentType == 'completed'||appointmentType == 'in-progress'">
+                                    {{appointment.assign_to_name?appointment.assign_to_name:'Not Assigned'}}</td>
+                                <th *ngIf="!isPrintView">
+
+                                    <button type="button" class="hawk-btn-sm mr-1" ngbTooltip="View Appointment Details"
+                                        (click)="viewDetail(viewAppointment,appointment)"><i class="fa fa-eye"></i>
+                                    </button>
+
+                                    <button
+                                        *ngIf="appointment.status === 'upcoming'||appointment.status === 'in-progress'"
+                                        type="button" class="hawk-btn-sm mr-1" ngbTooltip="Edit Appointment Details"
+                                        (click)="addEditAppointment(appointment.id)"><i class="fa fa-edit"></i>
+                                    </button>
+
+                                    <button type="button" class="hawk-btn-sm" ngbTooltip="Delete Appointment"
+                                        (click)="deleteAppointment(appointment)"><i class="fa fa-trash"></i> </button>
+                                    <button type="button" class="hawk-btn-sm ml-1"
+                                        *ngIf="appointment.status === 'upcoming'"
+                                        (click)="appointmentStatusUpdatePopUp(startAppointment, appointment,'in-progress')">
+                                        Start
+                                    </button>
+                                    <button type="button" class="hawk-btn-sm ml-1"
+                                        *ngIf="appointment.status === 'in-progress'"
+                                        (click)="appointmentStatusUpdatePopUp(startAppointment, appointment,'completed')">
+                                        Finish
+                                    </button>
+                                    <button *ngIf="appointment.status === 'completed'" type="button"
+                                        class="hawk-btn-sm ml-1 mb-0" ngbTooltip="Edit Appointment"
+                                        (click)="appointmentPayment(appointment.id)"><i class="fa fa-money"></i>
+                                    </button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="col-md-12 p-5 text-center align-middle" *ngIf="inProgress">
+    <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+</div>
+<!--Basic Table Ends-->
+
+<ng-template #viewAppointment let-modal>
+    <div class="modal-header">
+        <div class="row" style="width: 100%;">
+            <div class="col-11">
+                <h4 class="modal-title" id="modal-basic-title ">Appointment Details</h4>
+            </div>
+            <div class="col-1 pt-1">
+                <i class="fa fa-times pull-right mt-1 tect-muted" (click)="closeModal()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body ">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <label><b>Status :</b> {{selectedAppointment.status}}</label><br>
+                <label><b>Customer :</b> {{selectedAppointment.customer_name}}</label><br>
+                <label><b>Started At :</b> {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
+                    true)}}</label><br>
+                <label><b>Total Amount :</b> {{selectedAppointment.totalAmount}}</label><br>
+
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label><b>Date & Time :</b>
+                        {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.dateAndTime, false)}}
+                        {{selectedAppointment.hours}}</label><br>
+                    <label> <b>Assigned To : </b>
+                        {{selectedAppointment.assign_to_name?selectedAppointment.assign_to_name:'Not Assigned'}}</label><br>
+                    <label><b>Completed At :</b>
+                        {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
+                        true)}}</label><br>
+                    <!-- <label><b>Contact :</b> {{selectedAppointment.customerContact}}</label><br> -->
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <label> <b>Services : </b> {{selectedAppointment.services_name}}</label><br>
+                <!-- <label><b>Add On services :</b> {{selectedAppointment.addtionalServiceNames}}</label><br>
+                <label><b>Add On services charges:</b> {{selectedAppointment.addOnServiceCost}}</label> -->
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="hawk-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
+            (click)="appointmentStatusUpdatePopUp(startAppointment, selectedAppointment,'in-progress')">
+            Start
+        </button>
+        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+    </div>
+</ng-template>
+
+<ng-template #startAppointment let-modal>
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="modal-title" id="modal-basic-title ">Start Appointment</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body ">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="text" [(ngModel)]="updatedAppointment.employeeUniqueId" class="form-control"
+                    placeholder="Enter employee Id">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="hawk-btn-sm" (click)="appointmentStatusUpdate()">
+            Start</button>
+    </div>
+</ng-template>

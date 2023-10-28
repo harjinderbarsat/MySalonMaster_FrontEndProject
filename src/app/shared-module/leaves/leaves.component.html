@@ -1,0 +1,132 @@
+<div class="row">
+    <div class="col-6 text-left">
+        <h3>Leaves </h3>
+    </div>
+    <div class="col-6 text-right" *ngIf="!inProgress">
+        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
+                class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+        <button class=" hawk-btn-md" (click)="addLeave(0)"><i class="fa fa-plus"></i> &nbsp; Add
+            Leave</button>
+    </div>
+</div>
+
+<section id="simple-table" *ngIf="!inProgress">
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <div class="card" id="print-section">
+                <div class="card-content">
+                    <div class="card-body">
+                        <!-- <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="remember-me">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                <input type="checkbox" class="custom-control-input"
+                                                    (change)="selectAll($event)" [value]="selectedAll" id="selectAll1"
+                                                    name="selectAll1" />
+                                                <label class="custom-control-label" for="selectAll1"> </label>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th *ngIf="isAdminUser">Employee Name </th>
+                                    <th *ngIf="isAdminUser">Branch Name </th>
+                                    <th>Leave Type </th>
+                                    <th>Days </th>
+                                    <th>Start From </th>
+                                    <th>End At</th>
+                                    <th>Apply Date</th>
+                                    <th *ngIf="isAdminUser">Approved Date</th>
+                                    <th>Status </th>
+                                    <th>Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let leave of leaves">
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" [checked]="leave.isSelected"
+                                                [value]="leave.isSelected" (change)="change(leave,$event)" />
+                                        </label>
+                                    </td>
+                                    <td *ngIf="isAdminUser">{{leave.employeeName}}</td>
+                                    <td *ngIf="isAdminUser">{{leave.branch_name}}</td>
+                                    <td>{{leave.leaveType}}</td>
+                                    <td>{{leave.days}}</td>
+                                    <td>{{cService.getStringDateFormatByCurtureAndType(leave.startFrom, false)}}</td>
+                                    <td>{{cService.getStringDateFormatByCurtureAndType(leave.endAt, false)}}</td>
+                                    <td>{{cService.getStringDateFormatByCurtureAndType(leave.created_at, false)}}</td>
+                                    <td *ngIf="isAdminUser">
+                                        {{cService.getStringDateFormatByCurtureAndType(leave.approvedDate, false)}}</td>
+                                    <td>{{leave.status }}</td>
+
+                                    <th>
+                                        <button type="button" class="hawk-btn-sm mr-1 mb-0" ngbTooltip="View Leave"
+                                            (click)="viewLeave(leave.id)"><i class="fa fa-eye"></i> </button>
+                                        <button type="button" class="hawk-btn-sm mr-1 mb-0" *ngIf="!isAdminUser"
+                                            ngbTooltip="Edit Leave" (click)="addLeave(leave.id)"><i
+                                                class="fa fa-edit"></i> </button>
+                                        <button type="button" class="hawk-btn-sm mb-0" *ngIf="!isAdminUser"
+                                            ngbTooltip="Delete Leave" (click)="deleteLeave(leave)"><i
+                                                class="fa fa-trash"></i> </button>
+                                        <button type="button" class="hawk-btn-sm mb-0"
+                                            *ngIf="isAdminUser && leave.status !='Approved'" ngbTooltip="Approve Leave"
+                                            (click)="approve(leave.id)">Approve <i class="fa fa-check"></i> </button>
+                                        <button type="button" class="hawk-btn-sm mb-0 ml-1"
+                                            *ngIf="isAdminUser && leave.status !='Rejected'" ngbTooltip="Rejected Leave"
+                                            (click)="reject(leave.id)">Reject <i class="fa fa-times"></i> </button>
+                                    </th>
+                                </tr>
+
+                            </tbody>
+                        </table> -->
+
+                        <dx-data-grid  id="gridContainer" [dataSource]="dataSource"
+                            [showBorders]="true" [remoteOperations]="true"
+                            (onSelectionChanged)="onSelectionChanged($event)">
+                            <dxo-filter-row [visible]="true"></dxo-filter-row>
+                            <dxo-header-filter [visible]="true"></dxo-header-filter>
+                            <dxo-selection mode="multiple"> </dxo-selection>
+                            <dxi-column dataField="employeeName" dataType="string"> </dxi-column>
+                            <dxi-column dataField="branch_name" dataType="string"> </dxi-column>
+                            <dxi-column dataField="leaveType" dataType="string"> </dxi-column>
+                            <dxi-column dataField="days" dataType="number"> </dxi-column>
+                            <dxi-column dataField="startFrom" dataType="date"> </dxi-column>
+                            <dxi-column dataField="endAt" dataType="date"> </dxi-column>
+                            <dxi-column dataField="created_at" dataType="date"> </dxi-column>
+                            <dxi-column dataField="status" dataType="string"> </dxi-column> -->
+                            <dxi-column type="buttons" [width]="110" cssClass="buttons-td">
+                                <!-- <dxi-button hint="View" icon="fa fa-eye" [onClick]="viewLeave"
+                                    class="hawk-btn-sm mr-1 mb-0">
+                                    <i class="fa fa-eye"></i>
+                                </dxi-button> -->
+                                <dxi-button hint="Edit" icon="fa fa-edit" [visible]="!isAdminUser"
+                                    [onClick]="addLeave" class="hawk-btn-sm mr-1 mb-0"><i
+                                        class="fa fa-edit"></i></dxi-button>
+                                <dxi-button hint="Delete Leave" icon="fa fa-trash" [visible]="!isAdminUser"
+                                    [onClick]="deleteLeave" class="hawk-btn-sm mr-1 mb-0"><i
+                                        class="fa fa-trash"></i> </dxi-button>
+                                <dxi-button hint="Approve" icon="fa fa-check"
+                                    [visible]="isAdminUser && isApproveIconVisible" [onClick]="approve"
+                                    class="hawk-btn-sm mr-1 mb-0"><i class="fa fa-check"></i></dxi-button>
+                                <dxi-button hint="Reject" icon="fa fa-times"
+                                    [visible]="isAdminUser && isRejectedIconVisible" [onClick]="reject"
+                                    class="hawk-btn-sm mr-1 mb-0"><i class="fa fa-times"></i></dxi-button>
+                            </dxi-column>
+                            <dxo-paging [pageSize]="5"></dxo-paging>
+                            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>
+                        </dx-data-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row" *ngIf="inProgress">
+    <div class="col-md-12 text-center align-middle">
+         <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+        
+    </div>
+</div>
+<!--Basic Table Ends-->

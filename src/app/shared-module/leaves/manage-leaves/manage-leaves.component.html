@@ -1,0 +1,93 @@
+<form [formGroup]="leavesForm" (ngSubmit)="saveLeaves()">
+    <div class="row">
+        <div class="col-12">
+            <div class="row mt-2" *ngIf="!inProgress">
+                <div class="col-lg-12">
+                    <label class="page-heading pull-left" *ngIf="isEditMode"> Update Leave</label>
+                    <label class="page-heading pull-left" *ngIf="!isEditMode"> Add Leave</label>
+                    <button class="hawk-btn-md pull-right d-none d-sm-block" type="submit">
+                        <a class="text-decoration-none text-white" *ngIf="!isEditMode">Save</a>
+                        <a class="text-decoration-none text-white" *ngIf="isEditMode">Update</a>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="!inProgress">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-block">
+                                        <div class="form-body">
+                                            <h5 class="form-section mt-3"><i class="ft-eye"></i> Information
+                                            </h5>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Leaves Type <span class="err-lbl">*</span></label>
+                                                        <select class="form-control"  formControlName='halfDay'
+                                                            [(ngModel)]="leavesInfo.type">
+                                                            <option value="1"> Earned </option>
+                                                            <option value="2"> Casual </option>
+                                                            <option value="3"> Sick </option>
+                                                            <option value="4"> Maternity </option>
+                                                            <option value="5"> Marriage </option>
+                                                            <option value="6"> Paternity </option>
+                                                            <option value="7"> Bereavement </option>
+                                                        </select>
+                                                       
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group" *ngIf="currentUser.user_type != 'employee'">
+                                                        <label>Employee<span class="err-lbl">*</span></label>
+                                                        <select class="form-control"
+                                                        [(ngModel)]="leavesInfo.employee_id"
+                                                            formControlName="employee_id">
+                                                            <option value="0"> Select employees </option>
+                                                            <option value="{{employees.id}}"
+                                                                *ngFor="let employees of employeesList">
+                                                                {{employees.name}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Start From <span class="err-lbl">*</span></label>
+                                                        <input placeholder="Enter Leave Start Date" autocomplete="off"
+                                                            ngbDatepicker #startFrom="ngbDatepicker"
+                                                            (click)="startFrom.toggle()" class="form-control"
+                                                            formControlName='startFrom' [(ngModel)]="ngbStartFrom">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>End At <span class="err-lbl">*</span></label>
+                                                        <input placeholder="Enter Leave End Date" autocomplete="off"
+                                                            ngbDatepicker #endAt="ngbDatepicker"
+                                                            (click)="endAt.toggle()" class="form-control"
+                                                            formControlName='endAt' [(ngModel)]="ngbEndAt">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="inProgress">
+                <div class="col-md-12 text-center align-middle">
+                     <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="col-6 text-left">
+        <h3>Daily Sale </h3>
+    </div>
+    <div class="col-6 text-right" *ngIf="!inProgress">
+        <div class="form-group pull-right">
+            <input placeholder="Select Date" style="width: 200px;" autocomplete="off" ngbDatepicker #remove="ngbDatepicker"
+            (ngModelChange)="getALLPaymentList($event)" 
+                (click)="remove.toggle()" class="form-control pull-right" [(ngModel)]="appointmentDateTime">
+        </div>
+    </div>
+</div>
+
+<section id="simple-table" *ngIf="!inProgress">
+    <div class="row text-left">
+        <div class="col-6">
+            <div class="card" id="print-section">
+                <div class="card-header p-2">
+                    Transaction summary
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Item type </th>
+                                    <th>Sales qty </th>
+                                    <th>Gross total </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Services </td>
+                                    <td>{{transaction.appoinmentsCount}} </td>
+                                    <td> {{transaction.appoinmentsAmmount.toFixed(2)}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Products </td>
+                                    <td>{{transaction.productSaleCount}} </td>
+                                    <td>{{transaction.productSaleAmmount.toFixed(2)}} </td>
+                                </tr>
+                                <tr>
+                                    <th>Total Sales</th>
+                                    <th> </th>
+                                    <th> {{transaction.totalSale.toFixed(2)}} </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card" id="print-section">
+                <div class="card-header p-2">
+                    Cash movement summary
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Payment type </th>
+                                    <th>Payments collected </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cash </td>
+                                    <td>{{cashMovement.CashAmmount.toFixed(2)}} </td>
+                                </tr>
+                                <tr>
+                                    <td>Card </td>
+                                    <td>{{cashMovement.cardAmmount.toFixed(2)}} </td>
+                                </tr>
+                                <tr>
+                                    <th>Total collected </th>
+                                    <th>{{cashMovement.totalSale.toFixed(2)}} </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-left">
+        <div class="col-12">
+            <div class="card" id="print-section">
+                <div class="card-header p-2">
+                    Transaction Details
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Serial No. </th>
+                                    <th>Date </th>
+                                    <th>Client Name </th>
+                                    <th>Mobile </th>
+                                    <th>Payment For </th>
+                                    <th>Amount </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center" *ngIf="(!payments ||(payments && payments.length<=0))">
+                                    <td colspan="6">No Data Found.</td>
+                                </tr>
+                                <tr *ngFor="let payment of payments | paginate: { itemsPerPage: itemsPer, currentPage: currentPageNumber ,totalItems: (payments==null ? 0 : payments.length) };let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td> {{cService.getStringDateFormatByCurtureAndType(payment.created_at, true)}}
+                                    </td>
+                                    <td>{{payment.clientName}}</td>
+                                    <td>{{payment.clientMobile}}</td>
+                                    <td>{{payment.pay_for}}</td>
+                                    <td>{{payment.amount}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="mb-1 mt-0">
+                        <div class="row" *ngIf="!inProgress">
+                            <div class="col-10">
+                                <pagination-controls (pageChange)="currentPageNumber = $event" maxSize="10"
+                                    directionLinks="true" autoHide="true" responsive="true" previousLabel="Previous"
+                                    nextLabel="Next">
+                                </pagination-controls>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group mr-1">
+                                    <select class="form-control" [(ngModel)]="itemsPer">
+                                        <option value="5">5 Items</option>
+                                        <option value="10">10 Items </option>
+                                        <option value="20">20 Items </option>
+                                        <option value="50">50 Items </option>
+                                        <option value="100">100 Items </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row" *ngIf="inProgress">
+    <div class="col-md-12 text-center align-middle">
+         <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+        
+    </div>
+</div>
+<!--Basic Table Ends-->

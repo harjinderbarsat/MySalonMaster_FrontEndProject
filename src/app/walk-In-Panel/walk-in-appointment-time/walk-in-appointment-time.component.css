@@ -1,0 +1,91 @@
+.page-container {
+    background-color: #fbf0ec;
+}
+.main-heading {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 73px;
+    color: black;
+}
+
+.hawk-btn-color{
+    background-color: #F7C9CB;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: lightgray; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: gray; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid lightgray; /* creates padding around scroll thumb */
+}
+
+
+.mydatepicker{
+  width: 100%;
+}
+
+::ng-deep .ngb-dp-month{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+::ng-deep .ngb-dp-weekday{
+    width: 100% !important;
+    height: 50PX !important;
+    FONT-SIZE: 26PX;
+    PADDING: 10PX;
+    color: #F7C9CB !important;    
+}
+::ng-deep .ngb-dp-day{
+    width: 100% !important;
+    height: 50PX !important;
+    }
+
+::ng-deep .btn-light{
+    width: 100% !important;
+    height: 45PX !important;
+    PADDING: 5PX;
+    FONT-SIZE: 22PX;
+    background-color: #fbf0ec !important;
+}
+
+::ng-deep  .ngb-dp-header{
+    height: 48px;
+    padding-top: 6px !important;    
+}
+::ng-deep .custom-select{
+    height: 41px !important;
+    font-size: 20px !important;
+}
+
+::ng-deep .btn-link{
+    color: #F7C9CB !important;  
+}
+
+::ng-deep .bg-primary{
+    background-image: linear-gradient(45deg, #eb155c, #df5d8f) !important;
+    background-repeat: repeat-x !important;
+}
+
+.hawk-input{
+    width: 100%;
+    height: 48px;
+    padding: 10px;
+    font-size: larger;
+    font-weight: 500;
+    border: solid;
+}
+
+.btn{
+    font-size: 1.2rem !important;
+}

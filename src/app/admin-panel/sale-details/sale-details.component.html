@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 class="card-title">MONTHLY SALE</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" [(ngModel)]="workStation">
+<option>Branch 1</option>
+<option>Branch 2</option>
+<option>Branch 3</option>
+</select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="chart-info mb-3 ml-3">
+                        <span class="gradient-blackberry d-inline-block rounded-circle mr-1" style="width:15px; height:15px;"></span> {{workStation}}
+                    </div>
+                    <div id="line-area" class="height-350 lineArea">
+                        <x-chartist [data]="lineArea.data" [type]="lineArea.type" [options]="lineArea.options">
+                        </x-chartist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

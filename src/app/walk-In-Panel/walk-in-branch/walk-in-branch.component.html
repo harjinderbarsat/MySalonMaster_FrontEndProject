@@ -1,0 +1,61 @@
+<section id="mainContainer">
+    <div class="container-fluid page-container">
+        <div class="row full-height-vh m-0">
+            <div class="col-12">
+                <div class="row p-5">
+                    <div class="col-12 text-center">
+                        <label class="main-heading mb-0">Choose a Branch</label>
+                    </div>
+                </div>
+                <div class="row" *ngIf="branchList&&branchList.length==1">
+                    <div class="col-4"></div>
+                    <div class="col-4 p-2" *ngFor="let branch of branchList">
+                        <div class="box p-2 pt-4 pb-4" (click)="selectBranch(branch)">
+                            <div class="icon-1"></div>
+                            <p><b>
+                                    <h4>{{branch.branch_name}} {{branch.code}}</h4>
+                                </b><br>
+                                {{branch.address}}<br>
+                                {{branch.email}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+                <div class="row" *ngIf="branchList&&branchList.length==2">
+                    <div class="col-2"></div>
+                    <div class="col-4 p-2" *ngFor="let branch of branchList">
+                        <div class="box p-2 pt-4 pb-4" (click)="selectBranch(branch)">
+                            <div class="icon-1"></div>
+                            <p><b>
+                                    <h4>{{branch.branch_name}} {{branch.code}}</h4>
+                                </b><br>
+                                {{branch.address}}<br>
+                                {{branch.email}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row" *ngIf="branchList&&branchList.length>2">
+                    <div class="col-4 p-2" *ngFor="let branch of branchList">
+                        <div class="box p-2 pt-4 pb-4" (click)="selectBranch(branch)">
+                            <div class="icon-1"></div>
+                            <p><b>
+                                    <h4>{{branch.branch_name}} {{branch.code}}</h4>
+                                </b><br>
+                                {{branch.address}}<br>
+                                {{branch.email}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 text-center" *ngIf="!branchList || (branchList && branchList.length<=0)">
+                    <label>No Branch found.</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-12 text-left">
+        <h3>Default Categories and Services</h3>
+    </div>
+</div>
+
+<section id="simple-table">
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <div class="card" id="print-section">
+                <div class="card-content">
+                    <div class="card-body p-5">
+                        <div class="row"  *ngIf="!inProgress">
+                            <div class="col-6 text-right">
+                                <label class="mt-2">Load Default servies and Categories</label>
+                            </div>
+                            <div class="col-6 text-left">
+                                <button class="hawk-btn-lg" (click)="loadDefaultCategoriesAndServices()"><i
+                                        class="fa fa-play"></i>
+                                    &nbsp; Load</button>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="inProgress">
+                            <div class="col-12 p-5 text-center align-middle">
+                                 <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 

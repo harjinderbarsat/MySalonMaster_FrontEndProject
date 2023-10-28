@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-6 text-left">
+        <h3>Loyalty Points </h3>
+    </div>
+    <div class="col-6 text-right" *ngIf="!inProgress">
+     
+    </div>
+</div>
+
+<section id="simple-table" *ngIf="!inProgress">
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <div class="card" id="print-section">
+                <div class="card-content">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name </th>
+                                    <th>Mobile </th>
+                                    <th>Email </th>
+                                    <th>loyalty Points </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center" *ngIf="(!clients ||(clients && clients.length<=0))">
+                                    <td colspan="4">No Data Found.</td>
+                                </tr>
+                                <tr *ngFor="let client of clients">
+                                    <td>{{client.firstname}} {{client.lastname}}</td>
+                                    <td>{{client.mobile}}</td>
+                                    <td>{{client.email}}</td>
+                                    <td>{{client.loyalty_points}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row" *ngIf="inProgress">
+    <div class="col-md-12 text-center align-middle">
+         <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+        
+    </div>
+</div>
+<!--Basic Table Ends-->

@@ -1,0 +1,53 @@
+<button class="hawk-btn-md" type="button" (click)="openProductCategoryModal(CategoryModal,null,false)"><i
+    class="fa fa-plus"></i>
+  Add </button>
+<ng-template #CategoryModal let-modal>
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="modal-title" id="modal-basic-title ">New Category</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body" *ngIf="!inProgress">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label>Name<span class="danger mb-0" style="font-size: 15px;">* </span></label>
+                    <input type="text" [(ngModel)]="selectedProductCategory.name" class="form-control"
+                        placeholder="Enter name ">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" [(ngModel)]="selectedProductCategory.status">
+                        <option value="1">Active</option>
+                        <option value="0"> Deactive </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" [(ngModel)]="selectedProductCategory.description"
+                        placeholder="Enter description"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-body" *ngIf="inProgress">
+        <div class="col-12 p-5 text-center align-middle" >
+             <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+            
+        </div>
+    </div>
+    <div class="modal-footer" *ngIf="!inProgress">
+        <button type="button" class="hawk-btn-sm" (click)="saveProductCategory()">
+            Add</button>
+        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+    </div>
+</ng-template>

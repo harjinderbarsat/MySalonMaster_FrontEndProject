@@ -1,0 +1,25 @@
+
+.header{
+    background: antiquewhite;
+    width: 100%;
+    padding: 7px 7px 7px 13px;
+}
+.tbl-print-head tr{
+    border: 0px;
+}
+.tbl-print-head tr td{
+    border: 0px;
+    padding: 0px !important;
+}
+
+.tbl-print-head thead tr th{
+    border: 0px;
+    padding: 0px !important;
+}
+
+.err-validation{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #FF586B;
+}

@@ -1,0 +1,21 @@
+<!--Login Page Ends-->
+<section id="mainContainer"  class="page-container">
+        <div class="row full-height-vh" style="padding: 100px;">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <label class="main-heading">Hi {{client_name}}, Thanks for your beauty service booking with us On {{cService.getStringDateFormatByCurtureAndType(date, false)}} at {{time}}. </label><br>
+                        <label class="main-heading mt-5">We will contact you soon for your booking confirmation.</label>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <button class="hawk-btn-md" 
+                            style="color: aliceblue;border-radius: 0%;" (click)="Proceed()">
+                            &nbsp;
+                            Go To Home</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

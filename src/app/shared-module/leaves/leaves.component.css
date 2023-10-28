@@ -1,0 +1,10 @@
+::ng-deep .buttons-td a {
+    background: #f7c9cb !important;
+    color: white !important;
+    padding: 5px !important;
+    /* margin: 5px; */
+    height: auto !important;
+    width: auto !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+}

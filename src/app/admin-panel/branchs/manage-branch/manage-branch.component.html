@@ -1,0 +1,202 @@
+<form [formGroup]="branchForm" (ngSubmit)="addUpdateBranch()">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card pt-2">
+                <div class="card-body">
+                    <div class="card-block">
+                        <ngb-tabset #t1="ngbTabset" *ngIf="!inProgress">
+                            <ngb-tab id="basicInfo">
+                                <ng-template ngbTabTitle>
+                                    <div class="d-none d-sm-block">
+                                        <i class="fa fa-info"></i> &nbsp;<label> Branch Details</label>
+                                    </div>
+                                    <div class="d-block d-sm-none">Branch Details
+                                    </div>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div matchHeight="card">
+                                        <div class="row">
+                                            <div class="col-12 text-right">
+                                                <!-- <button class=" hawk-btn-md" *ngIf="!isEditMode" (click)="editBranch()"><i class="fa fa-edit"></i> &nbsp; Edit Branch</button> -->
+                                                <button type="submit" class="hawk-btn-md" *ngIf="!isEditMode"><i
+                                                        class="fa fa-check"></i> &nbsp; Add
+                                                    Branch</button>
+                                                <button type="submit" class="hawk-btn-md" *ngIf="isEditMode"><i
+                                                        class="fa fa-check"></i> &nbsp; Update
+                                                    Branch</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-body">
+                                            <div class="row mt-2">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Branch Name<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
+                                                        <input type="text" class="form-control" formControlName="name"
+                                                            [(ngModel)]="branchModel.branch_name"
+                                                            placeholder="Enter Branch Name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Opend On<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
+
+                                                        <input placeholder="Enter Opend Date" autocomplete="off"
+                                                            formControlName="opendOn" ngbDatepicker
+                                                            #remove="ngbDatepicker" (click)="remove.toggle()"
+                                                            class="form-control" [(ngModel)]="ngbOpendDate">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Branch Code (username)<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
+                                                        <input type="text" class="form-control" formControlName="code"
+                                                            [readonly]="isEditMode" [(ngModel)]="branchModel.code"
+                                                            placeholder="Enter Branch Code">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Pass Code (password)<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="passCode"
+                                                            [(ngModel)]="branchModel.passcode"
+                                                            placeholder="Enter passcode">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-6">
+                                                    <!-- <div class="form-group">
+                                                    <label>No of Employees</label>
+                                                    <input type="text" class="form-control" formControlName="noOfEmp"
+                                                        [(ngModel)]="branchModel.number_of_employee"
+                                                        placeholder="Enter employees count">
+                                                </div> -->
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Mobile<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
+                                                        <input type="text" class="form-control"
+                                                            [(ngModel)]="branchModel.contact" placeholder="Enter Mobile"
+                                                            formControlName="mobile">
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Email<span class="danger mb-0" style="font-size: 15px;">*
+                                                            </span></label>
+                                                        <input type="text" class="form-control"
+                                                            [(ngModel)]="branchModel.email" placeholder="Enter email"
+                                                            formControlName="email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label>Slot for Appointment</label>
+                                                        <select class="form-control" [(ngModel)]="branchModel.slot_for_appointment"
+                                                            formControlName="slotOfApp">
+                                                            <option value="1">1</option>
+                                                            <option value="2"> 2 </option>
+                                                            <option value="3"> 3 </option>
+                                                            <option value="4"> 4 </option>
+                                                            <option value="5"> 5 </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>Address<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
+                                                        <textarea type="text" class="form-control"
+                                                            [(ngModel)]="branchModel.address" formControlName="address"
+                                                            placeholder="Enter service description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab id="servicePermissions" *ngIf="isEditMode">
+                                <ng-template ngbTabTitle>
+                                    <div class="d-none d-sm-block">
+                                        <i class="fa fa-info"></i> &nbsp;<label> Service Permissions</label>
+                                    </div>
+                                    <div class="d-block d-sm-none">Service Permissions
+                                    </div>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div matchHeight="card" *ngIf="!inProgressPermissions">
+                                        <div class="row">
+                                            <div class="col-12 text-right">
+                                                <button class=" hawk-btn-md mb-1" (click)="updatePermissions()"><i
+                                                        class="fa fa-check"></i> &nbsp; Update
+                                                    Permissions</button>
+                                            </div>
+                                        </div>
+                                        <ngb-tabset #t="ngbTabset">
+                                            <ngb-tab id="{{category.id}}" *ngFor="let category of categories">
+                                                <ng-template ngbTabTitle>
+                                                    <div class="d-none d-sm-block">
+                                                        (C{{category.id}}) &nbsp;<label> {{category.name}}</label>
+                                                    </div>
+                                                    <div class="d-block d-sm-none">
+                                                        {{category.name}}</div>
+                                                </ng-template>
+                                                <ng-template ngbTabContent>
+                                                    <div matchHeight="card" class="pt-4 p-2">
+                                                        <div class="row" *ngIf="category && category.services">
+                                                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"
+                                                                *ngFor="let service of category.services">
+                                                                <div [ngClass]="{'selected-Company': service.isSelected, 'unselected-Company':!service.isSelected }"
+                                                                    (click)="onSelectDeselect(service)">
+                                                                    (S{{service.id}}) {{service.name}}
+                                                                    <i *ngIf="service.isSelected"
+                                                                        class="fa fa-check pull-right"></i>
+                                                                    <i *ngIf="!service.isSelected"
+                                                                        class="fa fa-times pull-right"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </ngb-tab>
+                                        </ngb-tabset>
+                                    </div>
+
+                                    <div class="row" *ngIf="inProgressPermissions">
+                                        <div class="col-md-12 text-center align-middle">
+                                            <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+                        <div class="row" *ngIf="inProgress">
+                            <div class="col-md-12 text-center align-middle">
+                                <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

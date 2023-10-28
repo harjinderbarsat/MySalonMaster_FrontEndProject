@@ -1,0 +1,21 @@
+.page-container {
+    background-color: #fbf0ec;
+}
+.main-heading {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 73px;
+}
+.sub-heading {
+    margin-top: 10px;
+    background-color: rgb(209, 254, 221);
+}
+
+.box{
+    background-color: #4f504f;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 10px #b1b1b1;
+}

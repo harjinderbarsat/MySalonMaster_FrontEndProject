@@ -1,0 +1,127 @@
+<div  class="row text-center">
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="hawk-btn-md" style="padding-top: 7px;" mwlCalendarPreviousView [view]="view"
+                [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                Previous
+            </div>
+            <div class="btn btn-outline-danger" mwlCalendarToday [(viewDate)]="viewDate">
+                Today
+            </div>
+            <div class="hawk-btn-md" style="padding-top: 7px;"  mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()">
+                Next
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="hawk-btn-md" style="padding-top: 7px;" (click)="setView(CalendarView.Month)"
+                [class.active]="view === CalendarView.Month">
+                Month
+            </div>
+            <div class="btn btn-outline-danger btn-raised" (click)="setView(CalendarView.Week)"
+                [class.active]="view === CalendarView.Week">
+                Week
+            </div>
+            <div class="hawk-btn-md" style="padding-top: 7px;" (click)="setView(CalendarView.Day)"
+                [class.active]="view === CalendarView.Day">
+                Day
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div [ngSwitch]="view" class="container-desin" #scrollContainer>
+    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)"  [hourSegments]="4">
+    </mwl-calendar-day-view>
+</div>
+
+<ng-template #modalContent let-modal>
+    <div class="modal-header">
+        <div class="row" style="width: 100%;">
+            <div class="col-11">
+                <h4 class="modal-title" id="modal-basic-title ">Appointment Details</h4>
+            </div>
+            <div class="col-1 pt-1">
+                <i class="fa fa-times pull-right mt-1 tect-muted" (click)="closeModal()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body ">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <label><b>Status :</b> {{selectedAppointment.status}}</label><br>
+                <label><b>Customer :</b> {{selectedAppointment.customer_name}}</label><br>
+                <label><b>Started At :</b> {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
+                    true)}}</label><br>
+                <label><b>Total Amount :</b> {{selectedAppointment.totalAmount}}</label><br>
+
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label><b>Date & Time :</b>
+                        {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.dateAndTime, false)}}
+                        {{selectedAppointment.hours}}</label><br>
+                    <label> <b>Assigned To : </b>
+                        {{selectedAppointment.assign_to_name?selectedAppointment.assign_to_name:'Not Assigned'}}</label><br>
+                    <label><b>Completed At :</b>
+                        {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
+                        true)}}</label><br>
+                    <!-- <label><b>Contact :</b> {{selectedAppointment.customerContact}}</label><br> -->
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <label> <b>Services : </b> {{selectedAppointment.services_name}}</label><br>
+                <!-- <label><b>Add On services :</b> {{selectedAppointment.addtionalServiceNames}}</label><br>
+                <label><b>Add On services charges:</b> {{selectedAppointment.addOnServiceCost}}</label> -->
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="hawk-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
+            (click)="appointmentStatusUpdatePopUp(startAppointment, selectedAppointment,'in-progress')">
+            Start
+        </button>
+        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+    </div>
+</ng-template>
+
+<ng-template #startAppointment let-modal>
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="modal-title" id="modal-basic-title ">Start Appointment</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body ">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="text" [(ngModel)]="updatedAppointment.employeeUniqueId" class="form-control"
+                    placeholder="Enter employee Id">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="hawk-btn-sm" (click)="appointmentStatusUpdate()">
+            Start</button>
+    </div>
+</ng-template>

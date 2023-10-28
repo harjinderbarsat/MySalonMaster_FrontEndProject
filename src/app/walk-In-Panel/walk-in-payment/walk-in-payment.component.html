@@ -1,0 +1,124 @@
+<!--Login Page Ends-->
+<section id="mainContainer" class="page-container">
+    <div class="container-fluid" *ngIf="!inProgress">
+        <div class="row  full-height-vh m-0">
+            <div class="col-12">
+                <div class="row p-3">
+                    <div class="col-12 text-center">
+                        <label class="main-heading mb-0">Confirm Service</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <h4> <b>Payment Type</b></h4>
+
+                        <div class="card m-0 page-container" *ngIf="!ifApplyingVoucher&&!ifApplyingCardPayment">
+                            <div class="card-body p-2" style="border: solid;">
+                                <ul class="list-group category-container" style="border-radius: 0%">
+                                    <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
+                                        [ngClass]="{'hawk-theme':selectedPaymentType=='cash'}"
+                                        (click)="paymentType('cash')"> Pay In
+                                        Person
+                                    </li>
+                                    <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
+                                        [ngClass]="{'hawk-theme':selectedPaymentType=='card'}"
+                                        (click)="paymentType('card')"> Pay By Card </li>
+                                    <!-- <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
+                                        [hidden]="ifTheVoucherProcessDone"
+                                        [ngClass]="{'hawk-theme':selectedPaymentType=='voucher'}"
+                                        (click)="paymentType('voucher')"> Apply Voucher
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <form *ngIf="ifApplyingVoucher && !ifTheVoucherProcessDone" [formGroup]="voucherForm"
+                            (ngSubmit)="applyVoucher()">
+                            <input type="text" formControlName='voucher' [(ngModel)]="voucherCode"
+                                placeholder="Enter Voucher Code" class="hawk-input">
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <button class="hawk-btn-md pull-letf" (click)="Cancel()">
+                                        Back</button>
+                                    <button type="submit" class="hawk-btn-md pull-right"><i class="fa fa-check"></i>
+                                        &nbsp;
+                                        Apply Voucher</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="card m-0 page-container" *ngIf="!ifApplyingVoucher&&ifApplyingCardPayment">
+                            <div class="card-body p-2" style="border: solid;">
+                                <form *ngIf="ifApplyingCardPayment" [formGroup]="cardForm">
+                                    <input type="text" formControlName='cardNumber' [(ngModel)]="cardModel.cardNumber"
+                                        placeholder="CARD NUMBER" class="hawk-input">
+                                    <div class="row mt-1 mb-1">
+                                        <div class="col-4"><input type="text" formControlName='exDate'
+                                                [(ngModel)]="cardModel.exDate" placeholder="MM/YY" class="hawk-input">
+                                        </div>
+                                        <div class="col-4"><input type="text" formControlName='cvc'
+                                                [(ngModel)]="cardModel.cvc" placeholder="CVC" class="hawk-input">
+                                        </div>
+                                        <div class="col-4"><input type="text" formControlName='postcode'
+                                                [(ngModel)]="cardModel.postCode" placeholder="Enter post code"
+                                                class="hawk-input">
+                                        </div>
+                                    </div>
+
+                                    <input type="text" formControlName='cardName' [(ngModel)]="cardModel.cardHolderName"
+                                        placeholder="NAME ON CARD" class="hawk-input">
+
+                                    <div class="row mt-2">
+                                        <div class="col-12 text-center">
+                                            <button class="hawk-btn-md pull-letf mr-1" (click)="Cancel()">
+                                                Back</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="col-4">
+                        <h4><b>Cart</b> </h4>
+                        <app-cart [isEditMode]="false" [selectedServies]="" [isStaticData]="true" [total]="0"
+                            [subtotal]="0" [tax]="0"></app-cart>
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <button class="hawk-btn-md pull-right" *ngIf="selectedPaymentType == 'cash' || selectedPaymentType == 'card'"
+                        style="color: aliceblue;border-radius: 0%;" (click)="saveAppointment()"><i class="fa fa-check"></i>
+                        &nbsp;
+                        Done</button>
+
+                        <!-- <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'card' && !ifApplyingCardPayment"
+                        style="color: aliceblue;border-radius: 0%;" (click)="Proceed()"><i class="fa fa-check"></i>
+                        &nbsp;
+                        Continue</button>
+                        <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'card' && ifApplyingCardPayment"
+                        style="color: aliceblue;border-radius: 0%;" (click)="saveAppointment()"><i class="fa fa-check"></i>
+                        &nbsp;
+                        Done </button> -->
+
+
+                        <!-- <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType=='voucher' && !ifApplyingVoucher"
+                        style="color: aliceblue;border-radius: 0%;" (click)="Proceed()"><i class="fa fa-check"></i>
+                        &nbsp;
+                        Apply</button>
+
+                        <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'voucher' && ifTheVoucherProcessDone"
+                        style="color: aliceblue;border-radius: 0%;" (click)="saveAppointment()"><i class="fa fa-check"></i>
+                        &nbsp;
+                        Done </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="inProgress">
+        <div class="col-md-12 text-center align-middle">
+             <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+            
+        </div>
+    </div>
+</section>

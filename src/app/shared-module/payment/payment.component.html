@@ -1,0 +1,339 @@
+<div class="row">
+    <div class="col-12 text-left">
+        <h3>Payment </h3>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body p-2">
+        <div class="row" *ngIf="!inProgress">
+            <div class="col-12">
+                <label class="header"><i class="fa fa-user"></i> &nbsp; Client Info
+                </label>
+                <div class="row pl-2" *ngIf="clientDetails">
+                    <div class="col-md-6">
+                        <label> <b>Name : </b> {{clientDetails.name}}</label><br>
+                        <label> <b>Mobile : </b> {{clientDetails.mobile}}</label><br>
+                    </div>
+                    <div class="col-md-6">
+                        <label> <b>Email : </b> {{clientDetails.email}}</label><br>
+                        <!-- <label> <b>Loyalty Points : </b> {{clientDetails.loyalty_points}}</label><br> -->
+                    </div>
+                </div>
+                <label class="header" *ngIf="paymentFor == 'appointment'"><i class="fa fa-list"></i>&nbsp; Appointment
+                    Details
+                </label>
+                <div class="row pl-2" *ngIf="paymentFor == 'appointment'">
+                    <div class="col-md-6 col-sm-12">
+                        <label> <b>Serial No : </b> {{selectedAppointment.id}}</label><br>
+                        <label><b>Status :</b> {{selectedAppointment.status}}</label><br>
+                        <label><b>Started At :</b>
+                            {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
+                            true)}}</label><br>
+
+                        <label> <b>Services : </b> {{selectedAppointment.services_name}}</label><br>
+                        <!-- <label><b>Add On services :</bk> {{selectedAppointment.addtionalServiceNames}}</label><br> -->
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label><b>Date & Time :</b>
+                                {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.dateAndTime, false)}}
+                                {{selectedAppointment.hours}}</label><br>
+                            <label> <b>Assigned To : </b>
+                                {{selectedAppointment.assign_to_name?selectedAppointment.assign_to_name:'Not
+                                Assigned'}}</label><br>
+                            <label><b>Completed At :</b>
+                                {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
+                                true)}}</label><br>
+                            <label><b>Total Amount :</b> {{selectedAppointment.totalAmount}}</label><br>
+
+                            <!-- <label><b>Add On services charges:</b> {{selectedAppointment.addOnServiceCost}}</label> -->
+                        </div>
+                    </div>
+                </div>
+
+                <label class="header" *ngIf="paymentFor == 'product'"><i class="fa fa-list"></i>&nbsp; Product Details
+                </label>
+                <div class="row pl-2" *ngIf="paymentFor == 'product'">
+                    <div class="col-md-6 col-sm-12">
+                        <label> <b>Sale ID : </b> {{productDetails.id}}</label><br>
+                        <label><b>Employee Name :</b> {{productDetails.sold_by_name}}</label><br>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label><b>Date & Time :</b>
+                                {{cService.getStringDateFormatByCurtureAndType(productDetails.created_at, false)}}
+                            </label><br>
+                            <label><b>Total Amount :</b> {{productDetails.total_amount}}</label><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pl-2" *ngIf="paymentFor == 'product'&& productDetails.products">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serial No. </th>
+                                <th>Name </th>
+                                <th>Quantity </th>
+                                <th>Price </th>
+                                <th>Total </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of productDetails.products;let i=index;">
+                                <td>{{i+1}}</td>
+                                <td>{{product.productName}}</td>
+                                <td>{{product.qty}}</td>
+                                <td>{{product.price}}</td>
+                                <td>{{product.total_amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <label class="header"><i class="fa fa-money"></i> &nbsp; Payment
+                </label>
+
+                <div class="row pl-2">
+                    <div class="col-12">
+                        <label><b>Total Amount :</b> &nbsp; {{PaymentModel.amount}}</label>
+                    </div>
+                </div>
+                <div class="row pl-2 mt-1">
+                    <div class="col-sm-4">
+                        <label><b>Cash Paid :</b> &nbsp;{{PaymentModel.cash_paid}}</label>
+                        <button type="button" class=" hawk-btn-md ml-5" *ngIf="!(ifTheCashPaymentDone || PaymentModel.pending_amount==0)"
+                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,'cash')">Pay By
+                            Cash </button>
+                    </div>
+                </div>
+                <div class="row pl-2 mt-1">
+                    <div class="col-sm-12">
+                        <label><b>EFTPOS :</b> &nbsp;{{PaymentModel.card_paid}}</label>
+                        <button type="button" class=" hawk-btn-md ml-5"
+                            *ngIf="!(ifTheCardPaymentDone || PaymentModel.pending_amount==0)"
+                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,'card')"> Pay by
+                            EFTPOS</button>
+                    </div>
+                </div>
+                <div class="row pl-2 mt-1">
+                    <div class="col-12">
+                        <label><b>Balance :</b> &nbsp; {{PaymentModel.pending_amount}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="inProgress">
+            <div class="col-md-12 text-center align-middle">
+                <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #paymentTransactionMpdal let-modal>
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="modal-title" id="modal-basic-title ">Pay by {{currentlyPayFor}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body ">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="number" *ngIf="currentlyPayFor=='cash'" [(ngModel)]="PaymentModel.cash_paid" 
+                    [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
+                    class="form-control">
+                <input type="number" *ngIf="currentlyPayFor=='card'" [(ngModel)]="PaymentModel.card_paid"
+                    [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
+                    class="form-control">
+                <div *ngIf="checkAmountValidations()" class="err-validation">
+                    Please enter amount less than or equal to {{PaymentModel.pending_amount}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="hawk-btn-sm" [disabled]="checkAmountValidations()" (click)="paymentTransaction()">
+            Pay</button>
+    </div>
+</ng-template>
+
+
+<ng-template #invoicePrintMpdal let-modal>
+    <div class="modal-body" #divInvoice id="divInvoice">
+        <div style="width: 100%;">
+            <table class="table tbl-print-head" style="width: 100%;">
+                <thead>
+
+                    <tr>
+                        <td colspan="2" style="text-align: center; font-size: 30px;border: 0px;">INVOICE<br><br></td>
+                    </tr>
+
+                    <tr>
+                        <td style="width: 60%;">&nbsp;</td>
+                        <td style="text-align: right;">Reciept Date: {{cService.getCurrentDateTime(false)}}<br>
+                            Reciept No.: {{PaymentModel.id}}
+                            <br><br><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>From</b></td>
+                        <td><b>To</b></td>
+                    </tr>
+                    <tr>
+                        <!-- <td *ngIf="paymentFor == 'product'">Invoice No.: 0001<br>
+                            ISSUED: {{cService.getCurrentDateTime(true)}}<br>
+                            DUE: {{cService.getStringDateFormatByCurtureAndType(productDetails.created_at, true)}}
+                        </td>
+                        <td *ngIf="paymentFor == 'appointment'">Invoice No.: 0001<br>
+                            ISSUED: {{cService.getCurrentDateTime(true)}}<br>
+                            STARTED AT: {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
+                            true)}}<br>
+                            COMPLETED AT :
+                            {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
+                            true)}}
+                        </td> -->
+
+                        <td>
+                            <label *ngIf="currentUser.name">{{currentUser.name}}<br></label>
+                            <label *ngIf="currentUser.admin">{{currentUser.admin}}<br></label>
+                            <label *ngIf="currentUser.email">{{currentUser.email}}<br></label>
+                        </td>
+                        <td>
+                            <label *ngIf="clientDetails.name">{{clientDetails.name}}</label><br>
+                            <label *ngIf="clientDetails.mobile">{{clientDetails.mobile}}</label><br>
+                            <label *ngIf="clientDetails.email">{{clientDetails.email}}</label><br>
+                            <label *ngIf="clientDetails.address">{{clientDetails.address}}</label> 
+                            <label *ngIf="clientDetails.street_number">{{clientDetails.street_number}}, </label>
+                            <label *ngIf="clientDetails.street_name">{{clientDetails.street_name}}</label> 
+                            <label *ngIf="clientDetails.suburb">{{clientDetails.suburb}}, </label>
+                            <label *ngIf="clientDetails.postcode">{{clientDetails.postcode}}, </label>
+                            <label *ngIf="clientDetails.territory">{{clientDetails.territory}}</label><br>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <br>
+            <table *ngIf="paymentFor == 'product'" class="table tbl-print-head" style="width: 100%;" cellspacing="0"
+                cellpadding="0">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;width :40%">ITEM DESCRIPTION</th>
+                        <th style="text-align: center;width:10%">QTY</th>
+                        <th style="text-align: center;width:25%">PRICE</th>
+                        <th style="text-align: center;width:25%">TOTAL</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> &nbsp;</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productDetails.products">
+                        <td style="text-align: left;width :40%">{{product.productName}}</td>
+                        <td style="text-align: center;width :10%">{{product.qty}}</td>
+                        <td style="text-align: center;width :25%">${{product.price}}</td>
+                        <td style="text-align: center;width :25%">${{product.total_amount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="text-align: left;"><b>SUB TOTAL</b></td>
+                        <td>${{productDetails.total_amount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="text-align: left;"><b>TAX</b></td>
+                        <td>$0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="text-align: left;"><b>GRAND TOTAL</b></td>
+                        <td>${{productDetails.total_amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table *ngIf="paymentFor == 'appointment'" class="table tbl-print-head" style="width: 100%;" cellspacing="0"
+                cellpadding="0">
+                <thead>
+                    <tr>
+                        <th colspan="3" style="text-align: left;width :75%">ITEM DESCRIPTION</th>
+
+                        <th style="text-align: center;width:25%">PRICE</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> &nbsp;</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align: left;width :75%">{{selectedAppointment.services_name}}</td>
+
+                        <td style="text-align: center;width :25%">${{selectedAppointment.totalAmount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width:40%">&nbsp;</td>
+                        <td style="text-align: left;"><b>SUB TOTAL</b></td>
+                        <td>${{selectedAppointment.totalAmount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width:40%">&nbsp;</td>
+                        <td style="text-align: left;"><b>TAX</b></td>
+                        <td>$0.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width:40%">&nbsp;</td>
+                        <td style="text-align: left;"><b>GRAND TOTAL</b></td>
+                        <td>${{selectedAppointment.totalAmount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table tbl-print-head" style="width: 100%;">
+                <thead>
+                    <br><br>
+                    <tr>
+                        <td style="text-align: left;">
+
+                            Payment Method <br> <span *ngIf="ifTheCashPaymentDone">Cash: {{PaymentModel.cash_paid}}<br></span><span
+                                *ngIf="ifTheCardPaymentDone">Card: {{PaymentModel.card_paid}}<br></span>
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: center; " colspan="2"><br><br><br>THANK YOU</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+
+        <button type="button" class="hawk-btn-sm" (click)="printInvoice()">
+            Print</button>
+        <button class="hawk-btn-sm" (click)="generatePDF()">Generate PDF</button>
+        <button type="button" class="hawk-btn-sm" (click)="closeInvoiceModal()"> Close</button>
+        <!-- <button [useExistingCss]="true" printSectionId="divInvoice" ngxPrint>print</button> -->
+    </div>
+</ng-template>

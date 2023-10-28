@@ -1,0 +1,89 @@
+<section id="simple-table" *ngIf="!inProgress">
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <div class="card" id="print-section">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-10">
+                            <h3>Attendance</h3>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group" *ngIf="currentLoginUser.user_type != 'employee'">
+                                <select class="form-control" [(ngModel)]="employeeCode"
+                                    (change)="getEmployeeAttendance($event)">
+                                    <option value="0">Select Employee</option>
+                                    <option *ngFor="let employee of employeesList" value="{{employee.id}}">
+                                        {{employee.firstname}} {{employee.lastname}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-2">
+                    <table class="table" id="table-xsls">
+                        <thead>
+                            <tr>
+                                <th class="border"></th>
+                                <th colspan="2" class="text-center border">Check </th>
+                                <th colspan="2" class="text-center border">Product</th>
+                                <th colspan="2" class="text-center border">Appointment </th>
+                                <th></th>
+                                <th> </th>
+                            </tr>
+                            <tr>
+                                <th class="border">Date</th>
+                                <th class="border">In </th>
+                                <th class="border">Out </th>
+                                <th class="border">Cash </th>
+                                <th class="border">Card </th>
+                                <th class="border">Cash </th>
+                                <th class="border">Card </th>
+                                <th class="border">Difference </th>
+                                <th class="border">Note </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center"
+                                *ngIf="(!employeesAttendanceList ||(employeesAttendanceList && employeesAttendanceList.length<=0))">
+                                <td class="border" colspan="9">No Data Found.</td>
+                            </tr>
+                            <tr *ngFor="let employeesAtt of employeesAttendanceList;let i=index">
+                                <td class="border">{{employeesAtt.date}} </td>
+                                <td class="border"> <span class="badge badge-primary">
+                                        {{employeesAtt.checkIn}}</span></td>
+                                <td class="border"> <span class="badge badge-danger" *ngIf="employeesAtt.checkOut">
+                                        {{employeesAtt.checkOut}}</span>
+                                        <span class="badge badge-success" *ngIf="!employeesAtt.checkOut">
+                                            Present</span>
+                                    </td>
+
+                                <td class="border">{{employeesAtt.productCashCollection}}</td>
+                                <td class="border">{{employeesAtt.productCardCollection}}</td>
+                                <td class="border">{{employeesAtt.appointmentCashCollection}}</td>
+                                <td class="border">{{employeesAtt.appointmentCardCollection}}</td>
+                                <td class="border">
+                                    <span class="badge badge-success"
+                                        *ngIf="employeesAtt.isPosotiveDifference!=0">+{{employeesAtt.difference}}</span>
+                                    <span class="badge badge-danger"
+                                        *ngIf="employeesAtt.isNegtiveDifference!=0">{{employeesAtt.difference}}</span>
+                                </td>
+                                <td class="border">{{employeesAtt.reasonMessage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row" *ngIf="inProgress">
+    <div class="col-md-12 text-center align-middle">
+        <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
+    </div>
+</div>
+<!--Basic Table Ends-->
+
+
+ 

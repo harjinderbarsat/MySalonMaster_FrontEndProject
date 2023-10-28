@@ -1,0 +1,39 @@
+.page-container {
+    background-color: #fbf0ec;
+}
+.main-heading {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 73px;
+}
+.sub-heading {
+    margin-top: 10px;
+    background-color: rgb(209, 254, 221);
+}
+
+.box{
+    background-color: #D1FEDD;
+}
+.icon-1{
+    background-image: url("../../../assets/apex-v6.0/img/custom/BookAppointmenrt.PNG");
+    min-height: 210px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-2{
+    background-image: url("../../../assets/apex-v6.0/img/custom/Check-IN.PNG");
+    min-height: 210px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-3{
+    background-image: url("../../../assets/apex-v6.0/img/custom/wright-review.PNG");
+    min-height: 210px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

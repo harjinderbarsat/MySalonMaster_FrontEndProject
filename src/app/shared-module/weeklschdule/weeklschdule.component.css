@@ -1,0 +1,40 @@
+.tooltip1 {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip1 .tooltiptext {
+  visibility: hidden;
+  min-width: 500px;
+  width: auto;
+  background-color: white;
+  color: #000;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  border: 1px solid lightgray;
+}
+
+.tooltip1:hover .tooltiptext {
+  visibility: visible;
+}
+
+.container-desin {
+  height: 600px;
+  overflow: scroll;
+  overflow-x: hidden;
+
+}
+
+::ng-deep .cal-event-title {
+  color: black !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+}
+
+.scroll-container {
+  height: calc(100vh - 320px);
+  overflow-y: auto;
+}
