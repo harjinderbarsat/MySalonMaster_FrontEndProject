@@ -23,7 +23,7 @@ export class ManageEmployeeComponent implements OnInit {
   ngbDateOfJoining: NgbDateStruct;
   currentUser: User
 
-  constructor(private activeRoute: ActivatedRoute,private datePipe: DatePipe, private cService: CommonService, private fb: FormBuilder, private employeeService: EmployeeService) { }
+  constructor(private activeRoute: ActivatedRoute, private datePipe: DatePipe, private cService: CommonService, private fb: FormBuilder, private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.inProgress = false;
@@ -31,14 +31,14 @@ export class ManageEmployeeComponent implements OnInit {
     this.currentUser = this.cService.getUserProfile();
 
     this.employeeForm = this.fb.group({
-      firstname: ['',[Validators.required]],
+      firstname: ['', [Validators.required]],
       lastname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+.[a-zA-Z]{2,4}$')]],
       employeeUniqueId: ['', [Validators.required]],
       date_of_birth: ['', [Validators.required]],
       dateOfJoining: ['', [Validators.required]],
-      designation: ['',  [Validators.required]],
-      mobile: ['',  [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      designation: ['', [Validators.required]],
+      mobile: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       address: ['', ''],
     });
     this.id = this.activeRoute.snapshot.params.id;
@@ -55,13 +55,14 @@ export class ManageEmployeeComponent implements OnInit {
   getEmployee(employee_id: number) {
     this.employeeService.getEmployeeById(employee_id).subscribe(async response => {
       this.employeeInfo = response.data;
+      this.employeeInfo.employeeUniqueId = this.employeeInfo.employee_unique_id;
       var addedDate = new Date(this.employeeInfo.date_of_birth);
       this.ngbDateOfBirth = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
 
       var date_of_birth = new Date(this.employeeInfo.date_of_birth);
       this.ngbDateOfJoining = new NgbDate(date_of_birth.getFullYear(), (date_of_birth.getMonth() + 1), date_of_birth.getDate());
 
-      
+
     }, async error => {
       this.inProgress = false;
       this.cService.getToaster('Application error', 'error', 'Error');

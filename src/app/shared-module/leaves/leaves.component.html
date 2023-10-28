@@ -3,9 +3,9 @@
         <h3>Leaves </h3>
     </div>
     <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
+        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
-        <button class=" hawk-btn-md" (click)="addLeave(0)"><i class="fa fa-plus"></i> &nbsp; Add
+        <button class=" mysalontheme-btn-md" (click)="addLeave(0)"><i class="fa fa-plus"></i> &nbsp; Add
             Leave</button>
     </div>
 </div>
@@ -61,18 +61,18 @@
                                     <td>{{leave.status }}</td>
 
                                     <th>
-                                        <button type="button" class="hawk-btn-sm mr-1 mb-0" ngbTooltip="View Leave"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" ngbTooltip="View Leave"
                                             (click)="viewLeave(leave.id)"><i class="fa fa-eye"></i> </button>
-                                        <button type="button" class="hawk-btn-sm mr-1 mb-0" *ngIf="!isAdminUser"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isAdminUser"
                                             ngbTooltip="Edit Leave" (click)="addLeave(leave.id)"><i
                                                 class="fa fa-edit"></i> </button>
-                                        <button type="button" class="hawk-btn-sm mb-0" *ngIf="!isAdminUser"
+                                        <button type="button" class="mysalontheme-btn-sm mb-0" *ngIf="!isAdminUser"
                                             ngbTooltip="Delete Leave" (click)="deleteLeave(leave)"><i
                                                 class="fa fa-trash"></i> </button>
-                                        <button type="button" class="hawk-btn-sm mb-0"
+                                        <button type="button" class="mysalontheme-btn-sm mb-0"
                                             *ngIf="isAdminUser && leave.status !='Approved'" ngbTooltip="Approve Leave"
                                             (click)="approve(leave.id)">Approve <i class="fa fa-check"></i> </button>
-                                        <button type="button" class="hawk-btn-sm mb-0 ml-1"
+                                        <button type="button" class="mysalontheme-btn-sm mb-0 ml-1"
                                             *ngIf="isAdminUser && leave.status !='Rejected'" ngbTooltip="Rejected Leave"
                                             (click)="reject(leave.id)">Reject <i class="fa fa-times"></i> </button>
                                     </th>
@@ -97,21 +97,21 @@
                             <dxi-column dataField="status" dataType="string"> </dxi-column> -->
                             <dxi-column type="buttons" [width]="110" cssClass="buttons-td">
                                 <!-- <dxi-button hint="View" icon="fa fa-eye" [onClick]="viewLeave"
-                                    class="hawk-btn-sm mr-1 mb-0">
+                                    class="mysalontheme-btn-sm mr-1 mb-0">
                                     <i class="fa fa-eye"></i>
                                 </dxi-button> -->
                                 <dxi-button hint="Edit" icon="fa fa-edit" [visible]="!isAdminUser"
-                                    [onClick]="addLeave" class="hawk-btn-sm mr-1 mb-0"><i
+                                    [onClick]="addLeave" class="mysalontheme-btn-sm mr-1 mb-0"><i
                                         class="fa fa-edit"></i></dxi-button>
                                 <dxi-button hint="Delete Leave" icon="fa fa-trash" [visible]="!isAdminUser"
-                                    [onClick]="deleteLeave" class="hawk-btn-sm mr-1 mb-0"><i
+                                    [onClick]="deleteLeave" class="mysalontheme-btn-sm mr-1 mb-0"><i
                                         class="fa fa-trash"></i> </dxi-button>
                                 <dxi-button hint="Approve" icon="fa fa-check"
                                     [visible]="isAdminUser && isApproveIconVisible" [onClick]="approve"
-                                    class="hawk-btn-sm mr-1 mb-0"><i class="fa fa-check"></i></dxi-button>
+                                    class="mysalontheme-btn-sm mr-1 mb-0"><i class="fa fa-check"></i></dxi-button>
                                 <dxi-button hint="Reject" icon="fa fa-times"
                                     [visible]="isAdminUser && isRejectedIconVisible" [onClick]="reject"
-                                    class="hawk-btn-sm mr-1 mb-0"><i class="fa fa-times"></i></dxi-button>
+                                    class="mysalontheme-btn-sm mr-1 mb-0"><i class="fa fa-times"></i></dxi-button>
                             </dxi-column>
                             <dxo-paging [pageSize]="5"></dxo-paging>
                             <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>

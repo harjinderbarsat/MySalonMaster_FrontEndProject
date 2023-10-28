@@ -102,7 +102,7 @@
                 <div class="row pl-2 mt-1">
                     <div class="col-sm-4">
                         <label><b>Cash Paid :</b> &nbsp;{{PaymentModel.cash_paid}}</label>
-                        <button type="button" class=" hawk-btn-md ml-5" *ngIf="!(ifTheCashPaymentDone || PaymentModel.pending_amount==0)"
+                        <button type="button" class=" mysalontheme-btn-md ml-5" *ngIf="!(ifTheCashPaymentDone || PaymentModel.pending_amount==0)"
                             (click)="paymentTransactionPopUp(paymentTransactionMpdal,'cash')">Pay By
                             Cash </button>
                     </div>
@@ -110,7 +110,7 @@
                 <div class="row pl-2 mt-1">
                     <div class="col-sm-12">
                         <label><b>EFTPOS :</b> &nbsp;{{PaymentModel.card_paid}}</label>
-                        <button type="button" class=" hawk-btn-md ml-5"
+                        <button type="button" class=" mysalontheme-btn-md ml-5"
                             *ngIf="!(ifTheCardPaymentDone || PaymentModel.pending_amount==0)"
                             (click)="paymentTransactionPopUp(paymentTransactionMpdal,'card')"> Pay by
                             EFTPOS</button>
@@ -157,8 +157,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
-        <button type="button" class="hawk-btn-sm" [disabled]="checkAmountValidations()" (click)="paymentTransaction()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" [disabled]="checkAmountValidations()" (click)="paymentTransaction()">
             Pay</button>
     </div>
 </ng-template>
@@ -330,10 +330,10 @@
     </div>
     <div class="modal-footer">
 
-        <button type="button" class="hawk-btn-sm" (click)="printInvoice()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="printInvoice()">
             Print</button>
-        <button class="hawk-btn-sm" (click)="generatePDF()">Generate PDF</button>
-        <button type="button" class="hawk-btn-sm" (click)="closeInvoiceModal()"> Close</button>
+        <button class="mysalontheme-btn-sm" (click)="generatePDF()">Generate PDF</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeInvoiceModal()"> Close</button>
         <!-- <button [useExistingCss]="true" printSectionId="divInvoice" ngxPrint>print</button> -->
     </div>
 </ng-template>

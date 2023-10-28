@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="row pt-5 pb-3">
                     <div class="col-12 text-center">
-                        <label class="hawk-walkin-header">Your Appointment</label>
+                        <label class="mysalontheme-walkin-header">Your Appointment</label>
                     </div>
                 </div>
                 <div class="row mt-5"  *ngIf="!inProgress">
@@ -15,13 +15,13 @@
                             <div class="row text-center">
                                 <div class="col-12">
                                     <input type="text" formControlName='mobile' [(ngModel)]="phone"
-                                        style="width: 450px;" class="hawk-input-lg" placeholder="Enter mobile number">
-                                    <button type="submit" class="hawk-btn-lg ml-1"> Search</button>
+                                        style="width: 450px;" class="mysalontheme-input-lg" placeholder="Enter mobile number">
+                                    <button type="submit" class="mysalontheme-btn-lg ml-1"> Search</button>
                                 </div>
                             </div>
                         </form>
 
-                        <div class="row hawk-input" *ngIf="isTheUserSearched">
+                        <div class="row mysalontheme-input" *ngIf="isTheUserSearched">
                             <div class="col-sm-6"> <label>Name:
                                     &nbsp;</label>{{currentAppointment.customer_name}}
                             </div>
@@ -31,7 +31,7 @@
                                 {{currentAppointment.hours}}
                             </div>
                         </div>
-                        <div class="row hawk-input mt-1" *ngIf="isTheUserSearched">
+                        <div class="row mysalontheme-input mt-1" *ngIf="isTheUserSearched">
                             <div class="col-md-8 col-sm-12">
                                 <label>Services:&nbsp;</label>{{currentAppointment.services_name}}
                             </div>
@@ -42,7 +42,7 @@
                          
                         <div class="row mt-3" *ngIf="isTheUserSearched">
                             <div class="col-12">
-                                <button type="button" (click)="done()" class="hawk-btn-lg pull-right" style="margin-right: 15px;">
+                                <button type="button" (click)="done()" class="mysalontheme-btn-lg pull-right" style="margin-right: 15px;">
                                     <i class="fa fa-check"></i> Confirm
                                 </button>
                             </div>

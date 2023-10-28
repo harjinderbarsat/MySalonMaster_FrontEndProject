@@ -3,22 +3,22 @@
         <h3>Products </h3>
     </div>
     <div class="col-10 text-right" *ngIf="!inProgress">
-        <button class="hawk-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
+        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
             <i class="fa fa-print"></i> Print</button>
-        <button class="hawk-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
+        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
             XLSX</button>
-        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
+        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
-        <button class=" hawk-btn-md mr-1"  *ngIf="!isPrintView" (click)="addProduct(0)"><i class="fa fa-plus"></i> &nbsp; Add
+        <button class=" mysalontheme-btn-md mr-1"  *ngIf="!isPrintView" (click)="addProduct(0)"><i class="fa fa-plus"></i> &nbsp; Add
             Product</button>
-        <button class="hawk-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
+        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
             &nbsp;
             <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
             <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
         </button>
-        <button class="hawk-btn-md mr-1"  *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
-        <button class="hawk-btn-md mr-1" (click)="hideShowPrintView()">
+        <button class="mysalontheme-btn-md mr-1"  *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
+        <button class="mysalontheme-btn-md mr-1" (click)="hideShowPrintView()">
             <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
             <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
         </button>
@@ -47,7 +47,7 @@
                 <option value="{{category.id}}" *ngFor="let category of categories">
                     {{category.name}}</option>
             </select>
-            <button *ngIf="filterType!=''&& filterValue!=null&& filterValue!=''" class="hawk-btn-md" (click)="getFilteredDataList()">Get
+            <button *ngIf="filterType!=''&& filterValue!=null&& filterValue!=''" class="mysalontheme-btn-md" (click)="getFilteredDataList()">Get
                 Data</button>
         </div>
     </div>
@@ -118,12 +118,12 @@
                                     <td>{{product.qty}}</td>
                                     <td>{{product.price}}</td>
                                     <th *ngIf="!isPrintView">
-                                        <button type="button" class="hawk-btn-sm mr-1 mb-0"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="viewClient(viewClientModel,product)"><i class="fa fa-eye"></i>
                                         </button>
-                                        <button type="button" class=" hawk-btn-sm mr-1" ngbTooltip="Edit Product" *ngIf="!isBranchPannel"
+                                        <button type="button" class=" mysalontheme-btn-sm mr-1" ngbTooltip="Edit Product" *ngIf="!isBranchPannel"
                                             (click)="addProduct(product.id)"><i class="fa fa-edit"></i> </button>
-                                        <button type="button" class="hawk-btn-sm" ngbTooltip="Delete Product" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm" ngbTooltip="Delete Product" *ngIf="!isBranchPannel"
                                             (click)="deleteProduct(product)"><i class="fa fa-trash"></i> </button>
                                     </th>
                                 </tr>
@@ -171,6 +171,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
     </div>
 </ng-template>

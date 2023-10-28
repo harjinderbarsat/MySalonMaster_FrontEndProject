@@ -3,11 +3,11 @@
         <h3>Employees List</h3>
     </div>
     <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class="hawk-btn-md mr-1" printTitle="MyTitle" printSectionId="print-section" ngxPrint>Print</button>
-        <button class="hawk-btn-md mr-1" (click)="downloadXslx()">Download XLSX</button>
-        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+        <button class="mysalontheme-btn-md mr-1" printTitle="MyTitle" printSectionId="print-section" ngxPrint>Print</button>
+        <button class="mysalontheme-btn-md mr-1" (click)="downloadXslx()">Download XLSX</button>
+        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" hawk-btn-md" *ngIf="!isBranchPannel" (click)="addEditEmployee(0)"><i class="fa fa-plus"></i> &nbsp; Add
+        <button class=" mysalontheme-btn-md" *ngIf="!isBranchPannel" (click)="addEditEmployee(0)"><i class="fa fa-plus"></i> &nbsp; Add
             Employee</button>
     </div>
 </div>
@@ -49,25 +49,25 @@
                                             (change)="change(employee,$event)" /> 
                                     </label>
                                 </td>
-                                <td *ngIf="!isBranchPannel">{{employee.employeeUniqueId}}</td>
+                                <td *ngIf="!isBranchPannel">{{employee.employee_unique_id}}</td>
                                 <td>{{employee.firstname}} {{employee.lastname}}</td>
                                 <td>{{employee.designation}}</td>
                                 <td>{{employee.mobile}}</td>
                                 <td>{{employee.status}}</td>
                                 <th *ngIf="!isBranchPannel">
-                                    <button type="button" class="hawk-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="viewEmployee(viewEmployeeModel,employee)"><i class="fa fa-eye"></i>
                                     </button>
-                                    <button type="button" class="hawk-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="addEditEmployee(employee.id)"><i class="fa fa-edit"></i> </button>
-                                    <button type="button" class="hawk-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="deleteEmployee(employee)"><i class="fa fa-trash"></i> </button>
                                     <button type="button" *ngIf="employee.status=='Inactive'"
-                                        class="hawk-btn-sm ml-1"
+                                        class="mysalontheme-btn-sm ml-1"
                                         (click)="updatedEmployeeStatus(employee,'Active')"> Active
                                     </button>
                                     <button type="button" *ngIf="employee.status=='active'"
-                                        class="hawk-btn-sm ml-1"
+                                        class="mysalontheme-btn-sm ml-1"
                                         (click)="updatedEmployeeStatus(employee,'Inactive')"> Inactive
                                     </button>
                                 </th>
@@ -115,6 +115,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
     </div>
 </ng-template>

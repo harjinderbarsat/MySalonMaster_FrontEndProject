@@ -3,7 +3,7 @@
         <h3>Branches</h3>
     </div>
     <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class=" hawk-btn-md" (click)="addEditBrach(0)"><i class="fa fa-plus"></i> &nbsp; Add Branch</button>
+        <button class="mysalontheme-btn-md" (click)="addEditBrach(0)"><i class="fa fa-plus"></i> &nbsp; Add Branch</button>
     </div>
 </div>
 
@@ -43,12 +43,12 @@
                                     <td>{{cService.getStringDateFormatByCurtureAndType(branch.created_at, false)}}</td>
                                     <td>{{cService.getStringDateFormatByCurtureAndType(branch.updatedAt, false)}}</td> -->
                                     <th>
-                                        <button type="button" class="hawk-btn-sm mr-1 mb-0"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="viewBranch(viewClientModel,branch)"><i class="fa fa-eye"></i>
                                         </button>
-                                        <button type="button" class="hawk-btn-sm mr-1" ngbTooltip="Edit Employee"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1" ngbTooltip="Edit Employee"
                                             (click)="addEditBrach(branch.id)"><i class="fa fa-edit"></i> </button>
-                                        <button type="button" class="hawk-btn-sm" ngbTooltip="Delete Employee"
+                                        <button type="button" class="mysalontheme-btn-sm" ngbTooltip="Delete Employee"
                                             (click)="deleteBranch(branch)"><i class="fa fa-trash"></i> </button>
                                     </th>
                                 </tr>
@@ -97,6 +97,6 @@
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
     </div>
 </ng-template>

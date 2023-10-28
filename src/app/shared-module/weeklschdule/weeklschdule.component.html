@@ -1,14 +1,14 @@
 <div  class="row text-center">
     <div class="col-md-4">
         <div class="btn-group">
-            <div class="hawk-btn-md" style="padding-top: 7px;" mwlCalendarPreviousView [view]="view"
+            <div class="mysalontheme-btn-md" style="padding-top: 7px;" mwlCalendarPreviousView [view]="view"
                 [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
                 Previous
             </div>
             <div class="btn btn-outline-danger" mwlCalendarToday [(viewDate)]="viewDate">
                 Today
             </div>
-            <div class="hawk-btn-md" style="padding-top: 7px;"  mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+            <div class="mysalontheme-btn-md" style="padding-top: 7px;"  mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
                 (viewDateChange)="closeOpenMonthViewDay()">
                 Next
             </div>
@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-4">
         <div class="btn-group">
-            <div class="hawk-btn-md" style="padding-top: 7px;" (click)="setView(CalendarView.Month)"
+            <div class="mysalontheme-btn-md" style="padding-top: 7px;" (click)="setView(CalendarView.Month)"
                 [class.active]="view === CalendarView.Month">
                 Month
             </div>
@@ -27,7 +27,7 @@
                 [class.active]="view === CalendarView.Week">
                 Week
             </div>
-            <div class="hawk-btn-md" style="padding-top: 7px;" (click)="setView(CalendarView.Day)"
+            <div class="mysalontheme-btn-md" style="padding-top: 7px;" (click)="setView(CalendarView.Day)"
                 [class.active]="view === CalendarView.Day">
                 Day
             </div>
@@ -95,11 +95,11 @@
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
+        <button type="button" class="mysalontheme-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
             (click)="appointmentStatusUpdatePopUp(startAppointment, selectedAppointment,'in-progress')">
             Start
         </button>
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
     </div>
 </ng-template>
 
@@ -120,8 +120,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
-        <button type="button" class="hawk-btn-sm" (click)="appointmentStatusUpdate()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="appointmentStatusUpdate()">
             Start</button>
     </div>
 </ng-template>

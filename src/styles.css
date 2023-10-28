@@ -1,11 +1,11 @@
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
-.hawk-bg-color{
+.mysalontheme-bg-color{
     background-color: #fbf0ec;
 }
 
-.hawk-walkin-header {
+.mysalontheme-walkin-header {
     font-family: Playfair Display;
     font-style: normal;
     font-weight: 900;
@@ -21,7 +21,7 @@
     text-transform: uppercase !important;
 }
 
-.hawk-btn-color{
+.mysalontheme-btn-color{
     background-color: #e97f7f;
     color: white;
 }
@@ -34,7 +34,7 @@
     margin-bottom: 0px !important;
 }
 
-.hawk-input-lg{
+.mysalontheme-input-lg{
     width: 100%;
     height: 60px;
     padding: 0px 10px 0px 20px;
@@ -43,7 +43,7 @@
     border: solid;
 }
 
-.hawk-btn-lg{
+.mysalontheme-btn-lg{
     /* background-color: #F7C9CB; */
     background-color: #e97f7f;
     color: white;
@@ -54,7 +54,7 @@
     border: none;
 }
 
-.hawk-btn-md{
+.mysalontheme-btn-md{
     /* background-color: #F7C9CB; */
     background-color: #e97f7f;
     color: white;
@@ -64,7 +64,7 @@
     border: none;
 }
 
-.hawk-btn-sm{
+.mysalontheme-btn-sm{
     /* background-color: #F7C9CB; */
     background-color: #e97f7f;
     color: white;
@@ -74,16 +74,16 @@
     border: none;
 }
 
-.hawk-btn-md:hover {
+.mysalontheme-btn-md:hover {
     transition: 0.2s ease-in-out;
     background: #eb3232;
   }
-  .hawk-btn-sm:hover {
+  .mysalontheme-btn-sm:hover {
     transition: 0.2s ease-in-out;
     background: #eb3232;
   }
 
-  .hawk-btn-lg:hover {
+  .mysalontheme-btn-lg:hover {
     transition: 0.2s ease-in-out;
     background: #eb3232;
   }

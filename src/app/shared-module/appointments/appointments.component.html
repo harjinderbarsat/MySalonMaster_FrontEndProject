@@ -3,22 +3,22 @@
         <h3>{{appointmentTypeDisplayName}} Appointments</h3>
     </div>
     <div class="col-8 text-right" *ngIf="!inProgress">
-        <button class="hawk-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
+        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
             <i class="fa fa-print"></i> Print</button>
-        <button class="hawk-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
+        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
             XLSX</button>
-        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
+        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class="hawk-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
+        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
             &nbsp;
             <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
             <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
         </button>
-        <button class="hawk-btn-md mr-1"  *ngIf="!isPrintView"  (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
+        <button class="mysalontheme-btn-md mr-1"  *ngIf="!isPrintView"  (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
 
-        <button class="hawk-btn-md mr-1" (click)="hideShowPrintView()">
+        <button class="mysalontheme-btn-md mr-1" (click)="hideShowPrintView()">
             <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
             <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
         </button>
@@ -130,8 +130,8 @@
         </div>
     </div>
     <div class="col-3">
-        <button class=" hawk-btn-md mt-4 pull-right" (click)="resetFilter()"> Reset filter</button>
-        <button class="hawk-btn-md mt-4 pull-right mr-1" (click)="getAppointmentsList()">Get
+        <button class=" mysalontheme-btn-md mt-4 pull-right" (click)="resetFilter()"> Reset filter</button>
+        <button class="mysalontheme-btn-md mt-4 pull-right mr-1" (click)="getAppointmentsList()">Get
             Data</button>
     </div>
 </div>
@@ -189,30 +189,30 @@
                                     {{appointment.assign_to_name?appointment.assign_to_name:'Not Assigned'}}</td>
                                 <th *ngIf="!isPrintView">
 
-                                    <button type="button" class="hawk-btn-sm mr-1" ngbTooltip="View Appointment Details"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1" ngbTooltip="View Appointment Details"
                                         (click)="viewDetail(viewAppointment,appointment)"><i class="fa fa-eye"></i>
                                     </button>
 
                                     <button
                                         *ngIf="appointment.status === 'upcoming'||appointment.status === 'in-progress'"
-                                        type="button" class="hawk-btn-sm mr-1" ngbTooltip="Edit Appointment Details"
+                                        type="button" class="mysalontheme-btn-sm mr-1" ngbTooltip="Edit Appointment Details"
                                         (click)="addEditAppointment(appointment.id)"><i class="fa fa-edit"></i>
                                     </button>
 
-                                    <button type="button" class="hawk-btn-sm" ngbTooltip="Delete Appointment"
+                                    <button type="button" class="mysalontheme-btn-sm" ngbTooltip="Delete Appointment"
                                         (click)="deleteAppointment(appointment)"><i class="fa fa-trash"></i> </button>
-                                    <button type="button" class="hawk-btn-sm ml-1"
+                                    <button type="button" class="mysalontheme-btn-sm ml-1"
                                         *ngIf="appointment.status === 'upcoming'"
                                         (click)="appointmentStatusUpdatePopUp(startAppointment, appointment,'in-progress')">
                                         Start
                                     </button>
-                                    <button type="button" class="hawk-btn-sm ml-1"
+                                    <button type="button" class="mysalontheme-btn-sm ml-1"
                                         *ngIf="appointment.status === 'in-progress'"
                                         (click)="appointmentStatusUpdatePopUp(startAppointment, appointment,'completed')">
                                         Finish
                                     </button>
                                     <button *ngIf="appointment.status === 'completed'" type="button"
-                                        class="hawk-btn-sm ml-1 mb-0" ngbTooltip="Edit Appointment"
+                                        class="mysalontheme-btn-sm ml-1 mb-0" ngbTooltip="Edit Appointment"
                                         (click)="appointmentPayment(appointment.id)"><i class="fa fa-money"></i>
                                     </button>
                                 </th>
@@ -276,11 +276,11 @@
 
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
+        <button type="button" class="mysalontheme-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
             (click)="appointmentStatusUpdatePopUp(startAppointment, selectedAppointment,'in-progress')">
             Start
         </button>
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
     </div>
 </ng-template>
 
@@ -301,8 +301,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
-        <button type="button" class="hawk-btn-sm" (click)="appointmentStatusUpdate()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="appointmentStatusUpdate()">
             Start</button>
     </div>
 </ng-template>

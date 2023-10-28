@@ -15,15 +15,15 @@
                         <div class="card m-0 page-container" *ngIf="!ifApplyingVoucher&&!ifApplyingCardPayment">
                             <div class="card-body p-2" style="border: solid;">
                                 <ul class="list-group category-container" style="border-radius: 0%">
-                                    <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
+                                    <li class="list-group-item mysalontheme-btn-color mt-1" style="height: 55px;"
                                         [ngClass]="{'my-salon-master':selectedPaymentType=='cash'}"
                                         (click)="paymentType('cash')"> Pay In
                                         Person
                                     </li>
-                                    <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
+                                    <li class="list-group-item mysalontheme-btn-color mt-1" style="height: 55px;"
                                         [ngClass]="{'my-salon-master':selectedPaymentType=='card'}"
                                         (click)="paymentType('card')"> Pay By Card </li>
-                                    <!-- <li class="list-group-item hawk-btn-color mt-1" style="height: 55px;"
+                                    <!-- <li class="list-group-item mysalontheme-btn-color mt-1" style="height: 55px;"
                                         [hidden]="ifTheVoucherProcessDone"
                                         [ngClass]="{'my-salon-master':selectedPaymentType=='voucher'}"
                                         (click)="paymentType('voucher')"> Apply Voucher
@@ -34,12 +34,12 @@
                         <form *ngIf="ifApplyingVoucher && !ifTheVoucherProcessDone" [formGroup]="voucherForm"
                             (ngSubmit)="applyVoucher()">
                             <input type="text" formControlName='voucher' [(ngModel)]="voucherCode"
-                                placeholder="Enter Voucher Code" class="hawk-input">
+                                placeholder="Enter Voucher Code" class="mysalontheme-input">
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <button class="hawk-btn-md pull-letf" (click)="Cancel()">
+                                    <button class="mysalontheme-btn-md pull-letf" (click)="Cancel()">
                                         Back</button>
-                                    <button type="submit" class="hawk-btn-md pull-right"><i class="fa fa-check"></i>
+                                    <button type="submit" class="mysalontheme-btn-md pull-right"><i class="fa fa-check"></i>
                                         &nbsp;
                                         Apply Voucher</button>
                                 </div>
@@ -49,26 +49,26 @@
                             <div class="card-body p-2" style="border: solid;">
                                 <form *ngIf="ifApplyingCardPayment" [formGroup]="cardForm">
                                     <input type="text" formControlName='cardNumber' [(ngModel)]="cardModel.cardNumber"
-                                        placeholder="CARD NUMBER" class="hawk-input">
+                                        placeholder="CARD NUMBER" class="mysalontheme-input">
                                     <div class="row mt-1 mb-1">
                                         <div class="col-4"><input type="text" formControlName='exDate'
-                                                [(ngModel)]="cardModel.exDate" placeholder="MM/YY" class="hawk-input">
+                                                [(ngModel)]="cardModel.exDate" placeholder="MM/YY" class="mysalontheme-input">
                                         </div>
                                         <div class="col-4"><input type="text" formControlName='cvc'
-                                                [(ngModel)]="cardModel.cvc" placeholder="CVC" class="hawk-input">
+                                                [(ngModel)]="cardModel.cvc" placeholder="CVC" class="mysalontheme-input">
                                         </div>
                                         <div class="col-4"><input type="text" formControlName='postcode'
                                                 [(ngModel)]="cardModel.postCode" placeholder="Enter post code"
-                                                class="hawk-input">
+                                                class="mysalontheme-input">
                                         </div>
                                     </div>
 
                                     <input type="text" formControlName='cardName' [(ngModel)]="cardModel.cardHolderName"
-                                        placeholder="NAME ON CARD" class="hawk-input">
+                                        placeholder="NAME ON CARD" class="mysalontheme-input">
 
                                     <div class="row mt-2">
                                         <div class="col-12 text-center">
-                                            <button class="hawk-btn-md pull-letf mr-1" (click)="Cancel()">
+                                            <button class="mysalontheme-btn-md pull-letf mr-1" (click)="Cancel()">
                                                 Back</button>
                                         </div>
                                     </div>
@@ -86,27 +86,27 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <button class="hawk-btn-md pull-right" *ngIf="selectedPaymentType == 'cash' || selectedPaymentType == 'card'"
+                        <button class="mysalontheme-btn-md pull-right" *ngIf="selectedPaymentType == 'cash' || selectedPaymentType == 'card'"
                         style="color: aliceblue;border-radius: 0%;" (click)="saveAppointment()"><i class="fa fa-check"></i>
                         &nbsp;
                         Done</button>
 
-                        <!-- <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'card' && !ifApplyingCardPayment"
+                        <!-- <button class="btn mysalontheme-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'card' && !ifApplyingCardPayment"
                         style="color: aliceblue;border-radius: 0%;" (click)="Proceed()"><i class="fa fa-check"></i>
                         &nbsp;
                         Continue</button>
-                        <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'card' && ifApplyingCardPayment"
+                        <button class="btn mysalontheme-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'card' && ifApplyingCardPayment"
                         style="color: aliceblue;border-radius: 0%;" (click)="saveAppointment()"><i class="fa fa-check"></i>
                         &nbsp;
                         Done </button> -->
 
 
-                        <!-- <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType=='voucher' && !ifApplyingVoucher"
+                        <!-- <button class="btn mysalontheme-btn-color btn-raised pull-right" *ngIf="selectedPaymentType=='voucher' && !ifApplyingVoucher"
                         style="color: aliceblue;border-radius: 0%;" (click)="Proceed()"><i class="fa fa-check"></i>
                         &nbsp;
                         Apply</button>
 
-                        <button class="btn hawk-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'voucher' && ifTheVoucherProcessDone"
+                        <button class="btn mysalontheme-btn-color btn-raised pull-right" *ngIf="selectedPaymentType == 'voucher' && ifTheVoucherProcessDone"
                         style="color: aliceblue;border-radius: 0%;" (click)="saveAppointment()"><i class="fa fa-check"></i>
                         &nbsp;
                         Done </button> -->

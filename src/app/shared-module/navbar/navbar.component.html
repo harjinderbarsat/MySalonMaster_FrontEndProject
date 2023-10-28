@@ -12,9 +12,9 @@
         <div class="navbar-container">
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
-                <button *ngIf="isBranchPannel"  class="hawk-btn-sm pull-right mr-1" (click)="addAppointment()"><i class="fa fa-plus"></i> &nbsp; Add
+                <button *ngIf="isBranchPannel"  class="mysalontheme-btn-sm pull-right mr-1" (click)="addAppointment()"><i class="fa fa-plus"></i> &nbsp; Add
                     Appointment</button>
-                <button *ngIf="isBranchPannel" type="button" class="hawk-btn-sm pull-right mr-1"
+                <button *ngIf="isBranchPannel" type="button" class="mysalontheme-btn-sm pull-right mr-1"
                     (click)="checkInOutOpenModal(checkInOutModal,'In')">Employee Check In/Out
                 </button>
                 <ul class="navbar-nav">
@@ -121,14 +121,14 @@
     </div>
     <div *ngIf="!checkOutLoading" class="modal-footer">
 
-        <button *ngIf="isCheckOutDone && (!isTheCashDifference||ifAmmountDifferenceDone)" [useExistingCss]="true" class="hawk-btn-sm ml-1"
+        <button *ngIf="isCheckOutDone && (!isTheCashDifference||ifAmmountDifferenceDone)" [useExistingCss]="true" class="mysalontheme-btn-sm ml-1"
             printTitle="MyTitle" printSectionId="nav-print-section" ngxPrint>Print</button>
 
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
-        <button *ngIf="!isCheckOutDone && employeeUniqueId" type="button" class="hawk-btn-sm" (click)="checkInOut()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+        <button *ngIf="!isCheckOutDone && employeeUniqueId" type="button" class="mysalontheme-btn-sm" (click)="checkInOut()">
             Check In/Out </button>
         <button *ngIf="isCheckOutDone && isTheCashDifference &&!ifAmmountDifferenceDone && employeeReport.difference!=0" type="button"
-            class="hawk-btn-sm" (click)="updateAttendance()"> Save </button>
+            class="mysalontheme-btn-sm" (click)="updateAttendance()"> Save </button>
     </div>
     <div class="row" *ngIf="checkOutLoading">
         <div class="col-md-12 text-center align-middle">

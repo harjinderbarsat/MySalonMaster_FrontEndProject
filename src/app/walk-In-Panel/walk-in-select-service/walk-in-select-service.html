@@ -21,10 +21,10 @@
                                         <div class="row">
                                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 p-1"
                                                 *ngFor="let service of selectServicesList">
-                                                <div class="card hawk-btn-color m-0"
+                                                <div class="card mysalontheme-btn-color m-0"
                                                     (click)="selectService(service)"
                                                     style="height: 65px;overflow: hidden;font-size: 18px;border-radius: 0px;"
-                                                    [ngClass]="{'hawk-btn-color': !service.isSelected, 'my-salon-master':service.isSelected}">
+                                                    [ngClass]="{'mysalontheme-btn-color': !service.isSelected, 'my-salon-master':service.isSelected}">
                                                     <div class="card-content p-2 align-middle">
                                                         <div class="card-body">
                                                             <div class="media">
@@ -55,10 +55,10 @@
                 </div>
                 <div class="row mt-1" *ngIf="!inProgress">
                     <div class="col-12">
-                        <button class="hawk-btn-lg pull-right" (click)="Proceed()">Next&nbsp;<i
+                        <button class="mysalontheme-btn-lg pull-right" (click)="Proceed()">Next&nbsp;<i
                                 class="fa fa-arrow-right"></i>
                         </button>
-                        <button class="hawk-btn-lg pull-left" (click)="back()"><i
+                        <button class="mysalontheme-btn-lg pull-left" (click)="back()"><i
                                 class="fa fa-arrow-left"></i>&nbsp;Back</button>
                     </div>
                 </div>

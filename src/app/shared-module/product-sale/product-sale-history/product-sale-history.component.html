@@ -12,7 +12,7 @@
                 </div>
             </div>
         </form>
-        <button type="button" class="hawk-btn-md pull-right" (click)="goToSale()"><i class="fa fa-plus"></i> &nbsp; New Sale <i class="fa fa-sale"></i>
+        <button type="button" class="mysalontheme-btn-md pull-right" (click)="goToSale()"><i class="fa fa-plus"></i> &nbsp; New Sale <i class="fa fa-sale"></i>
         </button>
     </div>
 </div>
@@ -47,7 +47,7 @@
                                 <td>{{cService.getStringDateFormatByCurtureAndType(productSale.created_at, false)}} </td>
                                 <td>{{productSale.sold_by_name}}</td>
                                 <th>
-                                    <button type="button" class="hawk-btn-sm mr-1 mb-0"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewProducts,productSale.products)"><i
                                             class="fa fa-eye"></i> </button>
                                 </th>
@@ -127,6 +127,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
     </div>
 </ng-template>

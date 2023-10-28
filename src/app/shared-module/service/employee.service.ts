@@ -22,7 +22,7 @@ export class EmployeeService {
 
   public getEmployeeById(employee_id: number): Observable<ResponseModel<EmployeeModel>> {
     var token = this.commonService.getUserToken();
-    return this.http.get<ResponseModel<EmployeeModel>>(this.commonService.rootUrl + 'getEmployeeById?employee_id=' + employee_id, {
+    return this.http.get<ResponseModel<EmployeeModel>>(this.commonService.rootUrl + 'getEmployeeById?employeeId=' + employee_id, {
       headers: new HttpHeaders().set('Authorization', token)
     });
   }

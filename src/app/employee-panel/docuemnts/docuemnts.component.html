@@ -12,21 +12,21 @@
                     <div class="row" *ngFor="let docs of employeeDocList">
                         <div class="col-3"> <b>{{docs.typeName}} <span class="pull-right mb-1">:</span></b> </div>
                         <div class="col-9">
-                            <button *ngIf="!docs.isAvalible" type="button" class="hawk-btn-sm mb-1"
+                            <button *ngIf="!docs.isAvalible" type="button" class="mysalontheme-btn-sm mb-1"
                                 (click)="openSelectDocumentModal(documentModal,docs.type)">
                                 <i class="fa fa-upload"></i> &nbsp; Upload File
                             </button>
-                            <button *ngIf="docs.isAvalible && docs.data" type="button" class="hawk-btn-sm mb-1 mr-1"
+                            <button *ngIf="docs.isAvalible && docs.data" type="button" class="mysalontheme-btn-sm mb-1 mr-1"
                                 (click)="deleteUploadedDocument(docs.data.id)">
                                 <i class="fa fa-trash"></i> &nbsp; Delete
                             </button>
 
-                            <button *ngIf="docs.isAvalible && docs.data" type="button" class="hawk-btn-sm mb-1 mr-1"
+                            <button *ngIf="docs.isAvalible && docs.data" type="button" class="mysalontheme-btn-sm mb-1 mr-1"
                                 (click)="downloadDoc(docs.data.file)">
                                 <i class="fa fa-download"></i> &nbsp; Download
                             </button>
                             <a *ngIf="docs.isAvalible && docs.data" href="{{docs.data.file}}" target="_blank" style="padding: 7px 11px 8px 10px;"
-                                class="hawk-btn-sm"><i class="fa fa-eye"></i> &nbsp; View</a>
+                                class="mysalontheme-btn-sm"><i class="fa fa-eye"></i> &nbsp; View</a>
                         </div>
                     </div>
                 </div>
@@ -63,16 +63,16 @@
                         title="">
                         <input style="display: none" type="file" accept=".pdf" #changeUploadFile
                             (change)="onSelectCompanyDoc($event)">
-                        <button type="button" class="hawk-btn-sm"
+                        <button type="button" class="mysalontheme-btn-sm"
                             (click)="changeUploadFile.click()">
                             <i class="fa fa-search" placement="top" ngbTooltip="Upload Logo"></i>
                             &nbsp; Find Document to Upload
                         </button>
                     </a>
-                    <button type="button" *ngIf="ifDocumentSelected" class="hawk-btn-sm"
+                    <button type="button" *ngIf="ifDocumentSelected" class="mysalontheme-btn-sm"
                         (click)="saveDocument()">
                         <i class="fa fa-upload" placement="top"></i> &nbsp; Upload Document</button>
-                    <button *ngIf="selectedDocumentsUrl" type="button" class="hawk-btn-sm pull-left"
+                    <button *ngIf="selectedDocumentsUrl" type="button" class="mysalontheme-btn-sm pull-left"
                         ngbTooltip="Delete this Document">
                         <i class="ft-trash-2 font-medium-3" placement="bottom"></i> &nbsp; Delete Document
                     </button>
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm pull-right" (click)="closeModal()"> Close
+        <button type="button" class="mysalontheme-btn-sm pull-right" (click)="closeModal()"> Close
         </button>
     </div>
 </ng-template>

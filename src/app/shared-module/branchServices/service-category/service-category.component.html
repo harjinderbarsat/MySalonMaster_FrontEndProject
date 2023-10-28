@@ -3,9 +3,9 @@
         <h3>Categories  <label *ngIf="categories&&categories.length">({{categories.length}})</label></h3>
     </div>
     <div class="col-6 text-right" *ngIf="!inProgress &&!isBranchPannel">
-        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" hawk-btn-md" *ngIf="!isBranchPannel" (click)="openCategoryModal(CategoryModal,null,false)"><i
+        <button class=" mysalontheme-btn-md" *ngIf="!isBranchPannel" (click)="openCategoryModal(CategoryModal,null,false)"><i
                 class="fa fa-plus"></i>
             &nbsp; Add Category</button>
     </div>
@@ -53,22 +53,22 @@
                                     <td>{{category.name}} </td>
                                     <td>{{category.status==0?'Inactive':'Active'}}</td>
                                     <th>
-                                        <button type="button" class="hawk-btn-sm mr-1 mb-0"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewClientModel,category)"><i class="fa fa-eye"></i> </button>
                                         
                                         <button type="button" *ngIf="category.status=='Disabled'"
-                                            class="hawk-btn-sm mr-1"
+                                            class="mysalontheme-btn-sm mr-1"
                                             (click)="updatedCategoryStatus(category,'Enabled')"> Enable
                                         </button>
                                         <button type="button" *ngIf="category.status=='Enabled'"
-                                            class="hawk-btn-sm mr-1"
+                                            class="mysalontheme-btn-sm mr-1"
                                             (click)="updatedCategoryStatus(category,'Disabled')"> Disable
                                         </button>
-                                        <button type="button" class="hawk-btn-sm mr-1" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1" *ngIf="!isBranchPannel"
                                             (click)="openCategoryModal(CategoryModal,category,true)"> <i
                                                 class="fa fa-edit"></i>
                                         </button>
-                                        <button type="button" class="hawk-btn-sm" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm" *ngIf="!isBranchPannel"
                                             (click)="deleteCategory(category)"> <i class="fa fa-trash"></i> </button>
                                 </tr>
                             </tbody>
@@ -123,9 +123,9 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm" (click)="saveCategory()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="saveCategory()">
             Add</button>
-        <button type="button" class="hawk-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
     </div>
 </ng-template>
 <ng-template #viewClientModel let-modal>
@@ -152,6 +152,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
     </div>
 </ng-template>

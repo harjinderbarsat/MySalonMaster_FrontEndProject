@@ -3,10 +3,10 @@
         <h3>Admin List</h3>
     </div>
     <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class="hawk-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
+        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" hawk-btn-md" (click)="addEditEmployee(0)"><i class="fa fa-plus"></i> &nbsp; Add
+        <button class=" mysalontheme-btn-md" (click)="addEditEmployee(0)"><i class="fa fa-plus"></i> &nbsp; Add
             Admin</button>
     </div>
 </div>
@@ -52,20 +52,20 @@
                                 <td>{{employee.email}}</td>
                                 <td>{{employee.status=='1'?'Active':'Inactive'}}</td>
                                 <th>
-                                    <button type="button" class="hawk-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="viewEmployee(viewEmployeeModel,employee)"><i class="fa fa-eye"></i>
                                     </button>
-                                    <button type="button" class="hawk-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="addEditEmployee(employee.id)"><i class="fa fa-edit"></i> </button>
-                                    <button type="button" class="hawk-btn-sm mr-1" (click)="deleteEmployee(employee)"><i
+                                    <button type="button" class="mysalontheme-btn-sm mr-1" (click)="deleteEmployee(employee)"><i
                                             class="fa fa-trash"></i> </button>
-                                    <button type="button" *ngIf="employee.status=='Inactive'" class="hawk-btn-sm ml-1"
+                                    <button type="button" *ngIf="employee.status=='Inactive'" class="mysalontheme-btn-sm ml-1"
                                         (click)="updatedEmployeeStatus(employee,'1')"> Active
                                     </button>
-                                    <button type="button" *ngIf="employee.status=='active'" class="hawk-btn-sm ml-1"
+                                    <button type="button" *ngIf="employee.status=='active'" class="mysalontheme-btn-sm ml-1"
                                         (click)="updatedEmployeeStatus(employee,'0')"> Inactive
                                     </button>
-                                    <button type="button" class="hawk-btn-sm mr-1" title="Impersonate"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1" title="Impersonate"
                                         (click)="loginEmployee(employee)"><i class="fa fa-sign-in"></i>
                                     </button>
                                 </th>
@@ -109,6 +109,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="hawk-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
     </div>
 </ng-template>

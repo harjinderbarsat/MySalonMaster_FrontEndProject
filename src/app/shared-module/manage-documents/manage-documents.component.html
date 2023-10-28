@@ -1,8 +1,8 @@
-<button type="button" *ngIf="!isDocumentViewMode" class="hawk-btn-md"
+<button type="button" *ngIf="!isDocumentViewMode" class="mysalontheme-btn-md"
     (click)="openSelectDocumentModal(documentModal)">
     <i class="fa fa-upload"></i> &nbsp; Upload File
 </button>
-<button type="button" *ngIf="isDocumentViewMode" class="hawk-btn-sm pull-right"
+<button type="button" *ngIf="isDocumentViewMode" class="mysalontheme-btn-sm pull-right"
     (click)="openSelectDocumentModal(documentModal)">
     <i class="fa fa-file"></i> &nbsp; Document
 </button>
@@ -33,16 +33,16 @@
                         title="">
                         <input style="display: none" type="file" accept=".pdf" #changeUploadFile
                             (change)="onSelectCompanyDoc($event)">
-                        <button type="button" class="hawk-btn-sm"
+                        <button type="button" class="mysalontheme-btn-sm"
                             (click)="changeUploadFile.click()">
                             <i class="fa fa-search" placement="top" ngbTooltip="Upload Logo"></i>
                             &nbsp; Find Document to Upload
                         </button>
                     </a>
-                    <button type="button" *ngIf="ifDocumentSelected" class="hawk-btn-sm"
+                    <button type="button" *ngIf="ifDocumentSelected" class="mysalontheme-btn-sm"
                         (click)="saveDocument()">
                         <i class="fa fa-upload" placement="top"></i> &nbsp; Upload Document</button>
-                    <button *ngIf="selectedDocumentsUrl" type="button" class="hawk-btn-sm pull-left"
+                    <button *ngIf="selectedDocumentsUrl" type="button" class="mysalontheme-btn-sm pull-left"
                         ngbTooltip="Delete this Document">
                         <i class="ft-trash-2 font-medium-3" placement="bottom"></i> &nbsp; Delete Document
                     </button>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button  type="button" class="hawk-btn-sm pull-right" (click)="closeModal()"> Close
+        <button  type="button" class="mysalontheme-btn-sm pull-right" (click)="closeModal()"> Close
     </button>
     </div>
 </ng-template>

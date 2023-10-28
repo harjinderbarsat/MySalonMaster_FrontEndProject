@@ -2,7 +2,7 @@
     <div class="card-body" style="border: solid;">
         <ul class="list-group category-container full-height-90-vh"
             style="border-radius: 0%; overflow-y: scroll;overflow-x: hidden;">
-            <li class="list-group-item hawk-btn-color" style="color: white; background-image: linear-gradient(45deg, #eb155c, #df5d8f);
+            <li class="list-group-item mysalontheme-btn-color" style="color: white; background-image: linear-gradient(45deg, #eb155c, #df5d8f);
             background-repeat: repeat-x;;">
                 <div class="row">
                     <div class="col-5">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </li>
-            <li class="list-group-item hawk-btn-color" *ngFor="let service of selectedServies" style="color: white;">
+            <li class="list-group-item mysalontheme-btn-color" *ngFor="let service of selectedServies" style="color: white;">
                 <div class="row">
                     <div class="col-8">
                         {{service.name}}
@@ -24,8 +24,8 @@
                         <label class="service-price" style="color: white;"> ${{service.price}}</label>
                     </div>
                     <div class="col-2 text-right" *ngIf="isEditMode">
-                        <button type="button" (click)="deleteService(service)" class="hawk-btn-sm mb-0">
-            <li class="list-group-item hawk-btn-color" style="color: white; background-image: linear-gradient(45deg, #eb155c, #df5d8f)">
+                        <button type="button" (click)="deleteService(service)" class="mysalontheme-btn-sm mb-0">
+            <li class="list-group-item mysalontheme-btn-color" style="color: white; background-image: linear-gradient(45deg, #eb155c, #df5d8f)">
                             <i class="fa fa-times" style="color: white;;"></i>
                         </button>
                     </div>

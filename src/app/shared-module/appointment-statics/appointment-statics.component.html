@@ -5,9 +5,9 @@
     <div class="col-6 text-right" *ngIf="!inProgress">
         <div class="form-group pull-right">
 
-            <button class="hawk-btn-md mr-1" printTitle="MyTitle" printSectionId="print-section" ngxPrint>Print</button>
+            <button class="mysalontheme-btn-md mr-1" printTitle="MyTitle" printSectionId="print-section" ngxPrint>Print</button>
 
-            <button class="hawk-btn-md mr-1" (click)="downloadXslx()">Download XLSX</button>
+            <button class="mysalontheme-btn-md mr-1" (click)="downloadXslx()">Download XLSX</button>
     
             <input placeholder="Select Date" style="width: 200px;" autocomplete="off" ngbDatepicker #remove="ngbDatepicker"
             (ngModelChange)="getAppointmentPaymentList($event)" 
