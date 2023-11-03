@@ -65,7 +65,7 @@ export class WalkInSelectServiceComponent implements OnInit {
     this.currentSelectedCategory = category;
     this.currentSelectedCategory.isSelected = true;
     this.selectServicesList = new Array<ServiceModel>();
-    this.selectServicesList = this.services.filter(p => p.category_id == this.currentSelectedCategory.id);
+    this.selectServicesList = this.services.filter(p => p.categoryId == this.currentSelectedCategory.id);
   }
 
   selectedServies: Array<ServiceModel>

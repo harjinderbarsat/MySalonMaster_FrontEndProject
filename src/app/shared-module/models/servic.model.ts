@@ -1,6 +1,6 @@
 export class ServiceModel {
     id: number;
-    category_id: number;
+    categoryId: number;
     status: string;
 
     name: string;
@@ -9,7 +9,7 @@ export class ServiceModel {
     createdDate: string;
     price: number;
     duration: number;
-    is_this_initial_price?: string;
+    isThisInitialPrice?: string;
     isSelected?: boolean
     created_at?: string;
     updated_at?: string;
@@ -94,13 +94,13 @@ export const defaultServiceCategoryData: any = {
                     "name": "Brazilian Wax",
                     "description": "",
                     "price": 10,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Bikni Line",
                     "description": "",
                     "price": 10,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Brazilian Wax + Buttocks",
@@ -143,7 +143,7 @@ export const defaultServiceCategoryData: any = {
                     "name": "Henna Tattoo",
                     "description": "Price may vary on size and pattern of tattoo",
                     "price": 5,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 }
             ]
         },
@@ -273,13 +273,13 @@ export const defaultServiceCategoryData: any = {
                     "name": "Men’s Arms",
                     "description": "",
                     "price": 40,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Men’s Legs",
                     "description": "",
                     "price": 50,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Shoulder Waxing",
@@ -290,7 +290,7 @@ export const defaultServiceCategoryData: any = {
                     "name": "Stomach and Chest",
                     "description": "",
                     "price": 50,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Back",
@@ -328,7 +328,7 @@ export const defaultServiceCategoryData: any = {
                     "name": "Eyelash perming + Eyelash Tinting",
                     "description": "",
                     "price": 65,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Eyebrow+ Eyelash Tinting",
@@ -356,7 +356,7 @@ export const defaultServiceCategoryData: any = {
                     "name": "Eyelash Infills",
                     "description": "",
                     "price": 40,
-                    "is_this_initial_price": true
+                    "isThisInitialPrice": true
                 },
                 {
                     "name": "Eyelash Removal",

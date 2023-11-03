@@ -102,9 +102,9 @@
                                     <td *ngIf="!isPrintView">{{i+1}}</td>
                                     <td style="width: 300px">{{service.name}}
                                     </td>
-                                    <td style="width: 200px">{{service.category_name}}</td>
+                                    <td style="width: 200px">{{service.categoryName}}</td>
                                     <td>{{service.price}} <label
-                                            style="font-size: 10px;">{{service.is_this_initial_price==1?' (Initial
+                                            style="font-size: 10px;">{{service.isThisInitialPrice==1?' (Initial
                                             Price)':''}}</label> </td>
                                     <td>{{getDuration(service.duration)}}</td>
                                     <td>{{service.status==0?'Inactive':'Active'}}</td>

@@ -37,7 +37,7 @@
                                                         <label>Category<span class="danger mb-0"
                                                                 style="font-size: 15px;">* </span></label>
                                                         <select class="form-control"
-                                                            [(ngModel)]="selectedService.category_id"
+                                                            [(ngModel)]="selectedService.categoryId"
                                                             formControlName="category_id">
                                                             <option value=""> Select Category </option>
                                                             <option value="{{cat.id}}" *ngFor="let cat of categoryList">
@@ -60,7 +60,7 @@
                                                     <div class="form-group">
                                                         <label>Is This Initial Price</label>
                                                         <select class="form-control"
-                                                            [(ngModel)]="selectedService.is_this_initial_price"
+                                                            [(ngModel)]="selectedService.isThisInitialPrice"
                                                             formControlName="is_this_initial_price">
                                                             <option value="1">Yes</option>
                                                             <option value="0"> No </option>

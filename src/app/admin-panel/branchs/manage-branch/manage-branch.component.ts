@@ -42,16 +42,16 @@ export class ManageBranchComponent implements OnInit {
       this.getBranch(this.id)
     }
     this.branchForm = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', ''],
       code: ['', [Validators.required]],
       passCode: ['', [Validators.required]],
-      opendOn: ['', [Validators.required]],
+      opendOn: ['', ''],
       noOfEmp: ['', ''],
       slotOfApp: ['', ''],
-      mobile: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      mobile: ['', ''],
+      email: ['', ''],
       status: ['', ''],
-      address: ['', [Validators.required]]
+      address: ['', '']
     });
     this.getServices();
   }
@@ -132,6 +132,7 @@ export class ManageBranchComponent implements OnInit {
         this.services = response.data;
         this.getCategoriesList();
       }
+      this.inProgressPermissions = false;
     }, async error => {
       this.inProgressPermissions = false;
       this.cService.getToaster('Application error', 'error', 'Error');

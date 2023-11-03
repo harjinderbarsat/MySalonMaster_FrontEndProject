@@ -40,7 +40,7 @@ export class ManageServiceComponent implements OnInit {
 
     if (this.id == 0) {
       this.isEditMode = false;
-      this.selectedService.is_this_initial_price = '0';
+      this.selectedService.isThisInitialPrice = '0';
       this.selectedService.status = '1';
 
     } else {

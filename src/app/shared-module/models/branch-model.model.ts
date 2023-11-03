@@ -4,14 +4,14 @@ export class BranchModel {
     passcode: string;
     contact: string;
     email: string;
-    slot_for_appointment: number;
+    slotForAppointment: number;
     address: string;
     opened_on: string;
-    number_of_employee: number;
+    numberOfEmployee: number;
     status: string;
-    created_at: string;
+    createdAt: string;
     updatedAt: string;
-    branch_name: string;
+    branchName: string;
 }
 export class BranchPermissionModel {
     branchId: number;

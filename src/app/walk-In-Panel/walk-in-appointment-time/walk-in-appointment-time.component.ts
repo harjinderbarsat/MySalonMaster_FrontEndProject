@@ -88,7 +88,7 @@ export class WalkInAppointmentTimeComponent implements OnInit {
       this.inProgress = false;
       debugger
       if (response && response.data) {
-        this.slot_for_appointment = response.data ? response.data.slot_for_appointment : 0;
+        this.slot_for_appointment = response.data ? response.data.slotForAppointment : 0;
       }
     }, async error => {
       this.inProgress = false;

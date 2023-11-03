@@ -100,15 +100,14 @@ export class ServiceCategoryComponent implements OnInit {
           this.inProgress = true;
           this.servicesService.deleteCategory(category.id).subscribe(async response => {
             this.inProgress = false;
-            this.getCategoryList();
             if (response.isSuccess) {
               this.cService.getToaster('Category deleted succesfully', 'success', 'Success');
             }
+            this.getCategoryList();
           }, async error => {
             this.inProgress = false;
             this.cService.getToaster('Application error', 'error', 'Error');
           });
-
         }
       });
   }

@@ -30,8 +30,7 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Branch Name<span class="danger mb-0"
-                                                                style="font-size: 15px;">* </span></label>
+                                                        <label>Branch Name </label>
                                                         <input type="text" class="form-control" formControlName="name"
                                                             [(ngModel)]="branchModel.branch_name"
                                                             placeholder="Enter Branch Name">
@@ -39,8 +38,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Opend On<span class="danger mb-0"
-                                                                style="font-size: 15px;">* </span></label>
+                                                        <label>Opend On </label>
 
                                                         <input placeholder="Enter Opend Date" autocomplete="off"
                                                             formControlName="opendOn" ngbDatepicker
@@ -82,8 +80,7 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Mobile<span class="danger mb-0"
-                                                                style="font-size: 15px;">* </span></label>
+                                                        <label>Mobile</label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="branchModel.contact" placeholder="Enter Mobile"
                                                             formControlName="mobile">
@@ -91,8 +88,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Email<span class="danger mb-0" style="font-size: 15px;">*
-                                                            </span></label>
+                                                        <label>Email</label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="branchModel.email" placeholder="Enter email"
                                                             formControlName="email">
@@ -103,7 +99,8 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label>Slot for Appointment</label>
-                                                        <select class="form-control" [(ngModel)]="branchModel.slot_for_appointment"
+                                                        <select class="form-control"
+                                                            [(ngModel)]="branchModel.slot_for_appointment"
                                                             formControlName="slotOfApp">
                                                             <option value="1">1</option>
                                                             <option value="2"> 2 </option>
@@ -120,8 +117,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label>Address<span class="danger mb-0"
-                                                                style="font-size: 15px;">* </span></label>
+                                                        <label>Address </label>
                                                         <textarea type="text" class="form-control"
                                                             [(ngModel)]="branchModel.address" formControlName="address"
                                                             placeholder="Enter service description"></textarea>
@@ -144,8 +140,9 @@
                                     <div matchHeight="card" *ngIf="!inProgressPermissions">
                                         <div class="row">
                                             <div class="col-12 text-right">
-                                                <button class=" mysalontheme-btn-md mb-1" (click)="updatePermissions()"><i
-                                                        class="fa fa-check"></i> &nbsp; Update
+                                                <button class=" mysalontheme-btn-md mb-1"
+                                                    (click)="updatePermissions()"><i class="fa fa-check"></i> &nbsp;
+                                                    Update
                                                     Permissions</button>
                                             </div>
                                         </div>

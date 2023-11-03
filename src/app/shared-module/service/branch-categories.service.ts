@@ -51,7 +51,7 @@ export class ServiceAndCategoryServices {
 
   public deleteCategory(category_id: number): Observable<ResponseModel<boolean>> {
     var token = this.commonService.getUserToken();
-    return this.http.get<ResponseModel<boolean>>(this.commonService.rootUrl + 'deleteCategory?category_id=' + category_id, {
+    return this.http.get<ResponseModel<boolean>>(this.commonService.rootUrl + 'deleteCategory?categoryId=' + category_id, {
       headers: new HttpHeaders().set('Authorization', token)
     });
   }
