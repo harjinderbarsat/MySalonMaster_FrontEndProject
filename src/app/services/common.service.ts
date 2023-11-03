@@ -53,7 +53,7 @@ export class CommonService {
 
   setAPIUrl() {
     //Testing 
-    this.rootUrl = "https://apis.rimpi.app/public/api/"
+    this.rootUrl = "https://apis.mysalonmaster.com/api/"
     // Producation
     //this.rootUrl="https://www.rimpi.app/API/api.hawksystems.app/public/api/"
   }

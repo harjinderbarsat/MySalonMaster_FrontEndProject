@@ -17,10 +17,10 @@
                                             <div class="contailer-div" *ngFor="let service of selectServicesList">
                                                 <div class="internal-div text-center" (click)="selectService(service)"
                                                     [ngClass]="{'mysalontheme-btn-color': !service.isSelected, 'my-salon-master':service.isSelected}">
-                                                    <img *ngIf="service.imageUrl && service.imageUrl!='https://api.hawksystems.app/public'"
+                                                    <img *ngIf="service.imageUrl && service.imageUrl!='https://apis.mysalonmaster.com/public'"
                                                         class="product-grid-image" src="{{service.imageUrl}}"
                                                         alt="Card image cap">
-                                                    <img *ngIf="!service.imageUrl||service.imageUrl=='https://api.hawksystems.app/public'"
+                                                    <img *ngIf="!service.imageUrl||service.imageUrl=='https://apis.mysalonmaster.com/public'"
                                                         class="product-grid-image"
                                                         src="../../../../assets/apex-v6.0/img/custom/dummyProfilePicture.png "
                                                         alt="Card image cap">

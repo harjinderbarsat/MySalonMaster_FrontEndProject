@@ -1,9 +1,9 @@
 {
     "/api/*": {
-        "target": "http://api.hawkSystem.com",
+        "target": "http://apis.mysalonmaster.com",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug",
-        "pathRewrite": { "^/api": "http://api.hawkSystem.com" }
+        "pathRewrite": { "^/api": "http://apis.mysalonmaster.com" }
     }
 }
