@@ -50,9 +50,9 @@ export class WalkInAppointmentTimeComponent implements OnInit {
     this.currentUser = this.cService.getUserProfile();
 
     setTimeout(() => {
-      if (this.currentUser && this.currentUser.branch_id) {
+      if (this.currentUser && this.currentUser.branchId) {
         this.inProgress = true;
-        this.getBranch(this.currentUser.branch_id);
+        this.getBranch(this.currentUser.branchId);
       }
     }, 2000);
   }
@@ -99,7 +99,7 @@ export class WalkInAppointmentTimeComponent implements OnInit {
   getNumberOfAppointmentForTheSlot() {
     this.alreadyBookedSlots = 0;
     this.appointmentModel.dateAndTime = this.datePipe.transform(new Date(this.selectedDate.year, (this.selectedDate.month - 1), this.selectedDate.day), 'yyyy-MM-dd');
-    if (this.currentUser && this.currentUser.branch_id) {
+    if (this.currentUser && this.currentUser.branchId) {
       this.inProgress = true;
       this.branchService.getAppointmentBookedSlot(this.appointmentModel.dateAndTime.toString(), this.hours).subscribe(async response => {
         this.inProgress = false;

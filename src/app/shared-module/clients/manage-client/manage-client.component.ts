@@ -89,7 +89,7 @@ export class ManageClientComponent implements OnInit {
           window.location.href = this.backURL;
         }
         else
-          window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/customer";
+          window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/customer";
         this.inProgress = false;
       }, async error => {
         this.inProgress = false;
@@ -98,7 +98,7 @@ export class ManageClientComponent implements OnInit {
     } else {
       this.clientService.saveClient(this.clientInfo).subscribe(async response => {
         this.cService.getToaster('Client saved succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/customer";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/customer";
 
 
         this.inProgress = false;

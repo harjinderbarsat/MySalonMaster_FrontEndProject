@@ -174,9 +174,9 @@ export class PaymentComponent implements OnInit {
           this.genInvoice(this.invoicePrintMpdal);
         } else {
           if (this.paymentFor == 'appointment')
-            window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/in-progress-appointments";
+            window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/in-progress-appointments";
           else if (this.paymentFor == 'product')
-            window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-sale-history";
+            window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale-history";
 
         }
       });
@@ -231,9 +231,9 @@ export class PaymentComponent implements OnInit {
   closeInvoiceModal() {
     this.modalService.dismissAll();
     if (this.paymentFor == 'appointment')
-      window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/in-progress-appointments";
+      window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/in-progress-appointments";
     else if (this.paymentFor == 'product')
-      window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-sale-history";
+      window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale-history";
 
   }
 

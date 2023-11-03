@@ -20,7 +20,7 @@ export class EmployeeComponent implements OnInit {
   isBranchPannel: boolean;
   ngOnInit() {
     this.currentUser = this.cService.getUserProfile();
-    this.isBranchPannel = this.currentUser.user_type == 'branch';
+    this.isBranchPannel = this.currentUser.userType == 'branch';
     this.inProgress = false;
     this.employeesList = new Array<EmployeeModel>();
     this.getEmployeeList();
@@ -65,7 +65,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   addEditEmployee(id: number) {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/manage-employee/" + id;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/manage-employee/" + id;
   }
 
   updatedEmployeeStatus(employee: EmployeeModel, status: string) {

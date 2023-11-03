@@ -21,7 +21,7 @@ export class SuperAdminSidebarComponent implements OnInit {
   constructor(private router: Router, private cService: CommonService,) { }
   ngOnInit() {
     this.currentUser = this.cService.getUserProfile();
-    this.isAdminUser = this.currentUser.user_type == 'admin';
+    this.isAdminUser = this.currentUser.userType == 'admin';
     this.SideMenuTitle = "System Admin";
     $.getScript('./assets/apex-v6.0/js/app-sidebar.js');
     this.menuItems = SUPER_ADMIN_ROUTES.filter(menuItem => menuItem);

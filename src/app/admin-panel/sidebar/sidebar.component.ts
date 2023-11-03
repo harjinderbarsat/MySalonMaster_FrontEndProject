@@ -26,7 +26,7 @@ export class sidebarComponent implements OnInit {
   constructor(private router: Router, private cService: CommonService, private loginService: LoginService, private cookieService: CookieService) { }
   ngOnInit() {
     this.currentUser = this.cService.getUserProfile();
-    this.isAdminUser = this.currentUser.user_type == 'admin';
+    this.isAdminUser = this.currentUser.userType == 'admin';
     this.SideMenuTitle = this.isAdminUser ? 'Admin' : this.currentUser.name;
     $.getScript('./assets/apex-v6.0/js/app-sidebar.js');
     this.menuItems = BRANCH_ROUTES.filter(menuItem => menuItem);

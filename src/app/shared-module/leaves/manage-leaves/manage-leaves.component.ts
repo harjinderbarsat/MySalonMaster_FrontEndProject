@@ -55,7 +55,7 @@ export class ManageLeavesComponent implements OnInit {
       this.getLeaves(this.id)
     }
     this.currentUser = this.cService.getUserProfile();
-    if (this.currentUser.user_type != 'employee')
+    if (this.currentUser.userType != 'employee')
       this.getEmployeeList();
   }
 
@@ -83,7 +83,7 @@ export class ManageLeavesComponent implements OnInit {
 
   saveLeaves() {
     if (this.leavesForm.valid) {
-      if (this.currentUser.user_type != 'employee' && this.leavesInfo && (!this.leavesInfo.employee_id || this.leavesInfo.employee_id.toString() == '0' || this.leavesInfo.employee_id.toString() == '')) {
+      if (this.currentUser.userType != 'employee' && this.leavesInfo && (!this.leavesInfo.employee_id || this.leavesInfo.employee_id.toString() == '0' || this.leavesInfo.employee_id.toString() == '')) {
         this.cService.getToaster('Please select Employee', 'error', 'Error');
       }
       else {
@@ -105,7 +105,7 @@ export class ManageLeavesComponent implements OnInit {
         if (this.isEditMode) {
           this.leavesService.updateLeaves(this.leavesInfo).subscribe(async response => {
             this.cService.getToaster('Leaves updated succesfully', 'success', 'Success');
-            window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/leaves";
+            window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/leaves";
             this.inProgress = false;
           }, async error => {
             this.inProgress = false;
@@ -114,7 +114,7 @@ export class ManageLeavesComponent implements OnInit {
         } else {
           this.leavesService.saveLeaves(this.leavesInfo).subscribe(async response => {
             this.cService.getToaster('Leaves saved succesfully', 'success', 'Success');
-            window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/leaves";
+            window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/leaves";
             this.inProgress = false;
           }, async error => {
             this.inProgress = false;

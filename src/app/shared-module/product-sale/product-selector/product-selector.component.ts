@@ -163,7 +163,7 @@ export class ProductSelectorComponent implements OnInit {
         this.productSaleService.saveProductSale(this.productSaleModel).subscribe(async response => {
           if (response && response.isSuccess) {
             this.cService.getToaster('Product Saled', 'success', 'Success');
-            window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/payment/" + response.data[0].id + "/product";
+            window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/payment/" + response.data[0].id + "/product";
 
           }
         }, async error => {
@@ -189,7 +189,7 @@ export class ProductSelectorComponent implements OnInit {
   }
 
   back() {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-sale";
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale";
   }
   closeModal() {
     this.modalService.dismissAll();

@@ -97,7 +97,7 @@ export class ManageServiceComponent implements OnInit {
       this.selectedService.description = this.selectedService.description ? this.selectedService.description : "";
       this.servicesService.updateService(this.selectedService).subscribe(async response => {
         this.cService.getToaster('Service updated succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/serviceList";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/serviceList";
         this.inProgress = false;
       }, async error => {
         this.inProgress = false;
@@ -106,7 +106,7 @@ export class ManageServiceComponent implements OnInit {
     } else {
       this.servicesService.saveService(this.selectedService).subscribe(async response => {
         this.cService.getToaster('Service saved succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/serviceList";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/serviceList";
 
         this.inProgress = false;
       }, async error => {

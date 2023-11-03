@@ -87,7 +87,7 @@ export class ManageEmployeeComponent implements OnInit {
     if (this.isEditMode) {
       this.employeeService.updateEmployee(this.employeeInfo).subscribe(async response => {
         this.cService.getToaster('Employee updated succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/employees";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/employees";
         this.inProgress = false;
       }, async error => {
         this.inProgress = false;
@@ -96,7 +96,7 @@ export class ManageEmployeeComponent implements OnInit {
     } else {
       this.employeeService.saveEmployee(this.employeeInfo).subscribe(async response => {
         this.cService.getToaster('Employee saved succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/employees";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/employees";
 
 
         this.inProgress = false;

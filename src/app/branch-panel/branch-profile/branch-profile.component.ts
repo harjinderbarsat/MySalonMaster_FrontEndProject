@@ -28,7 +28,7 @@ export class BranchProfileComponent implements OnInit {
 
     this.branchModel = new BranchModel();
     this.currentUser = this.cService.getUserProfile();
-    this.getBranch(this.currentUser.branch_id);
+    this.getBranch(this.currentUser.branchId);
     this.inProgress = false;
   }
 
@@ -81,7 +81,7 @@ export class BranchProfileComponent implements OnInit {
 
   getMyProfileDetail() {
     this.isEditMode = false;
-    this.getBranch(this.currentUser.branch_id);
+    this.getBranch(this.currentUser.branchId);
   }
 
   updateProfile() {

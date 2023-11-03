@@ -30,7 +30,7 @@ export class AppointmentsService {
     let currentUser = this.commonService.getUserProfile();
     let url = this.commonService.rootUrl + 'getAppointmentById?appointmentsId=' + appointmentsId;
     if (currentUser) {
-      url += (currentUser.user_type == 'admin' ? ("&admin_id=" + currentUser.id) : ('&branch_id=' + currentUser.branch_id));
+      url += (currentUser.userType == 'admin' ? ("&admin_id=" + currentUser.id) : ('&branch_id=' + currentUser.branchId));
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');
@@ -50,11 +50,11 @@ export class AppointmentsService {
   public saveAppointment(appointmentsData: AppointmentsModel): Observable<ResponseModel<AppointmentsModel>> {
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
-      if (currentUser.user_type == 'admin') {
+      if (currentUser.userType == 'admin') {
         appointmentsData.admin_id = currentUser.id;
       }
       else {
-        appointmentsData.branch_id = currentUser.branch_id;
+        appointmentsData.branch_id = currentUser.branchId;
       }
     }
     else {

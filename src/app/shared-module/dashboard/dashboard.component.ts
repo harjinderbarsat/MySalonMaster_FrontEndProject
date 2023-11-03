@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
         this.dashBoardData = new DashboardModel();
         this.getDashboardData();
         this.currentUser = this.cService.getUserProfile();
-        this.isBranchPannel = this.currentUser.user_type == 'branch';
+        this.isBranchPannel = this.currentUser.userType == 'branch';
         this.clients = new Array<ClientModel>();
 
         this.appointmentsList = new Array<AppointmentsModel>();
@@ -137,25 +137,25 @@ export class DashboardComponent implements OnInit {
     }
 
     viewAppointments() {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/upcoming-appointments";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/upcoming-appointments";
     }
 
     viewEmployee() {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/employees";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/employees";
 
     }
 
     viewProductSale() {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-sale-history";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale-history";
     }
 
     viewSale() {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/daily-sale";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/daily-sale";
 
     }
 
     viewClients() {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/customer";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/customer";
 
     }
 

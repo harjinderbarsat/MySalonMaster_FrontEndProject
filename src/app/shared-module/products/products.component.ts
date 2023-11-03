@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit {
     this.getParentProductCategoryList();
     this.getProductCategoryList();
     this.currentUser = this.cService.getUserProfile();
-    this.isBranchPannel = this.currentUser.user_type == 'branch';
+    this.isBranchPannel = this.currentUser.userType == 'branch';
   }
 
   getProductsList() {
@@ -70,7 +70,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct(id: number) {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/manage-products/" + id;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/manage-products/" + id;
   }
 
   categories: Array<ProductCategoryModel> = new Array<ProductCategoryModel>();

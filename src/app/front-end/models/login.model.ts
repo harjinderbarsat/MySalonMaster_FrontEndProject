@@ -26,11 +26,11 @@ export enum user_type {
 export class User {
     admin: string;
     username: string;
-    user_type: string;
+    userType: string;
     name: string;
     id: number;
     email: string;
-    employee_id: number;
-    created_at: string;
-    branch_id: number;
+    employeeId: number;
+    createdAt: string;
+    branchId: number;
 }

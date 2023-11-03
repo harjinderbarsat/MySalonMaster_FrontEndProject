@@ -330,7 +330,7 @@ export class WeeklschduleComponent implements OnInit {
           this.getAppointmentsList();
         } else if (response.data.status == 'completed') {
           this.cService.getToaster('Appointment finished succesfully', 'success', 'Success');
-          window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/payment/" + response.data.id + "/appointment";
+          window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/payment/" + response.data.id + "/appointment";
         }
       }
       this.inProgress = false;

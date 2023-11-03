@@ -115,7 +115,7 @@ export class DocuemntsComponent implements OnInit {
     this.allDocsOfEmployee = new Array<DocumentsModel>();
     this.nameOfCurrentSelectedFile = '';
 
-    this.documentService.getEmployeeDocument(this.currentUser.employee_id).subscribe(async response => {
+    this.documentService.getEmployeeDocument(this.currentUser.employeeId).subscribe(async response => {
       this.updatingDocuments = false;
       if (response != null && response.isSuccess === true) {
         this.allDocsOfEmployee = response.data;

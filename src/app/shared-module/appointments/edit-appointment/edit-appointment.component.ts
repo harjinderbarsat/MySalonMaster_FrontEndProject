@@ -174,13 +174,13 @@ export class EditAppointmentComponent implements OnInit {
         this.cService.getToaster('Appointment updated succesfully', 'success', 'Success');
 
         if (this.appointmentInfo.status == 'upcoming') {
-          window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/upcoming-appointments";
+          window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/upcoming-appointments";
 
         } else if (this.appointmentInfo.status == 'in-progress') {
-          window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/in-progress-appointments";
+          window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/in-progress-appointments";
 
         } else if (this.appointmentInfo.status == 'completed') {
-          window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/historic-appointments";
+          window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/historic-appointments";
         }
 
         this.inProgress = false;
@@ -191,7 +191,7 @@ export class EditAppointmentComponent implements OnInit {
     } else {
       this.appointmentService.saveAppointment(this.appointmentInfo).subscribe(async response => {
         this.cService.getToaster('Appointment saved succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/appointments/inProgress";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/appointments/inProgress";
 
 
         this.inProgress = false;
@@ -204,7 +204,7 @@ export class EditAppointmentComponent implements OnInit {
 
   editClient(id: number) {
     localStorage.setItem("appointmentURL", window.location.href);
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/manage-clients/" + id;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/manage-clients/" + id;
   }
 
 

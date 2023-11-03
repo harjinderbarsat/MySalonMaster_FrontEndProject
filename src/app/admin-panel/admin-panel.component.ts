@@ -15,7 +15,7 @@ export class AdminPanelComponent implements OnInit {
   sideMenuTitle: string
   ngOnInit() {
     this.currentUser = this.cService.getUserProfile();
-    this.isAdmin = this.currentUser.user_type === 'admin';
+    this.isAdmin = this.currentUser.userType === 'admin';
     this.sideMenuTitle = this.currentUser.username;
   }
 

@@ -17,7 +17,7 @@ export class AttendanceComponent implements OnInit {
 
   ngOnInit() {
     this.currentLoginUser = this.cService.getUserProfile();
-    if (this.currentLoginUser.user_type != 'employee') {
+    if (this.currentLoginUser.userType != 'employee') {
       this.getEmployeeList();
     } else {
       this.getEmployeeAttendance(null);
@@ -31,8 +31,8 @@ export class AttendanceComponent implements OnInit {
   employeesList: Array<EmployeeModel>;
 
   getEmployeeAttendance(event) {
-    if (this.currentLoginUser.user_type == 'employee') {
-      this.employeeCode = this.currentLoginUser.employee_id;
+    if (this.currentLoginUser.userType == 'employee') {
+      this.employeeCode = this.currentLoginUser.employeeId;
     } else {
       this.employeeCode = event.target.value;
     }

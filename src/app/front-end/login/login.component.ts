@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginData = new LoginModel();
-    debugger
     this.inProgress = false;
 
     this.user_type = '';
@@ -50,7 +49,6 @@ export class LoginComponent implements OnInit {
     }
     this.user = new LoginModel()
     this.inProgress = true;
-    debugger
     this.loginService.login(this.loginData).subscribe(async response => {
       if (response != null && response.access_token) {
         this.loginForm.reset();
@@ -75,13 +73,13 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userData', JSON.stringify(userData.data));
 
             this.cService.setCurrentLoginUser(userData.data);
-            if (userData.data.user_type == 'branch') {
+            if (userData.data.userType == 'branch') {
               window.location.href = window.location.origin + "/#/branch/dashboard";
-            } else if (userData.data.user_type == 'admin') {
+            } else if (userData.data.userType == 'admin') {
               window.location.href = window.location.origin + "/#/admin/dashboard";
-            } else if (userData.data.user_type == 'employee') {
+            } else if (userData.data.userType == 'employee') {
               window.location.href = window.location.origin + "/#/employee/dashboard";
-            } else if (userData.data.user_type == 'system admin') {
+            } else if (userData.data.userType == 'system admin') {
 
               employeeModel.username = this.loginData.username;
               employeeModel.passcode = this.loginData.password;

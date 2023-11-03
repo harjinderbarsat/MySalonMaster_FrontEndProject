@@ -72,7 +72,7 @@ export class ManageProductComponent implements OnInit {
     if (this.isEditMode) {
       this.productService.updateProduct(this.productInfo).subscribe(async response => {
         this.cService.getToaster('Product updated succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/products";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/products";
         this.inProgress = false;
       }, async error => {
         this.inProgress = false;
@@ -81,7 +81,7 @@ export class ManageProductComponent implements OnInit {
     } else {
       this.productService.saveProduct(this.productInfo).subscribe(async response => {
         this.cService.getToaster('Product saved succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/products";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/products";
 
 
         this.inProgress = false;

@@ -23,7 +23,7 @@ export class LeavesComponent implements OnInit {
     this.inProgress = false;
     this.leaves = new Array<LeavesModel>();
     this.currentUser = this.cService.getUserProfile();
-    this.isAdminUser = this.currentUser.user_type == "admin";
+    this.isAdminUser = this.currentUser.userType == "admin";
     this.getLeavessList();
 
   }
@@ -46,7 +46,7 @@ export class LeavesComponent implements OnInit {
       });
     } else {
       debugger
-      this.leavesService.getLeavesByEmployee(this.currentUser.employee_id).subscribe(async response => {
+      this.leavesService.getLeavesByEmployee(this.currentUser.employeeId).subscribe(async response => {
         if (response && response.isSuccess && response.data) {
           this.leaves = response.data;
           this.leaves.map(p => { p.status = Leaves_Status[p.status], p.leaveType = Leaves_Type[p.type] })
@@ -117,7 +117,7 @@ export class LeavesComponent implements OnInit {
   }
   addLeave = (e) => {
     let id = e && e.row && e.row.data ? e.row.data.id : 0;
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/manage-leaves/" + id;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/manage-leaves/" + id;
   }
 
   // Delete Multiple Funcationality 

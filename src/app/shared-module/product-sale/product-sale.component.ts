@@ -115,7 +115,7 @@ export class ProductSaleComponent implements OnInit {
         if (this.newClient.id) {
           this.clientService.updateClient(this.newClient).subscribe(async response => {
             if (response && response.data) {
-              window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-select/" + response.data.id;
+              window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-select/" + response.data.id;
             }
 
             this.inProgress = false;
@@ -127,7 +127,7 @@ export class ProductSaleComponent implements OnInit {
           this.clientService.saveClient(this.newClient).subscribe(async response => {
             if (response && response.data) {
               this.cService.getToaster('Client saved succesfully', 'success', 'Success');
-              window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-select/" + response.data.id;
+              window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-select/" + response.data.id;
               this.inProgress = false;
             }
           }, async error => {
@@ -136,7 +136,7 @@ export class ProductSaleComponent implements OnInit {
           });
         }
       } else {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-select/" + this.newClient.id;
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-select/" + this.newClient.id;
       }
     }
   }

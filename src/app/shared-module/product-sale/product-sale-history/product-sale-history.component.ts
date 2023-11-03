@@ -54,7 +54,7 @@ export class ProductSaleHistoryComponent implements OnInit {
   }
 
   goToSale() {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/product-sale";
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale";
   }
 
   productDetails: Array<ProductSaleDetailsModel>

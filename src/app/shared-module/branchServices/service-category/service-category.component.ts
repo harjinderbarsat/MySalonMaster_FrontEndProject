@@ -25,7 +25,7 @@ export class ServiceCategoryComponent implements OnInit {
     this.categories = new Array<ServiceCategoryModel>();
     this.getCategoryList();
     this.currentUser = this.cService.getUserProfile();
-    this.isBranchPannel = this.currentUser.user_type == 'branch';
+    this.isBranchPannel = this.currentUser.userType == 'branch';
   }
 
   openCategoryModal(content, category: ServiceCategoryModel, isEditMode: boolean) {

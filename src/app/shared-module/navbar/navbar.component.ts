@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.isCollapsed = false;
     this.currentUser = this.commonService.getUserProfile();
-    this.isBranchPannel = this.currentUser.user_type == 'branch';
+    this.isBranchPannel = this.currentUser.userType == 'branch';
   }
 
   ngAfterViewInit() { }

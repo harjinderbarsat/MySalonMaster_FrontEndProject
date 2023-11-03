@@ -98,7 +98,7 @@ export class ClientsComponent implements OnInit {
   }
 
   addClient(id: number) {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/manage-clients/" + id;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/manage-clients/" + id;
   }
 
   currentSelected: ClientModel;

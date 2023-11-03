@@ -21,7 +21,7 @@ export class BranchsServiceService {
       url += "?adminId=" + admin_id;
     }
     else
-      url += (currentUser.user_type == 'admin' ? ("?adminId=" + currentUser.id) : '');
+      url += (currentUser.userType == 'admin' ? ("?adminId=" + currentUser.id) : '');
     // return this.http.get<ResponseModel<Array<BranchModel>>>(url, {
     //   headers: new HttpHeaders().set('Authorization', token)
     // });

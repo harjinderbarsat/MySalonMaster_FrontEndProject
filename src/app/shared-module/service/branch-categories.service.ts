@@ -18,7 +18,7 @@ export class ServiceAndCategoryServices {
     let currentUser = this.commonService.getUserProfile();
     let url = this.commonService.rootUrl + 'getCategoryList';
     if (currentUser) {
-      url += (currentUser.user_type == 'admin' ? ("?admin_id=" + currentUser.id) : ('?branch_id=' + currentUser.branch_id));
+      url += (currentUser.userType == 'admin' ? ("?admin_id=" + currentUser.id) : ('?branch_id=' + currentUser.userType));
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');
@@ -68,7 +68,7 @@ export class ServiceAndCategoryServices {
     let currentUser = this.commonService.getUserProfile();
     let url = this.commonService.rootUrl + 'getServiceList';
     if (currentUser) {
-      url += (currentUser.user_type == 'admin' ? ("?admin_id=" + currentUser.id) : ('?branch_id=' + currentUser.branch_id));
+      url += (currentUser.userType == 'admin' ? ("?admin_id=" + currentUser.id) : ('?branch_id=' + currentUser.branchId));
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');

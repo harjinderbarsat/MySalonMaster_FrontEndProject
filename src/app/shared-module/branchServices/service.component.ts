@@ -30,7 +30,7 @@ export class ServiceComponent implements OnInit {
     this.getCategoriesList();
     this.getServicesList();
     this.currentUser = this.cService.getUserProfile();
-    this.isBranchPannel = this.currentUser.user_type == 'branch';
+    this.isBranchPannel = this.currentUser.userType == 'branch';
   }
 
   categoryList: Array<ServiceCategoryModel>;
@@ -94,7 +94,7 @@ export class ServiceComponent implements OnInit {
   }
 
   addEditNewService(serviceId: number) {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/manage-service/" + serviceId;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/manage-service/" + serviceId;
   }
 
   updatedServiceStatus(serviec: ServiceModel, status: string) {

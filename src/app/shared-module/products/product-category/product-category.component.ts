@@ -28,7 +28,7 @@ export class ProductCategoryComponent implements OnInit {
     this.getProductCategoryList();
     this.getParentProductCategoryList();
     this.currentUser = this.cService.getUserProfile();
-    this.isBranchPannel = this.currentUser.user_type == 'branch';
+    this.isBranchPannel = this.currentUser.userType == 'branch';
   }
 
   openProductCategoryModal(content, category: ProductCategoryModel, isEditMode: boolean) {

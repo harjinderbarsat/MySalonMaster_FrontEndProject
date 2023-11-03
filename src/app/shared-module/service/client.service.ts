@@ -29,7 +29,7 @@ export class ClientService {
 
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
-      url += (currentUser.user_type == 'admin' ? ("&admin_id=" + currentUser.id) : ('&branch_id=' + currentUser.branch_id));
+      url += (currentUser.userType == 'admin' ? ("&admin_id=" + currentUser.id) : ('&branch_id=' + currentUser.branchId));
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');
@@ -42,11 +42,11 @@ export class ClientService {
   public saveClient(clientData: ClientModel): Observable<ResponseModel<ClientModel>> {
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
-      if (currentUser.user_type == 'admin') {
+      if (currentUser.userType == 'admin') {
         clientData.admin_id = currentUser.id;
       }
       else {
-        clientData.branch_id = currentUser.branch_id;
+        clientData.branch_id = currentUser.branchId;
       }
     }
     else {
@@ -62,11 +62,11 @@ export class ClientService {
   public updateClient(clientData: ClientModel): Observable<ResponseModel<ClientModel>> {
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
-      if (currentUser.user_type == 'admin') {
+      if (currentUser.userType == 'admin') {
         clientData.admin_id = currentUser.id;
       }
       else {
-        clientData.branch_id = currentUser.branch_id;
+        clientData.branch_id = currentUser.branchId;
       }
     }
     else {

@@ -150,7 +150,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   addEditAppointment(appointmentId: number) {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/appointment-manage/" + appointmentId;
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/appointment-manage/" + appointmentId;
   }
 
   updatedAppointment: AppointmentsModel
@@ -188,7 +188,7 @@ export class AppointmentsComponent implements OnInit {
           this.getAppointmentsList();
         } else if (response.data.status == 'completed') {
           this.cService.getToaster('Appointment finished succesfully', 'success', 'Success');
-          window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/payment/" + response.data.id + "/appointment";
+          window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/payment/" + response.data.id + "/appointment";
         }
       }
       this.inProgress = false;
@@ -199,7 +199,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   appointmentPayment(id) {
-    window.location.href = window.location.origin + "/#/" + this.currentUser.user_type + "/payment/" + id + "/appointment";
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/payment/" + id + "/appointment";
   }
 
   clients: Array<ClientModel>
