@@ -1,19 +1,22 @@
 export class Payment {
     id: number;
+    adminId: number;
+    branchId: number;
     type: string;// 'cash' or 'card'
     date: number;
-    cash_paid: number;
-    card_paid: number;
+    cardPaid: number;
+    cashPaid: number;
     amount: number;
-    pending_amount: number;
+    pendingAmount: number;
     appointmentId: number;
     appointment_id: number;
-    product_sale_id: number;
-    client_id: number;
+    productSaleId: number;
+    clientId: number;
     client_name: string;
     employee_id: number;
     created_at: string;
-    pay_for: string; // 'product' Or 'appointment'
+    updatedAt: string;
+    payFor: string; // 'product' Or 'appointment'
     status: string;
 }
 

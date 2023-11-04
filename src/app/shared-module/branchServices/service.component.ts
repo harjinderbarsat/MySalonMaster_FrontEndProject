@@ -204,7 +204,7 @@ export class ServiceComponent implements OnInit {
     this.services = new Array<ServiceModel>();
     if (this.filterType != '') {
       if (this.filterType == 'category') {
-        this.services = this.servicesAll.filter(p => p.category_id == this.filterValue);
+        this.services = this.servicesAll.filter(p => p.categoryId == this.filterValue);
       } else if (this.filterType == 'status') {
         this.services = this.servicesAll.filter(p => p.status.toLowerCase() == this.filterValue.toLowerCase());
       } else if (this.filterType == 'name') {

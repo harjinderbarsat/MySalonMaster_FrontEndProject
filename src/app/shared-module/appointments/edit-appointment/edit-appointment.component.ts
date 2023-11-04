@@ -124,7 +124,7 @@ export class EditAppointmentComponent implements OnInit {
       if (response.isSuccess && response.data && response.data.length > 0) {
         this.categories = response.data;
         this.categories.forEach(l => {
-          let filterServices = this.services.filter(p => p.category_id == l.id);
+          let filterServices = this.services.filter(p => p.categoryId == l.id);
           if (this.appointmentInfo && this.appointmentInfo.servicesIds && this.appointmentInfo.servicesIds.length > 0) {
             filterServices.forEach(element => {
               this.appointmentInfo.servicesIds.forEach(sId => {

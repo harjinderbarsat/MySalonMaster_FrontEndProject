@@ -101,7 +101,7 @@
                 </div>
                 <div class="row pl-2 mt-1">
                     <div class="col-sm-4">
-                        <label><b>Cash Paid :</b> &nbsp;{{PaymentModel.cash_paid}}</label>
+                        <label><b>Cash Paid :</b> &nbsp;{{PaymentModel.cashPaid}}</label>
                         <button type="button" class=" mysalontheme-btn-md ml-5" *ngIf="!(ifTheCashPaymentDone || PaymentModel.pending_amount==0)"
                             (click)="paymentTransactionPopUp(paymentTransactionMpdal,'cash')">Pay By
                             Cash </button>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="row pl-2 mt-1">
                     <div class="col-sm-12">
-                        <label><b>EFTPOS :</b> &nbsp;{{PaymentModel.card_paid}}</label>
+                        <label><b>EFTPOS :</b> &nbsp;{{PaymentModel.cardPaid}}</label>
                         <button type="button" class=" mysalontheme-btn-md ml-5"
                             *ngIf="!(ifTheCardPaymentDone || PaymentModel.pending_amount==0)"
                             (click)="paymentTransactionPopUp(paymentTransactionMpdal,'card')"> Pay by
@@ -118,7 +118,7 @@
                 </div>
                 <div class="row pl-2 mt-1">
                     <div class="col-12">
-                        <label><b>Balance :</b> &nbsp; {{PaymentModel.pending_amount}}</label>
+                        <label><b>Balance :</b> &nbsp; {{PaymentModel.pendingAmount}}</label>
                     </div>
                 </div>
             </div>
@@ -143,14 +143,14 @@
     <div class="modal-body ">
         <div class="row">
             <div class="col-sm-12">
-                <input type="number" *ngIf="currentlyPayFor=='cash'" [(ngModel)]="PaymentModel.cash_paid" 
+                <input type="number" *ngIf="currentlyPayFor=='cash'" [(ngModel)]="PaymentModel.cashPaid" 
                     [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
                     class="form-control">
-                <input type="number" *ngIf="currentlyPayFor=='card'" [(ngModel)]="PaymentModel.card_paid"
+                <input type="number" *ngIf="currentlyPayFor=='card'" [(ngModel)]="PaymentModel.cardPaid"
                     [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
                     class="form-control">
                 <div *ngIf="checkAmountValidations()" class="err-validation">
-                    Please enter amount less than or equal to {{PaymentModel.pending_amount}}
+                    Please enter amount less than or equal to {{PaymentModel.pendingAmount}}
 
                 </div>
             </div>
@@ -315,8 +315,8 @@
                     <tr>
                         <td style="text-align: left;">
 
-                            Payment Method <br> <span *ngIf="ifTheCashPaymentDone">Cash: {{PaymentModel.cash_paid}}<br></span><span
-                                *ngIf="ifTheCardPaymentDone">Card: {{PaymentModel.card_paid}}<br></span>
+                            Payment Method <br> <span *ngIf="ifTheCashPaymentDone">Cash: {{PaymentModel.cashPaid}}<br></span><span
+                                *ngIf="ifTheCardPaymentDone">Card: {{PaymentModel.cardPaid}}<br></span>
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>

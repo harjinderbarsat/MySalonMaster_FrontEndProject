@@ -42,10 +42,10 @@ export class BranchProfileComponent implements OnInit {
         this.branchModel = response.data;
         this.branchForm = this.fb.group({
           contact: [this.branchModel.contact, [Validators.minLength(10), Validators.maxLength(10)]],
-          slot_for_appointment: [this.branchModel.slot_for_appointment, [Validators.min(1), Validators.max(10)]],
+          slot_for_appointment: [this.branchModel.slotForAppointment, [Validators.min(1), Validators.max(10)]],
           address: [this.branchModel.address, ''],
           email: [this.branchModel.email, [Validators.required]],
-          number_of_employee: [this.branchModel.number_of_employee, [Validators.pattern('^[0-9]+$')]],
+          number_of_employee: [this.branchModel.numberOfEmployee, [Validators.pattern('^[0-9]+$')]],
           passcode: [this.branchModel.passcode, [Validators.required, Validators.minLength(6)]]
         });
       }

@@ -32,7 +32,7 @@ export class ManageBranchComponent implements OnInit {
 
   ngOnInit() {
     this.branchModel = new BranchModel();
-    this.branchModel.slot_for_appointment = 1;
+    this.branchModel.slotForAppointment = 1;
     this.branchModel.status = '1';
     this.id = this.activeRoute.snapshot.params.id;
     if (this.id == 0) {
@@ -151,7 +151,7 @@ export class ManageBranchComponent implements OnInit {
         this.categories = catData;
         this.categories.forEach(l => {
           l.services = new Array<ServiceModel>();
-          l.services = this.services.filter(p => p.category_id == l.id);
+          l.services = this.services.filter(p => p.categoryId == l.id);
         })
         this.getServicePermissions();
       }
