@@ -31,7 +31,6 @@
                             "src/assets/apex-v6.0/sass/app.scss",
                             "node_modules/ngx-ui-switch/ui-switch.component.css",
                             "node_modules/ngx-toastr/toastr.css",
-                            "node_modules/devextreme/dist/css/dx.light.css",
                             "node_modules/chartist/dist/chartist.css"
                         ],
                         "scripts": [
@@ -107,7 +106,6 @@
                             "src/assets/apex-v6.0/sass/app.scss",
                             "node_modules/ngx-ui-switch/ui-switch.component.css",
                             "node_modules/ngx-toastr/toastr.css",
-                            "node_modules/devextreme/dist/css/dx.light.css",
                             "node_modules/chartist/dist/chartist.css"
                         ],
                         "scripts": ["node_modules/jquery/dist/jquery.js",

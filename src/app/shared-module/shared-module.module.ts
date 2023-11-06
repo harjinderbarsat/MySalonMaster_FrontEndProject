@@ -40,7 +40,6 @@ import { ProductSaleHistoryComponent } from './product-sale/product-sale-history
 import { PaymentComponent } from './payment/payment.component';
 import { ProductSelectorComponent } from './product-sale/product-selector/product-selector.component';
 import { NewProductCategoryComponent } from './Common-Components/new-product-category/new-product-category.component';
-import { DxDataGridModule } from 'devextreme-angular';
 import { AdminComponent } from './admins/admin.component';
 import { ManageAdminComponent } from './admins/manage-admin/manage-admin.component';
 import { NgxPrintModule } from 'ngx-print';
@@ -107,7 +106,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     }),
     ChartistModule,
     RouterModule,
-    DxDataGridModule,
     NgxPrintModule
   ],
   exports: [

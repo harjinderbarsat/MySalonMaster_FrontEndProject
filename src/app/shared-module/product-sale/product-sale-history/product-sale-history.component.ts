@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { parse } from 'querystring';
 import { User } from 'src/app/front-end/models/login.model';
 import { CommonService } from 'src/app/services/common.service';
 import { ProductSaleDetailsModel, ProductSaleModel } from '../../models/product-sale-model';

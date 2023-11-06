@@ -16,7 +16,7 @@
             <div class="card" id="print-section">
                 <div class="card-content">
                     <div class="card-body">
-                        <!-- <table class="table">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>
@@ -79,9 +79,9 @@
                                 </tr>
 
                             </tbody>
-                        </table> -->
+                        </table>
 
-                        <dx-data-grid  id="gridContainer" [dataSource]="dataSource"
+                        <!-- <dx-data-grid  id="gridContainer" [dataSource]="dataSource"
                             [showBorders]="true" [remoteOperations]="true"
                             (onSelectionChanged)="onSelectionChanged($event)">
                             <dxo-filter-row [visible]="true"></dxo-filter-row>
@@ -94,12 +94,12 @@
                             <dxi-column dataField="startFrom" dataType="date"> </dxi-column>
                             <dxi-column dataField="endAt" dataType="date"> </dxi-column>
                             <dxi-column dataField="created_at" dataType="date"> </dxi-column>
-                            <dxi-column dataField="status" dataType="string"> </dxi-column> -->
+                            <dxi-column dataField="status" dataType="string"> </dxi-column> 
                             <dxi-column type="buttons" [width]="110" cssClass="buttons-td">
-                                <!-- <dxi-button hint="View" icon="fa fa-eye" [onClick]="viewLeave"
+                               <dxi-button hint="View" icon="fa fa-eye" [onClick]="viewLeave"
                                     class="mysalontheme-btn-sm mr-1 mb-0">
                                     <i class="fa fa-eye"></i>
-                                </dxi-button> -->
+                                </dxi-button> 
                                 <dxi-button hint="Edit" icon="fa fa-edit" [visible]="!isAdminUser"
                                     [onClick]="addLeave" class="mysalontheme-btn-sm mr-1 mb-0"><i
                                         class="fa fa-edit"></i></dxi-button>
@@ -115,7 +115,7 @@
                             </dxi-column>
                             <dxo-paging [pageSize]="5"></dxo-paging>
                             <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>
-                        </dx-data-grid>
+                        </dx-data-grid> -->
                     </div>
                 </div>
             </div>
