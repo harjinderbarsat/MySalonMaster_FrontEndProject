@@ -25,7 +25,8 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>first Name<span class="danger mb-0" style="font-size: 15px;">* </span></label>
+                                                        <label>First Name<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="employeeInfo.firstname"
                                                             formControlName='firstname' placeholder="Enter firstname">
@@ -33,17 +34,18 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>last Name<span class="danger mb-0" style="font-size: 15px;">* </span></label>
+                                                        <label>last Name</label>
                                                         <input type="text" class="form-control"
-                                                            [(ngModel)]="employeeInfo.lastname" formControlName='lastname'
-                                                            placeholder="Enter lastname">
+                                                            [(ngModel)]="employeeInfo.lastname"
+                                                            formControlName='lastname' placeholder="Enter lastname">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Mobile<span class="danger mb-0" style="font-size: 15px;">* </span></label>
+                                                        <label>Mobile<span class="danger mb-0"
+                                                                style="font-size: 15px;">* </span></label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="employeeInfo.mobile" formControlName='mobile'
                                                             placeholder="Enter mobile number">
@@ -51,7 +53,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Email<span class="danger mb-0" style="font-size: 15px;">* </span></label>
+                                                        <label>Email</label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="employeeInfo.email" formControlName='email'
                                                             placeholder="Enter email">
@@ -61,39 +63,55 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Date Of Birth<span class="danger mb-0" style="font-size: 15px;">* </span></label>
-                                                        <input placeholder="Enter Date Of Birth" [minDate]="{year: 1950, month: 1, day: 1}" autocomplete="off"
-                                                            ngbDatepicker #remove1="ngbDatepicker"
+                                                        <label>Date Of Birth</label>
+                                                        <input placeholder="Enter Date Of Birth"
+                                                            [minDate]="{year: 1970, month: 1, day: 1}"
+                                                            autocomplete="off" ngbDatepicker #remove1="ngbDatepicker"
                                                             (click)="remove1.toggle()" class="form-control"
-                                                            formControlName='date_of_birth' [(ngModel)]="ngbDateOfBirth">
+                                                            formControlName='date_of_birth'
+                                                            [(ngModel)]="ngbDateOfBirth">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
-                                                        <label>Date Of Joining<span class="danger mb-0" style="font-size: 15px;">* </span></label>
-                                                        <input placeholder="Enter Joining Date" autocomplete="off"
-                                                    ngbDatepicker #remove="ngbDatepicker" [minDate]="{year: 1950, month: 1, day: 1}"
-                                                    (click)="remove.toggle()" class="form-control"
-                                                    formControlName='dateOfJoining' [(ngModel)]="ngbDateOfJoining">
+                                                    <label>Date Of Joining </label>
+                                                    <input placeholder="Enter Joining Date" autocomplete="off"
+                                                        ngbDatepicker #remove="ngbDatepicker"
+                                                        [minDate]="{year: 2000, month: 1, day: 1}"
+                                                        (click)="remove.toggle()" class="form-control"
+                                                        formControlName='dateOfJoining' [(ngModel)]="ngbDateOfJoining">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Designation<span class="danger mb-0" style="font-size: 15px;">* </span></label>
-                                                        <select class="form-control"  [(ngModel)]="employeeInfo.designation" formControlName="designation">
-                                                            <option value="Owner">Owner</option>
-                                                            <option value="Manager"> Manager </option>
-                                                            <option value="Staff Member">Staff Member</option>
-                                                            <option value="Hair Dresser">Hair Dresser </option>
-                                                            <option value="Beautician "> Beautician  </option>
+                                                        <label>Designation</label>
+                                                        <select class="form-control"
+                                                            [(ngModel)]="employeeInfo.designation"
+                                                            formControlName="designation">
+                                                            <option value="Salon Manager"> Salon Manager </option>
+                                                            <option value="Hairstylist"> Hairstylist </option>
+                                                            <option value="Beautician"> Beautician </option>
+                                                            <option value="Barber"> Barber </option>
+                                                            <option value="Waxing Specialist"> Waxing Specialist
+                                                            </option>
+                                                            <option value="Makeup Artist"> Makeup Artist </option>
+                                                            <option value="Nail technician"> Nail technician </option>
+                                                            <option value="Receptionist"> Receptionist </option>
+                                                            <option value="Massage therapist"> Massage therapist
+                                                            </option>
+                                                            <option value="Shampoo assistant">Shampoo assistant
+                                                            </option>
+                                                            <option value="Cleaner">Cleaner</option>
+                                                            <option value="Beautician"> Beautician </option>
                                                         </select>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-6">
-                                                    <label>employee Unique Id<span class="danger mb-0" style="font-size: 15px;">* </span></label>
+                                                    <label>employee Unique Id </label>
                                                     <input type="text" class="form-control"
                                                         [(ngModel)]="employeeInfo.employeeUniqueId"
-                                                        formControlName='employeeUniqueId' placeholder="Enter employee Unique Id">
+                                                        formControlName='employeeUniqueId'
+                                                        placeholder="Enter employee Unique Id">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -116,8 +134,8 @@
             </div>
             <div class="row" *ngIf="inProgress">
                 <div class="col-md-12 text-center align-middle">
-                     <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
-                    
+                    <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
                 </div>
             </div>
         </div>

@@ -32,8 +32,8 @@ export class ManageEmployeeComponent implements OnInit {
 
     this.employeeForm = this.fb.group({
       firstname: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+.[a-zA-Z]{2,4}$')]],
+      lastname: ['', ''],
+      email: ['', [Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+.[a-zA-Z]{2,4}$')]],
       employeeUniqueId: ['', [Validators.required]],
       date_of_birth: ['', [Validators.required]],
       dateOfJoining: ['', [Validators.required]],

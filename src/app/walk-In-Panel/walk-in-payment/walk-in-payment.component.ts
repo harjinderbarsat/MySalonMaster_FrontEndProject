@@ -125,7 +125,7 @@ export class WalkInPaymentComponent implements OnInit {
       if (response && response.data && response.data.id) {
         this.paymentModel = new Payment();
         this.paymentModel.appointmentId = response.data.id;
-        this.paymentModel.client_id = response.data.customerId;
+        this.paymentModel.clientId = response.data.customerId;
         this.paymentModel.amount = response.data.totalAmount;
         this.paymentModel.status = response.data.paymentType;
         this.paymentModel.type = response.data.payment;

@@ -54,18 +54,18 @@ export class DailySaleComponent implements OnInit {
         if (response.data && response.data.length > 0) {
           this.payments = response.data;
           this.payments.forEach(p => {
-            if (p.pay_for == 'product') {
+            if (p.payFor == 'product') {
               this.transaction.productSaleCount = Number(this.transaction.productSaleCount) + 1;
               this.transaction.productSaleAmmount = Number(this.transaction.productSaleAmmount) + Number(p.amount);
-            } else if (p.pay_for == 'appointment') {
+            } else if (p.payFor == 'appointment') {
               this.transaction.appoinmentsCount = Number(this.transaction.appoinmentsCount) + 1;
               this.transaction.appoinmentsAmmount = Number(this.transaction.appoinmentsAmmount) + Number(p.amount);
             }
             this.transaction.totalSale = Number(this.transaction.totalSale) + Number(p.amount);
-            this.cashMovement.CashAmmount = Number(this.cashMovement.CashAmmount) + Number(p.cash_paid);
-            this.cashMovement.cardAmmount = Number(this.cashMovement.cardAmmount) + Number(p.card_paid);
+            this.cashMovement.CashAmmount = Number(this.cashMovement.CashAmmount) + Number(p.cashPaid);
+            this.cashMovement.cardAmmount = Number(this.cashMovement.cardAmmount) + Number(p.cardPaid);
             this.cashMovement.totalSale = Number(this.cashMovement.totalSale) + Number(p.amount);
-            p.pay_for = p.pay_for && p.pay_for != '' ? p.pay_for.toLocaleUpperCase() : '';
+            p.payFor = p.payFor && p.payFor != '' ? p.payFor.toLocaleUpperCase() : '';
           })
         } else {
           this.cService.getToaster('Data does not exists', 'info', 'No Data Found');

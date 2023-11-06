@@ -114,11 +114,11 @@
                     <hr>
                     <div class="row">
                         <div class="col-6"><b> Total Employee <span class="pull-right">:</span></b></div>
-                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.number_of_employee}}</div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.numberOfEmployee}}</div>
                         <div class="col-6" *ngIf="isEditMode">
                             <div class="row">
                                 <div class="col-6"><input formControlName='number_of_employee' type="text"
-                                        class="form-control" [(ngModel)]="branchModel.number_of_employee"
+                                        class="form-control" [(ngModel)]="branchModel.numberOfEmployee"
                                         placeholder="Enter Total Employee">
                                     <div *ngIf="formAlias.number_of_employee.errors" class="err-validation">
                                         Please enter numbers only.
@@ -130,11 +130,11 @@
                     <hr>
                     <div class="row">
                         <div class="col-6"><b> Slot For Appointment at a time<span class="pull-right">:</span></b></div>
-                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.slot_for_appointment}}</div>
+                        <div class="col-6" *ngIf="!isEditMode">{{branchModel.slotForAppointment}}</div>
                         <div class="col-6" *ngIf="isEditMode">
                             <div class="row">
                                 <div class="col-6"><input formControlName='slot_for_appointment' type="number"
-                                        class="form-control" [(ngModel)]="branchModel.slot_for_appointment"
+                                        class="form-control" [(ngModel)]="branchModel.slotForAppointment"
                                         placeholder="Enter Total Slot For Appointment">
                                     <div *ngIf="formAlias.slot_for_appointment.errors" class="err-validation">
                                         Please enter 1 to 10 numbers only.

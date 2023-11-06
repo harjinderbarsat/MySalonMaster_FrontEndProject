@@ -40,7 +40,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
-                                                    <div class="form-group" *ngIf="currentUser.user_type != 'employee'">
+                                                    <div class="form-group" *ngIf="currentUser.userType != 'employee'">
                                                         <label>Employee<span class="err-lbl">*</span></label>
                                                         <select class="form-control"
                                                         [(ngModel)]="leavesInfo.employee_id"

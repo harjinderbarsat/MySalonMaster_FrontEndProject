@@ -16,7 +16,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { ChartistModule } from 'ng-chartist';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { ServiceComponent } from './branchServices/service.component';
@@ -94,6 +94,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AttendanceComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     NgbModule,
     ReactiveFormsModule,

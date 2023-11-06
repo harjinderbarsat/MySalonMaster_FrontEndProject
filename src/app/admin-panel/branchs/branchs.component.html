@@ -80,11 +80,11 @@
     <div class="modal-body ">
         <div class="row">
             <div class="col-md-6">
-                <label> <b>Name : </b> {{currentSelected.branch_name}}</label><br>
+                <label> <b>Name : </b> {{currentSelected.branchName}}</label><br>
                 <label> <b>Branch Code (Username) : </b> {{currentSelected.code}}</label><br>
                 <label> <b>Email : </b> {{currentSelected.email}}</label><br>
                 <!-- <label> <b>Number of Employees: </b> {{currentSelected.number_of_employee}}</label><br> -->
-                <label> <b>Created At: </b> {{cService.getStringDateFormatByCurtureAndType(currentSelected.created_at, false)}}</label><br>
+                <label> <b>Created At: </b> {{cService.getStringDateFormatByCurtureAndType(currentSelected.createdAt, false)}}</label><br>
             </div>
             <div class="col-md-6">
                 <label> <b>Opened On: </b> {{cService.getStringDateFormatByCurtureAndType(currentSelected.opened_on, false)}}</label><br>

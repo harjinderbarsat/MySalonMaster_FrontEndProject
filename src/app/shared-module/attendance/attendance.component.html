@@ -8,7 +8,7 @@
                             <h3>Attendance</h3>
                         </div>
                         <div class="col-2">
-                            <div class="form-group" *ngIf="currentLoginUser.user_type != 'employee'">
+                            <div class="form-group" *ngIf="currentLoginUser.userType != 'employee'">
                                 <select class="form-control" [(ngModel)]="employeeCode"
                                     (change)="getEmployeeAttendance($event)">
                                     <option value="0">Select Employee</option>

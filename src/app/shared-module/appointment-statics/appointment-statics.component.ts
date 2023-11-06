@@ -40,7 +40,7 @@ export class AppointmentStaticsComponent implements OnInit {
       this.payments = new Array<Payment>();
       if (response && response.data && response.data.length && response.data.length > 0) {
         response.data.forEach(p => {
-          if (p.pay_for == 'appointment') {
+          if (p.payFor == 'appointment') {
             this.payments.push(p)
           }
         })
