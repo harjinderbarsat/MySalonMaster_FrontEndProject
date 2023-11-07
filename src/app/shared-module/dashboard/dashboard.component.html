@@ -102,7 +102,7 @@
 </div> -->
 <!--Line with Area Chart 1 Ends-->
 
-<div class="row" matchHeight="card">
+<div class="row" matchHeight="card" *ngIf="isBranchPannel">
     <!-- <div class="col-xl-4 col-lg-12 col-12">
         <div class="card my-salon-master">
             <div class="card-content">
@@ -256,10 +256,10 @@
                 <table class="table" id="table-xsls" *ngIf="!loadingClient">
                     <thead>
                         <tr>
-                            <th>Serial No.</th>
+                            <!-- <th>Serial No.</th> -->
                             <th>Name </th>
                             <th>Mobile </th>
-                            <th>Email </th>
+                            <!-- <th>Email </th> -->
                             <th>Appointments </th>
                         </tr>
                     </thead>
@@ -269,10 +269,10 @@
                         </tr>
                         <tr
                             *ngFor="let client of clients| paginate: { itemsPerPage: 5, currentPage: pageNumberForClientList ,totalItems: (clients==null ? 0 : clients.length), id: 'pagination4'};let i=index ">
-                            <td>{{i+1}}</td>
+                            <!-- <td>{{i+1}}</td> -->
                             <td>{{client.firstname}} {{client.lastname}}</td>
                             <td>{{client.mobile}}</td>
-                            <td>{{client.email}}</td>
+                            <!-- <td>{{client.email}}</td> -->
                             <td>{{client.no_of_appointments}}</td>
                         </tr>
                     </tbody>
@@ -317,8 +317,8 @@
                         <tr>
                             <!-- <th>Employee ID </th> -->
                             <th>Name </th>
-                            <!-- <th>Mobile </th> -->
-                            <th>Designation</th>
+                            <th>Mobile </th>  
+                            <!-- <th>Designation</th> -->
                             <!-- <th>Status </th> -->
                         </tr>
                     </thead>
@@ -330,8 +330,8 @@
                             *ngFor="let employee of employeesList| paginate: { itemsPerPage: 5, currentPage: pageNumberForEmployeeList ,totalItems: (employeesList==null ? 0 : employeesList.length), id: 'pagination3' }">
                             <!-- <td>{{employee.employeeUniqueId}}</td> -->
                             <td>{{employee.firstname}} {{employee.lastname}}</td>
-                            <!-- <td>{{employee.mobile}}</td> -->
-                            <td>{{employee.designation}}</td>
+                            <td>{{employee.mobile}}</td>
+                            <!-- <td>{{employee.designation}}</td> -->
                             <!-- <td>{{employee.status}}</td> -->
                         </tr>
                     </tbody>
