@@ -109,11 +109,11 @@
                 </div>
                 <div class="row pl-2 mt-1">
                     <div class="col-sm-12">
-                        <label><b>EFTPOS :</b> &nbsp;{{PaymentModel.cardPaid}}</label>
+                        <label><b> Card/UPI :</b> &nbsp;{{PaymentModel.cardPaid}}</label>
                         <button type="button" class=" mysalontheme-btn-md ml-5"
                             *ngIf="!(ifTheCardPaymentDone || PaymentModel.pendingAmount==0)"
                             (click)="paymentTransactionPopUp(paymentTransactionMpdal,'card')"> Pay by
-                            EFTPOS</button>
+                            Card/UPI </button>
                     </div>
                 </div>
                 <div class="row pl-2 mt-1">

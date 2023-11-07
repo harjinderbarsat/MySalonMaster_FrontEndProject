@@ -33,12 +33,12 @@
                                     <td colspan="10">No Data Found.</td>
                                 </tr>
                                 <tr *ngFor="let branch of branchList">
-                                    <td>{{branch.branch_name}}</td>
+                                    <td>{{branch.branchName}}</td>
                                     <td>{{branch.code}}</td>
                                     <td>{{branch.contact}}</td>
                                     <td>{{branch.address}}</td>
                                     <!-- <td>{{branch.status}}</td> -->
-                                    <td>{{cService.getStringDateFormatByCurtureAndType(branch.opened_on, false)}}</td>
+                                    <td>{{cService.getStringDateFormatByCurtureAndType(branch.openedOn, false)}}</td>
                                     <!-- <td>{{branch.number_of_employee}}</td>
                                     <td>{{cService.getStringDateFormatByCurtureAndType(branch.created_at, false)}}</td>
                                     <td>{{cService.getStringDateFormatByCurtureAndType(branch.updatedAt, false)}}</td> -->
@@ -87,7 +87,7 @@
                 <label> <b>Created At: </b> {{cService.getStringDateFormatByCurtureAndType(currentSelected.createdAt, false)}}</label><br>
             </div>
             <div class="col-md-6">
-                <label> <b>Opened On: </b> {{cService.getStringDateFormatByCurtureAndType(currentSelected.opened_on, false)}}</label><br>
+                <label> <b>Opened On: </b> {{cService.getStringDateFormatByCurtureAndType(currentSelected.openedOn, false)}}</label><br>
                 <label> <b>Pass Code (Password) : </b> {{currentSelected.passcode}}</label><br>
                 <label> <b>Contact Number: </b> {{currentSelected.contact}}</label><br>
                 <!-- <label> <b>Status : </b> {{currentSelected.status}}</label><br> -->

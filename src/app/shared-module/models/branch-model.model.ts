@@ -6,7 +6,7 @@ export class BranchModel {
     email: string;
     slotForAppointment: number;
     address: string;
-    opened_on: string;
+    openedOn: string;
     numberOfEmployee: number;
     status: string;
     createdAt: string;
