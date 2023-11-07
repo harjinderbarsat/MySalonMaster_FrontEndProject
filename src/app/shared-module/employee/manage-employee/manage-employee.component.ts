@@ -55,7 +55,6 @@ export class ManageEmployeeComponent implements OnInit {
   getEmployee(employee_id: number) {
     this.employeeService.getEmployeeById(employee_id).subscribe(async response => {
       this.employeeInfo = response.data;
-      this.employeeInfo.employeeUniqueId = this.employeeInfo.employee_unique_id;
       var addedDate = new Date(this.employeeInfo.date_of_birth);
       this.ngbDateOfBirth = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
 

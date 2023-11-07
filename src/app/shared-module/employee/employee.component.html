@@ -1,13 +1,16 @@
 <div class="row">
-    <div class="col-6 text-left">
+    <div class="col-md-6 col-sm-12">
         <h3>Employees List</h3>
     </div>
-    <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class="mysalontheme-btn-md mr-1" printTitle="MyTitle" printSectionId="print-section" ngxPrint>Print</button>
-        <button class="mysalontheme-btn-md mr-1" (click)="downloadXslx()">Download XLSX</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+    <div class="col-md-6 col-sm-12" *ngIf="!inProgress">
+        <button class="mysalontheme-btn-sm mr-1 pull-right" printTitle="MyTitle" printSectionId="print-section"
+            ngxPrint>Print</button>
+        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="downloadXslx()">Download XLSX</button>
+        <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
+                class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" mysalontheme-btn-md" *ngIf="!isBranchPannel" (click)="addEditEmployee(0)"><i class="fa fa-plus"></i> &nbsp; Add
+        <button class=" mysalontheme-btn-sm mr-1 pull-right" *ngIf="!isBranchPannel" (click)="addEditEmployee(0)"><i
+                class="fa fa-plus"></i> &nbsp; Add
             Employee</button>
     </div>
 </div>
@@ -20,7 +23,7 @@
                     <table class="table" id="table-xsls">
                         <thead>
                             <tr>
-                                <th *ngIf="!isBranchPannel">
+                                <!-- <th *ngIf="!isBranchPannel">
                                     <div class="remember-me">
                                         <div class="custom-control custom-checkbox custom-control-inline">
                                             <input type="checkbox" class="custom-control-input"
@@ -29,31 +32,32 @@
                                             <label class="custom-control-label" for="selectAll1"> </label>
                                         </div>
                                     </div>
-                                </th>
+                                </th> -->
                                 <th *ngIf="!isBranchPannel">ID </th>
                                 <th>Name </th>
-                                <th>Designation </th>
+                                <!-- <th>Designation </th> -->
                                 <th>Mobile </th>
-                                <th>Status </th>
+                                <!-- <th>Status </th> -->
                                 <th *ngIf="!isBranchPannel">Action </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center" *ngIf="(!employeesList ||(employeesList && employeesList.length<=0))">
+                            <tr class="text-center"
+                                *ngIf="(!employeesList ||(employeesList && employeesList.length<=0))">
                                 <td colspan="7">No Data Found.</td>
                             </tr>
                             <tr *ngFor="let employee of employeesList">
-                                <td *ngIf="!isBranchPannel">
+                                <!-- <td *ngIf="!isBranchPannel">
                                     <label>
                                         <input type="checkbox" [checked]="employee.isSelected" [value]="employee.isSelected"
                                             (change)="change(employee,$event)" /> 
                                     </label>
-                                </td>
-                                <td *ngIf="!isBranchPannel">{{employee.employee_unique_id}}</td>
+                                </td> -->
+                                <td *ngIf="!isBranchPannel">{{employee.employeeUniqueId}}</td>
                                 <td>{{employee.firstname}} {{employee.lastname}}</td>
-                                <td>{{employee.designation}}</td>
+                                <!-- <td>{{employee.designation}}</td> -->
                                 <td>{{employee.mobile}}</td>
-                                <td>{{employee.status}}</td>
+                                <!-- <td>{{employee.status}}</td> -->
                                 <th *ngIf="!isBranchPannel">
                                     <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="viewEmployee(viewEmployeeModel,employee)"><i class="fa fa-eye"></i>
@@ -63,11 +67,10 @@
                                     <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="deleteEmployee(employee)"><i class="fa fa-trash"></i> </button>
                                     <button type="button" *ngIf="employee.status=='Inactive'"
-                                        class="mysalontheme-btn-sm ml-1"
-                                        (click)="updatedEmployeeStatus(employee,'Active')"> Active
+                                        class="mysalontheme-btn-sm mr-1" (click)="updatedEmployeeStatus(employee,'active')">
+                                        Activate
                                     </button>
-                                    <button type="button" *ngIf="employee.status=='active'"
-                                        class="mysalontheme-btn-sm ml-1"
+                                    <button type="button" *ngIf="employee.status=='active'" class="mysalontheme-btn-sm"
                                         (click)="updatedEmployeeStatus(employee,'Inactive')"> Inactive
                                     </button>
                                 </th>
@@ -82,8 +85,8 @@
 <!--Basic Table Ends-->
 <div class="row" *ngIf="inProgress">
     <div class="col-md-12 text-center align-middle">
-         <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
-        
+        <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
     </div>
 </div>
 

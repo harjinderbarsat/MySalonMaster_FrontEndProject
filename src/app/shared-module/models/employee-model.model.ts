@@ -8,7 +8,6 @@ export class EmployeeModel {
     planStartDate: string;
     planEndDate: string;
     employeeUniqueId: string;
-    employee_unique_id: string;
     email: string;
     designation: string;
     date_of_birth: string;

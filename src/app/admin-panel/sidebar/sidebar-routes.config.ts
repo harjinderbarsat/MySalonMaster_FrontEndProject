@@ -10,21 +10,22 @@ export const BRANCH_ROUTES: RouteInfo[] = [
       { path: '/admin/product-sale-history', title: 'Product Sales', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false }
     ], visibility: true, isAdmin: true
   },
-  {
-    path: '', title: 'Employees', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
-      { path: '/admin/employees', title: 'List', icon: 'ft-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
-      { path: '/admin/leaves', title: 'Leaves', icon: 'fa fa-calendar', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      { path: '/admin/attendance', title: 'Attendance', icon: 'fa fa-clock-o', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      // { path: '/admin/loylity-points', title: 'Loylity Point', icon: 'fa fa-gift', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true }
-    ], visibility: true, isAdmin: true
-  },
-  {
-    path: '', title: 'Client', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
-    submenu: [
-      { path: '/admin/customer', title: 'List', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      { path: '/admin/client-Reviews', title: ' Reviews', icon: 'fa fa-star', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
-    ], visibility: true, isAdmin: true
-  }, {
+ 
+  // {
+  //   path: '', title: 'Employees', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
+  //     // { path: '/admin/leaves', title: 'Leaves', icon: 'fa fa-calendar', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  //     // { path: '/admin/attendance', title: 'Attendance', icon: 'fa fa-clock-o', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  //     // { path: '/admin/loylity-points', title: 'Loylity Point', icon: 'fa fa-gift', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true }
+  //   ], visibility: true, isAdmin: true
+  // },
+
+  // {
+  //   path: '', title: 'Client', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
+  //   submenu: [
+  //     { path: '/admin/client-Reviews', title: ' Reviews', icon: 'fa fa-star', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
+  //   ], visibility: true, isAdmin: true
+  // },
+   {
     path: '', title: 'Products', icon: 'fa fa-houzz', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
       { path: '/admin/products', title: 'All Products', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
       { path: '/admin/products-Categoty', title: 'All Categories', icon: 'fa fa-list-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
@@ -37,6 +38,8 @@ export const BRANCH_ROUTES: RouteInfo[] = [
       { path: '/admin/defaultServices', title: 'Load Default', icon: 'fa fa-play', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
     ], visibility: true, isAdmin: false
   },
+  { path: '/admin/employees', title: 'Employees', icon: 'ft-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
+  { path: '/admin/customer', title: 'Clients', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   { path: '/admin/storeList', title: 'Branchs', icon: 'fa fa-industry ', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
   // {
   //   path: '', title: 'Admin', icon: 'ft-settings', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
@@ -45,7 +48,7 @@ export const BRANCH_ROUTES: RouteInfo[] = [
   //     // { path: '/admin/incentive', title: 'Incentive', icon: 'fa fa-gift', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   //   ], visibility: true, isAdmin: true
   // },
-  { path: '/admin/settings', title: 'Settings', icon: 'fa ft-settings', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  { path: '/admin/settings', title: 'Help', icon: 'fa ft-phone', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
 
   // { path: '/admin/marketing', title: 'Marketing', icon: 'fa fa-bullhorn', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   // { path: '/admin/reports', title: 'Reports', icon: 'fa fa-file', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
