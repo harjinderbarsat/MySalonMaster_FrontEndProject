@@ -37,8 +37,7 @@ import { WalkInBranchComponent } from './walk-in-branch/walk-in-branch.component
     WalkInPanelRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    TranslateModule.forChild(),
-    LocalizeRouterModule.forChild(walkInPanelRoutes)
+    TranslateModule.forChild() 
   ],
   providers:[DatePipe],
   bootstrap: [WalkInPanelComponent],

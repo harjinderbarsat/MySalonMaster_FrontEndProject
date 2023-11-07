@@ -42,6 +42,7 @@
     "ngx-mask": "^9.1.4",
     "ngx-pagination": "^5.0.0",
     "ngx-print": "^1.2.0-beta.5",
+    "ngx-slimscroll": "^12.2.0",
     "ngx-toastr": "^12.1.0",
     "ngx-ui-switch": "^9.0.2",
     "pdfmake": "^0.2.7",

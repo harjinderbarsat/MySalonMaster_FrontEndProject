@@ -28,8 +28,6 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
     ReactiveFormsModule,
     NgbModule,
     TranslateModule.forChild(),
-    LocalizeRouterModule.forChild(frontEndRoutes)
-    // UiSwitchModule
   ],providers:[DatePipe],
     bootstrap: [FrontEndComponent],
 })

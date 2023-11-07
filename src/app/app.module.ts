@@ -7,7 +7,7 @@ import { UiSwitchModule } from 'ngx-ui-switch';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './front-end/services/login.service';
 import { CommonService } from './services/common.service';
 import { RulesService } from './services/rules.service';
@@ -19,7 +19,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     HttpClientModule,
@@ -30,8 +30,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    }),
-    FormsModule,
+    }), 
     NgxPrintModule,
     BrowserAnimationsModule,
     ChartistModule,

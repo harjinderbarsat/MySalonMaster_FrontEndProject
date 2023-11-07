@@ -34,7 +34,6 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     EmployeePanelRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    LocalizeRouterModule.forChild(emplyeePanelRoutes),
     Ng2SearchPipeModule,
     NgxPaginationModule,
     UiSwitchModule,

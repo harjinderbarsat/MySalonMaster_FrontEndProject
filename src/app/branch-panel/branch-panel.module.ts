@@ -24,7 +24,6 @@ import { BranchSidebarComponent } from './sidebar/sidebar.component';
     BranchPanelRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    LocalizeRouterModule.forChild(branchPanelRoutes),
     Ng2SearchPipeModule,
     NgxPaginationModule,
     UiSwitchModule,

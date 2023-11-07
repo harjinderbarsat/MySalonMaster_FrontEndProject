@@ -33,7 +33,6 @@ import { SettingsComponent } from './settings/settings.component';
     AdminPanelRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    LocalizeRouterModule.forChild(AdminManagerRoutes),
     Ng2SearchPipeModule,
     NgxPaginationModule,
     UiSwitchModule,

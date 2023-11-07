@@ -23,7 +23,6 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     NgbModule,
     ReactiveFormsModule,
     SuperAdminPanelRoutingModule,
-    LocalizeRouterModule.forChild(SuperAdminManagerRoutes),
     Ng2SearchPipeModule,
     NgxPaginationModule,
     UiSwitchModule,
