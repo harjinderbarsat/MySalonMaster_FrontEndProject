@@ -3,7 +3,7 @@
         <h3>Branches</h3>
     </div>
     <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class="mysalontheme-btn-md" (click)="addEditBrach(0)"><i class="fa fa-plus"></i> &nbsp; Add Branch</button>
+        <button class="mysalontheme-btn-sm" (click)="addEditBrach(0)"><i class="fa fa-plus"></i> &nbsp; Add Branch</button>
     </div>
 </div>
 
@@ -18,10 +18,10 @@
                                 <tr>
                                     <th>Name </th>
                                     <th>Code </th>
-                                    <th>Contact </th>
-                                    <th>Address </th>
+                                    <!-- <th>Contact </th> -->
+                                    <!-- <th>Address </th> -->
                                     <!-- <th>Status </th> -->
-                                    <th>Opend On </th>
+                                    <!-- <th>Opend On </th> -->
                                     <!-- <th>Number Of Employee </th>
                                     <th>Created At </th>
                                     <th>Updated At </th> -->
@@ -35,10 +35,10 @@
                                 <tr *ngFor="let branch of branchList">
                                     <td>{{branch.branchName}}</td>
                                     <td>{{branch.code}}</td>
-                                    <td>{{branch.contact}}</td>
-                                    <td>{{branch.address}}</td>
+                                    <!-- <td>{{branch.contact}}</td> -->
+                                    <!-- <td>{{branch.address}}</td> -->
                                     <!-- <td>{{branch.status}}</td> -->
-                                    <td>{{cService.getStringDateFormatByCurtureAndType(branch.openedOn, false)}}</td>
+                                    <!-- <td>{{cService.getStringDateFormatByCurtureAndType(branch.openedOn, false)}}</td> -->
                                     <!-- <td>{{branch.number_of_employee}}</td>
                                     <td>{{cService.getStringDateFormatByCurtureAndType(branch.created_at, false)}}</td>
                                     <td>{{cService.getStringDateFormatByCurtureAndType(branch.updatedAt, false)}}</td> -->
@@ -73,7 +73,7 @@
     <div class="modal-header">
         <div class="row">
             <div class="col-12">
-                <h4 class="modal-title" id="modal-basic-title ">Client Details</h4>
+                <h4 class="modal-title" id="modal-basic-title ">Branch Details</h4>
             </div>
         </div>
     </div>

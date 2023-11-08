@@ -1,14 +1,15 @@
 <div class="row">
-    <div class="col-6 text-left">
+    <div class="col-md-6 col-sm-12 text-left">
         <h3>Categories</h3>
     </div>
-    <div class="col-6 text-right" *ngIf="!inProgress">
-        <button class="mysalontheme-btn-md mr-1" printTitle="MyTitle" printSectionId="print-section" ngxPrint>Print</button>
-        <button class="mysalontheme-btn-md mr-1" (click)="downloadXslx()">Download XLSX</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
+    <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgress">
+        <button class="mysalontheme-btn-sm mr-1" printTitle="MyTitle" printSectionId="print-section"
+            ngxPrint>Print</button>
+        <button class="mysalontheme-btn-sm mr-1" (click)="downloadXslx()">Download XLSX</button>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" mysalontheme-btn-md" *ngIf="!isBranchPannel"
+        <button class=" mysalontheme-btn-sm" *ngIf="!isBranchPannel"
             (click)="openProductCategoryModal(CategoryModal,null,false)"><i class="fa fa-plus"></i>
             &nbsp; Add Category</button>
     </div>
@@ -23,7 +24,7 @@
                         <table class="table" id="table-xsls">
                             <thead>
                                 <tr>
-                                    <th *ngIf="!isBranchPannel">
+                                    <!-- <th *ngIf="!isBranchPannel">
                                         <div class="remember-me">
                                             <div class="custom-control custom-checkbox custom-control-inline">
                                                 <input type="checkbox" class="custom-control-input"
@@ -32,11 +33,12 @@
                                                 <label class="custom-control-label" for="selectAll1"> </label>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th> -->
                                     <!-- <th>Category ID </th> -->
                                     <th>Serial No.</th>
                                     <th>Category </th>
-                                    <th>Status </th>
+                                    <th>Type </th>
+                                    <!-- <th>Status </th> -->
                                     <th>Action </th>
                                 </tr>
                             </thead>
@@ -45,16 +47,17 @@
                                     <td colspan="5">No Data Found.</td>
                                 </tr>
                                 <tr *ngFor="let category of categories;let i=index;">
-                                    <td *ngIf="!isBranchPannel">
+                                    <!-- <td *ngIf="!isBranchPannel">
                                         <label>
                                             <input type="checkbox" [checked]="category.isSelected"
                                                 [value]="category.isSelected" (change)="change(category,$event)" />
                                         </label>
-                                    </td>
+                                    </td> -->
                                     <!-- <td>{{category.id}}</td> -->
                                     <td>{{i+1}}</td>
                                     <td>{{category.name}}</td>
-                                    <td>{{category.status==0?'Deactivated':'Activated'}}</td>
+                                    <td>{{category.name}}</td>
+                                    <!-- <td>{{category.status==0?'Deactivated':'Activated'}}</td> -->
 
                                     <th>
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
@@ -110,17 +113,6 @@
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label>Status</label>
-                    <select class="form-control" [(ngModel)]="selectedProductCategory.status">
-                        <option value="1">Active</option>
-                        <option value="0"> Deactive </option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="form-group">
                     <label>Parent Category<span class="danger mb-0" style="font-size: 15px;">* </span></label>
                     <select [(ngModel)]="selectedProductCategory.mainCategory" class="form-control">
                         <option value="">Select Parent Category</option>
@@ -129,6 +121,19 @@
                     </select>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" [(ngModel)]="selectedProductCategory.status">
+                        <option value="1">Active</option>
+                        <option value="0"> Deactive </option>
+                    </select>
+                </div>
+            </div> -->
+
+
         </div>
         <div class="row" *ngIf="selectedProductCategory.description">
             <div class="col-12">

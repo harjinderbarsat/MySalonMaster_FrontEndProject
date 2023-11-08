@@ -62,7 +62,7 @@ export class ManageBranchComponent implements OnInit {
       this.inProgress = false;
       this.branchModel = response.data;
       this.getServices();
-      var addedDate = new Date(this.branchModel.opened_on);
+      var addedDate = new Date(this.branchModel.openedOn);
       this.ngbOpendDate = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
     }, async error => {
       this.inProgress = false;
@@ -78,7 +78,7 @@ export class ManageBranchComponent implements OnInit {
     }
     this.inProgress = true;
     if (this.ngbOpendDate != null && this.ngbOpendDate != undefined) {
-      this.branchModel.opened_on = this.datePipe.transform(new Date(this.ngbOpendDate.year, (this.ngbOpendDate.month - 1), this.ngbOpendDate.day), 'yyyy-MM-dd');
+      this.branchModel.openedOn = this.datePipe.transform(new Date(this.ngbOpendDate.year, (this.ngbOpendDate.month - 1), this.ngbOpendDate.day), 'yyyy-MM-dd');
     }
 
     if (this.isEditMode) {

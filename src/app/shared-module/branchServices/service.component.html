@@ -1,31 +1,31 @@
 <div class="row" *ngIf="!inProgress">
-    <div class="col-3 text-left">
+    <div class="col-md-3 col-sm-12 text-left">
         <h3>Services List <label *ngIf="services&&services.length">({{services.length}})</label> </h3>
     </div>
-    <div class="col-9 text-right">
-        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
+    <div class="col-md-9 col-sm-12 text-right">
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
             <i class="fa fa-print"></i> Print</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
             XLSX</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView && !isBranchPannel" (click)="addEditNewService(0)"><i
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView && !isBranchPannel" (click)="addEditNewService(0)"><i
                 class="fa fa-plus"></i>
             &nbsp;
             Add
             Service</button>
 
-        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
             &nbsp;
             <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
             <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
         </button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i>
             Reset Filter</button>
 
-        <button class="mysalontheme-btn-md mr-1" (click)="hideShowPrintView()">
+        <button class="mysalontheme-btn-sm mr-1" (click)="hideShowPrintView()">
             <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
             <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
         </button>
@@ -38,7 +38,7 @@
                 <option value="">Select Filter Type</option>
                 <option value="name">Name</option>
                 <option value="category">Category</option>
-                <option value="status">Status</option>
+                <!-- <option value="status">Status</option> -->
             </select>
             <select *ngIf="filterType!=''&&filterType=='category'" style="width: 200px;"
                 class="form-control pull-right ml-1" [(ngModel)]="filterValue">
@@ -53,7 +53,7 @@
             </select>
             <input *ngIf="filterType!=''&&filterType!='category'&&filterType!='status'" class="form-control"
                 [(ngModel)]="filterValue" placeholder="Search keyword here...." type="text">
-            <button *ngIf="filterType!=''&& filterValue!=null" class="mysalontheme-btn-md" (click)="getFilteredDataList()">Get
+            <button *ngIf="filterType!=''&& filterValue!=null" class="mysalontheme-btn-sm" (click)="getFilteredDataList()">Get
                 Data</button>
         </div>
     </div>
@@ -67,7 +67,7 @@
                         <table class="table" id="table-xsls">
                             <thead>
                                 <tr>
-                                    <th *ngIf="!isPrintView&& !isBranchPannel">
+                                    <!-- <th *ngIf="!isPrintView&& !isBranchPannel">
                                         <div class="remember-me">
                                             <div class="custom-control custom-checkbox custom-control-inline">
                                                 <input type="checkbox" class="custom-control-input"
@@ -76,14 +76,14 @@
                                                 <label class="custom-control-label" for="selectAll1"> </label>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th> -->
                                     <!-- <th>Service ID</th> -->
                                     <th *ngIf="!isPrintView">Serial No.</th>
                                     <th>Service </th>
                                     <th>Category </th>
                                     <th>Price </th>
                                     <th>Duration </th>
-                                    <th>Status </th>
+                                    <!-- <th>Status </th> -->
                                     <th *ngIf="!isPrintView">Action </th>
                                 </tr>
                             </thead>
@@ -92,12 +92,12 @@
                                     <td colspan="7">No Data Found.</td>
                                 </tr>
                                 <tr *ngFor="let service of services;let i=index;">
-                                    <td *ngIf="!isPrintView&& !isBranchPannel">
+                                    <!-- <td *ngIf="!isPrintView&& !isBranchPannel">
                                         <label>
                                             <input type="checkbox" [checked]="service.isSelected"
                                                 [value]="service.isSelected" (change)="change(service,$event)" />
                                         </label>
-                                    </td>
+                                    </td> -->
                                     <!-- <td>{{service.id}}</td> -->
                                     <td *ngIf="!isPrintView">{{i+1}}</td>
                                     <td style="width: 300px">{{service.name}}
@@ -107,7 +107,9 @@
                                             style="font-size: 10px;">{{service.isThisInitialPrice==1?' (Initial
                                             Price)':''}}</label> </td>
                                     <td>{{getDuration(service.duration)}}</td>
-                                    <td>{{service.status==0?'Inactive':'Active'}}</td>
+
+                                    <!-- <td>{{service.status==0?'Inactive':'Active'}}</td> -->
+
                                     <th *ngIf="!isPrintView">
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="viewClient(viewClientModel,service)"><i class="fa fa-eye"></i>

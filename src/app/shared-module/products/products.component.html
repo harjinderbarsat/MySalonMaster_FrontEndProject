@@ -3,22 +3,22 @@
         <h3>Products </h3>
     </div>
     <div class="col-10 text-right" *ngIf="!inProgress">
-        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
             <i class="fa fa-print"></i> Print</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
             XLSX</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
-        <button class=" mysalontheme-btn-md mr-1"  *ngIf="!isPrintView" (click)="addProduct(0)"><i class="fa fa-plus"></i> &nbsp; Add
+        <button class=" mysalontheme-btn-sm mr-1"  *ngIf="!isPrintView" (click)="addProduct(0)"><i class="fa fa-plus"></i> &nbsp; Add
             Product</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
             &nbsp;
             <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
             <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
         </button>
-        <button class="mysalontheme-btn-md mr-1"  *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
-        <button class="mysalontheme-btn-md mr-1" (click)="hideShowPrintView()">
+        <button class="mysalontheme-btn-sm mr-1"  *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
+        <button class="mysalontheme-btn-sm mr-1" (click)="hideShowPrintView()">
             <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
             <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
         </button>
@@ -62,7 +62,7 @@
                         <table class="table" id="table-xsls">
                             <thead>
                                 <tr>
-                                    <th *ngIf="!isPrintView && !isBranchPannel">
+                                    <!-- <th *ngIf="!isPrintView && !isBranchPannel">
                                         <div class="remember-me">
                                             <div class="custom-control custom-checkbox custom-control-inline">
                                                 <input type="checkbox" class="custom-control-input"
@@ -71,7 +71,7 @@
                                                 <label class="custom-control-label" for="selectAll1"> </label>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th> -->
                                     <!-- <th>Product ID </th> -->
                                     <th *ngIf="!isPrintView">Serial No. </th>
                                     <th>Name
@@ -86,12 +86,12 @@
                                         <i *ngIf="categorySortAsc" class="fa fa-sort-alpha-desc"
                                             (click)="sortByColumn(products,'category_name')"></i>
                                     </th>
-                                    <th>Qty
+                                    <!-- <th>Qty
                                         <i *ngIf="!qtySortAsc" class="fa fa-sort-amount-asc"
                                             (click)="sortByColumn(products,'qty')"></i>
                                         <i *ngIf="qtySortAsc" class="fa fa-sort-amount-desc"
                                             (click)="sortByColumn(products,'qty')"></i>
-                                    </th>
+                                    </th> -->
                                     <th>Price
                                         <i *ngIf="!priceSortAsc" class="fa fa-sort-numeric-asc"
                                             (click)="sortByColumn(products,'price')"></i>
@@ -106,16 +106,16 @@
                                     <td colspan="7">No Data Found.</td>
                                 </tr>
                                 <tr *ngFor="let product of products; let i=index">
-                                    <td *ngIf="!isPrintView && !isBranchPannel">
+                                    <!-- <td *ngIf="!isPrintView && !isBranchPannel">
                                         <label>
                                             <input type="checkbox" [checked]="product.isSelected"
                                                 [value]="product.isSelected" (change)="change(product,$event)" />
                                         </label>
-                                    </td>
+                                    </td> -->
                                     <td *ngIf="!isPrintView">{{i+1}}</td>
                                     <td>{{product.name}}</td>
-                                    <td>{{product.category_name}}</td>
-                                    <td>{{product.qty}}</td>
+                                    <td>{{product.categoryName}}</td>
+                                    <!-- <td>{{product.qty}}</td> -->
                                     <td>{{product.price}}</td>
                                     <th *ngIf="!isPrintView">
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
@@ -156,8 +156,8 @@
         <div class="row">
             <div class="col-md-6">
                 <label> <b>Product ID : </b> {{currentSelected.id}}</label><br>
-                <label> <b>Category : </b> {{currentSelected.category_name}}</label><br>
-                <label> <b>Quantity : </b> {{currentSelected.qty}}</label><br>
+                <label> <b>Category : </b> {{currentSelected.categoryName}}</label><br>
+                <!-- <label> <b>Quantity : </b> {{currentSelected.qty}}</label><br> -->
             </div>
             <div class="col-md-6">
                 <label> <b>Name : </b> {{currentSelected.name}}</label><br>

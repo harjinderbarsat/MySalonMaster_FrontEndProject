@@ -13,7 +13,7 @@
 
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
             <div class="card" id="print-section">
                 <div class="card-header p-2">
                     Transaction summary
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
             <div class="card" id="print-section">
                 <div class="card-header p-2">
                     Cash movement summary
@@ -95,8 +95,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Serial No. </th>
-                                    <th>Date </th>
+                                    <!-- <th>Serial No. </th>
+                                    <th>Date </th> -->
                                     <th>Client Name </th>
                                     <th>Mobile </th>
                                     <th>Payment For </th>
@@ -108,12 +108,12 @@
                                     <td colspan="6">No Data Found.</td>
                                 </tr>
                                 <tr *ngFor="let payment of payments | paginate: { itemsPerPage: itemsPer, currentPage: currentPageNumber ,totalItems: (payments==null ? 0 : payments.length) };let i=index">
-                                    <td>{{i+1}}</td>
+                                    <!-- <td>{{i+1}}</td>
                                     <td> {{cService.getStringDateFormatByCurtureAndType(payment.created_at, true)}}
-                                    </td>
+                                    </td> -->
                                     <td>{{payment.clientName}}</td>
                                     <td>{{payment.clientMobile}}</td>
-                                    <td>{{payment.pay_for}}</td>
+                                    <td>{{payment.payFor}}</td>
                                     <td>{{payment.amount}}</td>
                                 </tr>
                             </tbody>

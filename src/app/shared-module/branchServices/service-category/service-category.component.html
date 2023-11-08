@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-6 text-left">
+    <div class="col-md-6 col-sm-12 text-left">
         <h3>Categories  <label *ngIf="categories&&categories.length">({{categories.length}})</label></h3>
     </div>
-    <div class="col-6 text-right" *ngIf="!inProgress &&!isBranchPannel">
-        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+    <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgress &&!isBranchPannel">
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" mysalontheme-btn-md" *ngIf="!isBranchPannel" (click)="openCategoryModal(CategoryModal,null,false)"><i
+        <button class=" mysalontheme-btn-sm" *ngIf="!isBranchPannel" (click)="openCategoryModal(CategoryModal,null,false)"><i
                 class="fa fa-plus"></i>
             &nbsp; Add Category</button>
     </div>
@@ -20,7 +20,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th  *ngIf="!isBranchPannel">
+                                    <!-- <th  *ngIf="!isBranchPannel">
                                         <div class="remember-me">
                                             <div class="custom-control custom-checkbox custom-control-inline">
                                                 <input type="checkbox" class="custom-control-input"
@@ -29,11 +29,11 @@
                                                 <label class="custom-control-label" for="selectAll1"> </label>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th> -->
                                     <!-- <th>Category ID</th> -->
                                     <th>Serial No.</th>
                                     <th>Category </th>
-                                    <th>Status </th>
+                                    <!-- <th>Status </th> -->
                                     <th>Action </th>
                                 </tr>
                             </thead>
@@ -42,16 +42,16 @@
                                     <td colspan="5">No Data Found.</td>
                                 </tr>
                                 <tr *ngFor="let category of categories;let i=index;">
-                                    <td  *ngIf="!isBranchPannel">
+                                    <!-- <td  *ngIf="!isBranchPannel">
                                         <label>
                                             <input type="checkbox" [checked]="category.isSelected" [value]="category.isSelected"
                                                 (change)="change(category,$event)" /> 
                                         </label>
-                                    </td>
+                                    </td> -->
                                     <!-- <td>{{category.id}} </td> -->
                                     <td>{{i+1}}</td>
                                     <td>{{category.name}} </td>
-                                    <td>{{category.status==0?'Inactive':'Active'}}</td>
+                                    <!-- <td>{{category.status==0?'Inactive':'Active'}}</td> -->
                                     <th>
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewClientModel,category)"><i class="fa fa-eye"></i> </button>
@@ -104,22 +104,22 @@
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" [(ngModel)]="selectedCategory.description"
+                        placeholder="Enter description"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <!-- <div class="col-md-6 col-sm-12">
+                <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" [(ngModel)]="selectedCategory.status">
                         <option value="1">Active</option>
                         <option value="0"> Deactive </option>
                     </select>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" [(ngModel)]="selectedCategory.description"
-                        placeholder="Enter description"></textarea>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="modal-footer">

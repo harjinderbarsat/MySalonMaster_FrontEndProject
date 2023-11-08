@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-4 text-left">
-        <h3>Product Sale </h3>
+    <div class="col-md-6 col-sm-12 text-left">
+        <h3>Product Sale History</h3>
     </div>
-    <div class="col-8 text-right" *ngIf="!inProgressProductSale && productSaleList">
+    <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgressProductSale && productSaleList">
         <form class="navbar-form navbar-right ml-2" role="search" >
             <div class="position-relative has-icon-right">
                 <input type="text" class="form-control round" (keypress)="onSerch()" [(ngModel)]="searchItems"

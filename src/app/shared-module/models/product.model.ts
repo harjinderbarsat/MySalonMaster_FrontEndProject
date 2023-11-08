@@ -1,10 +1,10 @@
 export class ProductModel {
     id: number;
-    branch_id: number;
-    admin_id: number;
-    category_id: number;
+    branchId: number;
+    adminId: number;
+    categoryId: number;
     mainCategoryId: number;
-    category_name: number;
+    categoryName: number;
     name: string;
     status: string;
     description: string;
@@ -18,21 +18,21 @@ export class ProductModel {
     height: string;
     width: string;
     sizeType: string; //cm,inch
-    created_at: string;
+    createdAt: string;
     updatedAt: string;
     productQty: number;
 }
 
 export class ProductCategoryModel {
     id: number;
-    branch_id: number;
-    admin_id: number;
+    branchId: number;
+    adminId: number;
     isSelected: boolean;
     mainCategory: string;
     status: string;
     name: string;
     description: string;
-    created_at: string;
+    createdAt: string;
     updatedAt: string;
 }
 
