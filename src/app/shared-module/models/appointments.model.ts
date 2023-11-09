@@ -3,12 +3,12 @@ export class AppointmentsModel {
     serialNo: number
 
     customerId: number
-    customer_name: string
+    customerName: string
     customerContact: string
     isOnlineAppointment: string
 
     servicesIds: Array<number>
-    services_name: Array<string>
+    servicesName: Array<string>
 
     addtionalServiceIds: Array<number>
     addtionalServiceNames: Array<string>
@@ -28,7 +28,7 @@ export class AppointmentsModel {
 
     assignToId: number;
     employeeUniqueId: string;
-    assign_to_name: string;
+    assignToName: string;
 
     startedAt: string;
     completedAt: string;
@@ -40,12 +40,12 @@ export class AppointmentsModel {
     totalCost: number;
     tax: number;
     totalAmount: number;
-    created_at: string;
-    updated_at: string;
+    createdAt: string;
+    updatedAt: string;
 
     isSelected: boolean;
-    branch_id: number;
-    admin_id: number;
+    branchId: number;
+    adminId: number;
 }
 
 

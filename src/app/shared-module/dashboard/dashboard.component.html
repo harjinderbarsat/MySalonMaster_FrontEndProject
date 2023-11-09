@@ -9,7 +9,7 @@
                             <h5> Add New Appointments </h5>
                             <div class="row mt-3">
                                 <div class="col-12 text-center">
-                                    <h1 class="count-font"><i class="fa fa-plus"></i> </h1>
+                                    <h1 class="count-font"><i class="fa fa-calendar"></i> </h1>
                                 </div>
                             </div>
                         </div>
@@ -20,15 +20,15 @@
     </div>
 
     <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="isBranchPannel">
-        <div class="card my-salon-master" (click)="viewAppointments()">
+        <div class="card my-salon-master" (click)="viewProductSale()">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
                     <div class="media">
                         <div class="media-body white text-center">
-                            <h5>Today's Appointments </h5>
+                            <h5> New Product Sale</h5>
                             <div class="row mt-3">
                                 <div class="col-12 text-center">
-                                    <h1 class="count-font">{{dashBoardData.todayUpcomingAppointments}}</h1>
+                                    <h1 class="count-font"><i class="fa fa-shopping-cart"></i></h1>
                                 </div>
                             </div>
                         </div>
@@ -193,9 +193,9 @@
                             *ngFor="let appointment of appointmentsList | paginate: { itemsPerPage: 5, currentPage: p ,totalItems: (appointmentsList==null ? 0 : appointmentsList.length), id: 'pagination1' };let i=index">
                             <td>{{i+1}}</td>
                             <!-- <td>{{appointment.id}}</td> -->
-                            <td>{{appointment.customer_name}}</td>
+                            <td>{{appointment.customerName}}</td>
                             <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}</td>
-                            <td>{{appointment.assign_to_name?appointment.assign_to_name:'Not Assigned'}}</td>
+                            <td>{{appointment.assignToName?appointment.assignToName:'Not Assigned'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -275,7 +275,7 @@
         </div>
     </div>
 </div> -->
-<div class="row" matchHeight="card">
+<div class="row" matchHeight="card"  *ngIf="!isBranchPannel">
     <div class="col-12">
         <div class="card">
             <div class="card-header pl-2 pr-2 pt-2 pb-0">
@@ -333,7 +333,7 @@
     </div>
 </div>
 
-<div class="row" matchHeight="card">
+<div class="row" matchHeight="card" *ngIf="!isBranchPannel">
     <div class="col-12">
         <div class="card">
             <div class="card-header pl-2 pr-2 pt-2 pb-0">

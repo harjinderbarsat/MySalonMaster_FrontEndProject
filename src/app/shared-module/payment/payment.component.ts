@@ -187,35 +187,43 @@ export class PaymentComponent implements OnInit {
     this.inProgress = true;
     if (this.paymentFor == 'appointment') {
       this.PaymentModel.appointmentId = this.id;
-      this.PaymentModel.employee_id = this.selectedAppointment.assignToId;
+      this.PaymentModel.employeeId = this.selectedAppointment.assignToId;
       this.PaymentModel.clientId = this.selectedAppointment.customerId;
+
+      if (this.PaymentModel.type == "cash") {
+        this.PaymentModel.cashPaid = this.PaymentModel.amount;
+      }else{
+        this.PaymentModel.cardPaid = this.PaymentModel.amount;
+      }
+
     } else if (this.paymentFor == 'product') {
 
       this.PaymentModel.clientId = this.productDetails.client_id;
       this.PaymentModel.productSaleId = this.id;
       this.PaymentModel.amount = this.productDetails.total_amount;
-      this.PaymentModel.employee_id = this.productDetails.sold_by_id;
+      this.PaymentModel.employeeId = this.productDetails.sold_by_id;
 
     }
 
     this.modalService.dismissAll();
 
     if (this.PaymentModel.id) {
-      this.paymentService.updatePayment(this.PaymentModel).subscribe(async response => {
-        if (response && response.isSuccess) {
-          this.cService.getToaster('Payment Updated', 'success', 'Success');
-          this.getPaymentDetails(true);
-        }
-      }, async error => {
-        this.inProgress = false;
-        this.cService.getToaster('Somthing went wrong', 'error', 'Error');
-      });
+      // this.paymentService.updatePayment(this.PaymentModel).subscribe(async response => {
+      //   if (response && response.isSuccess) {
+      //     this.cService.getToaster('Payment Updated', 'success', 'Success');
+      //     this.getPaymentDetails(true);
+      //   }
+      // }, async error => {
+      //   this.inProgress = false;
+      //   this.cService.getToaster('Somthing went wrong', 'error', 'Error');
+      // });
     } else {
       this.paymentService.addPayment(this.PaymentModel).subscribe(async response => {
         if (response && response.isSuccess) {
           this.cService.getToaster('Payment Done', 'success', 'Success');
 
-          this.getPaymentDetails(true);
+          //this.getPaymentDetails(true);
+          this.paymentCompleted();
         }
       }, async error => {
         this.inProgress = false;
@@ -308,7 +316,7 @@ export class PaymentComponent implements OnInit {
       itemsTable.push(['', '', '', '']);
       itemsTable.push([{ text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }]);
       itemsTable.push(['', '', '', '']);
-      itemsTable.push([this.selectedAppointment.services_name, '', '', '$' + this.selectedAppointment.totalAmount]);
+      itemsTable.push([this.selectedAppointment.servicesName, '', '', '$' + this.selectedAppointment.totalAmount]);
       itemsTable.push(['', '', '', '']);
       itemsTable.push([{ text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }]);
       itemsTable.push(['', '', '', '']);

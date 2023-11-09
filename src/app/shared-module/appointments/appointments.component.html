@@ -144,7 +144,7 @@
                     <table class="table" id="table-xsls">
                         <thead>
                             <tr>
-                                <th *ngIf="!isPrintView">
+                                <!-- <th *ngIf="!isPrintView">
                                     <div class="remember-me">
                                         <div class="custom-control custom-checkbox custom-control-inline">
                                             <input type="checkbox" class="custom-control-input"
@@ -153,12 +153,12 @@
                                             <label class="custom-control-label" for="selectAll1"> </label>
                                         </div>
                                     </div>
-                                </th>
+                                </th> -->
                                 <th *ngIf="!isPrintView">Serial No </th>
                                 <th>Customer </th>
                                 <th>Date </th>
                                 <th>Time </th>
-                                <th>Status </th>
+                                <!-- <th>Status </th> -->
                                 <th *ngIf="appointmentType == 'completed'||appointmentType == 'in-progress'">Assigned To
                                 </th>
                                 <th *ngIf="!isPrintView">Action </th>
@@ -170,23 +170,23 @@
                                 <td colspan="6">No Data Found.</td>
                             </tr>
                             <tr *ngFor="let appointment of appointmentsList;let i=index">
-                                <td *ngIf="!isPrintView">
+                                <!-- <td *ngIf="!isPrintView">
                                     <label>
                                         <input type="checkbox" [checked]="appointment.isSelected"
                                             [value]="appointment.isSelected" (change)="change(appointment,$event)" />
                                     </label>
-                                </td>
+                                </td> -->
                                 <!-- <td>{{appointment.id}}</td> -->
                                 <td *ngIf="!isPrintView">{{i+1}}</td>
-                                <td>{{appointment.customer_name}}</td>
+                                <td>{{appointment.customerName}}</td>
                                 <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}
                                 </td>
                                 <td>
                                     {{appointment.hours}}</td>
-                                <td>
-                                    {{appointment.isOnlineAppointment=='Yes'?'Online':'Offline'}}</td>
+                                <!-- <td>
+                                    {{appointment.isOnlineAppointment=='Yes'?'Online':'Offline'}}</td> -->
                                 <td *ngIf="appointmentType == 'completed'||appointmentType == 'in-progress'">
-                                    {{appointment.assign_to_name?appointment.assign_to_name:'Not Assigned'}}</td>
+                                    {{appointment.assignToName?appointment.assignToName:'Not Assigned'}}</td>
                                 <th *ngIf="!isPrintView">
 
                                     <button type="button" class="mysalontheme-btn-sm mr-1" ngbTooltip="View Appointment Details"
@@ -245,7 +245,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <label><b>Status :</b> {{selectedAppointment.status}}</label><br>
-                <label><b>Customer :</b> {{selectedAppointment.customer_name}}</label><br>
+                <label><b>Customer :</b> {{selectedAppointment.customerName}}</label><br>
                 <label><b>Started At :</b> {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
                     true)}}</label><br>
                 <label><b>Total Amount :</b> {{selectedAppointment.totalAmount}}</label><br>
@@ -257,7 +257,7 @@
                         {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.dateAndTime, false)}}
                         {{selectedAppointment.hours}}</label><br>
                     <label> <b>Assigned To : </b>
-                        {{selectedAppointment.assign_to_name?selectedAppointment.assign_to_name:'Not Assigned'}}</label><br>
+                        {{selectedAppointment.assignToName?selectedAppointment.assignToName:'Not Assigned'}}</label><br>
                     <label><b>Completed At :</b>
                         {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
                         true)}}</label><br>
@@ -268,7 +268,7 @@
         <hr>
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <label> <b>Services : </b> {{selectedAppointment.services_name}}</label><br>
+                <label> <b>Services : </b> {{selectedAppointment.servicesName}}</label><br>
                 <!-- <label><b>Add On services :</b> {{selectedAppointment.addtionalServiceNames}}</label><br>
                 <label><b>Add On services charges:</b> {{selectedAppointment.addOnServiceCost}}</label> -->
             </div>
