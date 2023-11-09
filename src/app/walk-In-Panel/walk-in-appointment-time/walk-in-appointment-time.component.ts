@@ -28,6 +28,7 @@ export class WalkInAppointmentTimeComponent implements OnInit {
   onlineBranchId: number;
   public dateForm: FormGroup;
   currentUser: User;
+  todayDate: Date = new Date();
   ngOnInit() {
     this.hours = "";
     this.mintues = "";
@@ -96,30 +97,30 @@ export class WalkInAppointmentTimeComponent implements OnInit {
     });
   }
   slotAvaliable: boolean = true;
-  getNumberOfAppointmentForTheSlot() {
-    this.alreadyBookedSlots = 0;
-    this.appointmentModel.dateAndTime = this.datePipe.transform(new Date(this.selectedDate.year, (this.selectedDate.month - 1), this.selectedDate.day), 'yyyy-MM-dd');
-    if (this.currentUser && this.currentUser.branchId) {
-      this.inProgress = true;
-      this.branchService.getAppointmentBookedSlot(this.appointmentModel.dateAndTime.toString(), this.hours).subscribe(async response => {
-        this.inProgress = false;
-        if (response && response.isSuccess) {
-          this.alreadyBookedSlots = response.data;
-          if (this.alreadyBookedSlots < this.slot_for_appointment) {
-            this.slotAvaliable = true;
-          } else {
-            this.slotAvaliable = false;
-            this.cService.getToaster('kindly change the time', 'error', 'All the slots are booked');
-          }
-        } else {
-          this.cService.getToaster('Application error', 'error', 'Error');
-        }
-      }, async error => {
-        this.inProgress = false;
-        this.cService.getToaster('Application error', 'error', 'Error');
-      });
-    }
-  }
+  // getNumberOfAppointmentForTheSlot() {
+  //   this.alreadyBookedSlots = 0;
+  //   this.appointmentModel.dateAndTime = this.datePipe.transform(new Date(this.selectedDate.year, (this.selectedDate.month - 1), this.selectedDate.day), 'yyyy-MM-dd');
+  //   if (this.currentUser && this.currentUser.branchId) {
+  //     this.inProgress = true;
+  //     this.branchService.getAppointmentBookedSlot(this.appointmentModel.dateAndTime.toString(), this.hours).subscribe(async response => {
+  //       this.inProgress = false;
+  //       if (response && response.isSuccess) {
+  //         this.alreadyBookedSlots = response.data;
+  //         if (this.alreadyBookedSlots < this.slot_for_appointment) {
+  //           this.slotAvaliable = true;
+  //         } else {
+  //           this.slotAvaliable = false;
+  //           this.cService.getToaster('kindly change the time', 'error', 'All the slots are booked');
+  //         }
+  //       } else {
+  //         this.cService.getToaster('Application error', 'error', 'Error');
+  //       }
+  //     }, async error => {
+  //       this.inProgress = false;
+  //       this.cService.getToaster('Application error', 'error', 'Error');
+  //     });
+  //   }
+  // }
 
   Proceed() {
     if (!this.hours || this.hours == "") {
@@ -141,6 +142,7 @@ export class WalkInAppointmentTimeComponent implements OnInit {
   inProgress: boolean;
   saveAppointment() {
     this.inProgress = true;
+    this.appointmentModel.dateAndTime = this.datePipe.transform(new Date(this.selectedDate.year, (this.selectedDate.month - 1), this.selectedDate.day), 'yyyy-MM-dd');
     this.appointmentModel.servicesIds = JSON.parse(localStorage.getItem('currentSelectedAppointmentServices'));
     this.appointmentModel.totalAmount = JSON.parse(localStorage.getItem('currentSelectedAppointmentAmount'));
     const status = JSON.parse(localStorage.getItem('currentSelectedStatus'));
@@ -155,7 +157,8 @@ export class WalkInAppointmentTimeComponent implements OnInit {
       if (response && response.data && response.data.id) {
         this.appointmentModel = response.data;
         this.cService.getToaster('Appointment saved succesfully', 'success', 'Success');
-        window.location.href = window.location.origin + "/#/walkIn/finalConfirmation/" + this.appointmentModel.id;
+        window.location.href = window.location.origin + "/#/branch/upcoming-appointments";
+        //window.location.href = window.location.origin + "/#/walkIn/finalConfirmation/" + this.appointmentModel.id;
       }
     }, async error => {
       this.inProgress = false;

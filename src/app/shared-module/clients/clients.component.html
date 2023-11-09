@@ -169,11 +169,11 @@
                         </tr>
                         <tr *ngFor="let appointment of appointmentsList;let i=index">
                             <td>{{i+1}}</td>
-                            <td>{{appointment.services_name}}</td>
+                            <td>{{appointment.servicesName}}</td>
                             <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}</td>
                             <td> {{appointment.hours}}</td>
                             <td>{{appointment.status}}</td>
-                            <td>{{appointment.assign_to_name}}</td>
+                            <td>{{appointment.assignToName}}</td>
                             <td>{{appointment.total_amount}}</td>
                         </tr>
                     </tbody>

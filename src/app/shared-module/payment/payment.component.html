@@ -31,7 +31,7 @@
                             {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
                             true)}}</label><br>
 
-                        <label> <b>Services : </b> {{selectedAppointment.services_name}}</label><br>
+                        <label> <b>Services : </b> {{selectedAppointment.servicesName}}</label><br>
                         <!-- <label><b>Add On services :</bk> {{selectedAppointment.addtionalServiceNames}}</label><br> -->
                     </div>
                     <div class="col-md-6 col-sm-12">
@@ -40,7 +40,7 @@
                                 {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.dateAndTime, false)}}
                                 {{selectedAppointment.hours}}</label><br>
                             <label> <b>Assigned To : </b>
-                                {{selectedAppointment.assign_to_name?selectedAppointment.assign_to_name:'Not
+                                {{selectedAppointment.assignToName?selectedAppointment.assignToName:'Not
                                 Assigned'}}</label><br>
                             <label><b>Completed At :</b>
                                 {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
@@ -97,9 +97,13 @@
                 <div class="row pl-2">
                     <div class="col-12">
                         <label><b>Total Amount :</b> &nbsp; {{PaymentModel.amount}}</label>
+                        <button type="button" class=" mysalontheme-btn-md ml-5"
+                            *ngIf="!(ifTheCashPaymentDone || PaymentModel.pendingAmount==0)"
+                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,'cash')">Pay </button>
                     </div>
                 </div>
-                <div class="row pl-2 mt-1">
+
+                <!-- <div class="row pl-2 mt-1">
                     <div class="col-sm-4">
                         <label><b>Cash Paid :</b> &nbsp;{{PaymentModel.cashPaid}}</label>
                         <button type="button" class=" mysalontheme-btn-md ml-5" *ngIf="!(ifTheCashPaymentDone || PaymentModel.pendingAmount==0)"
@@ -120,7 +124,7 @@
                     <div class="col-12">
                         <label><b>Balance :</b> &nbsp; {{PaymentModel.pendingAmount}}</label>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row" *ngIf="inProgress">
@@ -136,29 +140,37 @@
     <div class="modal-header">
         <div class="row">
             <div class="col-12">
-                <h4 class="modal-title" id="modal-basic-title ">Pay by {{currentlyPayFor}}</h4>
+                <h4 class="modal-title" id="modal-basic-title ">Payment Info</h4>
             </div>
         </div>
     </div>
     <div class="modal-body ">
         <div class="row">
             <div class="col-sm-12">
-                <input type="number" *ngIf="currentlyPayFor=='cash'" [(ngModel)]="PaymentModel.cashPaid" 
+                <!-- <input type="number" *ngIf="currentlyPayFor=='cash'" [(ngModel)]="PaymentModel.cashPaid"
                     [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
                     class="form-control">
                 <input type="number" *ngIf="currentlyPayFor=='card'" [(ngModel)]="PaymentModel.cardPaid"
                     [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
-                    class="form-control">
-                <div *ngIf="checkAmountValidations()" class="err-validation">
-                    Please enter amount less than or equal to {{PaymentModel.pendingAmount}}
+                    class="form-control"> -->
 
-                </div>
+                <input type="number" [(ngModel)]="PaymentModel.pendingAmount" placeholder="Enter amount"
+                    class="form-control">
+
+                <select class="form-control mt-1" [(ngModel)]="PaymentModel.type">
+                    <option value="card">Card/UPI</option>
+                    <option value="cash">Cash</option>
+                </select>
+
+                <!-- <div *ngIf="checkAmountValidations()" class="err-validation">
+                    Please enter amount less than or equal to {{PaymentModel.pendingAmount}}
+                </div> -->
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
-        <button type="button" class="mysalontheme-btn-sm" [disabled]="checkAmountValidations()" (click)="paymentTransaction()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="paymentTransaction()">
             Pay</button>
     </div>
 </ng-template>
@@ -208,9 +220,9 @@
                             <label *ngIf="clientDetails.name">{{clientDetails.name}}</label><br>
                             <label *ngIf="clientDetails.mobile">{{clientDetails.mobile}}</label><br>
                             <label *ngIf="clientDetails.email">{{clientDetails.email}}</label><br>
-                            <label *ngIf="clientDetails.address">{{clientDetails.address}}</label> 
+                            <label *ngIf="clientDetails.address">{{clientDetails.address}}</label>
                             <label *ngIf="clientDetails.streetNumber">{{clientDetails.streetNumber}}, </label>
-                            <label *ngIf="clientDetails.streetName">{{clientDetails.streetName}}</label> 
+                            <label *ngIf="clientDetails.streetName">{{clientDetails.streetName}}</label>
                             <label *ngIf="clientDetails.suburb">{{clientDetails.suburb}}, </label>
                             <label *ngIf="clientDetails.postcode">{{clientDetails.postcode}}, </label>
                             <label *ngIf="clientDetails.territory">{{clientDetails.territory}}</label><br>
@@ -282,7 +294,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="3" style="text-align: left;width :75%">{{selectedAppointment.services_name}}</td>
+                        <td colspan="3" style="text-align: left;width :75%">{{selectedAppointment.servicesName}}</td>
 
                         <td style="text-align: center;width :25%">${{selectedAppointment.totalAmount}}</td>
                     </tr>
@@ -315,8 +327,9 @@
                     <tr>
                         <td style="text-align: left;">
 
-                            Payment Method <br> <span *ngIf="ifTheCashPaymentDone">Cash: {{PaymentModel.cashPaid}}<br></span><span
-                                *ngIf="ifTheCardPaymentDone">Card: {{PaymentModel.cardPaid}}<br></span>
+                            Payment Method <br> <span *ngIf="ifTheCashPaymentDone">Cash:
+                                {{PaymentModel.cashPaid}}<br></span><span *ngIf="ifTheCardPaymentDone">Card:
+                                {{PaymentModel.cardPaid}}<br></span>
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>

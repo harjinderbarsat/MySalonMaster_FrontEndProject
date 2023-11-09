@@ -51,16 +51,16 @@ export class AppointmentsService {
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
       if (currentUser.userType == 'admin') {
-        appointmentsData.admin_id = currentUser.id;
+        appointmentsData.adminId = currentUser.id;
       }
       else {
-        appointmentsData.branch_id = currentUser.branchId;
+        appointmentsData.branchId = currentUser.branchId;
       }
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');
       if (branch_id && branch_id.length > 0) {
-        appointmentsData.branch_id = parseInt(branch_id);
+        appointmentsData.branchId = parseInt(branch_id);
       }
     }
     return this.http.post<ResponseModel<AppointmentsModel>>(this.commonService.rootUrl + 'saveAppointment', appointmentsData);

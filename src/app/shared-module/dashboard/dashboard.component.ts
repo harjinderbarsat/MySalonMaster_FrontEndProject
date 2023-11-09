@@ -146,12 +146,11 @@ export class DashboardComponent implements OnInit {
     }
 
     viewProductSale() {
-        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale-history";
+        window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale";
     }
 
     viewSale() {
         window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/daily-sale";
-
     }
 
     viewClients() {

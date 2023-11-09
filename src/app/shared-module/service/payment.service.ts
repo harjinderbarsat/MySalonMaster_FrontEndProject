@@ -21,7 +21,6 @@ export class PaymentService {
   }
 
   public getPaymentByFilters(payment: Payment): Observable<ResponseModel<Payment>> {
-    payment.appointment_id = payment.appointmentId;
     var token = this.commonService.getUserToken();
     return this.http.post<ResponseModel<Payment>>(this.commonService.rootUrl + 'getPaymentByFilter', payment, {
       headers: new HttpHeaders().set('Authorization', token)

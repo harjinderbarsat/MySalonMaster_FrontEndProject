@@ -7,7 +7,8 @@
                     <div class="row p-2">
                         <div class="col-12 text-center">
                             <h3 class="main-heading mb-0">Select a Time</h3>
-                            <label *ngIf="hours!=''" class="mb-0 danger">already {{alreadyBookedSlots}} slots are booked from {{slot_for_appointment}} available slots.</label>
+                            <!-- <label *ngIf="hours!=''" class="mb-0 danger">already {{alreadyBookedSlots}} slots are booked
+                                from {{slot_for_appointment}} available slots.</label> -->
                         </div>
                     </div>
                     <div class="row" *ngIf="!inProgress">
@@ -15,7 +16,7 @@
                             <h4 class="mb-0"><b>Select Date</b> </h4>
                             <div class="row">
                                 <div class="col-12">
-                                    <ngb-datepicker class="mydatepicker" [(ngModel)]="selectedDate" #dp
+                                    <ngb-datepicker class="mydatepicker" [(ngModel)]="selectedDate" #dp [minDate]="todayDate"
                                         (navigate)="date = $event.next" formControlName="date"></ngb-datepicker>
                                 </div>
                             </div>
@@ -24,7 +25,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <select class="mysalontheme-input" [(ngModel)]="hours" formControlName='hours'
-                                        (change)="getNumberOfAppointmentForTheSlot()" style="width:300px">
+                                        style="width:300px">
                                         <option value="">Select Time</option>
 
                                         <option value="9.00 am">9.00 am</option>
@@ -80,10 +81,11 @@
                     </div>
                     <div class="row mt-2" *ngIf="!inProgress">
                         <div class="col-12">
-                            <button class="mysalontheme-btn-lg pull-right" type="submit" *ngIf="hours!='' && slotAvaliable">Finish
+                            <button class="mysalontheme-btn-lg pull-right" type="submit"
+                                *ngIf="hours!=''">Finish
                                 &nbsp;<i class="fa fa-check"></i>
                             </button>
-                            
+
                             <button type="button" class="mysalontheme-btn-lg pull-left" (click)="back()"><i
                                     class="fa fa-arrow-left"></i> &nbsp;
                                 Back</button>
