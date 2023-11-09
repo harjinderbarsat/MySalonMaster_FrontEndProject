@@ -4,14 +4,14 @@
     </div>
     <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgress">
         <button class="mysalontheme-btn-sm mr-1" printTitle="MyTitle" printSectionId="print-section"
-            ngxPrint>Print</button>
-        <button class="mysalontheme-btn-sm mr-1" (click)="downloadXslx()">Download XLSX</button>
+            ngxPrint><i class="fa fa-print" aria-hidden="true"></i></button>
+        <button class="mysalontheme-btn-sm mr-1" (click)="downloadXslx()"><i class="fa fa-download" aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
         <button class=" mysalontheme-btn-sm" *ngIf="!isBranchPannel"
             (click)="openProductCategoryModal(CategoryModal,null,false)"><i class="fa fa-plus"></i>
-            &nbsp; Add Category</button>
+            </button>
     </div>
 </div>
 
