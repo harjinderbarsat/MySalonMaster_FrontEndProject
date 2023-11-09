@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <label><b>Status :</b> {{selectedAppointment.status}}</label><br>
-                <label><b>Customer :</b> {{selectedAppointment.customer_name}}</label><br>
+                <label><b>Customer :</b> {{selectedAppointment.customerName}}</label><br>
                 <label><b>Started At :</b> {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.startedAt,
                     true)}}</label><br>
                 <label><b>Total Amount :</b> {{selectedAppointment.totalAmount}}</label><br>
@@ -76,7 +76,7 @@
                         {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.dateAndTime, false)}}
                         {{selectedAppointment.hours}}</label><br>
                     <label> <b>Assigned To : </b>
-                        {{selectedAppointment.assign_to_name?selectedAppointment.assign_to_name:'Not Assigned'}}</label><br>
+                        {{selectedAppointment.assignToName?selectedAppointment.assignToName:'Not Assigned'}}</label><br>
                     <label><b>Completed At :</b>
                         {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
                         true)}}</label><br>
@@ -87,7 +87,7 @@
         <hr>
         <div class="row">
             <div class="col-md-12 col-sm-12">
-                <label> <b>Services : </b> {{selectedAppointment.services_name}}</label><br>
+                <label> <b>Services : </b> {{selectedAppointment.servicesName}}</label><br>
                 <!-- <label><b>Add On services :</b> {{selectedAppointment.addtionalServiceNames}}</label><br>
                 <label><b>Add On services charges:</b> {{selectedAppointment.addOnServiceCost}}</label> -->
             </div>

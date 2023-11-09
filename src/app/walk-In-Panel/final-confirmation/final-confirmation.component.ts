@@ -39,7 +39,7 @@ export class FinalConfirmationComponent implements OnInit {
   getAppointment(appointmentId: number) {
     this.appointmentService.getAppointmentById(appointmentId).subscribe(async response => {
       this.appointmentModel = response.data[0];
-      this.client_name = this.appointmentModel.customer_name;
+      this.client_name = this.appointmentModel.customerName;
       this.date = this.appointmentModel.dateAndTime;
       this.time = this.appointmentModel.hours;
 
@@ -56,7 +56,7 @@ export class FinalConfirmationComponent implements OnInit {
     } else if (this.appointmentModel.status != 'online') {
       window.location.href = window.location.origin + "/#/walkIn/bookAppointment";
     } else {
-      window.location.href = window.location.origin + "/#/walkIn/BranchSelection?admin_id=" + this.appointmentModel.admin_id;
+      window.location.href = window.location.origin + "/#/walkIn/BranchSelection?admin_id=" + this.appointmentModel.adminId;
     }
   }
 }

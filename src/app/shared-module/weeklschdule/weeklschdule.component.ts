@@ -102,7 +102,7 @@ export class WeeklschduleComponent implements OnInit {
             this.events.push({
               id: appointment.id,
               start: subDays(newDate, 0),
-              title: appointment.hours + '- ' + appointment.customer_name + ' has booked appointment for : ' + appointment.services_name,
+              title: appointment.hours + '- ' + appointment.customerName + ' has booked appointment for : ' + appointment.servicesName,
               color: { ...colors.blue },
               allDay: false,
             })
@@ -110,7 +110,7 @@ export class WeeklschduleComponent implements OnInit {
             this.events.push({
               id: appointment.id,
               start: subDays(newDate, 0),
-              title: 'Completed appointment at ' + appointment.hours + '- ' + appointment.customer_name,
+              title: 'Completed appointment at ' + appointment.hours + '- ' + appointment.customerName,
               color: { ...colors.green },
               allDay: false,
             })
@@ -118,7 +118,7 @@ export class WeeklschduleComponent implements OnInit {
             this.events.push({
               id: appointment.id,
               start: subDays(newDate, 0),
-              title: appointment.hours + '- ' + appointment.customer_name + ' has online booked appointment for : ' + appointment.services_name,
+              title: appointment.hours + '- ' + appointment.customerName + ' has online booked appointment for : ' + appointment.servicesName,
               color: { ...colors.red },
               allDay: false,
             })
@@ -126,7 +126,7 @@ export class WeeklschduleComponent implements OnInit {
             this.events.push({
               id: appointment.id,
               start: subDays(newDate, 0),
-              title: 'In progress appointment for ' + appointment.customer_name,
+              title: 'In progress appointment for ' + appointment.customerName,
               color: { ...colors.yellow },
               allDay: false,
             })

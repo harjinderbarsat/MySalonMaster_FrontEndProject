@@ -2,19 +2,18 @@ export class Payment {
     id: number;
     adminId: number;
     branchId: number;
-    type: string;// 'cash' or 'card'
+    type: string = "cash";// 'cash' or 'card'
     date: number;
     cardPaid: number;
     cashPaid: number;
     amount: number;
     pendingAmount: number;
     appointmentId: number;
-    appointment_id: number;
     productSaleId: number;
     clientId: number;
-    client_name: string;
-    employee_id: number;
-    created_at: string;
+    clientName: string;
+    employeeId: number;
+    createdAt: string;
     updatedAt: string;
     payFor: string; // 'product' Or 'appointment'
     status: string;
