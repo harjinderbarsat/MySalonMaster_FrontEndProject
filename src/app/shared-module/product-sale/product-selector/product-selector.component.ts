@@ -79,7 +79,7 @@ export class ProductSelectorComponent implements OnInit {
     this.currentSelectedCategory = category;
     this.currentSelectedCategory.isSelected = true;
     this.selectServicesList = new Array<ProductModel>();
-    this.selectServicesList = this.services.filter(p => p.category_id == this.currentSelectedCategory.id);
+    this.selectServicesList = this.services.filter(p => p.categoryId == this.currentSelectedCategory.id);
   }
 
   selectedServies: Array<ProductModel>

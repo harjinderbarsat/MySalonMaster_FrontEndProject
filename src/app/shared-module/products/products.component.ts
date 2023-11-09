@@ -231,7 +231,7 @@ export class ProductsComponent implements OnInit {
       if (this.filterType == 'price') {
         this.products = this.allproducts.filter(p => p.price == this.filterValue);
       } else if (this.filterType == 'category') {
-        this.products = this.allproducts.filter(p => p.category_id == this.filterValue.toLowerCase());
+        this.products = this.allproducts.filter(p => p.categoryId == this.filterValue.toLowerCase());
       } else if (this.filterType == 'maincategory') {
         this.products = this.allproducts.filter(p => p.mainCategoryId == this.filterValue.toLowerCase());
       } else if (this.filterType == 'name') {

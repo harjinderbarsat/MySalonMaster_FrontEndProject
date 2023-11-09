@@ -1,7 +1,7 @@
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
-.mysalontheme-bg-color{
+.mysalontheme-bg-color {
     background-color: #fbf0ec;
 }
 
@@ -21,20 +21,21 @@
     text-transform: uppercase !important;
 }
 
-.mysalontheme-btn-color{
+.mysalontheme-btn-color {
     background-color: #e97f7f;
     color: white;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     padding: 0.5rem !important;
 }
 
-.btn{
+.btn {
     margin-bottom: 0px !important;
 }
 
-.mysalontheme-input-lg{
+.mysalontheme-input-lg {
     width: 100%;
     height: 60px;
     padding: 0px 10px 0px 20px;
@@ -43,7 +44,7 @@
     border: solid;
 }
 
-.mysalontheme-btn-lg{
+.mysalontheme-btn-lg {
     /* background-color: #F7C9CB; */
     background-color: #e97f7f;
     color: white;
@@ -54,7 +55,7 @@
     border: none;
 }
 
-.mysalontheme-btn-md{
+.mysalontheme-btn-md {
     /* background-color: #F7C9CB; */
     background-color: #e97f7f;
     color: white;
@@ -64,7 +65,7 @@
     border: none;
 }
 
-.mysalontheme-btn-sm{
+.mysalontheme-btn-sm {
     /* background-color: #F7C9CB; */
     background-color: #e97f7f;
     color: white;
@@ -77,33 +78,47 @@
 .mysalontheme-btn-md:hover {
     transition: 0.2s ease-in-out;
     background: #eb3232;
-  }
-  .mysalontheme-btn-sm:hover {
-    transition: 0.2s ease-in-out;
-    background: #eb3232;
-  }
+}
 
-  .mysalontheme-btn-lg:hover {
+.mysalontheme-btn-sm:hover {
     transition: 0.2s ease-in-out;
     background: #eb3232;
-  }
+}
+
+.mysalontheme-btn-lg:hover {
+    transition: 0.2s ease-in-out;
+    background: #eb3232;
+}
 
 
 
 ::-webkit-scrollbar {
-    width: 8px; /* width of the entire scrollbar */
+    width: 8px;
+    /* width of the entire scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-    background: lightgray; /* color of the tracking area */
+    background: lightgray;
+    /* color of the tracking area */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: gray; /* color of the scroll thumb */
-    border-radius: 20px; /* roundness of the scroll thumb */
-    border: 3px solid lightgray; /* creates padding around scroll thumb */
+    background-color: gray;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid lightgray;
+    /* creates padding around scroll thumb */
 }
 
-.control-level{
+.control-level {
     padding-top: 30px;
+}
+
+.grid-width {
+    width: 100%;
+    overflow: scroll;
+}
+.action-btn{
+    min-width: 125px !important;
 }

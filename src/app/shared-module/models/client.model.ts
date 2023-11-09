@@ -7,18 +7,18 @@ export class ClientModel {
     email: string;
     isSelected: boolean;
     mobile: string;
-    date_of_birth: string;
-    branch_name: string;
-    no_of_appointments: number;
+    dateOfBirth: string;
+    branchName: string;
+    noOfAppointments: number;
     suburb: string;
     postcode: string;
-    loyalty_points: string;
+    loyaltyPoints: string;
     address: string;
-    street_number: string;
-    street_name: string;
+    streetNumber: string;
+    streetName: string;
     territory: string;
-    created_at: string;
-    updated_at: string;
-    branch_id: number;
-    admin_id: number;
+    createdAt: string;
+    updatedAt: string;
+    branchId: number;
+    adminId: number;
 }

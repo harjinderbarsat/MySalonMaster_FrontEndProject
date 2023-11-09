@@ -62,7 +62,7 @@ export class ManageClientComponent implements OnInit {
   getClient(client_id: number) {
     this.clientService.getClientById(client_id).subscribe(async response => {
       this.clientInfo = response.data;
-      var addedDate = new Date(this.clientInfo.date_of_birth);
+      var addedDate = new Date(this.clientInfo.dateOfBirth);
       this.ngbDateOfBirth = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
     }, async error => {
       this.inProgress = false;
@@ -79,7 +79,7 @@ export class ManageClientComponent implements OnInit {
     this.inProgress = true;
 
     if (this.ngbDateOfBirth != null && this.ngbDateOfBirth != undefined) {
-      this.clientInfo.date_of_birth = this.datePipe.transform(new Date(this.ngbDateOfBirth.year, (this.ngbDateOfBirth.month - 1), this.ngbDateOfBirth.day), 'yyyy-MM-dd');
+      this.clientInfo.dateOfBirth = this.datePipe.transform(new Date(this.ngbDateOfBirth.year, (this.ngbDateOfBirth.month - 1), this.ngbDateOfBirth.day), 'yyyy-MM-dd');
     }
 
     if (this.isEditMode) {

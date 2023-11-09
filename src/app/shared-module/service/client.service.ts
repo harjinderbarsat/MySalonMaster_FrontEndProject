@@ -43,16 +43,16 @@ export class ClientService {
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
       if (currentUser.userType == 'admin') {
-        clientData.admin_id = currentUser.id;
+        clientData.adminId = currentUser.id;
       }
       else {
-        clientData.branch_id = currentUser.branchId;
+        clientData.branchId = currentUser.branchId;
       }
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');
       if (branch_id && branch_id.length > 0) {
-        clientData.branch_id = parseInt(branch_id);
+        clientData.branchId = parseInt(branch_id);
       }
     }
 
@@ -63,16 +63,16 @@ export class ClientService {
     let currentUser = this.commonService.getUserProfile();
     if (currentUser) {
       if (currentUser.userType == 'admin') {
-        clientData.admin_id = currentUser.id;
+        clientData.adminId = currentUser.id;
       }
       else {
-        clientData.branch_id = currentUser.branchId;
+        clientData.branchId = currentUser.branchId;
       }
     }
     else {
       let branch_id = localStorage.getItem('offlineBranchId');
       if (branch_id && branch_id.length > 0) {
-        clientData.branch_id = parseInt(branch_id);
+        clientData.branchId = parseInt(branch_id);
       }
     }
 

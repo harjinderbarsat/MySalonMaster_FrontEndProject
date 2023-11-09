@@ -77,7 +77,7 @@ export class ProductSaleComponent implements OnInit {
         this.clientService.getClientByMobile(this.newClient.mobile).subscribe(async response => {
           if (response && response.data) {
             this.newClient = response.data;
-            var addedDate = new Date(this.newClient.date_of_birth);
+            var addedDate = new Date(this.newClient.dateOfBirth);
             this.ngbDateOfBirth = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
           } else {
             this.isInfoUpdate = true;
@@ -110,7 +110,7 @@ export class ProductSaleComponent implements OnInit {
       if (this.isInfoUpdate) {
         this.inProgress = true;
         if (this.ngbDateOfBirth != null && this.ngbDateOfBirth != undefined) {
-          this.newClient.date_of_birth = this.datePipe.transform(new Date(this.ngbDateOfBirth.year, (this.ngbDateOfBirth.month - 1), this.ngbDateOfBirth.day), 'yyyy-MM-dd');
+          this.newClient.dateOfBirth = this.datePipe.transform(new Date(this.ngbDateOfBirth.year, (this.ngbDateOfBirth.month - 1), this.ngbDateOfBirth.day), 'yyyy-MM-dd');
         }
         if (this.newClient.id) {
           this.clientService.updateClient(this.newClient).subscribe(async response => {
