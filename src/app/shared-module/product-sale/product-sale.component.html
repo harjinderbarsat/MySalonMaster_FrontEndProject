@@ -59,11 +59,11 @@
 
                                     <input type="text" class="mysalontheme-input mt-3" placeholder="Street number"
                                         (focusout)="ifAnyChangeOccured()" [disabled]="isSerchingDone"
-                                        formControlName='street_number' [(ngModel)]="newClient.street_number" />
+                                        formControlName='street_number' [(ngModel)]="newClient.streetNumber" />
 
                                     <input type="text" class="mysalontheme-input mt-3" placeholder="Street name"
                                         (focusout)="ifAnyChangeOccured()" [disabled]="isSerchingDone"
-                                        formControlName='street_name' [(ngModel)]="newClient.street_name" />
+                                        formControlName='street_name' [(ngModel)]="newClient.streetName" />
                                     <div *ngIf="nextSubmit && searchFormAlias.street_name.errors" class="err-validation">
                                         <div>Please enter alphabets(a-z,A-Z) only.
                                         </div>
