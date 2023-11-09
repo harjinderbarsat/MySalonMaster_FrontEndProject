@@ -35,7 +35,7 @@ export const BRANCH_ROUTES: RouteInfo[] = [
     path: '', title: 'Services', icon: 'fa fa-wrench', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
       { path: '/admin/serviceCategory', title: 'All Categories', icon: 'fa fa-list-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
       { path: '/admin/serviceList', title: 'All Service', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      { path: '/admin/defaultServices', title: 'Load Default', icon: 'fa fa-play', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+      // { path: '/admin/defaultServices', title: 'Load Default', icon: 'fa fa-play', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
     ], visibility: true, isAdmin: false
   },
   { path: '/admin/employees', title: 'Employees', icon: 'ft-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },

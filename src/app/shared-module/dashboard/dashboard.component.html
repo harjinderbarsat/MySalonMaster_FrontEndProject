@@ -1,5 +1,43 @@
 <!--Statistics cards Starts-->
 <div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="isBranchPannel">
+        <div class="card my-salon-master" (click)="addAppointment()">
+            <div class="card-content">
+                <div class="card-body p-2" style="height: 200px;">
+                    <div class="media">
+                        <div class="media-body white text-center">
+                            <h5> Add New Appointments </h5>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <h1 class="count-font"><i class="fa fa-plus"></i> </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="isBranchPannel">
+        <div class="card my-salon-master" (click)="viewAppointments()">
+            <div class="card-content">
+                <div class="card-body p-2" style="height: 200px;">
+                    <div class="media">
+                        <div class="media-body white text-center">
+                            <h5>Today's Appointments </h5>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <h1 class="count-font">{{dashBoardData.todayUpcomingAppointments}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col-xl-3 col-lg-6 col-md-6 col-12" *ngIf="!isBranchPannel">
         <div class="card my-salon-master" (click)="viewSale()">
             <div class="card-content">
@@ -18,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div [ngClass]="{'col-xl-3 col-lg-6 col-md-6 col-12': !isBranchPannel, 'col-lg-6 col-md-6 col-12': isBranchPannel }">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-12">
         <div class="card my-salon-master" (click)="viewAppointments()">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
@@ -54,7 +92,7 @@
             </div>
         </div>
     </div>
-    <div [ngClass]="{'col-xl-3 col-lg-6 col-md-6 col-12': !isBranchPannel, 'col-lg-6 col-md-6 col-12': isBranchPannel}">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-12">
         <div class="card  my-salon-master">
             <div class="card-content">
                 <div class="card-body p-2" style="height: 200px;">
@@ -129,8 +167,8 @@
                         <h4 class="card-title">Upcoming's Appointments </h4>
                     </div>
                     <div class="col-6">
-                        <button type="button" class="mysalontheme-btn-sm pull-right" (click)="viewAppointments()">View All <i
-                                class="fa fa-arrow-right"></i>
+                        <button type="button" class="mysalontheme-btn-sm pull-right" (click)="viewAppointments()">View
+                            All <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>
@@ -304,8 +342,8 @@
                         <h4 class="card-title">Employees </h4>
                     </div>
                     <div class="col-6">
-                        <button type="button" class="mysalontheme-btn-sm pull-right" (click)="viewEmployee()">View All <i
-                                class="fa fa-arrow-right"></i>
+                        <button type="button" class="mysalontheme-btn-sm pull-right" (click)="viewEmployee()">View All
+                            <i class="fa fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>
@@ -316,7 +354,7 @@
                         <tr>
                             <!-- <th>Employee ID </th> -->
                             <th>Name </th>
-                            <th>Mobile </th>  
+                            <th>Mobile </th>
                             <!-- <th>Designation</th> -->
                             <!-- <th>Status </th> -->
                         </tr>

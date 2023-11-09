@@ -159,6 +159,14 @@ export class DashboardComponent implements OnInit {
 
     }
 
+    addAppointment() {
+        localStorage.setItem('addedByPanel', 'yes')
+        window.open(
+          window.location.origin + "/#/walkIn/clientRegistration/offline",
+          '_blank' // <- This is what makes it open in a new window.
+        );
+      }
+
     // Line area chart configuration Starts
     lineArea: Chart = {
         type: 'Line',
