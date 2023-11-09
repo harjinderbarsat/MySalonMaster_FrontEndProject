@@ -6,9 +6,9 @@
         <div class="form-group pull-right">
 
             <button class="mysalontheme-btn-sm mr-1" printTitle="MyTitle" printSectionId="print-section"
-                ngxPrint>Print</button>
+                ngxPrint><i class="fa fa-print" aria-hidden="true"></button>
 
-            <button class="mysalontheme-btn-sm mr-1" (click)="downloadXslx()">Download XLSX</button>
+            <button class="mysalontheme-btn-sm mr-1" (click)="downloadXslx()"><i class="fa fa-download" aria-hidden="true"></i></button>
 
             <input placeholder="Select Date" style="width: 140px; height: 32px;" autocomplete="off" ngbDatepicker
                 #remove="ngbDatepicker" (ngModelChange)="getAppointmentPaymentList($event)" (click)="remove.toggle()"
