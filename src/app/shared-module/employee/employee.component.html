@@ -1,17 +1,16 @@
 <div class="row">
-    <div class="col-md-6 col-sm-12">
-        <h3>Employees List</h3>
-    </div>
-    <div class="col-md-6 col-sm-12" *ngIf="!inProgress">
+    <div class="col-12">
+        <label class="page-heading">Employees</label>
+    
         <button class="mysalontheme-btn-sm mr-1 pull-right" printTitle="MyTitle" printSectionId="print-section"
-            ngxPrint>Print</button>
-        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="downloadXslx()">Download XLSX</button>
+            ngxPrint><i class="fa fa-print" aria-hidden="true"></i></button>
+        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="downloadXslx()"><i class="fa fa-download" aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
-                class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+                class="fa fa-trash"></i> &nbsp; Delete</button>
 
         <button class=" mysalontheme-btn-sm mr-1 pull-right" *ngIf="!isBranchPannel" (click)="addEditEmployee(0)"><i
-                class="fa fa-plus"></i> &nbsp; Add
-            Employee</button>
+                class="fa fa-plus"></i>
+            </button>
     </div>
 </div>
 
@@ -68,10 +67,10 @@
                                         (click)="deleteEmployee(employee)"><i class="fa fa-trash"></i> </button>
                                     <button type="button" *ngIf="employee.status=='Inactive'"
                                         class="mysalontheme-btn-sm mr-1" (click)="updatedEmployeeStatus(employee,'active')">
-                                        Activate
+                                        <i class="fa fa-toggle-on" aria-hidden="true"></i>
                                     </button>
                                     <button type="button" *ngIf="employee.status=='active'" class="mysalontheme-btn-sm"
-                                        (click)="updatedEmployeeStatus(employee,'Inactive')"> Inactive
+                                        (click)="updatedEmployeeStatus(employee,'Inactive')"> <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                     </button>
                                 </th>
                             </tr>
