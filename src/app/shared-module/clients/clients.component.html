@@ -94,7 +94,7 @@
                                 <td>{{client.mobile}}</td>
                                 <td>{{client.email}}</td>
                                 <td>{{client.noOfAppointments}}</td>
-                                <th *ngIf="!isPrintView">
+                                <th *ngIf="!isPrintView" class="action-btn">
                                     <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewClientModel,client)"><i class="fa fa-eye"></i> </button>
                                     <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" ngbTooltip="Edit Client"

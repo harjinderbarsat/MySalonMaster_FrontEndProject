@@ -18,7 +18,7 @@
 </div>
 <div class="row" matchHeight="card"  *ngIf="!inProgressProductSale">
     <div class="col-12">
-        <div class="card">
+        <div class="card grid-width">
             <div class="card-content">
                 <div class="card-body">
                     <table class="table">
@@ -46,7 +46,7 @@
                                 <td>{{productSale.total_amount}}</td>
                                 <td>{{cService.getStringDateFormatByCurtureAndType(productSale.created_at, false)}} </td>
                                 <td>{{productSale.sold_by_name}}</td>
-                                <th>
+                                <th class="action-btn">
                                     <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewProducts,productSale.products)"><i
                                             class="fa fa-eye"></i> </button>
