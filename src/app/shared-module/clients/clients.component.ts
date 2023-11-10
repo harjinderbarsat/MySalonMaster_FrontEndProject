@@ -35,6 +35,7 @@ export class ClientsComponent implements OnInit {
   currentUser: User;
   appointmentFilter: AppointmentsModel;
   appointmentsList: Array<AppointmentsModel>;
+  isBranchPannel: boolean;
 
   ngOnInit() {
     this.inProgress = false;
@@ -43,7 +44,7 @@ export class ClientsComponent implements OnInit {
     this.appointmentFilter = new AppointmentsModel();
     this.getClientsList();
     this.currentUser = this.cService.getUserProfile();
-
+    this.isBranchPannel = this.currentUser.userType == 'branch';
     setInterval(() => {
       //this.getListWithTimer();
     }, 3000)

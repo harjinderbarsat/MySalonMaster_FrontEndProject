@@ -24,17 +24,18 @@ export const BRANCH_PANEL_ROUTES: BranchRouteInfo[] = [
   //     { path: '/branch/loylity-points', title: 'Loylity Point', icon: 'fa fa-gift', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true }
   //   ], visibility: true, isAdmin: true
   // },
-  {
-    path: '', title: 'Client', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
-    submenu: [
-      { path: '/branch/customer', title: 'List', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      // { path: '/branch/client-Reviews', title: ' Reviews', icon: 'fa fa-star', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
-    ], visibility: true, isAdmin: true
-  }, 
+  { path: '/branch/customer', title: 'Clients', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+
+  // {
+  //   path: '', title: 'Client', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
+  //   submenu: [
+  //     // { path: '/branch/client-Reviews', title: ' Reviews', icon: 'fa fa-star', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
+  //   ], visibility: true, isAdmin: true
+  // }, 
   {
     path: '', title: 'Products', icon: 'fa fa-houzz', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
       { path: '/branch/product-sale', title: 'New Sale', icon: 'fa fa-tachometer', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      { path: '/branch/product-sale-history', title: 'Sale History', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+      // { path: '/branch/product-sale-history', title: 'Sale History', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
       { path: '/branch/products', title: 'All Products', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
       { path: '/branch/products-Categoty', title: 'All Categories', icon: 'fa fa-list-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
     ], visibility: true, isAdmin: false
@@ -46,6 +47,7 @@ export const BRANCH_PANEL_ROUTES: BranchRouteInfo[] = [
       // { path: '/branch/defaultServices', title: 'Load Default', icon: 'fa fa-play', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
     ], visibility: true, isAdmin: false
   },
-  { path: '/branch/profile', title: 'Branch Profile', icon: 'fa fa-industry', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  // { path: '/branch/profile', title: 'Branch Profile', icon: 'fa fa-industry', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  { path: '/admin/settings', title: 'Help', icon: 'fa ft-phone', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   
 ];
