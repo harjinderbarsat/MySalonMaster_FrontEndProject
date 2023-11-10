@@ -57,14 +57,14 @@
                 <div class="row pl-2" *ngIf="paymentFor == 'product'">
                     <div class="col-md-6 col-sm-12">
                         <label> <b>Sale ID : </b> {{productDetails.id}}</label><br>
-                        <label><b>Employee Name :</b> {{productDetails.sold_by_name}}</label><br>
+                        <label><b>Employee Name :</b> {{productDetails.soldByName}}</label><br>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label><b>Date & Time :</b>
-                                {{cService.getStringDateFormatByCurtureAndType(productDetails.created_at, false)}}
+                                {{cService.getStringDateFormatByCurtureAndType(productDetails.createdAt, false)}}
                             </label><br>
-                            <label><b>Total Amount :</b> {{productDetails.total_amount}}</label><br>
+                            <label><b>Total Amount :</b> {{productDetails.totalAmount}}</label><br>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                 <td>{{product.productName}}</td>
                                 <td>{{product.qty}}</td>
                                 <td>{{product.price}}</td>
-                                <td>{{product.total_amount}}</td>
+                                <td>{{product.totalAmount}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -252,7 +252,7 @@
                         <td style="text-align: left;width :40%">{{product.productName}}</td>
                         <td style="text-align: center;width :10%">{{product.qty}}</td>
                         <td style="text-align: center;width :25%">${{product.price}}</td>
-                        <td style="text-align: center;width :25%">${{product.total_amount}}</td>
+                        <td style="text-align: center;width :25%">${{product.totalAmount}}</td>
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
@@ -263,7 +263,7 @@
                     <tr>
                         <td colspan="2"></td>
                         <td style="text-align: left;"><b>SUB TOTAL</b></td>
-                        <td>${{productDetails.total_amount}}</td>
+                        <td>${{productDetails.totalAmount}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
@@ -273,7 +273,7 @@
                     <tr>
                         <td colspan="2"></td>
                         <td style="text-align: left;"><b>GRAND TOTAL</b></td>
-                        <td>${{productDetails.total_amount}}</td>
+                        <td>${{productDetails.totalAmount}}</td>
                     </tr>
                 </tbody>
             </table>

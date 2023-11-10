@@ -1,20 +1,20 @@
 export class ProductSaleModel {
     id: number;
-    admin_id: number;
-    branch_id: number;
+    adminId: number;
+    branchId: number;
     productSaleId:number;
     employeeUniqueId: string;
-    branch_name: string;
-    sold_by_id: number; // it will be employee Id
-    sold_by_name: string; // it will be employee Name
+    branchName: string;
+    soldById: number; // it will be employee Id
+    soldByName: string; // it will be employee Name
     appointmentId: number;
-    client_id: number;
-    client_name: string;
+    clientId: number;
+    clientName: string;
     clientContact: number;
-    sale_type: string; //'dirtectSale' 2. 'withappointment'
-    total_amount: number;
+    saleType: string; //'dirtectSale' 2. 'withappointment'
+    totalAmount: number;
     products: Array<ProductSaleDetailsModel>;
-    created_at: string;
+    createdAt: string;
     updatedAt: string;
 }
 
@@ -25,5 +25,5 @@ export class ProductSaleDetailsModel {
     productName: string;
     qty: number=0;
     price: number=0;
-    total_amount: number=0;
+    totalAmount: number=0;
 }

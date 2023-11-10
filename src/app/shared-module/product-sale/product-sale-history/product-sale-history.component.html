@@ -42,10 +42,10 @@
                                 
                                 <!-- <td>{{productSale.id}}</td> -->
                                 <td>{{i+1}}</td>
-                                <td>{{productSale.client_name}}</td>
-                                <td>{{productSale.total_amount}}</td>
-                                <td>{{cService.getStringDateFormatByCurtureAndType(productSale.created_at, false)}} </td>
-                                <td>{{productSale.sold_by_name}}</td>
+                                <td>{{productSale.clientName}}</td>
+                                <td>{{productSale.totalAmount}}</td>
+                                <td>{{cService.getStringDateFormatByCurtureAndType(productSale.createdAt, false)}} </td>
+                                <td>{{productSale.soldByName}}</td>
                                 <th class="action-btn">
                                     <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewProducts,productSale.products)"><i
@@ -113,7 +113,7 @@
                             <td>{{product.productName}}</td>
                             <td>{{product.qty}}</td>
                             <td>{{product.price}}</td>
-                            <td>{{product.total_amount}}</td>
+                            <td>{{product.totalAmount}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">&nbsp;</td>

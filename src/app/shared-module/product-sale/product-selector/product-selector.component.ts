@@ -142,9 +142,9 @@ export class ProductSelectorComponent implements OnInit {
         this.productSaleModel = new ProductSaleModel();
         this.productSaleModel.employeeUniqueId = this.soildById;
 
-        this.productSaleModel.client_id = this.client_id;
+        this.productSaleModel.clientId = this.client_id;
         this.productSaleModel.products = new Array<ProductSaleDetailsModel>();
-        this.productSaleModel.sale_type = 'dirtectSale';
+        this.productSaleModel.saleType = 'dirtectSale';
         let tAmount = 0;
 
         this.selectedServies.forEach(p => {
@@ -153,12 +153,12 @@ export class ProductSelectorComponent implements OnInit {
           this.prodSaleModel.productId = p.id;
           this.prodSaleModel.qty = p.productQty;
           this.prodSaleModel.price = p.price;
-          this.prodSaleModel.total_amount = (p.productQty * p.price);
-          tAmount = tAmount + this.prodSaleModel.total_amount;
+          this.prodSaleModel.totalAmount = (p.productQty * p.price);
+          tAmount = tAmount + this.prodSaleModel.totalAmount;
           this.productSaleModel.products.push(this.prodSaleModel);
         });
 
-        this.productSaleModel.total_amount = tAmount;
+        this.productSaleModel.totalAmount = tAmount;
 
         this.productSaleService.saveProductSale(this.productSaleModel).subscribe(async response => {
           if (response && response.isSuccess) {

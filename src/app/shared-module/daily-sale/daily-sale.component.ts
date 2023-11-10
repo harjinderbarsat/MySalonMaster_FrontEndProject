@@ -68,7 +68,7 @@ export class DailySaleComponent implements OnInit {
             p.payFor = p.payFor && p.payFor != '' ? p.payFor.toLocaleUpperCase() : '';
           })
         } else {
-          this.cService.getToaster('Data does not exists', 'info', 'No Data Found');
+          //this.cService.getToaster('Data does not exists', 'info', 'No Data Found');
         }
 
       } else {

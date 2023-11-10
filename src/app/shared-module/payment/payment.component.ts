@@ -75,7 +75,7 @@ export class PaymentComponent implements OnInit {
     this.productSaleService.getProductSaleById(this.id).subscribe(async response => {
       if (response && response.isSuccess && response.data) {
         this.productDetails = response.data;
-        this.getClientDetails(this.productDetails.client_id);
+        this.getClientDetails(this.productDetails.clientId);
       }
     }, async error => {
       this.inProgress = false;
@@ -130,7 +130,7 @@ export class PaymentComponent implements OnInit {
           this.PaymentModel.amount = this.selectedAppointment.totalAmount;
 
         } else if (this.paymentFor == 'product') {
-          this.PaymentModel.amount = this.productDetails.total_amount;
+          this.PaymentModel.amount = this.productDetails.totalAmount;
         }
         this.PaymentModel.pendingAmount = Number(this.PaymentModel.amount) - (Number(Number(this.PaymentModel.cashPaid) + Number(this.PaymentModel.cardPaid)));
         if (this.PaymentModel.pendingAmount <= 0 && showSuccess) {
@@ -142,8 +142,8 @@ export class PaymentComponent implements OnInit {
           this.PaymentModel.amount = this.selectedAppointment.totalAmount;
           this.PaymentModel.pendingAmount = this.selectedAppointment.totalAmount;
         } else if (this.paymentFor == 'product') {
-          this.PaymentModel.amount = this.productDetails.total_amount;
-          this.PaymentModel.pendingAmount = this.productDetails.total_amount;
+          this.PaymentModel.amount = this.productDetails.totalAmount;
+          this.PaymentModel.pendingAmount = this.productDetails.totalAmount;
         }
         this.PaymentModel.cardPaid = 0;
         this.PaymentModel.cashPaid = 0;
@@ -198,10 +198,10 @@ export class PaymentComponent implements OnInit {
 
     } else if (this.paymentFor == 'product') {
 
-      this.PaymentModel.clientId = this.productDetails.client_id;
+      this.PaymentModel.clientId = this.productDetails.clientId;
       this.PaymentModel.productSaleId = this.id;
-      this.PaymentModel.amount = this.productDetails.total_amount;
-      this.PaymentModel.employeeId = this.productDetails.sold_by_id;
+      this.PaymentModel.amount = this.productDetails.totalAmount;
+      this.PaymentModel.employeeId = this.productDetails.soldById;
 
     }
 
@@ -285,7 +285,7 @@ export class PaymentComponent implements OnInit {
     if (this.paymentFor == 'product') {
       header1 = "Invoice No.: 0001\n";
       header1 += " ISSUED: " + this.cService.getCurrentDateTime(true) + "\n";
-      header1 += " DUE: " + this.cService.getStringDateFormatByCurtureAndType(this.productDetails.created_at, true);
+      header1 += " DUE: " + this.cService.getStringDateFormatByCurtureAndType(this.productDetails.createdAt, true);
     }
     else if (this.paymentFor == 'appointment') {
       header1 = "Invoice No.: 0001\n";
@@ -302,14 +302,14 @@ export class PaymentComponent implements OnInit {
       itemsTable.push([{ text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }]);
       itemsTable.push(['', '', '', '']);
       this.productDetails.products.forEach(element => {
-        itemsTable.push([element.productName, '' + element.qty, '$' + element.price, '$' + element.total_amount]);
+        itemsTable.push([element.productName, '' + element.qty, '$' + element.price, '$' + element.totalAmount]);
       });
       itemsTable.push(['', '', '', '']);
       itemsTable.push([{ text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }, { text: '', fillColor: '#dfdfdf' }]);
       itemsTable.push(['', '', '', '']);
-      itemsTable.push(['', '', 'SUB TOTAL', '$' + this.productDetails.total_amount]);
+      itemsTable.push(['', '', 'SUB TOTAL', '$' + this.productDetails.totalAmount]);
       itemsTable.push(['', '', 'TAX', '$0.00']);
-      itemsTable.push(['', '', 'GRAND TOTAL', '$' + this.productDetails.total_amount]);
+      itemsTable.push(['', '', 'GRAND TOTAL', '$' + this.productDetails.totalAmount]);
     }
     else if (this.paymentFor == 'appointment') {
       itemsTable.push(['ITEM DESCRIPTION', '', '', 'PRICE']);

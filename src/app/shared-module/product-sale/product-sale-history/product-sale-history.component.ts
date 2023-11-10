@@ -63,7 +63,7 @@ export class ProductSaleHistoryComponent implements OnInit {
     this.grandTotal = "";
     let grandTotal = 0;
     this.productDetails.forEach(element => {
-      grandTotal += (parseFloat(element.total_amount.toString()));
+      grandTotal += (parseFloat(element.totalAmount.toString()));
     });
     this.grandTotal = grandTotal.toFixed(2);
     this.modalService.open(content, { size: "lg", backdrop: "static" });
