@@ -4,16 +4,17 @@
         <div class="container-fluid">
             <div class="row m-0  full-height-vh">
                 <div class="col-12">
-                    <div class="row p-2">
+                    <div class="row pt-3 pb-2">
                         <div class="col-12 text-center">
-                            <h3 class="main-heading mb-0">Select a Time</h3>
+                            <label class="main-heading d-sm-none d-md-block mb-0">Select Date and Time</label>
+                            <label class="mobile-heading d-none d-xs-block d-sm-block d-md-none mb-0">Select Date and Time
+                                </label>
                             <!-- <label *ngIf="hours!=''" class="mb-0 danger">already {{alreadyBookedSlots}} slots are booked
                                 from {{slot_for_appointment}} available slots.</label> -->
                         </div>
                     </div>
                     <div class="row" *ngIf="!inProgress">
                         <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
-                            <h4 class="mb-0"><b>Select Date</b> </h4>
                             <div class="row">
                                 <div class="col-12">
                                     <ngb-datepicker class="mydatepicker" [(ngModel)]="selectedDate" #dp [minDate]="todayDate"
@@ -21,7 +22,7 @@
                                 </div>
                             </div>
                             <br>
-                            <h4 class="mb-0"><b>Time</b> </h4>
+                            <h4 class="mb-0 pt-2"><b>Time</b> </h4>
                             <div class="row">
                                 <div class="col-12">
                                     <select class="mysalontheme-input" [(ngModel)]="hours" formControlName='hours'
@@ -73,13 +74,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                        <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 d-sm-none d-md-block mb-0">
                             <h4 class="mb-0"><b>Cart</b> </h4>
                             <app-cart [isEditMode]="false" [selectedServies]="" [isStaticData]="true" [total]="0"
                                 [subtotal]="0" [tax]="0"></app-cart>
                         </div>
                     </div>
-                    <div class="row mt-2" *ngIf="!inProgress">
+                    <div class="row mt-5" *ngIf="!inProgress">
                         <div class="col-12">
                             <button class="mysalontheme-btn-lg pull-right" type="submit"
                                 *ngIf="hours!=''">Finish

@@ -122,3 +122,11 @@
 .action-btn{
     min-width: 125px !important;
 }
+
+.mobile-heading {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 33px;
+}
