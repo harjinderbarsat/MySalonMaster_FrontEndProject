@@ -43,7 +43,6 @@
     width: 100% !important;
     height: 50PX !important;
     FONT-SIZE: 26PX;
-    PADDING: 10PX;
     color: #F7C9CB !important;    
 }
 ::ng-deep .ngb-dp-day{
@@ -59,10 +58,10 @@
     background-color: #fbf0ec !important;
 }
 
-::ng-deep  .ngb-dp-header{
+/* ::ng-deep  .ngb-dp-header{
     height: 48px;
     padding-top: 6px !important;    
-}
+} */
 ::ng-deep .custom-select{
     height: 41px !important;
     font-size: 20px !important;

@@ -1,46 +1,50 @@
  .page-container {
-    background-color: #fbf0ec;
-}
-.main-heading {
-    font-family: Playfair Display;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 60px;
-    line-height: 73px;
-}
+     background-color: #fbf0ec;
+ }
 
-.mysalontheme-input{
-    width: 100%;
-    height: 48px;
-    padding: 10px;
-    font-size: larger;
-    font-weight: 500;
-    border: solid;
-}
-.mysalontheme-btn{
-    background-color: #F7C9CB;
-    color: white;
-    border-radius: 0%;
-}
-.mysalontheme-cancel-btn{
-    background-color:#fbf0ec;
-    color:  #F7C9CB;
-    border-radius: 0%;
-   
-}
-.mysalontheme-btn-color{
-    background-color: #F7C9CB;
-    color: white;
-}
-.btn{
-    font-size: 1.2rem !important;
-}
-.err-validation{
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 80%;
-    color: #FF586B;
-}
+ .main-heading {
+     font-family: Playfair Display;
+     font-style: normal;
+     font-weight: 900;
+     font-size: 60px;
+     line-height: 73px;
+ }
 
 
+ .mysalontheme-input {
+     width: 100%;
+     height: 48px;
+     padding: 10px;
+     font-size: larger;
+     font-weight: 500;
+     border: solid;
+ }
 
+ .mysalontheme-btn {
+     background-color: #F7C9CB;
+     color: white;
+     border-radius: 0%;
+ }
+
+ .mysalontheme-cancel-btn {
+     background-color: #fbf0ec;
+     color: #F7C9CB;
+     border-radius: 0%;
+
+ }
+
+ .mysalontheme-btn-color {
+     background-color: #F7C9CB;
+     color: white;
+ }
+
+ .btn {
+     font-size: 1.2rem !important;
+ }
+
+ .err-validation {
+     width: 100%;
+     margin-top: 0.25rem;
+     font-size: 80%;
+     color: #FF586B;
+ }
