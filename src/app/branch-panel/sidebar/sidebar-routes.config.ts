@@ -48,6 +48,6 @@ export const BRANCH_PANEL_ROUTES: BranchRouteInfo[] = [
     ], visibility: true, isAdmin: false
   },
   // { path: '/branch/profile', title: 'Branch Profile', icon: 'fa fa-industry', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-  { path: '/admin/settings', title: 'Help', icon: 'fa ft-phone', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  { path: '/branch/support', title: 'Help', icon: 'fa ft-phone', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   
 ];

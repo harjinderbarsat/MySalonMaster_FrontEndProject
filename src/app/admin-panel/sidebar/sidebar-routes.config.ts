@@ -6,8 +6,8 @@ export const BRANCH_ROUTES: RouteInfo[] = [
   {
     path: '', title: 'Sale', icon: 'fa fa-money', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
       { path: '/admin/daily-sale', title: 'Daily Sale', icon: 'fa fa-industry ', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
-      { path: '/admin/appointments-static', title: 'Service Sales', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
-      { path: '/admin/product-sale-history', title: 'Product Sales', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false }
+      { path: '/admin/appointments-static', title: 'Service', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
+      { path: '/admin/product-sale-history', title: 'Product', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false }
     ], visibility: true, isAdmin: true
   },
  
@@ -48,7 +48,7 @@ export const BRANCH_ROUTES: RouteInfo[] = [
   //     // { path: '/admin/incentive', title: 'Incentive', icon: 'fa fa-gift', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   //   ], visibility: true, isAdmin: true
   // },
-  { path: '/admin/settings', title: 'Help', icon: 'fa ft-phone', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+  { path: '/admin/support', title: 'Help', icon: 'fa ft-phone', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
 
   // { path: '/admin/marketing', title: 'Marketing', icon: 'fa fa-bullhorn', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
   // { path: '/admin/reports', title: 'Reports', icon: 'fa fa-file', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
