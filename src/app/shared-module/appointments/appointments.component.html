@@ -1,38 +1,40 @@
 <div class="row">
-    <div class="col-4 text-left">
-        <h3>{{appointmentTypeDisplayName}} Appointments</h3>
+    <div class="col-6 text-left">
+        <label>{{appointmentTypeDisplayName}} Appointments</label>
     </div>
-    <div class="col-8 text-right" *ngIf="!inProgress">
-        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
+    <div class="col-6 text-right" *ngIf="!inProgress">
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
-            <i class="fa fa-print"></i> Print</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
-            XLSX</button>
-        <button class="mysalontheme-btn-md mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
-                class="fa fa-trash"></i> &nbsp; Delete Selected</button>
-
-        <button class="mysalontheme-btn-md mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
-            &nbsp;
-            <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
-            <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
+            <i class="fa fa-print"></i></button>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i
+                class="fa fa-download"></i>
         </button>
-        <button class="mysalontheme-btn-md mr-1"  *ngIf="!isPrintView"  (click)="resetFilter()"> <i class="fa fa-refresh"></i> Reset Filter</button>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView"
+            (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class="mysalontheme-btn-md mr-1" (click)="hideShowPrintView()">
-            <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
-            <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i
+                class="fa fa-filter"></i>
+            <label *ngIf="showFilter" class=" mb-0"></label>
+            <label *ngIf="!showFilter" class=" mb-0"></label>
+        </button>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="resetFilter()"> <i
+                class="fa fa-refresh"></i></button>
+
+        <button class="mysalontheme-btn-sm mr-1" (click)="hideShowPrintView()">
+            <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> </label>
+            <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> </label>
         </button>
     </div>
 </div>
 <div class="row" *ngIf="showFilter">
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <div class="form-group">
             <label>From Date</label>
             <input placeholder="Enter appointment Date" autocomplete="off" ngbDatepicker #remove="ngbDatepicker"
                 (click)="remove.toggle()" class="form-control" [(ngModel)]="appointmentDateTime">
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <div class="form-group">
             <label>Time</label>
             <select class="form-control" [(ngModel)]="appointmentFilter.hours">
@@ -82,14 +84,14 @@
             </select>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <div class="form-group">
             <label>Start Date</label>
             <input placeholder="Enter start Date" autocomplete="off" ngbDatepicker #start="ngbDatepicker"
                 (click)="start.toggle()" class="form-control" [(ngModel)]="startDate">
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <div class="form-group">
             <label>End Date</label>
             <input placeholder="Enter end Date" autocomplete="off" ngbDatepicker #end="ngbDatepicker"
@@ -109,7 +111,7 @@
         </div>
     </div> -->
 
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <div class="form-group">
             <label>Assigned To</label>
             <select class="form-control" [(ngModel)]="appointmentFilter.assignToId">
@@ -119,7 +121,7 @@
             </select>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <div class="form-group">
             <label>Customer</label>
             <select class="form-control" [(ngModel)]="appointmentFilter.customerId">
@@ -129,9 +131,9 @@
             </select>
         </div>
     </div>
-    <div class="col-3">
-        <button class=" mysalontheme-btn-md mt-4 pull-right" (click)="resetFilter()"> Reset filter</button>
-        <button class="mysalontheme-btn-md mt-4 pull-right mr-1" (click)="getAppointmentsList()">Get
+    <div class="col-md-3 col-sm-12">
+        <button class=" mysalontheme-btn-sm mt-4 pull-right" (click)="resetFilter()"> Reset filter</button>
+        <button class="mysalontheme-btn-sm mt-4 pull-right mr-1" (click)="getAppointmentsList()">Get
             Data</button>
     </div>
 </div>
@@ -139,9 +141,9 @@
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
         <div class="col-sm-12">
-            <div class="card" id="print-section">
+            <div class="card grid-width" id="print-section">
                 <div class="card-body p-2">
-                    <table class="table" id="table-xsls">
+                    <table class="table table-striped" id="table-xsls">
                         <thead>
                             <tr>
                                 <!-- <th *ngIf="!isPrintView">
@@ -156,8 +158,8 @@
                                 </th> -->
                                 <th *ngIf="!isPrintView">Serial No </th>
                                 <th>Customer </th>
-                                <th>Date </th>
-                                <th>Time </th>
+                                <th>Date/Time </th>
+                                <!-- <th>Time </th> -->
                                 <!-- <th>Status </th> -->
                                 <th *ngIf="appointmentType == 'completed'||appointmentType == 'in-progress'">Assigned To
                                 </th>
@@ -179,23 +181,25 @@
                                 <!-- <td>{{appointment.id}}</td> -->
                                 <td *ngIf="!isPrintView">{{i+1}}</td>
                                 <td>{{appointment.customerName}}</td>
-                                <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}
+                                <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}:{{appointment.hours}}
                                 </td>
-                                <td>
-                                    {{appointment.hours}}</td>
+                                <!-- <td>
+                                    {{appointment.hours}}</td> -->
                                 <!-- <td>
                                     {{appointment.isOnlineAppointment=='Yes'?'Online':'Offline'}}</td> -->
                                 <td *ngIf="appointmentType == 'completed'||appointmentType == 'in-progress'">
                                     {{appointment.assignToName?appointment.assignToName:'Not Assigned'}}</td>
-                                <th *ngIf="!isPrintView">
+                                <th *ngIf="!isPrintView" class="action-btn-2">
 
-                                    <button type="button" class="mysalontheme-btn-sm mr-1" ngbTooltip="View Appointment Details"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1"
+                                        ngbTooltip="View Appointment Details"
                                         (click)="viewDetail(viewAppointment,appointment)"><i class="fa fa-eye"></i>
                                     </button>
 
                                     <button
                                         *ngIf="appointment.status === 'upcoming'||appointment.status === 'in-progress'"
-                                        type="button" class="mysalontheme-btn-sm mr-1" ngbTooltip="Edit Appointment Details"
+                                        type="button" class="mysalontheme-btn-sm mr-1"
+                                        ngbTooltip="Edit Appointment Details"
                                         (click)="addEditAppointment(appointment.id)"><i class="fa fa-edit"></i>
                                     </button>
 
