@@ -179,7 +179,7 @@
                             <!-- <th>Appointment ID </th> -->
                             <th>Client Name </th>
                             <th>Date & Time </th>
-                            <th>Assigned To </th>
+                            <!-- <th>Assigned To </th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -192,8 +192,8 @@
                             <td>{{i+1}}</td>
                             <!-- <td>{{appointment.id}}</td> -->
                             <td>{{appointment.customerName}}</td>
-                            <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}</td>
-                            <td>{{appointment.assignToName?appointment.assignToName:'Not Assigned'}}</td>
+                            <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}:{{appointment.hours}}</td>
+                            <!-- <td>{{appointment.assignToName?appointment.assignToName:'Not Assigned'}}</td> -->
                         </tr>
                     </tbody>
                 </table>
