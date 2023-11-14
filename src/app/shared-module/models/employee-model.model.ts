@@ -4,24 +4,24 @@ export class EmployeeModel {
     name: string;
     firstname: string;
     lastname: string;
-    branch_name: string;
+    branchId: number;
+    branchName: string;
     planStartDate: string;
     planEndDate: string;
     employeeUniqueId: string;
     email: string;
     designation: string;
-    date_of_birth: string;
+    dateOfBirth: string;
     dateOfJoining: string;
     gender: string;
     address: string;
     mobile: string;
     status: string;
     isSelected: boolean;
-    created_at: string;
-    updated_at: string;
+    createdAt: string;
+    updatedAt: string;
     username: string;
     password: string;
-    admin_id: number;
     passcode: string;
 }
 

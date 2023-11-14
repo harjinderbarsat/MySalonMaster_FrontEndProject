@@ -89,7 +89,7 @@ export class ManageAdminComponent implements OnInit {
       this.employeeInfo.adminId = this.id;
       if (this.isEditMode) {
         this.employeeInfo.name = this.employeeInfo.firstname + ' ' + this.employeeInfo.lastname;
-        this.employeeInfo.admin_id = this.id;
+        this.employeeInfo.adminId = this.id;
         this.adminService.updateAdmin(this.employeeInfo).subscribe(async response => {
           if (response && response.error) {
             let errors = this.getErrorDetails(response.error);
