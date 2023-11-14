@@ -1,16 +1,17 @@
 <div class="row">
     <div class="col-12">
         <label class="page-heading">Employees</label>
-    
+
         <button class="mysalontheme-btn-sm mr-1 pull-right" printTitle="MyTitle" printSectionId="print-section"
             ngxPrint><i class="fa fa-print" aria-hidden="true"></i></button>
-        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="downloadXslx()"><i class="fa fa-download" aria-hidden="true"></i></button>
+        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="downloadXslx()"><i class="fa fa-download"
+                aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete</button>
 
         <button class=" mysalontheme-btn-sm mr-1 pull-right" *ngIf="!isBranchPannel" (click)="addEditEmployee(0)"><i
                 class="fa fa-plus"></i>
-            </button>
+        </button>
     </div>
 </div>
 
@@ -36,6 +37,8 @@
                                 <th>Name </th>
                                 <!-- <th>Designation </th> -->
                                 <th>Mobile </th>
+                                <th>Branch </th>
+
                                 <!-- <th>Status </th> -->
                                 <th *ngIf="!isBranchPannel">Action </th>
                             </tr>
@@ -56,6 +59,7 @@
                                 <td>{{employee.firstname}} {{employee.lastname}}</td>
                                 <!-- <td>{{employee.designation}}</td> -->
                                 <td>{{employee.mobile}}</td>
+                                <td>{{employee.branchName}}</td>
                                 <!-- <td>{{employee.status}}</td> -->
                                 <th *ngIf="!isBranchPannel">
                                     <button type="button" class="mysalontheme-btn-sm mr-1"
@@ -66,11 +70,13 @@
                                     <button type="button" class="mysalontheme-btn-sm mr-1"
                                         (click)="deleteEmployee(employee)"><i class="fa fa-trash"></i> </button>
                                     <button type="button" *ngIf="employee.status=='Inactive'"
-                                        class="mysalontheme-btn-sm mr-1" (click)="updatedEmployeeStatus(employee,'active')">
+                                        class="mysalontheme-btn-sm mr-1"
+                                        (click)="updatedEmployeeStatus(employee,'active')">
                                         <i class="fa fa-toggle-on" aria-hidden="true"></i>
                                     </button>
                                     <button type="button" *ngIf="employee.status=='active'" class="mysalontheme-btn-sm"
-                                        (click)="updatedEmployeeStatus(employee,'Inactive')"> <i class="fa fa-toggle-off" aria-hidden="true"></i>
+                                        (click)="updatedEmployeeStatus(employee,'Inactive')"> <i
+                                            class="fa fa-toggle-off" aria-hidden="true"></i>
                                     </button>
                                 </th>
                             </tr>
@@ -103,8 +109,8 @@
                 <label> <b>Employee ID : </b> {{currentSelected.id}}</label><br>
                 <label> <b>Name : </b> {{currentSelected.firstname}} {{currentSelected.lastname}}</label><br>
                 <label> <b>Mobile : </b> {{currentSelected.mobile}}</label><br>
-                <label> <b>Branch : </b> {{currentSelected.branch_name}}</label><br>
-                <label> <b>Date Of Birth : </b> {{currentSelected.date_of_birth}}</label><br>
+                <label> <b>Branch : </b> {{currentSelected.branchName}}</label><br>
+                <label> <b>Date Of Birth : </b> {{currentSelected.dateOfBirth}}</label><br>
                 <label> <b>Address : </b> {{currentSelected.address}}</label><br>
             </div>
             <div class="col-md-6">

@@ -38,7 +38,7 @@ export class EmployeeProfileComponent implements OnInit {
       if (response && response.data) {
         this.EmployeeModel = response.data;
 
-        var addedDate = new Date(this.EmployeeModel.date_of_birth);
+        var addedDate = new Date(this.EmployeeModel.dateOfBirth);
         this.ngbDateOfBirth = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
         this.isEditMode = false;
       }
@@ -52,7 +52,7 @@ export class EmployeeProfileComponent implements OnInit {
   
     this.inProgress = true;
     if (this.ngbDateOfBirth != null && this.ngbDateOfBirth != undefined) {
-      this.EmployeeModel.date_of_birth = this.datePipe.transform(new Date(this.ngbDateOfBirth.year, (this.ngbDateOfBirth.month - 1), this.ngbDateOfBirth.day), 'yyyy-MM-dd');
+      this.EmployeeModel.dateOfBirth = this.datePipe.transform(new Date(this.ngbDateOfBirth.year, (this.ngbDateOfBirth.month - 1), this.ngbDateOfBirth.day), 'yyyy-MM-dd');
     }
 
     this.employeeService.updateMyProfileDetail(this.EmployeeModel).subscribe(async response => {
