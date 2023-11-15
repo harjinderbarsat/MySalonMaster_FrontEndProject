@@ -1,33 +1,29 @@
 <div class="row" *ngIf="!inProgress">
     <div class="col-md-3 col-sm-12 text-left">
-        <h3>Services List <label *ngIf="services&&services.length">({{services.length}})</label> </h3>
+        <label class="page-heading">Services List </label><label *ngIf="services&&services.length">({{services.length}})</label>
     </div>
     <div class="col-md-9 col-sm-12 text-right">
         <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
-            <i class="fa fa-print"></i> Print</button>
+            <i class="fa fa-print" aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
-            XLSX</button>
+            </button>
         <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
-                class="fa fa-trash"></i> &nbsp; Delete Selected</button>
+                class="fa fa-trash"></i></button>
 
         <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView && !isBranchPannel" (click)="addEditNewService(0)"><i
                 class="fa fa-plus"></i>
-            &nbsp;
-            Add
-            Service</button>
+            </button>
 
         <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
-            &nbsp;
-            <label *ngIf="showFilter" class=" mb-0">Hide Filter</label>
-            <label *ngIf="!showFilter" class=" mb-0">Show Filter</label>
+            
         </button>
         <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i>
-            Reset Filter</button>
+            </button>
 
         <button class="mysalontheme-btn-sm mr-1" (click)="hideShowPrintView()">
-            <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i> Show Report View </label>
-            <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i> Hide Report View</label>
+            <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i></label>
+            <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i></label>
         </button>
     </div>
 </div>
