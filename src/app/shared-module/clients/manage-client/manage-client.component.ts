@@ -7,6 +7,8 @@ import { NgbDateStruct, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/front-end/models/login.model';
+import { BranchsServiceService } from '../../service/branchs-service.service';
+import { BranchModel } from '../../models/branch-model.model';
 
 @Component({
   selector: 'app-manage-client',
@@ -22,8 +24,9 @@ export class ManageClientComponent implements OnInit {
   ngbDateOfBirth: NgbDateStruct;
   currentUser: User;
   backURL: string = '';
+  branchList: Array<BranchModel>;
 
-  constructor(private activeRoute: ActivatedRoute, private datePipe: DatePipe, private cService: CommonService, private fb: FormBuilder, private clientService: ClientService) { }
+  constructor(private branchService: BranchsServiceService, private activeRoute: ActivatedRoute, private datePipe: DatePipe, private cService: CommonService, private fb: FormBuilder, private clientService: ClientService) { }
 
   ngOnInit() {
     this.backURL = localStorage.getItem("appointmentURL") ? localStorage.getItem("appointmentURL") : "";
@@ -31,11 +34,13 @@ export class ManageClientComponent implements OnInit {
     this.inProgress = false;
     this.clientInfo = new ClientModel();
     this.clientInfo.territory = 'QLD';
+    this.getBranchList();
 
     this.clientForm = this.fb.group({
       firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      lastName: ['',''],
+      email: ['', ''],
+      branchId: ['', ''],
       date_of_birth: ['', ''],
       mobile: ['', [Validators.required]],
       postcode: ["", [Validators.minLength(4), Validators.maxLength(4), Validators.pattern('^[0-9]+$')]],
@@ -59,11 +64,27 @@ export class ManageClientComponent implements OnInit {
 
   }
 
+  back(){
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/customer";
+
+  }
+
   getClient(client_id: number) {
     this.clientService.getClientById(client_id).subscribe(async response => {
       this.clientInfo = response.data;
       var addedDate = new Date(this.clientInfo.dateOfBirth);
       this.ngbDateOfBirth = new NgbDate(addedDate.getFullYear(), (addedDate.getMonth() + 1), addedDate.getDate());
+    }, async error => {
+      this.inProgress = false;
+      this.cService.getToaster('Application error', 'error', 'Error');
+    });
+  }
+  getBranchList() {
+    this.inProgress = true;
+    this.branchService.getBranchList().subscribe(async response => {
+      this.branchList = new Array<BranchModel>();
+      this.branchList = response.data;
+      this.inProgress = false;
     }, async error => {
       this.inProgress = false;
       this.cService.getToaster('Application error', 'error', 'Error');
