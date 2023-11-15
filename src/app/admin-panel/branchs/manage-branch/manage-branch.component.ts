@@ -143,6 +143,7 @@ export class ManageBranchComponent implements OnInit {
   getCategoriesList() {
     this.categories = new Array<ServiceCategoryModel>();
     this.servicesService.getCategoryList().subscribe(async response => {
+
       if (response.isSuccess && response.data && response.data.length > 0) {
         let catData = response.data.filter(item => {
           if (item)
@@ -160,12 +161,15 @@ export class ManageBranchComponent implements OnInit {
       this.inProgressPermissions = false;
     });
   }
+
   alreadySelectedServices: Array<number>;
   getServicePermissions() {
+    debugger
     this.alreadySelectedServices = new Array<number>();
     this.branchService.getServiceAccess(this.id).subscribe(async response => {
       if (response.isSuccess) {
         if (response.data && response.data.length > 0) {
+
           response.data.forEach(category => {
             if (category.serviceIds && category.serviceIds.length > 0) {
               category.serviceIds.forEach(service => {
@@ -213,7 +217,7 @@ export class ManageBranchComponent implements OnInit {
         }
       });
       if (this.branchPermissionCategoryModel.services && this.branchPermissionCategoryModel.services.length > 0) {
-        this.branchPermissionCategoryModel.category_id = p.id;
+        this.branchPermissionCategoryModel.categoryId = p.id;
       }
       if (this.branchPermissionCategoryModel.services.length > 0) {
         this.branchServicePermissions.categories.push(this.branchPermissionCategoryModel);

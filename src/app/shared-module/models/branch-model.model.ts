@@ -18,6 +18,6 @@ export class BranchPermissionModel {
     categories: Array<BranchPermissionCategoryModel>;
 }
 export class BranchPermissionCategoryModel {
-    category_id: number;
+    categoryId: number;
     services: Array<number>
 }

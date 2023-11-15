@@ -149,11 +149,7 @@
                                         <ngb-tabset #t="ngbTabset">
                                             <ngb-tab id="{{category.id}}" *ngFor="let category of categories">
                                                 <ng-template ngbTabTitle>
-                                                    <div class="d-none d-sm-block">
-                                                        (C{{category.id}}) &nbsp;<label> {{category.name}}</label>
-                                                    </div>
-                                                    <div class="d-block d-sm-none">
-                                                        {{category.name}}</div>
+                                                    (C{{category.id}}) &nbsp;<label> {{category.name}}</label>
                                                 </ng-template>
                                                 <ng-template ngbTabContent>
                                                     <div matchHeight="card" class="pt-4 p-2">
