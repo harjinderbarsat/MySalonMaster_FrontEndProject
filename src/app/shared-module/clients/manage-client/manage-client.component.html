@@ -6,15 +6,13 @@
                     <label class="page-heading pull-left" *ngIf="isEditMode"> Update Client</label>
                     <label class="page-heading pull-left" *ngIf="!isEditMode"> Add Client</label>
 
-
-                    <button class="mysalontheme-btn-md pull-right d-none d-sm-block" type="submit">
+                    <button class="mysalontheme-btn-md pull-right  " type="submit">
                         <a class="text-decoration-none text-white" *ngIf="!isEditMode">Save</a>
                         <a class="text-decoration-none text-white" *ngIf="isEditMode">Update</a>
                     </button>
 
-                    <button type="button" *ngIf="backURL && backURL.length>0"
-                        class="mysalontheme-btn-md pull-right d-none d-sm-block">
-                        <a href="{{backURL}}" class="text-decoration-none text-white">Back</a>
+                    <button type="button" class="mysalontheme-btn-md pull-right" (click)="back()">
+                        Back
                     </button>
                 </div>
             </div>
@@ -40,7 +38,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>last Name<span class="danger mb-0">* </span></label>
+                                                        <label>last Name</label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="clientInfo.lastname" formControlName='lastName'
                                                             placeholder="Enter last name">
@@ -58,7 +56,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label>Email<span class="danger mb-0">* </span></label>
+                                                        <label>Email</label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="clientInfo.email" formControlName='email'
                                                             placeholder="Enter email">
@@ -73,33 +71,36 @@
                                                         <input placeholder="Enter Birth Date" autocomplete="off"
                                                             ngbDatepicker #remove="ngbDatepicker"
                                                             (click)="remove.toggle()" class="form-control"
-                                                            formControlName='date_of_birth' [(ngModel)]="ngbDateOfBirth">
+                                                            formControlName='date_of_birth'
+                                                            [(ngModel)]="ngbDateOfBirth">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
-
+                                                    <label>Select branch </label>
+                                                    <select class="form-control mb-2" [(ngModel)]="clientInfo.branchId"
+                                                        formControlName="branchId">
+                                                        <option value=""> Select branch </option>
+                                                        <option value="{{brach.id}}" *ngFor="let brach of branchList">
+                                                            {{brach.branchName}} </option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label>Apartment/Flat/Unit number</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Apartment/Flat/Unit number"
-                                                             
-                                                               formControlName='add'
-                                                            [(ngModel)]="clientInfo.address" />
+                                                        <label>Address</label>
+                                                        <textarea class="form-control"
+                                                            placeholder="Enter address here..." formControlName='add'
+                                                            [(ngModel)]="clientInfo.address"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label>Street number</label>
                                                         <input type="text" class="form-control"
-                                                            placeholder="Street number"
-                                                             
-                                                               formControlName='street_number'
+                                                            placeholder="Street number" formControlName='street_number'
                                                             [(ngModel)]="clientInfo.streetNumber" />
                                                     </div>
                                                 </div>
@@ -107,20 +108,17 @@
                                                     <div class="form-group">
                                                         <label>Street name</label>
                                                         <input type="text" class="form-control"
-                                                            placeholder="Street name"  
-                                                               formControlName='street_name'
+                                                            placeholder="Street name" formControlName='street_name'
                                                             [(ngModel)]="clientInfo.streetName" />
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            </div> -->
+                                            <!-- <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label>Suburb/Locality</label>
                                                         <input type="text" class="form-control"
-                                                            placeholder="Suburb/Locality"
-                                                             
-                                                               formControlName='suburb'
+                                                            placeholder="Suburb/Locality" formControlName='suburb'
                                                             [(ngModel)]="clientInfo.suburb" />
                                                     </div>
                                                 </div>
@@ -130,8 +128,7 @@
                                                     <div class="form-group">
                                                         <label>State/Territory</label>
                                                         <input type="text" class="form-control"
-                                                            placeholder="State/Territory"
-                                                              [readonly]="true"
+                                                            placeholder="State/Territory" [readonly]="true"
                                                             formControlName='territory'
                                                             [(ngModel)]="clientInfo.territory" />
                                                     </div>
@@ -139,11 +136,12 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label>Postcode</label>
-                                                        <input type="text" class="form-control" placeholder="Postcode" formControlName='postcode'
+                                                        <input type="text" class="form-control" placeholder="Postcode"
+                                                            formControlName='postcode'
                                                             [(ngModel)]="clientInfo.postcode" />
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

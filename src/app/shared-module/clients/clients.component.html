@@ -74,6 +74,7 @@
                                 <th>Mobile </th>
                                 <!-- <th>Email </th> -->
                                 <th>Appointments </th>
+                                <th>Branch </th>
                                 <th *ngIf="!isPrintView">Action </th>
                             </tr>
                         </thead>
@@ -94,6 +95,7 @@
                                 <td>{{client.mobile}}</td>
                                 <!-- <td>{{client.email}}</td> -->
                                 <td>{{client.noOfAppointments}}</td>
+                                <td>{{client.branchName}}</td>
                                 <th *ngIf="!isPrintView" class="action-btn">
                                     <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewClientModel,client)"><i class="fa fa-eye"></i> </button>
