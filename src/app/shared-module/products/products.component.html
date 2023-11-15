@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-2 text-left">
-        <h3>Products </h3>
+        <label class="page-heading">Products</label>
     </div>
     <div class="col-10 text-right" *ngIf="!inProgress">
         <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
@@ -55,7 +55,7 @@
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
         <div class="col-sm-12">
-            <div class="card" id="print-section">
+            <div class="card grid-width" id="print-section">
                 <div class="card-content">
                     <div class="card-body">
                         <table class="table" id="table-xsls">
@@ -79,7 +79,7 @@
                                         <i *ngIf="nameSortAsc" class="fa fa-sort-alpha-desc"
                                             (click)="sortByColumn(products,'name')"></i>
                                     </th>
-                                    <th>category
+                                    <th>Category
                                         <i *ngIf="!categorySortAsc" class="fa fa-sort-alpha-asc"
                                             (click)="sortByColumn(products,'category_name')"></i>
                                         <i *ngIf="categorySortAsc" class="fa fa-sort-alpha-desc"

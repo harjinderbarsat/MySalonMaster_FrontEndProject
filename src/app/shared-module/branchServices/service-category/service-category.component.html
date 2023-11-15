@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-md-6 col-sm-12 text-left">
-        <h3>Categories  <label *ngIf="categories&&categories.length">({{categories.length}})</label></h3>
+        <label class="page-heading">Categories </label><label *ngIf="categories&&categories.length">({{categories.length}})</label>
     </div>
     <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgress &&!isBranchPannel">
         <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
         <button class=" mysalontheme-btn-sm" *ngIf="!isBranchPannel" (click)="openCategoryModal(CategoryModal,null,false)"><i
                 class="fa fa-plus"></i>
-            &nbsp; Add Category</button>
+            </button>
     </div>
 </div>
 
