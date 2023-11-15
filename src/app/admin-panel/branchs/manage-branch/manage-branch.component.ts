@@ -9,6 +9,7 @@ import { ServiceCategoryModel, ServiceModel } from 'src/app/shared-module/models
 import { ServiceAndCategoryServices } from 'src/app/shared-module/service/branch-categories.service';
 import { BranchModel, BranchPermissionCategoryModel, BranchPermissionModel } from '../../../shared-module/models/branch-model.model';
 import { BranchsServiceService } from '../../../shared-module/service/branchs-service.service';
+import { User } from 'src/app/front-end/models/login.model';
 
 @Component({
   selector: 'app-manage-branch',
@@ -29,8 +30,10 @@ export class ManageBranchComponent implements OnInit {
   inProgressPermissions: boolean;
 
   branchServicePermissions: BranchPermissionModel;
+  currentUser: User;
 
   ngOnInit() {
+    this.currentUser = this.cService.getUserProfile();
     this.branchModel = new BranchModel();
     this.branchModel.slotForAppointment = 1;
     this.branchModel.status = '1';
@@ -85,9 +88,8 @@ export class ManageBranchComponent implements OnInit {
       this.branchService.updateBranch(this.branchModel).subscribe(async response => {
         this.inProgress = false;
         if (response.isSuccess) {
-          this.cService.getToaster('Branch updated succesfully', 'success', 'Success');
           window.location.href = window.location.origin + "/#/admin/storeList";
-
+          this.updatePermissions();
         } else if (response.message && response.message.length > 0) {
           this.cService.getToaster(response.message, 'error', 'Error');
         } else {
@@ -145,15 +147,13 @@ export class ManageBranchComponent implements OnInit {
     this.servicesService.getCategoryList().subscribe(async response => {
 
       if (response.isSuccess && response.data && response.data.length > 0) {
-        let catData = response.data.filter(item => {
-          if (item)
-            return item;
-        });
-        this.categories = catData;
+        this.categories = response.data;
+        
         this.categories.forEach(l => {
           l.services = new Array<ServiceModel>();
           l.services = this.services.filter(p => p.categoryId == l.id);
         })
+        
         this.getServicePermissions();
       }
     }, async error => {
@@ -164,7 +164,6 @@ export class ManageBranchComponent implements OnInit {
 
   alreadySelectedServices: Array<number>;
   getServicePermissions() {
-    debugger
     this.alreadySelectedServices = new Array<number>();
     this.branchService.getServiceAccess(this.id).subscribe(async response => {
       if (response.isSuccess) {
@@ -195,6 +194,10 @@ export class ManageBranchComponent implements OnInit {
       this.inProgressPermissions = false;
       this.cService.getToaster('Application error', 'error', 'Error');
     });
+  }
+
+  back() {
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/storeList";
   }
 
   onSelectDeselect(serviceModel: ServiceModel) {
@@ -228,7 +231,9 @@ export class ManageBranchComponent implements OnInit {
     this.branchService.saveServiceAccess(this.branchServicePermissions).subscribe(async response => {
       this.inProgressPermissions = false;
       if (response.isSuccess) {
-        this.cService.getToaster('Permissions updated succesfully', 'success', 'Success');
+        //this.cService.getToaster('Permissions updated succesfully', 'success', 'Success');
+        this.cService.getToaster('Branch updated succesfully', 'success', 'Success');
+
         this.getServicePermissions();
       } else {
         this.cService.getToaster('Application error', 'error', 'Error');
