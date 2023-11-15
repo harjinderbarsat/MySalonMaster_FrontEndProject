@@ -56,7 +56,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-6"> <b> Branch Name <span class="pull-right">:</span></b> </div>
-                        <div class="col-6">{{EmployeeModel.branch_name}}</div>
+                        <div class="col-6">{{EmployeeModel.branchName}}</div>
                     </div>
                     <hr>
                     <div class="row">
@@ -84,7 +84,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-6"><b> Date Of Birth <span class="pull-right">:</span></b></div>
-                        <div class="col-6" *ngIf="!isEditMode">{{EmployeeModel.date_of_birth}}</div>
+                        <div class="col-6" *ngIf="!isEditMode">{{EmployeeModel.dateOfBirth}}</div>
                         <div class="col-6" *ngIf="isEditMode">
                             <input placeholder="Enter Date Of Birth" autocomplete="off" ngbDatepicker
                                 #remove1="ngbDatepicker" (click)="remove1.toggle()" class="form-control"
