@@ -9,11 +9,12 @@ import { WalkInPaymentComponent } from './walk-in-payment/walk-in-payment.compon
 import { WalkInSelectServiceComponent } from './walk-in-select-service/walk-in-select-service.component';
 import { WriteReviewsComponent } from './write-reviews/write-reviews.component';
 import { WalkInBranchComponent } from './walk-in-branch/walk-in-branch.component';
+import { WalkInPanelComponent } from './walk-in-panel.component';
 
 
 export const walkInPanelRoutes: Routes = [
   {
-    path: '',
+    path: '', component: WalkInPanelComponent,
     children: [
       { path: 'bookAppointment', component: BookAnAppointmentComponent },
       { path: 'finalConfirmation/:id', component: FinalConfirmationComponent },

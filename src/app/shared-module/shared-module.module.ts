@@ -46,6 +46,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BranchSidebarComponent } from './sidebar/sidebar.component';
 
 
 
@@ -90,7 +91,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     NewProductCategoryComponent,
     AdminComponent,
     ManageAdminComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    BranchSidebarComponent
   ],
   imports: [
     CommonModule,
@@ -109,7 +111,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   ],
   exports: [
     NavbarComponent,
-    ManageDocumentsComponent
+    ManageDocumentsComponent,
+    BranchSidebarComponent
   ],
   providers: [DatePipe],
 })
