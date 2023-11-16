@@ -70,7 +70,7 @@ export class WalkInPanelRegistrationComponent implements OnInit {
         this.cService.getToaster('Kindly enter your mobile number', 'warning', 'Mobile Number Not Found');
         return;
       }
-      if (this.newClient.mobile.length === 10) {
+      if (Number(this.newClient.mobile) < 9999999999 && Number(this.newClient.mobile) > 1000000000) {
         this.inProgress = true;
         this.isUserExist = false;
         this.clientService.getClientByMobile(this.newClient.mobile).subscribe(async response => {

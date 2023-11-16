@@ -52,7 +52,7 @@ ngb-accordion /deep/ .card /deep/ .header {
         color: white;
 }
 ::ng-deep .tab-content{
-    background-color: #fbf0ec;
+    /* background-color: #fbf0ec; */
 }
 
 ::ng-deep .nav-item {
@@ -68,7 +68,7 @@ ngb-accordion /deep/ .card /deep/ .header {
 }
 
 .page-container {
-    background-color: #fbf0ec;
+    /* background-color: #fbf0ec; */
 }
 .main-heading {
     font-family: Playfair Display;

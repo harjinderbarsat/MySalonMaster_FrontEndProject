@@ -2,11 +2,10 @@
     <div class="container-fluid">
         <div class="row full-height-vh m-0">
             <div class="col-12">
-                <div class="row pt-3">
+                <div class="row">
                     <div class="col-12 text-center">
-                        <label class="main-heading d-none d-xs-none d-sm-none d-md-block d-lg-block mb-0">Please choose your service</label>
-                        <label class="mobile-heading d-xs-block d-sm-block d-md-none mb-0">Please choose your
-                            service</label>
+                        <label class="main-heading d-none d-xs-none d-sm-none d-md-block d-lg-block mb-0">Choose Service</label>
+                        <label class="mobile-heading d-xs-block d-sm-block d-md-none mb-0">Choose Service</label>
 
                     </div>
                 </div>
@@ -20,15 +19,15 @@
                                     </div>
                                 </ng-template>
                                 <ng-template ngbTabContent>
-                                    <div matchHeight="card" class="p-2">
+                                    <div matchHeight="card" class="p-1">
                                         <div class="row">
                                             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 p-1"
                                                 *ngFor="let service of selectServicesList">
                                                 <div class="card mysalontheme-btn-color m-0"
                                                     (click)="selectService(service)"
-                                                    style="height: 65px;overflow: hidden;font-size: 18px;border-radius: 0px;"
+                                                    style="height: 38px;overflow: hidden;font-size: 16px;border-radius: 2px;"
                                                     [ngClass]="{'mysalontheme-btn-color': !service.isSelected, 'my-salon-master':service.isSelected}">
-                                                    <div class="card-content p-2 align-middle">
+                                                    <div class="card-content p-1 align-middle">
                                                         <div class="card-body">
                                                             <div class="media">
                                                                 <div class="media-body white text-left">
@@ -58,10 +57,10 @@
                 </div>
                 <div class="row mt-2" *ngIf="!inProgress">
                     <div class="col-12">
-                        <button class="mysalontheme-btn-lg pull-right" (click)="Proceed()">Next&nbsp;<i
+                        <button class="mysalontheme-btn-md pull-right" (click)="Proceed()">Next&nbsp;<i
                                 class="fa fa-arrow-right"></i>
                         </button>
-                        <button class="mysalontheme-btn-lg pull-left" (click)="back()"><i
+                        <button class="mysalontheme-btn-md pull-left" (click)="back()"><i
                                 class="fa fa-arrow-left"></i>&nbsp;Back</button>
                     </div>
                 </div>
