@@ -8,7 +8,6 @@ import { WalkInPanelRegistrationComponent } from './walk-in-panel-registration/w
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule } from 'localize-router';
 import { WalkInPanelComponent } from './walk-in-panel.component';
 import { WalkInAppointmentTimeComponent } from './walk-in-appointment-time/walk-in-appointment-time.component';
 import { BookAnAppointmentComponent } from './book-an-appointment/book-an-appointment.component';
@@ -17,6 +16,7 @@ import { WriteReviewsComponent } from './write-reviews/write-reviews.component';
 import { CheckInComponent } from './check-in/check-in.component';
 import { CartComponent } from './cart/cart.component';
 import { WalkInBranchComponent } from './walk-in-branch/walk-in-branch.component';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 @NgModule({
   declarations: [
@@ -37,9 +37,9 @@ import { WalkInBranchComponent } from './walk-in-branch/walk-in-branch.component
     WalkInPanelRoutingModule,
     ReactiveFormsModule,
     NgbModule,
+    SharedModuleModule,
     TranslateModule.forChild() 
   ],
-  providers:[DatePipe],
-  bootstrap: [WalkInPanelComponent],
+  providers:[DatePipe]
 })
 export class WalkInPanelModule { }

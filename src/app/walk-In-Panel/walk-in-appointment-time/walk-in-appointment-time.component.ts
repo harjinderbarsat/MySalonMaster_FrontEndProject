@@ -87,7 +87,6 @@ export class WalkInAppointmentTimeComponent implements OnInit {
   getBranch(branch_id: number) {
     this.branchService.getBranchById(branch_id).subscribe(async response => {
       this.inProgress = false;
-      debugger
       if (response && response.data) {
         this.slot_for_appointment = response.data ? response.data.slotForAppointment : 0;
       }

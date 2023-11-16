@@ -212,4 +212,9 @@ export class EditAppointmentComponent implements OnInit {
     serviceModel.isSelected = !serviceModel.isSelected;
   }
 
+  back(){
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/upcoming-appointments";
+
+  }
+
 }

@@ -124,4 +124,9 @@ export class ManageEmployeeComponent implements OnInit {
     }
   }
 
+  back(){
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/employees";
+
+  }
+
 }

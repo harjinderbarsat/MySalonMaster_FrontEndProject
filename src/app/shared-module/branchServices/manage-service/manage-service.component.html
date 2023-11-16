@@ -6,8 +6,11 @@
                     <label class="page-heading pull-left" *ngIf="isEditMode"> Update Service</label>
                     <label class="page-heading pull-left" *ngIf="!isEditMode"> Add Service</label>
                     <button class="mysalontheme-btn-sm pull-right d-none d-sm-block" type="submit">
-                        <a class="text-decoration-none text-white" *ngIf="!isEditMode">Save</a>
-                        <a class="text-decoration-none text-white" *ngIf="isEditMode">Update</a>
+                        <a class="text-decoration-none text-white" *ngIf="!isEditMode"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                        <a class="text-decoration-none text-white" *ngIf="isEditMode"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
+                    </button>
+                    <button type="button" class="mysalontheme-btn-sm pull-right d-none d-sm-block mr-1" (click)="back()">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>

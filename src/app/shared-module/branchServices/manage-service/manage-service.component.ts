@@ -116,4 +116,8 @@ export class ManageServiceComponent implements OnInit {
     }
   }
 
+  back(){
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/serviceList";
+  }
+
 }

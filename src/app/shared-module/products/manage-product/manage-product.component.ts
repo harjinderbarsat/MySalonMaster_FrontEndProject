@@ -154,4 +154,8 @@ export class ManageProductComponent implements OnInit {
       });
   }
 
+  back(){
+    window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/products";
+  }
+
 }

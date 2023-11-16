@@ -129,7 +129,7 @@
             class="mysalontheme-btn-sm ml-1" printTitle="MyTitle" printSectionId="nav-print-section"
             ngxPrint>Print</button>
 
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
         <button *ngIf="!isCheckOutDone && employeeUniqueId" type="button" class="mysalontheme-btn-sm"
             (click)="checkInOut()">
             Check In/Out </button>
