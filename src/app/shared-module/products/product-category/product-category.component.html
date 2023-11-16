@@ -3,22 +3,22 @@
         <label class="page-heading">Categories</label>
     </div>
     <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgress">
+        <button class=" mysalontheme-btn-sm mr-1" *ngIf="!isBranchPannel"
+            (click)="openProductCategoryModal(CategoryModal,null,false)"><i class="fa fa-plus"></i>
+            </button>
         <button class="mysalontheme-btn-sm mr-1" printTitle="MyTitle" printSectionId="print-section"
             ngxPrint><i class="fa fa-print" aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1" (click)="downloadXslx()"><i class="fa fa-download" aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i
                 class="fa fa-trash"></i> &nbsp; Delete Selected</button>
 
-        <button class=" mysalontheme-btn-sm" *ngIf="!isBranchPannel"
-            (click)="openProductCategoryModal(CategoryModal,null,false)"><i class="fa fa-plus"></i>
-            </button>
     </div>
 </div>
 
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
         <div class="col-sm-12">
-            <div class="card" id="print-section">
+            <div class="card grid-width" id="print-section">
                 <div class="card-content">
                     <div class="card-body">
                         <table class="table" id="table-xsls">
@@ -59,8 +59,8 @@
                                     <td>{{category.name}}</td>
                                     <!-- <td>{{category.status==0?'Deactivated':'Activated'}}</td> -->
 
-                                    <th>
-                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
+                                    <th class="action-btn">
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0 "
                                             (click)="viewClient(viewClientModel,category)"><i class="fa fa-eye"></i>
                                         </button>
 
@@ -147,8 +147,8 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="mysalontheme-btn-sm" (click)="saveProductCategory()">
-            Add</button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+            <i class="fa fa-floppy-o"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
 </ng-template>
 
@@ -181,6 +181,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
 </ng-template>

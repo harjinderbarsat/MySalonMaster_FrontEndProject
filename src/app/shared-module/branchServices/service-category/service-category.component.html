@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 col-sm-12 text-left">
-        <label class="page-heading">Categories </label><label *ngIf="categories&&categories.length">({{categories.length}})</label>
+        <label class="page-heading">Categories </label><label class="page-heading" *ngIf="categories&&categories.length">({{categories.length}})</label>
     </div>
     <div class="col-md-6 col-sm-12 text-right" *ngIf="!inProgress &&!isBranchPannel">
         <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn" (click)="deleteSelected()"><i class="fa fa-trash"></i> &nbsp; Delete Selected</button>
@@ -124,8 +124,8 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="mysalontheme-btn-sm" (click)="saveCategory()">
-            Add</button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+            <i class="fa fa-floppy-o"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
 </ng-template>
 <ng-template #viewClientModel let-modal>
@@ -152,6 +152,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
 </ng-template>

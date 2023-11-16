@@ -1,6 +1,5 @@
-<button class="mysalontheme-btn-md" type="button" (click)="openProductCategoryModal(CategoryModal,null,false)"><i
-    class="fa fa-plus"></i>
-  Add </button>
+<button class="mysalontheme-btn-md" type="button" (click)="openProductCategoryModal(CategoryModal,null,false)">
+    <i class="fa fa-floppy-o" aria-hidden="true"></i> </button>
 <ng-template #CategoryModal let-modal>
     <div class="modal-header">
         <div class="row">
@@ -47,7 +46,7 @@
     </div>
     <div class="modal-footer" *ngIf="!inProgress">
         <button type="button" class="mysalontheme-btn-sm" (click)="saveProductCategory()">
-            Add</button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> Close</button>
+            <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
 </ng-template>

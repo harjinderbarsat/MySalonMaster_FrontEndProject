@@ -1,6 +1,6 @@
 <div class="row" *ngIf="!inProgress">
     <div class="col-md-3 col-sm-12 text-left">
-        <label class="page-heading">Services List </label><label *ngIf="services&&services.length">({{services.length}})</label>
+        <label class="page-heading">Services List </label><label class="page-heading" *ngIf="services&&services.length">({{services.length}})</label>
     </div>
     <div class="col-md-9 col-sm-12 text-right">
         <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
@@ -167,6 +167,6 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> Close</button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
 </ng-template>
