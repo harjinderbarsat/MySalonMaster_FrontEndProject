@@ -134,3 +134,9 @@
     font-size: 30px;
     line-height: 33px;
 }
+
+.cart-header{
+    background: #f15a7f;
+    font-weight: 500;
+    font-size: 18px;
+}

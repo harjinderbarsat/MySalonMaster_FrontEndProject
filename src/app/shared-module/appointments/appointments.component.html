@@ -181,7 +181,8 @@
                                 <!-- <td>{{appointment.id}}</td> -->
                                 <td *ngIf="!isPrintView">{{i+1}}</td>
                                 <td>{{appointment.customerName}}</td>
-                                <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime, false)}}:{{appointment.hours}}
+                                <td>{{cService.getStringDateFormatByCurtureAndType(appointment.dateAndTime,
+                                    false)}}:{{appointment.hours}}
                                 </td>
                                 <!-- <td>
                                     {{appointment.hours}}</td> -->
@@ -207,12 +208,12 @@
                                         (click)="deleteAppointment(appointment)"><i class="fa fa-trash"></i> </button>
                                     <button type="button" class="mysalontheme-btn-sm ml-1"
                                         *ngIf="appointment.status === 'upcoming'"
-                                        (click)="appointmentStatusUpdatePopUp(startAppointment, appointment,'in-progress')">
+                                        (click)="appointmentStatusUpdatePopUp(selectEmployee, appointment,'in-progress')">
                                         Start
                                     </button>
                                     <button type="button" class="mysalontheme-btn-sm ml-1"
                                         *ngIf="appointment.status === 'in-progress'"
-                                        (click)="appointmentStatusUpdatePopUp(startAppointment, appointment,'completed')">
+                                        (click)="appointmentStatusUpdatePopUp(selectEmployee, appointment,'completed')">
                                         Finish
                                     </button>
                                     <button *ngIf="appointment.status === 'completed'" type="button"
@@ -281,32 +282,37 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="mysalontheme-btn-sm ml-1" *ngIf="selectedAppointment.status === 'upcoming'"
-            (click)="appointmentStatusUpdatePopUp(startAppointment, selectedAppointment,'in-progress')">
+            (click)="appointmentStatusUpdatePopUp(selectEmployee, selectedAppointment,'in-progress')">
             Start
         </button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
     </div>
 </ng-template>
 
-<ng-template #startAppointment let-modal>
+<ng-template #selectEmployee let-modal>
     <div class="modal-header">
         <div class="row">
             <div class="col-12">
-                <h4 class="modal-title" id="modal-basic-title ">Start Appointment</h4>
+                <h4 class="modal-title" id="modal-basic-title ">Select Employee</h4>
             </div>
         </div>
     </div>
     <div class="modal-body ">
         <div class="row">
             <div class="col-sm-12">
-                <input type="text" [(ngModel)]="updatedAppointment.employeeUniqueId" class="form-control"
-                    placeholder="Enter employee Id">
+                <select class="form-control" [(ngModel)]="selectedEmpId">
+                    <option value="null">Select Employee</option>
+                    <option value="{{emp.id}}" *ngFor="let emp of employeesList">{{emp.name}} 
+                    </option>
+                </select>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="appointmentStatusUpdate()">
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="onSelectedEmployee()">
             Start</button>
     </div>
 </ng-template>

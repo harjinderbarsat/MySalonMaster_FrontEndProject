@@ -39,7 +39,7 @@ export class AppointmentsComponent implements OnInit {
   startDate: NgbDateStruct;
   endDate: NgbDateStruct;
   MyTitle: string = "Appointment's List";
-
+  selectedEmpId: string;
 
 
   ngOnInit() {
@@ -156,12 +156,13 @@ export class AppointmentsComponent implements OnInit {
   updatedAppointment: AppointmentsModel
   appointmentStatusUpdatePopUp(content, appointment: AppointmentsModel, status: string) {
     this.updatedAppointment = new AppointmentsModel();
+    this.selectedEmpId = null;
+
     this.updatedAppointment = Object.assign(this.updatedAppointment, appointment);
     this.updatedAppointment.status = status;
     if (this.updatedAppointment.status == 'in-progress') {
       this.modalService.open(content, { size: "xs", backdrop: "static" });
     } else {
-
       Swal.fire({
         title: 'Are you sure?',
         text: 'Once this appointments will finish, cannot move into in progress!',
@@ -179,8 +180,16 @@ export class AppointmentsComponent implements OnInit {
     }
   }
 
+  onSelectedEmployee() {
+    if (!this.selectedEmpId) {
+      this.cService.getToaster('Please select Employee first', 'info', 'Select Employee');
+    } else {
+      this.modalService.dismissAll();
+      this.appointmentStatusUpdate();
+    }
+  }
+
   appointmentStatusUpdate() {
-    this.modalService.dismissAll();
     this.appointmentsService.updateAppointment(this.updatedAppointment).subscribe(async response => {
       if (response && response.isSuccess && response.data) {
         if (response.data.status == 'in-progress') {
@@ -298,16 +307,16 @@ export class AppointmentsComponent implements OnInit {
       });
   }
 
-   // --------------------------------Reporting and Printing ------------------------------------
-   isPrintView: boolean = false;
-   hideShowPrintView() {
-     this.isPrintView = !this.isPrintView;
-   }
- 
-   downloadXslx(): void {
-     let element = document.getElementById('table-xsls');
-     this.cService.download_XLSX(element, 'Clients List')
-     this.isPrintView = false;
-   }
+  // --------------------------------Reporting and Printing ------------------------------------
+  isPrintView: boolean = false;
+  hideShowPrintView() {
+    this.isPrintView = !this.isPrintView;
+  }
+
+  downloadXslx(): void {
+    let element = document.getElementById('table-xsls');
+    this.cService.download_XLSX(element, 'Clients List')
+    this.isPrintView = false;
+  }
 
 }
