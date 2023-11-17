@@ -181,11 +181,14 @@ export class AppointmentsComponent implements OnInit {
   }
 
   onSelectedEmployee() {
-    if (!this.selectedEmpId) {
+    const employeeId = this.selectedEmpId ? Number(this.selectedEmpId) : 0;
+    if (employeeId <= 0) {
       this.cService.getToaster('Please select Employee first', 'info', 'Select Employee');
     } else {
       this.modalService.dismissAll();
+      this.updatedAppointment.assignToId = employeeId;
       this.appointmentStatusUpdate();
+
     }
   }
 
