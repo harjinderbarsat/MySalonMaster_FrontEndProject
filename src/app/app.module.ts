@@ -30,11 +30,11 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    }), 
+    }),
     NgxPrintModule,
     BrowserAnimationsModule,
     ChartistModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({ timeOut: 800 }),
     UiSwitchModule.forRoot({
       size: 'small',
     }),

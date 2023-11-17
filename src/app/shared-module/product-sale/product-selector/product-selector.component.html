@@ -17,13 +17,13 @@
                                             <div class="contailer-div" *ngFor="let service of selectServicesList">
                                                 <div class="internal-div text-center" (click)="selectService(service)"
                                                     [ngClass]="{'mysalontheme-btn-color': !service.isSelected, 'my-salon-master':service.isSelected}">
-                                                    <img *ngIf="service.imageUrl && service.imageUrl!='https://apis.mysalonmaster.com/public'"
+                                                    <!-- <img *ngIf="service.imageUrl && service.imageUrl!='https://apis.mysalonmaster.com/public'"
                                                         class="product-grid-image" src="{{service.imageUrl}}"
                                                         alt="Card image cap">
                                                     <img *ngIf="!service.imageUrl||service.imageUrl=='https://apis.mysalonmaster.com/public'"
                                                         class="product-grid-image"
                                                         src="../../../../assets/apex-v6.0/img/custom/dummyProfilePicture.png "
-                                                        alt="Card image cap">
+                                                        alt="Card image cap"> -->
                                                     <p class="product-price-label"> {{service.name}}
                                                         &nbsp;&nbsp;&nbsp;${{service.price}}
                                                     </p>
@@ -41,13 +41,13 @@
                             <div class="card-body" style="border: solid;">
                                 <ul class="list-group category-container full-height-90-vh"
                                     style="border-radius: 0%; overflow-y: scroll;overflow-x: hidden;">
-                                    <li class="list-group-item mysalontheme-btn-color" style="color: white;">
-                                        <div class="row">
+                                    <li class="list-group-item ">
+                                        <div class="row cart-header">
                                             <div class="col-4">
                                                 Product
                                             </div>
                                             <div class="col-4">
-                                                <label class="service-price" style="color: white;">
+                                                <label class="service-price">
                                                     Price</label>
                                             </div>
                                             <div class="col-4">
@@ -56,31 +56,40 @@
 
                                         </div>
                                     </li>
-                                    <li class="list-group-item mysalontheme-btn-color" *ngFor="let service of selectedServies"
-                                        style="color: white;">
-                                        <div class="row">
+                                    <li class="list-group-item" *ngFor="let service of selectedServies">
+                                        <div class="row mt-6x">
                                             <div class="col-4">
-
                                                 {{service.name}}
                                             </div>
-                                            <div class="col-4">
-                                                <label class="service-price" style="color: white;">
+                                            <div class="col-3">
+                                                <label class="service-price">
                                                     ${{service.price}}</label>
                                             </div>
                                             <div class="col-4">
-                                                <button type="button" (click)="reduceServiceQty(service)"
-                                                    class="mysalontheme-btn-sm mb-0 b-pad-right">
-                                                    <i class="fa fa-minus" style="color: white;"></i>
-                                                </button> {{service.productQty}} <button type="button"
-                                                    (click)="addServiceQty(service)" class="mysalontheme-btn-sm mb-0 b-pad-left">
-                                                    <i class="fa fa-plus" style="color: white;"></i>
+                                                <div class="input-group input-group-sm mb-0">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" (click)="reduceServiceQty(service)"
+                                                            class="mysalontheme-btn-sm mb-0 btn-width">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                    <input type="text" class="form-control"
+                                                        aria-label="Product Quantity" value="{{service.productQty}}">
+                                                    <div class="input-group-append">
+                                                        <button type="button" (click)="addServiceQty(service)"
+                                                            class="mysalontheme-btn-sm mb-0 btn-width">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-1">
+                                                <button type="button" title="Remove Product"
+                                                    (click)="deleteService(service)" class="mysalontheme-btn-sm mb-0 pull-right del-cart-item
+                                            ">
+                                                    <i class="fa fa-times"></i>
                                                 </button>
                                             </div>
-                                            <button type="button" title="Remove Product" (click)="deleteService(service)"
-                                                class="mysalontheme-btn-sm mb-0 del-cart-item
-                                                ">
-                                                <i class="fa fa-times"></i>
-                                            </button>
                                         </div>
                                     </li>
                                     <hr>
@@ -89,13 +98,13 @@
                             <div class="card-footer page-container p-0"
                                 style="border-bottom: solid;border-left: solid;border-right: solid;height: 50px;">
                                 <ul class="list-group category-container">
-                                    <li class="list-group-item" *ngIf="selectedServies.length>0">
+                                    <li class="list-group-item">
                                         <div class="row">
                                             <div class="col-8">
                                                 <b>Total</b>
                                             </div>
                                             <div class="col-4 text-right">
-                                                <label class="service-price"> <b>${{total}}</b> </label>
+                                                <label class="service-price"> <b>{{total}}</b> </label>
                                             </div>
                                         </div>
                                     </li>
@@ -109,7 +118,7 @@
                 </div>
                 <div class="row mt-1" *ngIf="!inProgress">
                     <div class="col-12">
-                        <button class="mysalontheme-btn-md pull-right" (click)="Proceed(employeeDetails)">Next&nbsp;<i
+                        <button class="mysalontheme-btn-md pull-right" (click)="Proceed(selectEmployee)">Next&nbsp;<i
                                 class="fa fa-arrow-right"></i>
                         </button>
                         <button class="mysalontheme-btn-md pull-left" (click)="back()"><i
@@ -118,8 +127,8 @@
                 </div>
                 <div class="row" *ngIf="inProgress">
                     <div class="col-md-12 text-center align-middle p-5">
-                         <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
-                        
+                        <i style="font-size:80px" class="fa fa-gear fa-spin mt-4"></i>
+
                     </div>
                 </div>
             </div>
@@ -128,23 +137,30 @@
 </section>
 
 
-<ng-template #employeeDetails let-modal>
+<ng-template #selectEmployee let-modal>
     <div class="modal-header">
         <div class="row">
             <div class="col-12">
-                <h4 class="modal-title" id="modal-basic-title ">Employee ID</h4>
+                <h4 class="modal-title" id="modal-basic-title ">Select Employee</h4>
             </div>
         </div>
     </div>
     <div class="modal-body ">
         <div class="row">
-            <div class="col-12">
-                <input type="number" class="form-control" placeholder="EMP ID" [(ngModel)]="soildById">
+            <div class="col-sm-12">
+                <select class="form-control" [(ngModel)]="selectedEmpId">
+                    <option value="null">Select Employee</option>
+                    <option value="{{emp.id}}" *ngFor="let emp of employeesList">{{emp.name}}
+                    </option>
+                </select>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="saveData()"> Finish</button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="onSelectedEmployee()">
+            <i class="fa fa-check"
+            aria-hidden="true"></i></button>
     </div>
 </ng-template>

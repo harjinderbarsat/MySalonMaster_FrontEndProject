@@ -10,6 +10,7 @@ import { User } from 'src/app/front-end/models/login.model';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeService } from '../../service/employee.service';
+import { EmployeeModel } from '../../models/employee-model.model';
 
 @Component({
   selector: 'app-product-selector',
@@ -25,6 +26,8 @@ export class ProductSelectorComponent implements OnInit {
   client_id: number;
   currentUser: User
   soildById: string;
+  selectedEmpId: string;
+
   ngOnInit() {
     this.inProgress = true;
     this.selectedServies = new Array<ProductModel>();
@@ -32,7 +35,7 @@ export class ProductSelectorComponent implements OnInit {
     this.appointmentModel = new AppointmentsModel();
     this.client_id = this.activeRoute.snapshot.params.id;
     this.currentUser = this.cService.getUserProfile();
-
+    this.getEmployeeList();
   }
 
   getCategoriesList() {
@@ -46,7 +49,7 @@ export class ProductSelectorComponent implements OnInit {
         this.getServices();
       }
       else
-      {
+     {
         this.inProgress = false;
         this.cService.getToaster('Prodcut details not available. Please try again later.', 'error', 'Error');
       }
@@ -125,23 +128,41 @@ export class ProductSelectorComponent implements OnInit {
     this.total = this.subtotal + this.tax;
   }
 
+  employeesList: Array<EmployeeModel>;
+  getEmployeeList() {
+    this.employeesList = new Array<EmployeeModel>();
+    this.employeeService.getEmployeeList().subscribe(async response => {
+      this.employeesList = response.data;
+    }, async error => {
+      this.inProgress = false;
+      this.cService.getToaster('Somthing went wrong', 'error', 'Error');
+    });
+  }
+
   prodSaleModel: ProductSaleDetailsModel
   productSaleModel: ProductSaleModel;
 
 
   Proceed(content) {
+    this.selectedEmpId = null;
     this.modalService.open(content, { size: "xs", backdrop: "static" });
   }
 
-  saveData() {
+  
+  onSelectedEmployee() {
+    if (!this.selectedEmpId) {
+      this.cService.getToaster('Please select Employee first', 'info', 'Select Employee');
+    } else {
+      this.modalService.dismissAll();
+      this.saveData();
+    }
+  }
 
-    this.employeeService.getEmployeeByEmpCode(this.soildById).subscribe(async response => {
-      if (response && response.isSuccess && response.data) {
-        this.modalService.dismissAll();
+  saveData() {
+ 
         this.inProgress = true;
         this.productSaleModel = new ProductSaleModel();
-        this.productSaleModel.employeeUniqueId = this.soildById;
-
+        this.productSaleModel.employeeUniqueId = this.selectedEmpId;
         this.productSaleModel.clientId = this.client_id;
         this.productSaleModel.products = new Array<ProductSaleDetailsModel>();
         this.productSaleModel.saleType = 'dirtectSale';
@@ -169,13 +190,7 @@ export class ProductSelectorComponent implements OnInit {
         }, async error => {
           this.cService.getToaster('Application error', 'error', 'Error');
         });
-      }
-      else {
-        this.cService.getToaster('Please enter valid Employee Code.', 'error', 'Error');
-      }
-    }, async error => {
-      this.cService.getToaster('Application error', 'error', 'Error');
-    });
+      
 
   }
 
