@@ -14,7 +14,7 @@
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
         <div class="col-sm-12">
-            <div class="card" id="print-section">
+            <div class="card grid-width" id="print-section">
                 <div class="card-content">
                     <div class="card-body">
                         <table class="table">
@@ -52,23 +52,23 @@
                                     <td>{{i+1}}</td>
                                     <td>{{category.name}} </td>
                                     <!-- <td>{{category.status==0?'Inactive':'Active'}}</td> -->
-                                    <th>
+                                    <th class="action-btn-2">
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewClient(viewClientModel,category)"><i class="fa fa-eye"></i> </button>
                                         
                                         <button type="button" *ngIf="category.status=='Disabled'"
-                                            class="mysalontheme-btn-sm mr-1"
+                                            class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="updatedCategoryStatus(category,'Enabled')"> Enable
                                         </button>
                                         <button type="button" *ngIf="category.status=='Enabled'"
-                                            class="mysalontheme-btn-sm mr-1"
+                                            class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="updatedCategoryStatus(category,'Disabled')"> Disable
                                         </button>
-                                        <button type="button" class="mysalontheme-btn-sm mr-1" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isBranchPannel"
                                             (click)="openCategoryModal(CategoryModal,category,true)"> <i
                                                 class="fa fa-edit"></i>
                                         </button>
-                                        <button type="button" class="mysalontheme-btn-sm" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isBranchPannel"
                                             (click)="deleteCategory(category)"> <i class="fa fa-trash"></i> </button>
                                 </tr>
                             </tbody>

@@ -126,7 +126,9 @@
 .action-btn-2{
     min-width: 190px !important;
 }
-
+.text-align-1{
+    text-align: center
+}
 .mobile-heading {
     font-family: Playfair Display;
     font-style: normal;
@@ -139,4 +141,11 @@
     background: #f15a7f;
     font-weight: 500;
     font-size: 18px;
+}
+
+@media (max-width: 500px) {
+
+    .page-heading-1{
+        font-size:15px !important
+    }
 }

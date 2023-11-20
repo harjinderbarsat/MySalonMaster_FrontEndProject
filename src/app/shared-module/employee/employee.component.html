@@ -18,7 +18,7 @@
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
         <div class="col-sm-12">
-            <div class="card" id="print-section">
+            <div class="card grid-width" id="print-section">
                 <div class="card-body p-2">
                     <table class="table" id="table-xsls">
                         <thead>
@@ -61,20 +61,20 @@
                                 <td>{{employee.mobile}}</td>
                                 <td>{{employee.branchName}}</td>
                                 <!-- <td>{{employee.status}}</td> -->
-                                <th *ngIf="!isBranchPannel">
-                                    <button type="button" class="mysalontheme-btn-sm mr-1"
+                                <th *ngIf="!isBranchPannel" class="action-btn-2">
+                                    <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="viewEmployee(viewEmployeeModel,employee)"><i class="fa fa-eye"></i>
                                     </button>
-                                    <button type="button" class="mysalontheme-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="addEditEmployee(employee.id)"><i class="fa fa-edit"></i> </button>
-                                    <button type="button" class="mysalontheme-btn-sm mr-1"
+                                    <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="deleteEmployee(employee)"><i class="fa fa-trash"></i> </button>
                                     <button type="button" *ngIf="employee.status=='Inactive'"
-                                        class="mysalontheme-btn-sm mr-1"
+                                        class="mysalontheme-btn-sm mr-1 mb-0"
                                         (click)="updatedEmployeeStatus(employee,'active')">
                                         <i class="fa fa-toggle-on" aria-hidden="true"></i>
                                     </button>
-                                    <button type="button" *ngIf="employee.status=='active'" class="mysalontheme-btn-sm"
+                                    <button type="button" *ngIf="employee.status=='active'" class="mysalontheme-btn-sm mb-0"
                                         (click)="updatedEmployeeStatus(employee,'Inactive')"> <i
                                             class="fa fa-toggle-off" aria-hidden="true"></i>
                                     </button>
