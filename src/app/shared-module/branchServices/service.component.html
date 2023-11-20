@@ -57,7 +57,7 @@
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
         <div class="col-sm-12">
-            <div class="card" id="print-section">
+            <div class="card grid-width" id="print-section">
                 <div class="card-content">
                     <div class="card-body">
                         <table class="table" id="table-xsls">
@@ -106,22 +106,22 @@
 
                                     <!-- <td>{{service.status==0?'Inactive':'Active'}}</td> -->
 
-                                    <th *ngIf="!isPrintView">
+                                    <th *ngIf="!isPrintView" class="action-btn-2">
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="viewClient(viewClientModel,service)"><i class="fa fa-eye"></i>
                                         </button>
 
                                         <button type="button" *ngIf="service.status=='Disabled'"
-                                            class="mysalontheme-btn-sm mr-1" (click)="updatedServiceStatus(service,'Enabled')">
+                                            class="mysalontheme-btn-sm mr-1 mb-0" (click)="updatedServiceStatus(service,'Enabled')">
                                             Enable
                                         </button>
-                                        <button type="button" *ngIf="service.status=='Enabled'" class="mysalontheme-btn-sm mr-1"
+                                        <button type="button" *ngIf="service.status=='Enabled'" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="updatedServiceStatus(service,'Disabled')"> Disable
                                         </button>
-                                        <button type="button" class="mysalontheme-btn-sm mr-1" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isBranchPannel"
                                             (click)="addEditNewService(service.id)"> <i class="fa fa-edit"></i>
                                         </button>
-                                        <button type="button" *ngIf="!isBranchPannel" class="mysalontheme-btn-sm"
+                                        <button type="button" *ngIf="!isBranchPannel" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="deleteServices(service)"> <i class="fa fa-trash"></i> </button>
                                 </tr>
                             </tbody>

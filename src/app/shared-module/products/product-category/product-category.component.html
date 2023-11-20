@@ -59,24 +59,24 @@
                                     <td>{{category.name}}</td>
                                     <!-- <td>{{category.status==0?'Deactivated':'Activated'}}</td> -->
 
-                                    <th class="action-btn">
-                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0 "
+                                    <th class="action-btn-2">
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="viewClient(viewClientModel,category)"><i class="fa fa-eye"></i>
                                         </button>
 
                                         <button type="button" *ngIf="category.status=='Disabled' &&!isBranchPannel"
-                                            class="mysalontheme-btn-sm mr-1"
+                                            class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="updatedProductCategoryStatus(category,'Enabled')"> Enable
                                         </button>
                                         <button type="button" *ngIf="category.status=='Enabled' && !isBranchPannel"
-                                            class="mysalontheme-btn-sm mr-1"
+                                            class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="updatedProductCategoryStatus(category,'Disabled')"> Disable
                                         </button>
-                                        <button type="button" class="mysalontheme-btn-sm mr-1" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isBranchPannel"
                                             (click)="openProductCategoryModal(CategoryModal,category,true)"> <i
                                                 class="fa fa-edit"></i>
                                         </button>
-                                        <button type="button" class="mysalontheme-btn-sm" *ngIf="!isBranchPannel"
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isBranchPannel"
                                             (click)="deleteProductCategory(category)"> <i class="fa fa-trash"></i>
                                         </button>
                                 </tr>

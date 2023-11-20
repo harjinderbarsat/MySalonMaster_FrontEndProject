@@ -103,7 +103,7 @@
                             <tbody>
                                 <tr class="text-center" *ngIf="(!products ||(products && products.length<=0))">
                                     <td colspan="7">No Data Found.</td>
-                                </tr>
+                                </tr> 
                                 <tr *ngFor="let product of products; let i=index">
                                     <!-- <td *ngIf="!isPrintView && !isBranchPannel">
                                         <label>
@@ -116,7 +116,7 @@
                                     <td>{{product.categoryName}}</td>
                                     <!-- <td>{{product.qty}}</td> -->
                                     <td>{{product.price}}</td>
-                                    <th *ngIf="!isPrintView">
+                                    <th *ngIf="!isPrintView" class="action-btn">
                                         <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="viewClient(viewClientModel,product)"><i class="fa fa-eye"></i>
                                         </button>

@@ -10,7 +10,7 @@
                         <a class="text-decoration-none text-white" *ngIf="isEditMode"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
                     </button>
 
-                    <button type="button" class="mysalontheme-btn-sm pull-right d-none d-sm-block mr-1" (click)="back()">
+                    <button type="button" class="mysalontheme-btn-sm pull-right mr-1" (click)="back()">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -33,7 +33,7 @@
                                                                 style="font-size: 15px;">* </span></label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="employeeInfo.firstname"
-                                                            formControlName='firstname' placeholder="Enter firstname">
+                                                            formControlName='firstname' placeholder="Enter First Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-sm-12">
@@ -41,23 +41,11 @@
                                                         <label>last Name</label>
                                                         <input type="text" class="form-control"
                                                             [(ngModel)]="employeeInfo.lastname"
-                                                            formControlName='lastname' placeholder="Enter lastname">
+                                                            formControlName='lastname' placeholder="Enter Last Name">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <label>Select branch<span class="danger mb-0"
-                                                            style="font-size: 15px;">* </span></label>
-                                                    <select class="form-control mb-2" [(ngModel)]="employeeInfo.branchId"
-                                                        formControlName="branchId">
-                                                        <option value=""> Select branch </option>
-                                                        <option value="{{brach.id}}" *ngFor="let brach of branchList">
-                                                            {{brach.branchName}} </option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12"></div>
-                                            </div>
+                                           
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-12">
                                                     <div class="form-group">
@@ -130,6 +118,19 @@
                                                         formControlName='employeeUniqueId'
                                                         placeholder="Enter employee Unique Id">
                                                 </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Select branch<span class="danger mb-0"
+                                                            style="font-size: 15px;">* </span></label>
+                                                    <select class="form-control mb-2" [(ngModel)]="employeeInfo.branchId"
+                                                        formControlName="branchId">
+                                                        <option value=""> Select branch </option>
+                                                        <option value="{{brach.id}}" *ngFor="let brach of branchList">
+                                                            {{brach.branchName}} </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-12"></div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12">
