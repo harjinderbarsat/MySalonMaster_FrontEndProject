@@ -7,6 +7,8 @@ export class Payment {
     cardPaid: number;
     cashPaid: number;
     amount: number;
+    actualPaid: number;
+    paymentStatus: string;
     pendingAmount: number;
     appointmentId: number;
     productSaleId: number;

@@ -153,11 +153,22 @@
                 <input type="number" *ngIf="currentlyPayFor=='card'" [(ngModel)]="PaymentModel.cardPaid"
                     [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
                     class="form-control"> -->
-
+                <label class="mb-0">Total Amount</label>
                 <input type="number" [(ngModel)]="PaymentModel.pendingAmount" placeholder="Enter amount"
+                    [disabled]="true" class="form-control">
+
+                <label class="mb-0 mt-1">Amount Paid</label>
+                <input type="number" [(ngModel)]="PaymentModel.actualPaid" placeholder="Enter paid amount"
                     class="form-control">
 
-                <select class="form-control mt-1" [(ngModel)]="PaymentModel.type">
+                <label class="mb-0 mt-1">Difference Type</label>
+                <select class="form-control" [(ngModel)]="PaymentModel.paymentStatus">
+                    <option value="Discount">Discount</option>
+                    <option value="Pending">Pending</option>
+                </select>
+
+                <label class="mb-0 mt-1">Payment Type</label>
+                <select class="form-control " [(ngModel)]="PaymentModel.type">
                     <option value="card">Card/UPI</option>
                     <option value="cash">Cash</option>
                 </select>
@@ -169,7 +180,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
         <button type="button" class="mysalontheme-btn-sm" (click)="paymentTransaction()">
             Pay</button>
     </div>
@@ -346,7 +358,8 @@
         <button type="button" class="mysalontheme-btn-sm" (click)="printInvoice()">
             Print</button>
         <button class="mysalontheme-btn-sm" (click)="generatePDF()">Generate PDF</button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="closeInvoiceModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm" (click)="closeInvoiceModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
         <!-- <button [useExistingCss]="true" printSectionId="divInvoice" ngxPrint>print</button> -->
     </div>
 </ng-template>
