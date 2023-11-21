@@ -5,43 +5,49 @@
         <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="isPrintView" printTitle="Customers List"
             [useExistingCss]="true" printSectionId="print-section" ngxPrint>
             <i class="fa fa-print"></i></button>
-        <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download" aria-hidden="true"></i></button>
+        <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="isPrintView" (click)="downloadXslx()"><i
+                class="fa fa-download" aria-hidden="true"></i></button>
         <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="hideDeleteSelectedBtn && !isPrintView"
             (click)="deleteSelected()"><i class="fa fa-trash"></i> </button>
 
         <button class="mysalontheme-btn-sm mr-1 pull-right" *ngIf="!isPrintView" (click)="hideShowFilter()"><i
                 class="fa fa-filter"></i>
         </button>
-        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="resetFilter()"><i class="fa fa-refresh"></i></button>
+        <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="resetFilter()"><i
+                class="fa fa-refresh"></i></button>
 
         <button class="mysalontheme-btn-sm mr-1 pull-right" (click)="hideShowPrintView()">
             <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i></label>
             <label class="mb-0" *ngIf="isPrintView"> <i class="fa fa-bar-chart"></i></label>
         </button>
         <button class=" mysalontheme-btn-sm mr-1 pull-right" *ngIf="!isPrintView" (click)="addClient(0)"><i
-            class="fa fa-plus"></i></button>
+                class="fa fa-plus"></i></button>
     </div>
 </div>
 <div class="row mt-1" *ngIf="showFilter&&!isPrintView">
-    <div class="col-12">
-        <div class="input-group" style="width:600px;">
-            <select class="form-control" [(ngModel)]="filterType">
-                <option value="">Select Filter Type</option>
-                <option value="name">Name</option>
-                <option value="email">Email</option>
-                <option value="mobile">Mobile</option>
-            </select>
-            <input *ngIf="filterType!=''" class="form-control" [(ngModel)]="filterValue"
-                placeholder="Search keyword here...." type="text">
-            <button *ngIf="filterType!=''&& filterValue!=null" class="mysalontheme-btn-md"
-                (click)="getFilteredDataList()">Get
-                Data</button>
-        </div>
+    <div class="col-md-4 col-sm-12">
+        <select class="form-control" [(ngModel)]="filterType">
+            <option value="">Select Filter Type</option>
+            <option value="name">Name</option>
+            <option value="email">Email</option>
+            <option value="mobile">Mobile</option>
+        </select>
+    </div>
+    <div class="col-md-4 col-sm-12">
+
+        <input *ngIf="filterType!=''" class="form-control" [(ngModel)]="filterValue"
+            placeholder="Search keyword here...." type="text">
+
+    </div>
+    <div class="col-md-4 col-sm-12 text-left">
+
+        <button *ngIf="filterType!=''&& filterValue!=null" class="mysalontheme-btn-sm mt-1" (click)="getFilteredDataList()">
+            <i class="fa fa-search"></i> </button>
     </div>
 </div>
 <section id="simple-table" *ngIf="!inProgress">
     <div class="row text-left">
-        <div class="col-sm-12"> 
+        <div class="col-sm-12">
             <div class="card grid-width" id="print-section">
                 <div class="card-body p-2">
                     <table class="table" id="table-xsls">
@@ -179,6 +185,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
     </div>
 </ng-template>
