@@ -1,25 +1,29 @@
 <div class="row" *ngIf="!inProgress">
     <div class="col-md-3 col-sm-12 text-left">
-        <label class="page-heading">Services List </label><label class="page-heading" *ngIf="services&&services.length">({{services.length}})</label>
+        <label class="page-heading">Services List </label><label class="page-heading"
+            *ngIf="services&&services.length">({{services.length}})</label>
     </div>
     <div class="col-md-9 col-sm-12 text-right">
         <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" printTitle="Customers List" [useExistingCss]="true"
             printSectionId="print-section" ngxPrint>
             <i class="fa fa-print" aria-hidden="true"></i></button>
-        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i class="fa fa-download"></i>
-            </button>
-        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView" (click)="deleteSelected()"><i
-                class="fa fa-trash"></i></button>
-
-        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView && !isBranchPannel" (click)="addEditNewService(0)"><i
-                class="fa fa-plus"></i>
-            </button>
-
-        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i class="fa fa-filter"></i>
-            
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="isPrintView" (click)="downloadXslx()"><i
+                class="fa fa-download"></i>
         </button>
-        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="resetFilter()"> <i class="fa fa-refresh"></i>
-            </button>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="hideDeleteSelectedBtn && !isPrintView"
+            (click)="deleteSelected()"><i class="fa fa-trash"></i></button>
+
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView && !isBranchPannel"
+            (click)="addEditNewService(0)"><i class="fa fa-plus"></i>
+        </button>
+
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="hideShowFilter()"><i
+                class="fa fa-filter"></i>
+
+        </button>
+        <button class="mysalontheme-btn-sm mr-1" *ngIf="!isPrintView" (click)="resetFilter()"> <i
+                class="fa fa-refresh"></i>
+        </button>
 
         <button class="mysalontheme-btn-sm mr-1" (click)="hideShowPrintView()">
             <label class="mb-0" *ngIf="!isPrintView"><i class="fa fa-bar-chart"></i></label>
@@ -49,7 +53,8 @@
             </select>
             <input *ngIf="filterType!=''&&filterType!='category'&&filterType!='status'" class="form-control"
                 [(ngModel)]="filterValue" placeholder="Search keyword here...." type="text">
-            <button *ngIf="filterType!=''&& filterValue!=null" class="mysalontheme-btn-sm" (click)="getFilteredDataList()">Get
+            <button *ngIf="filterType!=''&& filterValue!=null" class="mysalontheme-btn-sm"
+                (click)="getFilteredDataList()">Get
                 Data</button>
         </div>
     </div>
@@ -112,17 +117,21 @@
                                         </button>
 
                                         <button type="button" *ngIf="service.status=='Disabled'"
-                                            class="mysalontheme-btn-sm mr-1 mb-0" (click)="updatedServiceStatus(service,'Enabled')">
+                                            class="mysalontheme-btn-sm mr-1 mb-0"
+                                            (click)="updatedServiceStatus(service,'Enabled')">
                                             Enable
                                         </button>
-                                        <button type="button" *ngIf="service.status=='Enabled'" class="mysalontheme-btn-sm mr-1 mb-0"
+                                        <button type="button" *ngIf="service.status=='Enabled'"
+                                            class="mysalontheme-btn-sm mr-1 mb-0"
                                             (click)="updatedServiceStatus(service,'Disabled')"> Disable
                                         </button>
-                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0" *ngIf="!isBranchPannel"
-                                            (click)="addEditNewService(service.id)"> <i class="fa fa-edit"></i>
+                                        <button type="button" class="mysalontheme-btn-sm mr-1 mb-0"
+                                            *ngIf="!isBranchPannel" (click)="addEditNewService(service.id)"> <i
+                                                class="fa fa-edit"></i>
                                         </button>
-                                        <button type="button" *ngIf="!isBranchPannel" class="mysalontheme-btn-sm mr-1 mb-0"
-                                            (click)="deleteServices(service)"> <i class="fa fa-trash"></i> </button>
+                                        <button type="button" *ngIf="!isBranchPannel"
+                                            class="mysalontheme-btn-sm mr-1 mb-0" (click)="deleteServices(service)"> <i
+                                                class="fa fa-trash"></i> </button>
                                 </tr>
                             </tbody>
                         </table>
@@ -151,22 +160,23 @@
     </div>
     <div class="modal-body ">
         <div class="row">
-            <div class="col-md-6">
-                <label> <b>Service ID : </b> {{currentSelected.id}}</label><br>
-                <label> <b>Category : </b> {{currentSelected.category_name}}</label><br>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
+                <label> <b>Category : </b> {{currentSelected.categoryName}}</label><br>
                 <label> <b>Name : </b> {{currentSelected.name}}</label><br>
                 <label> <b>Price : </b> {{currentSelected.price}}</label><br>
+                <label> <b>Duration : </b> {{currentSelected.duration}}</label><br>
+                <label> <b>Is this initial price : </b> {{currentSelected.isThisInitialPrice=='1'?'Yes':'No'}}</label><br>
+                <label> <b>Status : </b> {{currentSelected.status=='1'?'Active':'Inactive'}}</label><br>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="currentSelected.description">
             <div class="col-md-12">
                 <label> <b>Description : </b> {{currentSelected.description}}</label><br>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="mysalontheme-btn-sm  " (click)="closeModal()"> <i class="fa fa-times"
+                aria-hidden="true"></i></button>
     </div>
 </ng-template>
