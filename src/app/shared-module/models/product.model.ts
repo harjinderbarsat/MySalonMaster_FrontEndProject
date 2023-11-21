@@ -7,6 +7,7 @@ export class ProductModel {
     categoryName: number;
     name: string;
     status: string;
+    mrp:number;
     description: string;
     imageUrl: string;
     qty: number;
