@@ -41,7 +41,7 @@ export class WalkInPanelComponent implements OnInit {
       }
     } else {
 
-      service.category_name = category ? category.name : '';
+      service.categoryName = category ? category.name : '';
       service.isSelected = true;
       this.selectedServies.push(service);
 

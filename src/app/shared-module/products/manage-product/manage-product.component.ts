@@ -34,6 +34,7 @@ export class ManageProductComponent implements OnInit {
       description: ['', ''],
       category_id: ['', [Validators.required]],
       qty: ['', ''],
+      mrp: ['', ''],
       price: ['', [Validators.required]]
     });
     this.id = this.activeRoute.snapshot.params.id;

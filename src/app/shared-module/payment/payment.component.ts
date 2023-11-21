@@ -102,6 +102,8 @@ export class PaymentComponent implements OnInit {
       this.PaymentModel.cashPaid = this.PaymentModel.pendingAmount;
     }
 
+    this.PaymentModel.actualPaid = this.PaymentModel.pendingAmount;
+
     this.modalService.open(content, { size: "sm", backdrop: "static" });
   }
 
@@ -192,7 +194,7 @@ export class PaymentComponent implements OnInit {
 
       if (this.PaymentModel.type == "cash") {
         this.PaymentModel.cashPaid = this.PaymentModel.amount;
-      }else{
+      } else {
         this.PaymentModel.cardPaid = this.PaymentModel.amount;
       }
 

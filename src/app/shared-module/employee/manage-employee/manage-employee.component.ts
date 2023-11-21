@@ -39,11 +39,11 @@ export class ManageEmployeeComponent implements OnInit {
       lastname: ['', ''],
       email: ['', [Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+.[a-zA-Z]{2,4}$')]],
       branchId: ['', [Validators.required]],
-      employeeUniqueId: ['', [Validators.required]],
-      date_of_birth: ['', [Validators.required]],
-      dateOfJoining: ['', [Validators.required]],
-      designation: ['', [Validators.required]],
-      mobile: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      employeeUniqueId: ['', ''],
+      date_of_birth: ['', ''],
+      dateOfJoining: ['', ''],
+      designation: ['', ''],
+      mobile: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       address: ['', ''],
     });
     this.id = this.activeRoute.snapshot.params.id;
@@ -124,7 +124,7 @@ export class ManageEmployeeComponent implements OnInit {
     }
   }
 
-  back(){
+  back() {
     window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/employees";
 
   }

@@ -4,15 +4,15 @@ export class ServiceModel {
     status: string;
 
     name: string;
-    category_name?: string;
+    categoryName?: string;
     description: string;
     createdDate: string;
     price: number;
     duration: number;
     isThisInitialPrice?: string;
     isSelected?: boolean
-    created_at?: string;
-    updated_at?: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export class ServiceCategoryModel {
@@ -23,8 +23,8 @@ export class ServiceCategoryModel {
     createdDate: string;
     services: Array<ServiceModel>
     isSelected?: boolean;
-    created_at?: string;
-    updated_at?: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export class permissonResponseModel {

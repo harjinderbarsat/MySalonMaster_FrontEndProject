@@ -55,7 +55,7 @@ export class ServiceComponent implements OnInit {
     this.servicesService.getServiceList().subscribe(async response => {
       let data = [];
       if (response.data && response.data.length > 0) {
-        data = response.data.sort((a, b) => (a.category_name > b.category_name) ? 1 : -1);
+        data = response.data.sort((a, b) => (a.categoryName > b.categoryName) ? 1 : -1);
       }
       this.services = data;
       this.servicesAll = data;

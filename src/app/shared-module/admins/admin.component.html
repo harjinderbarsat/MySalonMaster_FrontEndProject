@@ -19,7 +19,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>
+                                <!-- <th>
                                     <div class="remember-me">
                                         <div class="custom-control custom-checkbox custom-control-inline">
                                             <input type="checkbox" class="custom-control-input"
@@ -28,10 +28,11 @@
                                             <label class="custom-control-label" for="selectAll1"> </label>
                                         </div>
                                     </div>
-                                </th>
+                                </th> -->
                                 <th>ID </th>
                                 <th>Name </th>
-                                <th>Email </th>
+                                <th>User Name </th>
+                                <th>Password </th>
                                 <th>Status </th>
                                 <th>Action </th>
                             </tr>
@@ -40,16 +41,17 @@
                             <tr class="text-center" *ngIf="(!employeesList ||(employeesList && employeesList.length<=0))">
                                 <td colspan="6">No Data Found.</td>
                             </tr>
-                            <tr *ngFor="let employee of employeesList;let i=index;">
-                                <td>
+                            <tr *ngFor="let employee of employeesList;">
+                                <!-- <td>
                                     <label>
                                         <input type="checkbox" [checked]="employee.isSelected"
                                             [value]="employee.isSelected" (change)="change(employee,$event)" />
                                     </label>
-                                </td>
-                                <td>{{i+1}}</td>
+                                </td> -->
+                                <td>{{employee.id}}</td>
                                 <td>{{employee.name}}</td>
-                                <td>{{employee.email}}</td>
+                                <td>{{employee.username}}</td>
+                                <td>{{employee.passcode}}</td>
                                 <td>{{employee.status=='1'?'Active':'Inactive'}}</td>
                                 <th>
                                     <button type="button" class="mysalontheme-btn-sm mr-1"
