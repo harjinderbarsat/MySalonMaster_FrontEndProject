@@ -7,7 +7,7 @@ export class ProductModel {
     categoryName: number;
     name: string;
     status: string;
-    mrp:number;
+    mrp: number;
     description: string;
     imageUrl: string;
     qty: number;
@@ -40,5 +40,6 @@ export class ProductCategoryModel {
 export class ProductParentCategoryModel {
     id: number;
     name: string;
+    mainCategoryName: string;
     visibility: boolean;
 }
