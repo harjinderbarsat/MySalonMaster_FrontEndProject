@@ -93,69 +93,55 @@ export class PaymentComponent implements OnInit {
     });
   }
 
-  currentlyPayFor: string;
-  paymentTransactionPopUp(content, type) {
-    this.currentlyPayFor = type;
-    if (this.ifTheCashPaymentDone) {
-      this.PaymentModel.cardPaid = this.PaymentModel.pendingAmount;
-    } else if (this.ifTheCardPaymentDone) {
-      this.PaymentModel.cashPaid = this.PaymentModel.pendingAmount;
-    }
-
-    this.PaymentModel.actualPaid = this.PaymentModel.pendingAmount;
-
+  nowPayingPendingAmt = 0
+  paymentTransactionPopUp(content, pendingAmount: boolean) {
+    this.PaymentModel.type = 'cash';
+    this.PaymentModel.paymentStatus = "";
+    this.PaymentModel.transactionNumber = null;
+    this.PaymentModel.payingForPendingAmount = pendingAmount;
+    this.nowPayingPendingAmt = this.PaymentModel.pendingAmount;
     this.modalService.open(content, { size: "sm", backdrop: "static" });
   }
 
+
+  paymentPendingTransaction() {
+    this.PaymentModel.paymentStatus = "Done";
+    this.PaymentModel.pendingAmount = 0;
+    this.PaymentModel.actualPaid = this.PaymentModel.amount;
+    this.saveUpdatePayment();
+  }
+
+
   PaymentModel: Payment;
-  PaymentFilter: Payment;
   ifTheCashPaymentDone: boolean = false;
   ifTheCardPaymentDone: boolean = false;
   getPaymentDetails(showSuccess = false) {
     this.PaymentModel = new Payment();
-    this.PaymentFilter = new Payment();
-    this.PaymentFilter.payFor = this.paymentFor;
-
+    let requestModel = new Payment();
     if (this.paymentFor == 'appointment') {
-
-      this.PaymentFilter.appointmentId = this.id;
-
+      requestModel.appointmentId = this.id;
+      requestModel.payFor = this.paymentFor;
     } else if (this.paymentFor == 'product') {
-      this.PaymentFilter.payFor = this.paymentFor;
-      this.PaymentFilter.productSaleId = this.id;
+      requestModel.payFor = this.paymentFor;
+      requestModel.productSaleId = this.id;
     }
-    this.paymentService.getPaymentByFilters(this.PaymentFilter).subscribe(async response => {
-      if (response && response.isSuccess && response.data) {
+    this.paymentService.getPaymentByFilters(requestModel).subscribe(async response => {
+      if (response && response.isSuccess && response.data && response.data[0]?.id) {
         this.PaymentModel = response.data[0];
-
-        if (this.paymentFor == 'appointment') {
-          this.PaymentModel.amount = this.selectedAppointment.totalAmount;
-
-        } else if (this.paymentFor == 'product') {
-          this.PaymentModel.amount = this.productDetails.totalAmount;
+        if (this.PaymentModel.paymentStatus == "Pending") {
+          this.PaymentModel.payingForPendingAmount = true;
         }
-        this.PaymentModel.pendingAmount = Number(this.PaymentModel.amount) - (Number(Number(this.PaymentModel.cashPaid) + Number(this.PaymentModel.cardPaid)));
-        if (this.PaymentModel.pendingAmount <= 0 && showSuccess) {
-          this.paymentCompleted();
-        }
-
       } else {
         if (this.paymentFor == 'appointment') {
           this.PaymentModel.amount = this.selectedAppointment.totalAmount;
-          this.PaymentModel.pendingAmount = this.selectedAppointment.totalAmount;
         } else if (this.paymentFor == 'product') {
           this.PaymentModel.amount = this.productDetails.totalAmount;
-          this.PaymentModel.pendingAmount = this.productDetails.totalAmount;
         }
-        this.PaymentModel.cardPaid = 0;
-        this.PaymentModel.cashPaid = 0;
+        this.PaymentModel.payFor = this.paymentFor;
+        this.PaymentModel.actualPaid = this.selectedAppointment.totalAmount;
+        this.PaymentModel.paymentStatus = '';
       }
-
-      this.ifTheCashPaymentDone = this.PaymentModel.cashPaid != 0;
-      this.ifTheCardPaymentDone = this.PaymentModel.cardPaid != 0;
-
       this.inProgress = false;
-
     }, async error => {
       this.inProgress = false;
       this.cService.getToaster('Somthing went wrong', 'error', 'Error');
@@ -185,46 +171,86 @@ export class PaymentComponent implements OnInit {
   }
 
   paymentTransaction() {
-    this.PaymentModel.payFor = this.paymentFor;
-    this.inProgress = true;
-    if (this.paymentFor == 'appointment') {
-      this.PaymentModel.appointmentId = this.id;
-      this.PaymentModel.employeeId = this.selectedAppointment.assignToId;
-      this.PaymentModel.clientId = this.selectedAppointment.customerId;
-
-      if (this.PaymentModel.type == "cash") {
-        this.PaymentModel.cashPaid = this.PaymentModel.amount;
-      } else {
-        this.PaymentModel.cardPaid = this.PaymentModel.amount;
-      }
-
-    } else if (this.paymentFor == 'product') {
-
-      this.PaymentModel.clientId = this.productDetails.clientId;
-      this.PaymentModel.productSaleId = this.id;
-      this.PaymentModel.amount = this.productDetails.totalAmount;
-      this.PaymentModel.employeeId = this.productDetails.soldById;
-
+    if (Number(this.PaymentModel.actualPaid) < 0) {
+      this.cService.getToaster('Please enter correct amount', 'info', 'Incorrect amount');
+      return false;
     }
 
-    this.modalService.dismissAll();
+    if (this.PaymentModel.actualPaid != this.PaymentModel.amount && this.PaymentModel.paymentStatus == '') {
+      this.cService.getToaster('Please select the reason of amount difference', 'info', 'Select Reason');
+    } else if (this.PaymentModel.actualPaid == this.PaymentModel.amount && this.PaymentModel.paymentStatus == '') {
+      this.PaymentModel.paymentStatus = 'Done';
+      if (this.paymentFor == 'appointment') {
+        this.PaymentModel.appointmentId = this.id;
+        this.PaymentModel.employeeId = this.selectedAppointment.assignToId;
+        this.PaymentModel.clientId = this.selectedAppointment.customerId;
+      } else if (this.paymentFor == 'product') {
+        this.PaymentModel.productSaleId = this.id;
+        this.PaymentModel.employeeId = this.productDetails.soldById;
+        this.PaymentModel.clientId = this.productDetails.clientId;
+      }
+      this.saveUpdatePayment();
 
+    } else if (this.PaymentModel.paymentStatus == 'Pending') {
+
+      if (this.paymentFor == 'appointment') {
+        this.PaymentModel.appointmentId = this.id;
+        this.PaymentModel.employeeId = this.selectedAppointment.assignToId;
+        this.PaymentModel.clientId = this.selectedAppointment.customerId;
+      } else if (this.paymentFor == 'product') {
+        this.PaymentModel.productSaleId = this.id;
+        this.PaymentModel.employeeId = this.productDetails.soldById;
+        this.PaymentModel.clientId = this.productDetails.clientId;
+      }
+
+      if (this.PaymentModel.actualPaid < this.PaymentModel.amount) {
+        this.PaymentModel.pendingAmount = this.PaymentModel.amount - this.PaymentModel.actualPaid;
+      }
+      if (Number(this.PaymentModel.pendingAmount) <= 0) {
+        this.PaymentModel.paymentStatus = 'Done';
+      }
+      this.saveUpdatePayment();
+
+    } else if (this.PaymentModel.paymentStatus == "Discount") {
+
+      if (this.paymentFor == 'appointment') {
+        this.PaymentModel.appointmentId = this.id;
+        this.PaymentModel.employeeId = this.selectedAppointment.assignToId;
+        this.PaymentModel.clientId = this.selectedAppointment.customerId;
+      } else if (this.paymentFor == 'product') {
+        this.PaymentModel.productSaleId = this.id;
+        this.PaymentModel.employeeId = this.productDetails.soldById;
+        this.PaymentModel.clientId = this.productDetails.clientId;
+      }
+
+      if (this.PaymentModel.actualPaid < this.PaymentModel.amount) {
+        this.PaymentModel.discountAmount = this.PaymentModel.amount - this.PaymentModel.actualPaid;
+      }
+      if (Number(this.PaymentModel.discountAmount) <= 0) {
+        this.PaymentModel.paymentStatus = 'Done';
+      }
+      this.saveUpdatePayment();
+
+    }
+  }
+
+  saveUpdatePayment() {
+    this.inProgress = true;
+    this.modalService.dismissAll();
     if (this.PaymentModel.id) {
-      // this.paymentService.updatePayment(this.PaymentModel).subscribe(async response => {
-      //   if (response && response.isSuccess) {
-      //     this.cService.getToaster('Payment Updated', 'success', 'Success');
-      //     this.getPaymentDetails(true);
-      //   }
-      // }, async error => {
-      //   this.inProgress = false;
-      //   this.cService.getToaster('Somthing went wrong', 'error', 'Error');
-      // });
+      this.paymentService.updatePayment(this.PaymentModel).subscribe(async response => {
+        if (response && response.isSuccess) {
+          this.cService.getToaster('Payment Done', 'success', 'Success');
+          this.paymentCompleted();
+        }
+      }, async error => {
+        this.inProgress = false;
+        this.cService.getToaster('Somthing went wrong', 'error', 'Error');
+      });
     } else {
       this.paymentService.addPayment(this.PaymentModel).subscribe(async response => {
         if (response && response.isSuccess) {
           this.cService.getToaster('Payment Done', 'success', 'Success');
-
-          //this.getPaymentDetails(true);
           this.paymentCompleted();
         }
       }, async error => {
@@ -236,6 +262,7 @@ export class PaymentComponent implements OnInit {
 
   closeModal() {
     this.modalService.dismissAll();
+    this.getPaymentDetails();
   }
 
   closeInvoiceModal() {
@@ -244,7 +271,6 @@ export class PaymentComponent implements OnInit {
       window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/in-progress-appointments";
     else if (this.paymentFor == 'product')
       window.location.href = window.location.origin + "/#/" + this.currentUser.userType + "/product-sale-history";
-
   }
 
   genInvoice(invoicePrintMpdal) {
@@ -282,7 +308,6 @@ export class PaymentComponent implements OnInit {
   }
 
   getDocumentDefinition() {
-
     let header1 = "";
     if (this.paymentFor == 'product') {
       header1 = "Invoice No.: 0001\n";
@@ -367,7 +392,7 @@ export class PaymentComponent implements OnInit {
             widths: ['*', 100, 100, '*'],
             body: [
               ['\n\n\n\n', '', '', ''],
-              ["Payment Method\n" + (this.ifTheCashPaymentDone ? "Cash :" + this.PaymentModel.cashPaid + "\n" : "") + (this.ifTheCardPaymentDone ? "Card :" + this.PaymentModel.cardPaid + "" : ""), '', '', ""]
+              ["Payment Method\n" + (this.PaymentModel.type + this.PaymentModel.actualPaid + "\n"), '', '', ""]
 
             ]
           },
@@ -390,14 +415,5 @@ export class PaymentComponent implements OnInit {
     };
   }
 
-  checkAmountValidations() {
 
-    if (this.currentlyPayFor == 'cash' && this.PaymentModel.cardPaid > this.PaymentModel.pendingAmount) {
-      return true;
-    }
-    else if (this.currentlyPayFor == 'card' && this.PaymentModel.cardPaid > this.PaymentModel.pendingAmount) {
-      return true;
-    }
-    else return false;
-  }
 }

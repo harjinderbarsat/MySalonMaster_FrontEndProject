@@ -33,7 +33,7 @@ export class WalkInAppointmentTimeComponent implements OnInit {
     this.hours = "";
     this.mintues = "";
     this.amPM = "1";
-    this.inProgress = false;
+    this.inProgress = true;
     this.dateForm = this.fb.group({
       date: ['', [Validators.required]],
       hours: ['', [Validators.required]],

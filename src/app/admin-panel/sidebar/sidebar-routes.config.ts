@@ -10,7 +10,6 @@ export const BRANCH_ROUTES: RouteInfo[] = [
       { path: '/admin/product-sale-history', title: 'Product', icon: 'fa fa-history', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false }
     ], visibility: true, isAdmin: true
   },
- 
   // {
   //   path: '', title: 'Employees', icon: 'fa fa-users', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
   //     // { path: '/admin/leaves', title: 'Leaves', icon: 'fa fa-calendar', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
@@ -25,7 +24,7 @@ export const BRANCH_ROUTES: RouteInfo[] = [
   //     { path: '/admin/client-Reviews', title: ' Reviews', icon: 'fa fa-star', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },
   //   ], visibility: true, isAdmin: true
   // },
-   {
+  {
     path: '', title: 'Products', icon: 'fa fa-houzz', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
       { path: '/admin/products', title: 'All Products', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
       { path: '/admin/products-Categoty', title: 'All Categories', icon: 'fa fa-list-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
@@ -35,7 +34,7 @@ export const BRANCH_ROUTES: RouteInfo[] = [
     path: '', title: 'Services', icon: 'fa fa-wrench', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, submenu: [
       { path: '/admin/serviceCategory', title: 'All Categories', icon: 'fa fa-list-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
       { path: '/admin/serviceList', title: 'All Service', icon: 'fa fa-list', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
-      // { path: '/admin/defaultServices', title: 'Load Default', icon: 'fa fa-play', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
+      { path: '/admin/defaultServices', title: 'Load Default', icon: 'fa fa-play', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: false },
     ], visibility: true, isAdmin: false
   },
   { path: '/admin/employees', title: 'Employees', icon: 'ft-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [], visibility: true, isAdmin: true },

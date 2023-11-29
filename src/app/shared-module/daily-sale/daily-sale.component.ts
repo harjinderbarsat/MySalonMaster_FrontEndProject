@@ -61,9 +61,15 @@ export class DailySaleComponent implements OnInit {
               this.transaction.appoinmentsCount = Number(this.transaction.appoinmentsCount) + 1;
               this.transaction.appoinmentsAmmount = Number(this.transaction.appoinmentsAmmount) + Number(p.amount);
             }
+
+            if (p.type == 'card') {
+              this.cashMovement.cardAmmount = Number(this.cashMovement.cardAmmount) + Number(p.actualPaid);
+            } else if (p.type == 'cash') {
+              this.cashMovement.CashAmmount = Number(this.cashMovement.CashAmmount) + Number(p.actualPaid);
+            }
+
+
             this.transaction.totalSale = Number(this.transaction.totalSale) + Number(p.amount);
-            this.cashMovement.CashAmmount = Number(this.cashMovement.CashAmmount) + Number(p.cashPaid);
-            this.cashMovement.cardAmmount = Number(this.cashMovement.cardAmmount) + Number(p.cardPaid);
             this.cashMovement.totalSale = Number(this.cashMovement.totalSale) + Number(p.amount);
             p.payFor = p.payFor && p.payFor != '' ? p.payFor.toLocaleUpperCase() : '';
           })

@@ -97,34 +97,23 @@
                 <div class="row pl-2">
                     <div class="col-12">
                         <label><b>Total Amount :</b> &nbsp; {{PaymentModel.amount}}</label>
-                        <button type="button" class=" mysalontheme-btn-md ml-5"
-                            *ngIf="!(ifTheCashPaymentDone || PaymentModel.pendingAmount==0)"
-                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,'cash')">Pay </button>
+                        <button type="button" class=" mysalontheme-btn-md ml-5" *ngIf="PaymentModel.paymentStatus==''"
+                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,false)">Pay </button>
+                        &nbsp;
+                        <span *ngIf="PaymentModel.paymentStatus=='Done'||PaymentModel.paymentStatus=='Discount'"> <i
+                                class="fa fa-check success"></i> </span>
                     </div>
                 </div>
 
-                <!-- <div class="row pl-2 mt-1">
-                    <div class="col-sm-4">
-                        <label><b>Cash Paid :</b> &nbsp;{{PaymentModel.cashPaid}}</label>
-                        <button type="button" class=" mysalontheme-btn-md ml-5" *ngIf="!(ifTheCashPaymentDone || PaymentModel.pendingAmount==0)"
-                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,'cash')">Pay By
-                            Cash </button>
-                    </div>
-                </div>
-                <div class="row pl-2 mt-1">
-                    <div class="col-sm-12">
-                        <label><b> Card/UPI :</b> &nbsp;{{PaymentModel.cardPaid}}</label>
-                        <button type="button" class=" mysalontheme-btn-md ml-5"
-                            *ngIf="!(ifTheCardPaymentDone || PaymentModel.pendingAmount==0)"
-                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,'card')"> Pay by
-                            Card/UPI </button>
-                    </div>
-                </div>
-                <div class="row pl-2 mt-1">
+                <div class="row pl-2" *ngIf="PaymentModel.paymentStatus=='Pending'">
                     <div class="col-12">
-                        <label><b>Balance :</b> &nbsp; {{PaymentModel.pendingAmount}}</label>
+                        <label><b>Pending Amount :</b> &nbsp; {{PaymentModel.amount-PaymentModel.actualPaid}}</label>
+                        <button type="button" class=" mysalontheme-btn-md ml-5"
+                            (click)="paymentTransactionPopUp(paymentTransactionMpdal,true)"> Pay Pending
+                            Amount
+                        </button>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <div class="row" *ngIf="inProgress">
@@ -153,25 +142,43 @@
                 <input type="number" *ngIf="currentlyPayFor=='card'" [(ngModel)]="PaymentModel.cardPaid"
                     [readonly]="ifTheCashPaymentDone||ifTheCardPaymentDone" placeholder="Enter amount"
                     class="form-control"> -->
-                <label class="mb-0">Total Amount</label>
-                <input type="number" [(ngModel)]="PaymentModel.pendingAmount" placeholder="Enter amount"
-                    [disabled]="true" class="form-control">
 
-                <label class="mb-0 mt-1">Amount Paid</label>
-                <input type="number" [(ngModel)]="PaymentModel.actualPaid" placeholder="Enter paid amount"
+                <label class="mb-0">Total Amount</label>
+                <input type="number" [(ngModel)]="PaymentModel.amount" placeholder="Enter amount" [disabled]="true"
                     class="form-control">
 
-                <label class="mb-0 mt-1">Difference Type</label>
-                <select class="form-control" [(ngModel)]="PaymentModel.paymentStatus">
+                <label class="mb-0 mt-1" *ngIf="!PaymentModel.payingForPendingAmount">Amount Paid</label>
+                <label class="mb-0 mt-1" *ngIf="PaymentModel.payingForPendingAmount">Already Paid</label>
+                <input type="number" [(ngModel)]="PaymentModel.actualPaid" placeholder="Enter paid amount"
+                    [disabled]="PaymentModel.payingForPendingAmount" class="form-control">
+
+                <label class="mb-0" *ngIf="PaymentModel.payingForPendingAmount">Pending Amount</label>
+                <input type="number" *ngIf="PaymentModel.payingForPendingAmount" [(ngModel)]="nowPayingPendingAmt"
+                    placeholder="Enter amount" class="form-control" [disabled]="true">
+
+                <label class="mb-0 mt-1"
+                    *ngIf="PaymentModel.actualPaid!=PaymentModel.amount && !PaymentModel.payingForPendingAmount">Difference
+                    Type</label>
+
+                <select *ngIf="PaymentModel.actualPaid!=PaymentModel.amount && !PaymentModel.payingForPendingAmount"
+                    class="form-control" [(ngModel)]="PaymentModel.paymentStatus">
+                    <option value="">Select Reason</option>
                     <option value="Discount">Discount</option>
                     <option value="Pending">Pending</option>
+                    <option value="Advance">Advance</option>
                 </select>
 
-                <label class="mb-0 mt-1">Payment Type</label>
-                <select class="form-control " [(ngModel)]="PaymentModel.type">
+                <label class="mb-0 mt-1" *ngIf="!PaymentModel.payingForPendingAmount">Payment Type</label>
+                <select class="form-control" *ngIf="!PaymentModel.payingForPendingAmount"
+                    [(ngModel)]="PaymentModel.type">
+                    <option value="">Select Type</option>
                     <option value="card">Card/UPI</option>
                     <option value="cash">Cash</option>
                 </select>
+
+                <label class="mb-0 mt-1" *ngIf="PaymentModel.type=='card'">UPI Transaction Number</label>
+                <input type="number" *ngIf="PaymentModel.type=='card'" [(ngModel)]="PaymentModel.transactionNumber"
+                    placeholder="Enter Transaction Number" class="form-control">
 
                 <!-- <div *ngIf="checkAmountValidations()" class="err-validation">
                     Please enter amount less than or equal to {{PaymentModel.pendingAmount}}
@@ -182,7 +189,12 @@
     <div class="modal-footer">
         <button type="button" class="mysalontheme-btn-sm" (click)="closeModal()"> <i class="fa fa-times"
                 aria-hidden="true"></i></button>
-        <button type="button" class="mysalontheme-btn-sm" (click)="paymentTransaction()">
+        <button type="button" *ngIf="!PaymentModel.payingForPendingAmount" class="mysalontheme-btn-sm"
+            (click)="paymentTransaction()">
+            Pay</button>
+
+        <button type="button" *ngIf="PaymentModel.payingForPendingAmount" class="mysalontheme-btn-sm"
+            (click)="paymentPendingTransaction()">
             Pay</button>
     </div>
 </ng-template>
@@ -193,16 +205,13 @@
         <div style="width: 100%;">
             <table class="table tbl-print-head" style="width: 100%;">
                 <thead>
-
                     <tr>
-                        <td colspan="2" style="text-align: center; font-size: 30px;border: 0px;">INVOICE<br><br></td>
+                        <td colspan="2" style="text-align: center; font-size: 20px; border: 0px;">INVOICE<br></td>
                     </tr>
-
-                    <tr>
+                    <tr style="border-bottom:soild 1px #DDDD ;">
                         <td style="width: 60%;">&nbsp;</td>
                         <td style="text-align: right;">Reciept Date: {{cService.getCurrentDateTime(false)}}<br>
                             Reciept No.: {{PaymentModel.id}}
-                            <br><br><br><br>
                         </td>
                     </tr>
                     <tr>
@@ -222,7 +231,6 @@
                             {{cService.getStringDateFormatByCurtureAndType(selectedAppointment.completedAt,
                             true)}}
                         </td> -->
-
                         <td>
                             <label *ngIf="currentUser.name">{{currentUser.name}}<br></label>
                             <label *ngIf="currentUser.admin">{{currentUser.admin}}<br></label>
@@ -233,11 +241,6 @@
                             <label *ngIf="clientDetails.mobile">{{clientDetails.mobile}}</label><br>
                             <label *ngIf="clientDetails.email">{{clientDetails.email}}</label><br>
                             <label *ngIf="clientDetails.address">{{clientDetails.address}}</label>
-                            <label *ngIf="clientDetails.streetNumber">{{clientDetails.streetNumber}}, </label>
-                            <label *ngIf="clientDetails.streetName">{{clientDetails.streetName}}</label>
-                            <label *ngIf="clientDetails.suburb">{{clientDetails.suburb}}, </label>
-                            <label *ngIf="clientDetails.postcode">{{clientDetails.postcode}}, </label>
-                            <label *ngIf="clientDetails.territory">{{clientDetails.territory}}</label><br>
                         </td>
                     </tr>
                 </thead>
@@ -263,8 +266,8 @@
                     <tr *ngFor="let product of productDetails.products">
                         <td style="text-align: left;width :40%">{{product.productName}}</td>
                         <td style="text-align: center;width :10%">{{product.qty}}</td>
-                        <td style="text-align: center;width :25%">${{product.price}}</td>
-                        <td style="text-align: center;width :25%">${{product.totalAmount}}</td>
+                        <td style="text-align: center;width :25%">{{product.price}}</td>
+                        <td style="text-align: center;width :25%">{{product.totalAmount}}</td>
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
@@ -275,17 +278,17 @@
                     <tr>
                         <td colspan="2"></td>
                         <td style="text-align: left;"><b>SUB TOTAL</b></td>
-                        <td>${{productDetails.totalAmount}}</td>
+                        <td>{{productDetails.totalAmount}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
                         <td style="text-align: left;"><b>TAX</b></td>
-                        <td>$0.00</td>
+                        <td>0.00</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
                         <td style="text-align: left;"><b>GRAND TOTAL</b></td>
-                        <td>${{productDetails.totalAmount}}</td>
+                        <td>{{productDetails.totalAmount}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -308,7 +311,7 @@
                     <tr>
                         <td colspan="3" style="text-align: left;width :75%">{{selectedAppointment.servicesName}}</td>
 
-                        <td style="text-align: center;width :25%">${{selectedAppointment.totalAmount}}</td>
+                        <td style="text-align: center;width :25%">{{selectedAppointment.totalAmount}}</td>
                     </tr>
                     <tr>
                         <td colspan="4" style="text-align: left;border-bottom: 1px solid lightgray;"> &nbsp;</td>
@@ -319,29 +322,32 @@
                     <tr>
                         <td colspan="2" style="width:40%">&nbsp;</td>
                         <td style="text-align: left;"><b>SUB TOTAL</b></td>
-                        <td>${{selectedAppointment.totalAmount}}</td>
+                        <td>{{selectedAppointment.totalAmount}}</td>
                     </tr>
                     <tr>
                         <td colspan="2" style="width:40%">&nbsp;</td>
                         <td style="text-align: left;"><b>TAX</b></td>
-                        <td>$0.00</td>
+                        <td>0.00</td>
                     </tr>
                     <tr>
                         <td colspan="2" style="width:40%">&nbsp;</td>
                         <td style="text-align: left;"><b>GRAND TOTAL</b></td>
-                        <td>${{selectedAppointment.totalAmount}}</td>
+                        <td>{{selectedAppointment.totalAmount}}</td>
                     </tr>
                 </tbody>
             </table>
+
             <table class="table tbl-print-head" style="width: 100%;">
                 <thead>
                     <br><br>
                     <tr>
                         <td style="text-align: left;">
 
-                            Payment Method <br> <span *ngIf="ifTheCashPaymentDone">Cash:
-                                {{PaymentModel.cashPaid}}<br></span><span *ngIf="ifTheCardPaymentDone">Card:
-                                {{PaymentModel.cardPaid}}<br></span>
+                            <span> Total Amount : {{PaymentModel.amount}}</span> <br>
+                            <span> Amount Paid : {{PaymentModel.actualPaid}}</span> <br>
+                            <span> Payment Mode : {{PaymentModel.type}}</span> <br>
+                            <span *ngIf="PaymentModel.type=='card'"> Transaction Number :
+                                {{PaymentModel.transactionNumber}}</span> <br>
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>

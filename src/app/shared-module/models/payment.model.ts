@@ -2,14 +2,15 @@ export class Payment {
     id: number;
     adminId: number;
     branchId: number;
-    type: string = "cash";// 'cash' or 'card'
+    payingForPendingAmount: boolean;
+    type: string; // 'cash' or 'card'
     date: number;
-    cardPaid: number;
-    cashPaid: number;
+    transactionNumber: number;
     amount: number;
     actualPaid: number;
     paymentStatus: string;
     pendingAmount: number;
+    discountAmount: number;
     appointmentId: number;
     productSaleId: number;
     clientId: number;
